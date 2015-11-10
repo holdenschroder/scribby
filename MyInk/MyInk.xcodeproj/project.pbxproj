@@ -1,0 +1,916 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5802FEA01B5476200013BCEA /* MapGlyphController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5802FE9F1B5476200013BCEA /* MapGlyphController.swift */; };
+		580A6B311B606BB4006AEF44 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 580A6B2F1B606BB4006AEF44 /* Fabric.framework */; };
+		580A6B321B606BB4006AEF44 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 580A6B301B606BB4006AEF44 /* Crashlytics.framework */; };
+		580A6B341B606F9F006AEF44 /* ShareImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580A6B331B606F9F006AEF44 /* ShareImageController.swift */; };
+		580DFBBA1B59A0A500A3A223 /* FontMessageRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580DFBB91B59A0A500A3A223 /* FontMessageRenderer.swift */; };
+		581602001B87E49700F9F704 /* TextProxyConsumer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581601FF1B87E49700F9F704 /* TextProxyConsumer.swift */; };
+		58203A771B60132A00CFA42C /* ComposeMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58203A761B60132A00CFA42C /* ComposeMessageController.swift */; };
+		582054281B82D235002C95BE /* KeyboardInstallInstructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582054271B82D235002C95BE /* KeyboardInstallInstructions.swift */; };
+		582A4E8E1BB21EC600D7543B /* UIDrawCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582A4E8D1BB21EC600D7543B /* UIDrawCaptureView.swift */; };
+		582A4E901BB346AE00D7543B /* TutorialPhraseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582A4E8F1BB346AE00D7543B /* TutorialPhraseController.swift */; };
+		582D3FB61B50433300D08255 /* CGPointExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582D3FA41B50433300D08255 /* CGPointExtensions.swift */; };
+		582D3FB71B50433300D08255 /* FontAtlas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582D3FA51B50433300D08255 /* FontAtlas.swift */; };
+		582D3FB81B50433300D08255 /* isolationfilter.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = 582D3FA71B50433300D08255 /* isolationfilter.cikernel */; };
+		582D3FB91B50433300D08255 /* maskfilter.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = 582D3FA81B50433300D08255 /* maskfilter.cikernel */; };
+		582D3FBA1B50433300D08255 /* ImageCropUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582D3FA91B50433300D08255 /* ImageCropUtility.swift */; };
+		582D3FBB1B50433300D08255 /* CaptureCharacterSelectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582D3FAA1B50433300D08255 /* CaptureCharacterSelectController.swift */; };
+		582D3FBC1B50433300D08255 /* SetupCharacterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582D3FAB1B50433300D08255 /* SetupCharacterController.swift */; };
+		582D3FBD1B50433300D08255 /* UIDrawSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582D3FAC1B50433300D08255 /* UIDrawSelectionView.swift */; };
+		582D3FBE1B50433300D08255 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582D3FAD1B50433300D08255 /* UIImageExtensions.swift */; };
+		582D3FC11B50433300D08255 /* UIImageView+GeometryConversion.m in Sources */ = {isa = PBXBuildFile; fileRef = 582D3FB31B50433300D08255 /* UIImageView+GeometryConversion.m */; };
+		582D3FC21B50433300D08255 /* UIPanZoomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582D3FB41B50433300D08255 /* UIPanZoomImageView.swift */; };
+		582D3FC51B5043D000D08255 /* Testing.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 582D3FC41B5043D000D08255 /* Testing.xcassets */; };
+		582D3FC71B50779000D08255 /* FontAtlasImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582D3FC61B50779000D08255 /* FontAtlasImage.swift */; };
+		5838B9331B87ACB100961AFD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5838B9321B87ACB100961AFD /* Images.xcassets */; };
+		583EB9E01B72C0FB00357957 /* FontAtlas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582D3FA51B50433300D08255 /* FontAtlas.swift */; };
+		583EB9E11B72C0FB00357957 /* FontAtlasData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DF909F1B4F1D2C00E36BB1 /* FontAtlasData.swift */; };
+		583EB9E21B72C0FB00357957 /* FontAtlasGlyph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DF909E1B4F1D2C00E36BB1 /* FontAtlasGlyph.swift */; };
+		583EB9E31B72C0FB00357957 /* FontAtlasImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582D3FC61B50779000D08255 /* FontAtlasImage.swift */; };
+		583EB9E41B72C1A100357957 /* CGPointExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582D3FA41B50433300D08255 /* CGPointExtensions.swift */; };
+		583EB9E51B72C2AF00357957 /* FontMessageRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580DFBB91B59A0A500A3A223 /* FontMessageRenderer.swift */; };
+		583EB9E81B72DCC200357957 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583EB9E71B72DCC200357957 /* CoreDataHelper.swift */; };
+		583EB9E91B72E06100357957 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583EB9E71B72DCC200357957 /* CoreDataHelper.swift */; };
+		584336081BC3264200CB25F5 /* TapToContinueController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584336071BC3264200CB25F5 /* TapToContinueController.swift */; };
+		584C902F1BC7523700317BA8 /* libFlurry_7.2.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 584C902E1BC7523700317BA8 /* libFlurry_7.2.1.a */; };
+		584E31BD1B56F95D002E6703 /* LibraryTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584E31BC1B56F95D002E6703 /* LibraryTableController.swift */; };
+		5852778B1B797DD000C1B90B /* Embedded_data.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 585277891B797DD000C1B90B /* Embedded_data.sqlite */; };
+		5852778C1B797DD000C1B90B /* Embedded_atlas.png in Resources */ = {isa = PBXBuildFile; fileRef = 5852778A1B797DD000C1B90B /* Embedded_atlas.png */; };
+		585277911B7A679200C1B90B /* Embedded_data.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = 5852778F1B7A679200C1B90B /* Embedded_data.sqlite-shm */; };
+		585277921B7A679200C1B90B /* Embedded_data.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = 585277901B7A679200C1B90B /* Embedded_data.sqlite-wal */; };
+		5859CDE71BC221210066A2BD /* PromptForRotationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5859CDE61BC221210066A2BD /* PromptForRotationController.swift */; };
+		58765AE41BAA46C70022AF80 /* SwiftMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58765AE31BAA46C70022AF80 /* SwiftMath.swift */; };
+		5893ACE11BC5F1F50099D95C /* UIMyInkKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5893ACE01BC5F1F50099D95C /* UIMyInkKey.swift */; };
+		58A696471BB0DEFE00B068AA /* UINavigationControllerOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A696461BB0DEFE00B068AA /* UINavigationControllerOrientation.swift */; };
+		58B056D01BAA16C400FA4A26 /* CaptureTouchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B056CF1BAA16C400FA4A26 /* CaptureTouchController.swift */; };
+		58B5A4211BC0EC9B002628E9 /* TutorialState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B5A4201BC0EC9B002628E9 /* TutorialState.swift */; };
+		58CC72C71B71412100A4AB62 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CC72C61B71412100A4AB62 /* KeyboardViewController.swift */; };
+		58CC72E21B71A5E200A4AB62 /* MyInkKeyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 58CC72C21B71412100A4AB62 /* MyInkKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		58CE61E91B7AB8A900730D32 /* MyInk.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 58CE61E71B7AB8A900730D32 /* MyInk.xcdatamodeld */; };
+		58CE61ED1B7AC50B00730D32 /* Embedded_data.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = 5852778F1B7A679200C1B90B /* Embedded_data.sqlite-shm */; };
+		58CE61EE1B7AC50B00730D32 /* Embedded_data.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = 585277901B7A679200C1B90B /* Embedded_data.sqlite-wal */; };
+		58CE61EF1B7AC50B00730D32 /* Embedded_data.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 585277891B797DD000C1B90B /* Embedded_data.sqlite */; };
+		58CE61F01B7AC50B00730D32 /* Embedded_atlas.png in Resources */ = {isa = PBXBuildFile; fileRef = 5852778A1B797DD000C1B90B /* Embedded_atlas.png */; };
+		58CE61F21B7ACF6400730D32 /* MainMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CE61F11B7ACF6400730D32 /* MainMenuController.swift */; };
+		58DA98531BA8D30200DD6D6C /* UIDrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DA98521BA8D30200DD6D6C /* UIDrawView.swift */; };
+		58DF90701B4F1C9600E36BB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DF906F1B4F1C9600E36BB1 /* AppDelegate.swift */; };
+		58DF90751B4F1C9600E36BB1 /* CaptureWordSelectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DF90741B4F1C9600E36BB1 /* CaptureWordSelectController.swift */; };
+		58DF90781B4F1C9600E36BB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58DF90761B4F1C9600E36BB1 /* Main.storyboard */; };
+		58DF907A1B4F1C9600E36BB1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58DF90791B4F1C9600E36BB1 /* Images.xcassets */; };
+		58DF907D1B4F1C9600E36BB1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58DF907B1B4F1C9600E36BB1 /* LaunchScreen.xib */; };
+		58DF90891B4F1C9700E36BB1 /* MyInkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DF90881B4F1C9700E36BB1 /* MyInkTests.swift */; };
+		58DF90A01B4F1D2C00E36BB1 /* FontAtlasGlyph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DF909E1B4F1D2C00E36BB1 /* FontAtlasGlyph.swift */; };
+		58DF90A11B4F1D2C00E36BB1 /* FontAtlasData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DF909F1B4F1D2C00E36BB1 /* FontAtlasData.swift */; };
+		58ECED381B7D76A200988CA0 /* MyInk.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 58CE61E71B7AB8A900730D32 /* MyInk.xcdatamodeld */; };
+		58F64A911BC356FC00D00BC4 /* TutorialPhraseOutroController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F64A901BC356FC00D00BC4 /* TutorialPhraseOutroController.swift */; };
+		58FBA5291B853FC4009CF809 /* SharedMyInkValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FBA5281B853FC4009CF809 /* SharedMyInkValues.swift */; };
+		58FBA52A1B853FC4009CF809 /* SharedMyInkValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FBA5281B853FC4009CF809 /* SharedMyInkValues.swift */; };
+		58FD80F71B804E07003D58D1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FD80F61B804E07003D58D1 /* SystemConfiguration.framework */; };
+		58FD80F91B804E10003D58D1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FD80F81B804E10003D58D1 /* Security.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		58CC72E31B71A5E200A4AB62 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 58DF90621B4F1C9600E36BB1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 58CC72C11B71412100A4AB62;
+			remoteInfo = MyInkKeyboard;
+		};
+		58DF90831B4F1C9700E36BB1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 58DF90621B4F1C9600E36BB1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 58DF90691B4F1C9600E36BB1;
+			remoteInfo = MyInk;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		58CC72E51B71A5E300A4AB62 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				58CC72E21B71A5E200A4AB62 /* MyInkKeyboard.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		5802FE9F1B5476200013BCEA /* MapGlyphController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapGlyphController.swift; sourceTree = "<group>"; };
+		580A6B2F1B606BB4006AEF44 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
+		580A6B301B606BB4006AEF44 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
+		580A6B331B606F9F006AEF44 /* ShareImageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareImageController.swift; sourceTree = "<group>"; };
+		580DFBB91B59A0A500A3A223 /* FontMessageRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontMessageRenderer.swift; sourceTree = "<group>"; };
+		581601FF1B87E49700F9F704 /* TextProxyConsumer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextProxyConsumer.swift; sourceTree = "<group>"; };
+		58203A761B60132A00CFA42C /* ComposeMessageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeMessageController.swift; sourceTree = "<group>"; };
+		582054271B82D235002C95BE /* KeyboardInstallInstructions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardInstallInstructions.swift; sourceTree = "<group>"; };
+		582A4E8D1BB21EC600D7543B /* UIDrawCaptureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDrawCaptureView.swift; sourceTree = "<group>"; };
+		582A4E8F1BB346AE00D7543B /* TutorialPhraseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialPhraseController.swift; sourceTree = "<group>"; };
+		582D3FA41B50433300D08255 /* CGPointExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGPointExtensions.swift; sourceTree = "<group>"; };
+		582D3FA51B50433300D08255 /* FontAtlas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FontAtlas.swift; path = ../FontAtlas.swift; sourceTree = "<group>"; };
+		582D3FA71B50433300D08255 /* isolationfilter.cikernel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = isolationfilter.cikernel; sourceTree = "<group>"; };
+		582D3FA81B50433300D08255 /* maskfilter.cikernel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = maskfilter.cikernel; sourceTree = "<group>"; };
+		582D3FA91B50433300D08255 /* ImageCropUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCropUtility.swift; sourceTree = "<group>"; };
+		582D3FAA1B50433300D08255 /* CaptureCharacterSelectController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureCharacterSelectController.swift; sourceTree = "<group>"; };
+		582D3FAB1B50433300D08255 /* SetupCharacterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupCharacterController.swift; sourceTree = "<group>"; };
+		582D3FAC1B50433300D08255 /* UIDrawSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDrawSelectionView.swift; sourceTree = "<group>"; };
+		582D3FAD1B50433300D08255 /* UIImageExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
+		582D3FB21B50433300D08255 /* UIImageView+GeometryConversion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+GeometryConversion.h"; sourceTree = "<group>"; };
+		582D3FB31B50433300D08255 /* UIImageView+GeometryConversion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+GeometryConversion.m"; sourceTree = "<group>"; };
+		582D3FB41B50433300D08255 /* UIPanZoomImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPanZoomImageView.swift; sourceTree = "<group>"; };
+		582D3FC41B5043D000D08255 /* Testing.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Testing.xcassets; sourceTree = "<group>"; };
+		582D3FC61B50779000D08255 /* FontAtlasImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAtlasImage.swift; sourceTree = "<group>"; };
+		5838B9321B87ACB100961AFD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		583EB9E71B72DCC200357957 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
+		583EB9EA1B72E49100357957 /* MyInk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MyInk.entitlements; sourceTree = "<group>"; };
+		583EB9EB1B72E4CE00357957 /* MyInkKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MyInkKeyboard.entitlements; sourceTree = "<group>"; };
+		584336071BC3264200CB25F5 /* TapToContinueController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TapToContinueController.swift; sourceTree = "<group>"; };
+		584C902E1BC7523700317BA8 /* libFlurry_7.2.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_7.2.1.a; sourceTree = "<group>"; };
+		584E31BC1B56F95D002E6703 /* LibraryTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryTableController.swift; sourceTree = "<group>"; };
+		585277891B797DD000C1B90B /* Embedded_data.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = Embedded_data.sqlite; sourceTree = "<group>"; };
+		5852778A1B797DD000C1B90B /* Embedded_atlas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Embedded_atlas.png; sourceTree = "<group>"; };
+		5852778F1B7A679200C1B90B /* Embedded_data.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Embedded_data.sqlite-shm"; sourceTree = "<group>"; };
+		585277901B7A679200C1B90B /* Embedded_data.sqlite-wal */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Embedded_data.sqlite-wal"; sourceTree = "<group>"; };
+		5859CDE61BC221210066A2BD /* PromptForRotationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromptForRotationController.swift; sourceTree = "<group>"; };
+		58765AE31BAA46C70022AF80 /* SwiftMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftMath.swift; sourceTree = "<group>"; };
+		5893ACE01BC5F1F50099D95C /* UIMyInkKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIMyInkKey.swift; sourceTree = "<group>"; };
+		58A696461BB0DEFE00B068AA /* UINavigationControllerOrientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationControllerOrientation.swift; sourceTree = "<group>"; };
+		58B056CF1BAA16C400FA4A26 /* CaptureTouchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureTouchController.swift; sourceTree = "<group>"; };
+		58B5A4201BC0EC9B002628E9 /* TutorialState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialState.swift; sourceTree = "<group>"; };
+		58CC72C21B71412100A4AB62 /* MyInkKeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MyInkKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		58CC72C51B71412100A4AB62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		58CC72C61B71412100A4AB62 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
+		58CC72D51B7150E700A4AB62 /* KeyboardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KeyboardView.xib; sourceTree = "<group>"; };
+		58CE61E81B7AB8A900730D32 /* MyInk.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyInk.xcdatamodel; sourceTree = "<group>"; };
+		58CE61EA1B7ABBF700730D32 /* MyInk 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "MyInk 2.xcdatamodel"; sourceTree = "<group>"; };
+		58CE61F11B7ACF6400730D32 /* MainMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuController.swift; sourceTree = "<group>"; };
+		58DA98521BA8D30200DD6D6C /* UIDrawView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIDrawView.swift; path = ../../../../Testing/MyInkDrawingTest/MyInkTest/UIDrawView.swift; sourceTree = "<group>"; };
+		58DF906A1B4F1C9600E36BB1 /* MyInk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyInk.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		58DF906E1B4F1C9600E36BB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		58DF906F1B4F1C9600E36BB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		58DF90741B4F1C9600E36BB1 /* CaptureWordSelectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureWordSelectController.swift; sourceTree = "<group>"; };
+		58DF90771B4F1C9600E36BB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		58DF90791B4F1C9600E36BB1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		58DF907C1B4F1C9600E36BB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		58DF90821B4F1C9700E36BB1 /* MyInkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyInkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		58DF90871B4F1C9700E36BB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		58DF90881B4F1C9700E36BB1 /* MyInkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInkTests.swift; sourceTree = "<group>"; };
+		58DF909E1B4F1D2C00E36BB1 /* FontAtlasGlyph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAtlasGlyph.swift; sourceTree = "<group>"; };
+		58DF909F1B4F1D2C00E36BB1 /* FontAtlasData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAtlasData.swift; sourceTree = "<group>"; };
+		58F64A8F1BC336DD00D00BC4 /* MyInk 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "MyInk 3.xcdatamodel"; sourceTree = "<group>"; };
+		58F64A901BC356FC00D00BC4 /* TutorialPhraseOutroController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialPhraseOutroController.swift; sourceTree = "<group>"; };
+		58FBA5281B853FC4009CF809 /* SharedMyInkValues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedMyInkValues.swift; sourceTree = "<group>"; };
+		58FD80F51B804DD5003D58D1 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
+		58FD80F61B804E07003D58D1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		58FD80F81B804E10003D58D1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		58FD80FC1B804F84003D58D1 /* bridging_header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bridging_header.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		58CC72BF1B71412100A4AB62 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		58DF90671B4F1C9600E36BB1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				584C902F1BC7523700317BA8 /* libFlurry_7.2.1.a in Frameworks */,
+				58FD80F91B804E10003D58D1 /* Security.framework in Frameworks */,
+				58FD80F71B804E07003D58D1 /* SystemConfiguration.framework in Frameworks */,
+				580A6B321B606BB4006AEF44 /* Crashlytics.framework in Frameworks */,
+				580A6B311B606BB4006AEF44 /* Fabric.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		58DF907F1B4F1C9700E36BB1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		582D3FA61B50433300D08255 /* Filters */ = {
+			isa = PBXGroup;
+			children = (
+				582D3FA71B50433300D08255 /* isolationfilter.cikernel */,
+				582D3FA81B50433300D08255 /* maskfilter.cikernel */,
+			);
+			path = Filters;
+			sourceTree = "<group>";
+		};
+		582D3FAE1B50433300D08255 /* UIImageView-GeometryConversion */ = {
+			isa = PBXGroup;
+			children = (
+				582D3FB21B50433300D08255 /* UIImageView+GeometryConversion.h */,
+				582D3FB31B50433300D08255 /* UIImageView+GeometryConversion.m */,
+			);
+			path = "UIImageView-GeometryConversion";
+			sourceTree = "<group>";
+		};
+		585277881B797DD000C1B90B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5852778F1B7A679200C1B90B /* Embedded_data.sqlite-shm */,
+				585277901B7A679200C1B90B /* Embedded_data.sqlite-wal */,
+				585277891B797DD000C1B90B /* Embedded_data.sqlite */,
+				5852778A1B797DD000C1B90B /* Embedded_atlas.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		58CC72C31B71412100A4AB62 /* MyInkKeyboard */ = {
+			isa = PBXGroup;
+			children = (
+				583EB9EB1B72E4CE00357957 /* MyInkKeyboard.entitlements */,
+				58CC72D51B7150E700A4AB62 /* KeyboardView.xib */,
+				58CC72C61B71412100A4AB62 /* KeyboardViewController.swift */,
+				581601FF1B87E49700F9F704 /* TextProxyConsumer.swift */,
+				5893ACE01BC5F1F50099D95C /* UIMyInkKey.swift */,
+				5838B9321B87ACB100961AFD /* Images.xcassets */,
+				58CC72C41B71412100A4AB62 /* Supporting Files */,
+			);
+			path = MyInkKeyboard;
+			sourceTree = "<group>";
+		};
+		58CC72C41B71412100A4AB62 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				58CC72C51B71412100A4AB62 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		58DF90611B4F1C9600E36BB1 = {
+			isa = PBXGroup;
+			children = (
+				58FD80F81B804E10003D58D1 /* Security.framework */,
+				58FD80F61B804E07003D58D1 /* SystemConfiguration.framework */,
+				58DF906C1B4F1C9600E36BB1 /* MyInk */,
+				58DF90851B4F1C9700E36BB1 /* MyInkTests */,
+				58CC72C31B71412100A4AB62 /* MyInkKeyboard */,
+				58DF906B1B4F1C9600E36BB1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		58DF906B1B4F1C9600E36BB1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				58DF906A1B4F1C9600E36BB1 /* MyInk.app */,
+				58DF90821B4F1C9700E36BB1 /* MyInkTests.xctest */,
+				58CC72C21B71412100A4AB62 /* MyInkKeyboard.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		58DF906C1B4F1C9600E36BB1 /* MyInk */ = {
+			isa = PBXGroup;
+			children = (
+				583EB9EA1B72E49100357957 /* MyInk.entitlements */,
+				58FD80FC1B804F84003D58D1 /* bridging_header.h */,
+				580A6B2F1B606BB4006AEF44 /* Fabric.framework */,
+				580A6B301B606BB4006AEF44 /* Crashlytics.framework */,
+				58DF90921B4F1CFA00E36BB1 /* Data */,
+				582D3FA61B50433300D08255 /* Filters */,
+				58FD80F21B804D2E003D58D1 /* Flurry */,
+				585277881B797DD000C1B90B /* Resources */,
+				58DF906D1B4F1C9600E36BB1 /* Supporting Files */,
+				582D3FAE1B50433300D08255 /* UIImageView-GeometryConversion */,
+				58DF906F1B4F1C9600E36BB1 /* AppDelegate.swift */,
+				582D3FAA1B50433300D08255 /* CaptureCharacterSelectController.swift */,
+				58B056CF1BAA16C400FA4A26 /* CaptureTouchController.swift */,
+				58DF90741B4F1C9600E36BB1 /* CaptureWordSelectController.swift */,
+				582D3FA41B50433300D08255 /* CGPointExtensions.swift */,
+				58203A761B60132A00CFA42C /* ComposeMessageController.swift */,
+				583EB9E71B72DCC200357957 /* CoreDataHelper.swift */,
+				580DFBB91B59A0A500A3A223 /* FontMessageRenderer.swift */,
+				582D3FA91B50433300D08255 /* ImageCropUtility.swift */,
+				582054271B82D235002C95BE /* KeyboardInstallInstructions.swift */,
+				584E31BC1B56F95D002E6703 /* LibraryTableController.swift */,
+				58CE61F11B7ACF6400730D32 /* MainMenuController.swift */,
+				5802FE9F1B5476200013BCEA /* MapGlyphController.swift */,
+				5859CDE61BC221210066A2BD /* PromptForRotationController.swift */,
+				582D3FAB1B50433300D08255 /* SetupCharacterController.swift */,
+				580A6B331B606F9F006AEF44 /* ShareImageController.swift */,
+				58FBA5281B853FC4009CF809 /* SharedMyInkValues.swift */,
+				58765AE31BAA46C70022AF80 /* SwiftMath.swift */,
+				584336071BC3264200CB25F5 /* TapToContinueController.swift */,
+				582A4E8F1BB346AE00D7543B /* TutorialPhraseController.swift */,
+				58F64A901BC356FC00D00BC4 /* TutorialPhraseOutroController.swift */,
+				582A4E8D1BB21EC600D7543B /* UIDrawCaptureView.swift */,
+				582D3FAC1B50433300D08255 /* UIDrawSelectionView.swift */,
+				58DA98521BA8D30200DD6D6C /* UIDrawView.swift */,
+				582D3FAD1B50433300D08255 /* UIImageExtensions.swift */,
+				58A696461BB0DEFE00B068AA /* UINavigationControllerOrientation.swift */,
+				582D3FB41B50433300D08255 /* UIPanZoomImageView.swift */,
+				58DF90761B4F1C9600E36BB1 /* Main.storyboard */,
+				58DF907B1B4F1C9600E36BB1 /* LaunchScreen.xib */,
+				58DF90791B4F1C9600E36BB1 /* Images.xcassets */,
+				582D3FC41B5043D000D08255 /* Testing.xcassets */,
+			);
+			path = MyInk;
+			sourceTree = "<group>";
+		};
+		58DF906D1B4F1C9600E36BB1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				58DF906E1B4F1C9600E36BB1 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		58DF90851B4F1C9700E36BB1 /* MyInkTests */ = {
+			isa = PBXGroup;
+			children = (
+				58DF90881B4F1C9700E36BB1 /* MyInkTests.swift */,
+				58DF90861B4F1C9700E36BB1 /* Supporting Files */,
+			);
+			path = MyInkTests;
+			sourceTree = "<group>";
+		};
+		58DF90861B4F1C9700E36BB1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				58DF90871B4F1C9700E36BB1 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		58DF90921B4F1CFA00E36BB1 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				58CE61E71B7AB8A900730D32 /* MyInk.xcdatamodeld */,
+				582D3FA51B50433300D08255 /* FontAtlas.swift */,
+				58DF909F1B4F1D2C00E36BB1 /* FontAtlasData.swift */,
+				58DF909E1B4F1D2C00E36BB1 /* FontAtlasGlyph.swift */,
+				582D3FC61B50779000D08255 /* FontAtlasImage.swift */,
+				58B5A4201BC0EC9B002628E9 /* TutorialState.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		58FD80F21B804D2E003D58D1 /* Flurry */ = {
+			isa = PBXGroup;
+			children = (
+				584C902E1BC7523700317BA8 /* libFlurry_7.2.1.a */,
+				58FD80F51B804DD5003D58D1 /* Flurry.h */,
+			);
+			name = Flurry;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		58CC72C11B71412100A4AB62 /* MyInkKeyboard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 58CC72CB1B71412100A4AB62 /* Build configuration list for PBXNativeTarget "MyInkKeyboard" */;
+			buildPhases = (
+				58CC72BE1B71412100A4AB62 /* Sources */,
+				58CC72BF1B71412100A4AB62 /* Frameworks */,
+				58CC72C01B71412100A4AB62 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MyInkKeyboard;
+			productName = MyInkKeyboard;
+			productReference = 58CC72C21B71412100A4AB62 /* MyInkKeyboard.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		58DF90691B4F1C9600E36BB1 /* MyInk */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 58DF908C1B4F1C9700E36BB1 /* Build configuration list for PBXNativeTarget "MyInk" */;
+			buildPhases = (
+				58DF90661B4F1C9600E36BB1 /* Sources */,
+				58DF90671B4F1C9600E36BB1 /* Frameworks */,
+				58DF90681B4F1C9600E36BB1 /* Resources */,
+				580A6B2E1B606B8F006AEF44 /* ShellScript */,
+				58CC72E51B71A5E300A4AB62 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				58CC72E41B71A5E200A4AB62 /* PBXTargetDependency */,
+			);
+			name = MyInk;
+			productName = MyInk;
+			productReference = 58DF906A1B4F1C9600E36BB1 /* MyInk.app */;
+			productType = "com.apple.product-type.application";
+		};
+		58DF90811B4F1C9700E36BB1 /* MyInkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 58DF908F1B4F1C9700E36BB1 /* Build configuration list for PBXNativeTarget "MyInkTests" */;
+			buildPhases = (
+				58DF907E1B4F1C9700E36BB1 /* Sources */,
+				58DF907F1B4F1C9700E36BB1 /* Frameworks */,
+				58DF90801B4F1C9700E36BB1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				58DF90841B4F1C9700E36BB1 /* PBXTargetDependency */,
+			);
+			name = MyInkTests;
+			productName = MyInkTests;
+			productReference = 58DF90821B4F1C9700E36BB1 /* MyInkTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		58DF90621B4F1C9600E36BB1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = "E-Link";
+				TargetAttributes = {
+					58CC72C11B71412100A4AB62 = {
+						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = 8YDH8TXREA;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+					58DF90691B4F1C9600E36BB1 = {
+						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = 8YDH8TXREA;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.SafariKeychain = {
+								enabled = 0;
+							};
+						};
+					};
+					58DF90811B4F1C9700E36BB1 = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = 58DF90691B4F1C9600E36BB1;
+					};
+				};
+			};
+			buildConfigurationList = 58DF90651B4F1C9600E36BB1 /* Build configuration list for PBXProject "MyInk" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 58DF90611B4F1C9600E36BB1;
+			productRefGroup = 58DF906B1B4F1C9600E36BB1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				58DF90691B4F1C9600E36BB1 /* MyInk */,
+				58DF90811B4F1C9700E36BB1 /* MyInkTests */,
+				58CC72C11B71412100A4AB62 /* MyInkKeyboard */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		58CC72C01B71412100A4AB62 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				58CE61ED1B7AC50B00730D32 /* Embedded_data.sqlite-shm in Resources */,
+				5838B9331B87ACB100961AFD /* Images.xcassets in Resources */,
+				58CE61EE1B7AC50B00730D32 /* Embedded_data.sqlite-wal in Resources */,
+				58CE61EF1B7AC50B00730D32 /* Embedded_data.sqlite in Resources */,
+				58CE61F01B7AC50B00730D32 /* Embedded_atlas.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		58DF90681B4F1C9600E36BB1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				585277921B7A679200C1B90B /* Embedded_data.sqlite-wal in Resources */,
+				58DF90781B4F1C9600E36BB1 /* Main.storyboard in Resources */,
+				58DF907D1B4F1C9600E36BB1 /* LaunchScreen.xib in Resources */,
+				585277911B7A679200C1B90B /* Embedded_data.sqlite-shm in Resources */,
+				58DF907A1B4F1C9600E36BB1 /* Images.xcassets in Resources */,
+				5852778C1B797DD000C1B90B /* Embedded_atlas.png in Resources */,
+				582D3FB91B50433300D08255 /* maskfilter.cikernel in Resources */,
+				582D3FC51B5043D000D08255 /* Testing.xcassets in Resources */,
+				5852778B1B797DD000C1B90B /* Embedded_data.sqlite in Resources */,
+				582D3FB81B50433300D08255 /* isolationfilter.cikernel in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		58DF90801B4F1C9700E36BB1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		580A6B2E1B606B8F006AEF44 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run d9f8e8fc6469d904c6f32df60ade85cf60188988 2549131caaea7dfe923b4ac0649f16da40e572598f92bb298db47e979b9489fe";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		58CC72BE1B71412100A4AB62 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				583EB9E51B72C2AF00357957 /* FontMessageRenderer.swift in Sources */,
+				581602001B87E49700F9F704 /* TextProxyConsumer.swift in Sources */,
+				5893ACE11BC5F1F50099D95C /* UIMyInkKey.swift in Sources */,
+				583EB9E41B72C1A100357957 /* CGPointExtensions.swift in Sources */,
+				583EB9E01B72C0FB00357957 /* FontAtlas.swift in Sources */,
+				583EB9E11B72C0FB00357957 /* FontAtlasData.swift in Sources */,
+				583EB9E21B72C0FB00357957 /* FontAtlasGlyph.swift in Sources */,
+				583EB9E91B72E06100357957 /* CoreDataHelper.swift in Sources */,
+				58ECED381B7D76A200988CA0 /* MyInk.xcdatamodeld in Sources */,
+				583EB9E31B72C0FB00357957 /* FontAtlasImage.swift in Sources */,
+				58CC72C71B71412100A4AB62 /* KeyboardViewController.swift in Sources */,
+				58FBA52A1B853FC4009CF809 /* SharedMyInkValues.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		58DF90661B4F1C9600E36BB1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				58DF90A01B4F1D2C00E36BB1 /* FontAtlasGlyph.swift in Sources */,
+				582A4E8E1BB21EC600D7543B /* UIDrawCaptureView.swift in Sources */,
+				58F64A911BC356FC00D00BC4 /* TutorialPhraseOutroController.swift in Sources */,
+				58FBA5291B853FC4009CF809 /* SharedMyInkValues.swift in Sources */,
+				58DF90751B4F1C9600E36BB1 /* CaptureWordSelectController.swift in Sources */,
+				582D3FC11B50433300D08255 /* UIImageView+GeometryConversion.m in Sources */,
+				58A696471BB0DEFE00B068AA /* UINavigationControllerOrientation.swift in Sources */,
+				583EB9E81B72DCC200357957 /* CoreDataHelper.swift in Sources */,
+				584E31BD1B56F95D002E6703 /* LibraryTableController.swift in Sources */,
+				582D3FB71B50433300D08255 /* FontAtlas.swift in Sources */,
+				582D3FBE1B50433300D08255 /* UIImageExtensions.swift in Sources */,
+				58DF90701B4F1C9600E36BB1 /* AppDelegate.swift in Sources */,
+				5859CDE71BC221210066A2BD /* PromptForRotationController.swift in Sources */,
+				58203A771B60132A00CFA42C /* ComposeMessageController.swift in Sources */,
+				58765AE41BAA46C70022AF80 /* SwiftMath.swift in Sources */,
+				582D3FC21B50433300D08255 /* UIPanZoomImageView.swift in Sources */,
+				580DFBBA1B59A0A500A3A223 /* FontMessageRenderer.swift in Sources */,
+				582D3FBA1B50433300D08255 /* ImageCropUtility.swift in Sources */,
+				582054281B82D235002C95BE /* KeyboardInstallInstructions.swift in Sources */,
+				582D3FC71B50779000D08255 /* FontAtlasImage.swift in Sources */,
+				5802FEA01B5476200013BCEA /* MapGlyphController.swift in Sources */,
+				580A6B341B606F9F006AEF44 /* ShareImageController.swift in Sources */,
+				58DA98531BA8D30200DD6D6C /* UIDrawView.swift in Sources */,
+				582A4E901BB346AE00D7543B /* TutorialPhraseController.swift in Sources */,
+				582D3FBB1B50433300D08255 /* CaptureCharacterSelectController.swift in Sources */,
+				58DF90A11B4F1D2C00E36BB1 /* FontAtlasData.swift in Sources */,
+				582D3FB61B50433300D08255 /* CGPointExtensions.swift in Sources */,
+				58B5A4211BC0EC9B002628E9 /* TutorialState.swift in Sources */,
+				584336081BC3264200CB25F5 /* TapToContinueController.swift in Sources */,
+				58CE61E91B7AB8A900730D32 /* MyInk.xcdatamodeld in Sources */,
+				58CE61F21B7ACF6400730D32 /* MainMenuController.swift in Sources */,
+				582D3FBD1B50433300D08255 /* UIDrawSelectionView.swift in Sources */,
+				58B056D01BAA16C400FA4A26 /* CaptureTouchController.swift in Sources */,
+				582D3FBC1B50433300D08255 /* SetupCharacterController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		58DF907E1B4F1C9700E36BB1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				58DF90891B4F1C9700E36BB1 /* MyInkTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		58CC72E41B71A5E200A4AB62 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 58CC72C11B71412100A4AB62 /* MyInkKeyboard */;
+			targetProxy = 58CC72E31B71A5E200A4AB62 /* PBXContainerItemProxy */;
+		};
+		58DF90841B4F1C9700E36BB1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 58DF90691B4F1C9600E36BB1 /* MyInk */;
+			targetProxy = 58DF90831B4F1C9700E36BB1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		58DF90761B4F1C9600E36BB1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				58DF90771B4F1C9600E36BB1 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		58DF907B1B4F1C9600E36BB1 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				58DF907C1B4F1C9600E36BB1 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		58CC72CC1B71412100A4AB62 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = MyInkKeyboard/MyInkKeyboard.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MyInkKeyboard/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.myinkapp.myink.keyboard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		58CC72CD1B71412100A4AB62 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = MyInkKeyboard/MyInkKeyboard.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = MyInkKeyboard/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.myinkapp.myink.keyboard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		58DF908A1B4F1C9700E36BB1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		58DF908B1B4F1C9700E36BB1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		58DF908D1B4F1C9700E36BB1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MyInk/MyInk.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = MyInk/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MyInk",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.myinkapp.myink;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = MyInk/bridging_header.h;
+			};
+			name = Debug;
+		};
+		58DF908E1B4F1C9700E36BB1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MyInk/MyInk.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = MyInk/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MyInk",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.myinkapp.myink;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = MyInk/bridging_header.h;
+			};
+			name = Release;
+		};
+		58DF90901B4F1C9700E36BB1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MyInkTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.galenryder.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyInk.app/MyInk";
+			};
+			name = Debug;
+		};
+		58DF90911B4F1C9700E36BB1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = "";
+				INFOPLIST_FILE = MyInkTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.galenryder.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyInk.app/MyInk";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		58CC72CB1B71412100A4AB62 /* Build configuration list for PBXNativeTarget "MyInkKeyboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				58CC72CC1B71412100A4AB62 /* Debug */,
+				58CC72CD1B71412100A4AB62 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		58DF90651B4F1C9600E36BB1 /* Build configuration list for PBXProject "MyInk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				58DF908A1B4F1C9700E36BB1 /* Debug */,
+				58DF908B1B4F1C9700E36BB1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		58DF908C1B4F1C9700E36BB1 /* Build configuration list for PBXNativeTarget "MyInk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				58DF908D1B4F1C9700E36BB1 /* Debug */,
+				58DF908E1B4F1C9700E36BB1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		58DF908F1B4F1C9700E36BB1 /* Build configuration list for PBXNativeTarget "MyInkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				58DF90901B4F1C9700E36BB1 /* Debug */,
+				58DF90911B4F1C9700E36BB1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		58CE61E71B7AB8A900730D32 /* MyInk.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				58F64A8F1BC336DD00D00BC4 /* MyInk 3.xcdatamodel */,
+				58CE61EA1B7ABBF700730D32 /* MyInk 2.xcdatamodel */,
+				58CE61E81B7AB8A900730D32 /* MyInk.xcdatamodel */,
+			);
+			currentVersion = 58F64A8F1BC336DD00D00BC4 /* MyInk 3.xcdatamodel */;
+			path = MyInk.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 58DF90621B4F1C9600E36BB1 /* Project object */;
+}

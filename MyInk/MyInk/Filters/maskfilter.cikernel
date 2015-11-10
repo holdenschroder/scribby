@@ -1,0 +1,11 @@
+/*
+Applies the alpha channel of the mask to the image
+*/
+
+kernel vec4 maskFilterKernel(sampler image, sampler mask)
+{
+vec4 imageColor = sample(image, samplerCoord(image));
+vec4 maskColor = sample(mask, samplerCoord(mask));
+imageColor.a = compare(maskColor.a - 0.01, imageColor.a, 0.0);
+return imageColor;
+}

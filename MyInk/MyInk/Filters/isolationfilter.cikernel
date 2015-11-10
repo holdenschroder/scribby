@@ -1,0 +1,17 @@
+/*
+Changes the alpha of pixels in the image based on how close they match the color.
+Uses a tolerance to control the match range. RGB values are replaced with finalColor to
+reduce artifacting in the color map.
+*/
+
+kernel vec4 isolationFilterKernel(sampler image, __color color, __color finalColor, float tolerance)
+{
+vec4 imageColor = sample(image, samplerCoord(image));
+vec4 diffVec = color - imageColor;
+diffVec = abs(diffVec);
+float diff = (diffVec.r * 0.299) + (diffVec.g * 0.587) + (diffVec.b * 0.114);
+float alpha = compare(tolerance - diff, 0.0, 1.0 - (diff / tolerance));
+imageColor = vec4(1.0, 1.0, 1.0, 1.0) * (finalColor * alpha);
+imageColor.a = alpha;
+return imageColor;
+}

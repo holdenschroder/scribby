@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="8195" systemVersion="14F27" minimumToolsVersion="Xcode 4.3">
+    <entity name="FontAtlasData" representedClassName="FontAtlasData" syncable="YES">
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <relationship name="glyphs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FontAtlasGlyph" inverseName="atlas" inverseEntity="FontAtlasGlyph" syncable="YES"/>
+        <relationship name="images" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FontAtlasImage" inverseName="atlas" inverseEntity="FontAtlasImage" syncable="YES"/>
+    </entity>
+    <entity name="FontAtlasGlyph" representedClassName="FontAtlasGlyph" syncable="YES">
+        <attribute name="glyphBoundsAsString" optional="YES" attributeType="String" elementID="glyphCoordAsString" syncable="YES"/>
+        <attribute name="imageCoordAsString" optional="YES" attributeType="String" elementID="uvCoordAsString" syncable="YES"/>
+        <attribute name="leftConnectionAsString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mapping" attributeType="String" minValueString="1" syncable="YES"/>
+        <attribute name="rightConnectionAsString" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="atlas" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FontAtlasData" inverseName="glyphs" inverseEntity="FontAtlasData" syncable="YES"/>
+        <relationship name="image" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FontAtlasImage" inverseName="glyphs" inverseEntity="FontAtlasImage" syncable="YES"/>
+    </entity>
+    <entity name="FontAtlasImage" representedClassName="FontAtlasImage" syncable="YES">
+        <attribute name="filepath" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="atlas" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FontAtlasData" inverseName="images" inverseEntity="FontAtlasData" syncable="YES"/>
+        <relationship name="glyphs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FontAtlasGlyph" inverseName="image" inverseEntity="FontAtlasGlyph" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="FontAtlasData" positionX="-272" positionY="-90" width="128" height="90"/>
+        <element name="FontAtlasGlyph" positionX="-108" positionY="-90" width="128" height="150"/>
+        <element name="FontAtlasImage" positionX="-189" positionY="-45" width="128" height="90"/>
+    </elements>
+</model>
