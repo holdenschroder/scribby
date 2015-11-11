@@ -39,12 +39,6 @@ class KeyboardViewController: UIInputViewController {
     private var _textProxyConsumer:TextProxyConsumer!
     private var _shiftButton:UIMyInkKey?
 
-    override func updateViewConstraints() {
-        super.updateViewConstraints()
-    
-        // Add custom view sizing constraints here
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -126,10 +120,10 @@ class KeyboardViewController: UIInputViewController {
         switch layout {
         case .alpha:
             let shiftKey = UIMyInkKey(icon: loadImage("KeyboardIcon_Shift"), relativeWidth: 0.15)
-            shiftKey.addTarget(self, action: "handleShift:", forControlEvents: .TouchUpInside)
             if _capitilization == .uppercase {
                 shiftKey.keyData?.controlState = UIControlState.Selected
             }
+            shiftKey.addTarget(self, action: "handleShiftTap:event:", forControlEvents: .TouchUpInside)
             self._shiftButton = shiftKey
             
             buttonTitles1 = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"]
@@ -210,7 +204,7 @@ class KeyboardViewController: UIInputViewController {
                 button = buttonData
                 setupButton(button!)
                 //We should add the default target if nothing is already added to this button
-                if button?.allTargets().count == 0 {
+                if button?.allTargets().count == 0 && button?.gestureRecognizers == nil {
                     button?.addTarget(self, action: "didTapButton:", forControlEvents: .TouchUpInside)
                 }
                 if button!.keyData?.relativeWidth != nil {
@@ -485,22 +479,25 @@ class KeyboardViewController: UIInputViewController {
         _lastKeyValue = title
     }
     
-    func handleShift(sender:AnyObject?) {
+    func handleShiftTap(sender: AnyObject, event: UIEvent) {
         let dateNow = NSDate()
         
-        switch _capitilization {
-        case .lowercase:
-            _capitilization = .uppercase
-        case .uppercase:
-            _capitilization = .lowercase
-            if _lastKeyValue == "shift" && _lastKeyPressDate != nil {
-                let elapsedTime = dateNow.timeIntervalSinceDate(_lastKeyPressDate!)
-                if elapsedTime < 1.0 {
-                    _capitilization = .capslock
-                }
+        let touch = event.allTouches()?.first
+        
+        if(touch?.tapCount == 1) {
+            switch _capitilization {
+            case .lowercase:
+                _capitilization = .uppercase
+            case .uppercase:
+                _capitilization = .lowercase
+            case .capslock:
+                _capitilization = .lowercase
             }
-        case .capslock:
-            _capitilization = .lowercase
+        }
+        else if(touch?.tapCount == 2) {
+            if _capitilization != .capslock {
+                _capitilization = .capslock
+            }
         }
         
         updateShiftButtonVisualization()
@@ -509,23 +506,44 @@ class KeyboardViewController: UIInputViewController {
         _lastKeyValue = "shift"
     }
     
+    func updateButtonVisualization(button:UIControl) {
+        if let key = button as? UIMyInkKey {
+            if key.keyData != nil {
+                switch key.keyData!.controlState.rawValue {
+                case UIControlState.Selected.rawValue:
+                    key.backgroundColor = key.keyData!.selectedColorState.backgroundColor
+                    key.tintColor = key.keyData!.selectedColorState.tintColor
+                default:
+                    key.backgroundColor = key.keyData!.normalColorState.backgroundColor
+                    key.tintColor = key.keyData!.normalColorState.tintColor
+                }
+                
+                key.setTitleColor(key.keyData!.normalColorState.textColor, forState: UIControlState.Normal)
+                key.setTitleColor(key.keyData!.selectedColorState.textColor, forState: UIControlState.Selected)
+            }
+        }
+    }
+    
     func updateShiftButtonVisualization() {
         if _shiftButton != nil {
-            var buttonControlState = UIControlState.Normal
-        
-            switch _capitilization {
-            case .lowercase:
-                buttonControlState = UIControlState.Normal
-                _shiftButton?.setImage(loadImage("KeyboardIcon_Shift"), forState: .Normal)
-            case .uppercase:
-                buttonControlState = UIControlState.Selected
-                _shiftButton?.setImage(loadImage("KeyboardIcon_Shift"), forState: .Normal)
-            case .capslock:
-                buttonControlState = UIControlState.Normal
-                _shiftButton?.setImage(loadImage("KeyboardIcon_CapsLock"), forState: .Normal)
-            }
-            _shiftButton?.keyData?.controlState = buttonControlState
-            updateButtonVisualization(_shiftButton!)
+            dispatch_async(dispatch_get_main_queue(), {
+                
+                    var buttonControlState = UIControlState.Normal
+                    
+                    switch self._capitilization {
+                    case .lowercase:
+                        buttonControlState = UIControlState.Normal
+                        self._shiftButton?.setImage(self.loadImage("KeyboardIcon_Shift"), forState: .Normal)
+                    case .uppercase:
+                        buttonControlState = UIControlState.Selected
+                        self._shiftButton?.setImage(self.loadImage("KeyboardIcon_Shift"), forState: .Normal)
+                    case .capslock:
+                        buttonControlState = UIControlState.Normal
+                        self._shiftButton?.setImage(self.loadImage("KeyboardIcon_CapsLock"), forState: .Normal)
+                    }
+                    self._shiftButton?.keyData?.controlState = buttonControlState
+                    self.updateButtonVisualization(self._shiftButton!)
+            })
         }
     }
     
@@ -569,24 +587,6 @@ class KeyboardViewController: UIInputViewController {
         if proxy.hasText() == false {
             timer.invalidate()
             self.deleteTimer = nil
-        }
-    }
-    
-    func updateButtonVisualization(button:UIControl) {
-        if let key = button as? UIMyInkKey {
-            if key.keyData != nil {
-                switch key.keyData!.controlState.rawValue {
-                case UIControlState.Selected.rawValue:
-                    key.backgroundColor = key.keyData!.selectedColorState.backgroundColor
-                    key.tintColor = key.keyData!.selectedColorState.tintColor
-                default:
-                    key.backgroundColor = key.keyData!.normalColorState.backgroundColor
-                    key.tintColor = key.keyData!.normalColorState.tintColor
-                }
-                
-                key.setTitleColor(key.keyData!.normalColorState.textColor, forState: UIControlState.Normal)
-                key.setTitleColor(key.keyData!.selectedColorState.textColor, forState: UIControlState.Selected)
-            }
         }
     }
     

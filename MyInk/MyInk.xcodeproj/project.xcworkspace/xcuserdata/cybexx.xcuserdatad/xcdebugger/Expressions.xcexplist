@@ -6,13 +6,10 @@
          contextName = "MyInk.CaptureTouchController.(SaveGlyph in _B1E2EA5140B317C0DF499E8A09BD0510) (MyInk.CaptureTouchController)(Swift.String) -&gt; ():CaptureTouchController.swift">
       </ContextState>
       <ContextState
-         contextName = "MyInkKeyboard.TextProxyConsumer.handleBackwardTimer (MyInkKeyboard.TextProxyConsumer)(ObjectiveC.NSTimer) -&gt; ():TextProxyConsumer.swift">
+         contextName = "MyInk.UINavigationControllerOrientation.navigationController (MyInk.UINavigationControllerOrientation)(ObjectiveC.UINavigationController, willShowViewController : ObjectiveC.UIViewController, animated : Swift.Bool) -&gt; ():UINavigationControllerOrientation.swift">
          <PersistentStrings>
             <PersistentString
-               value = "message">
-            </PersistentString>
-            <PersistentString
-               value = "lastLine">
+               value = "viewController is CaptureTouchController">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -145,6 +142,17 @@
          <PersistentStrings>
             <PersistentString
                value = "image.CIImage!.extent()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "KeyboardViewController.populateRowWithButtons(UIView, buttonData : [AnyObject]) -&gt; ():KeyboardViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "button!.gestureRecognizers">
+            </PersistentString>
+            <PersistentString
+               value = "buttonData">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -340,6 +348,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "KeyboardViewController.handleShiftTap(AnyObject?) -&gt; ():KeyboardViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "sender is UITouch">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "TutorialPhraseController.(UpdateMessages in _AAA7D608108BD89027C7001D1B1EBCD1)() -&gt; ():TutorialPhraseController.swift">
          <PersistentStrings>
             <PersistentString
@@ -500,10 +516,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "MyInk.UINavigationControllerOrientation.navigationController (MyInk.UINavigationControllerOrientation)(ObjectiveC.UINavigationController, willShowViewController : ObjectiveC.UIViewController, animated : Swift.Bool) -&gt; ():UINavigationControllerOrientation.swift">
+         contextName = "MyInk.ViewController.viewDidLoad (MyInk.ViewController)() -&gt; ():ViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "viewController is CaptureTouchController">
+               value = "testAtlas.characters">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -519,10 +535,13 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "MyInk.ViewController.viewDidLoad (MyInk.ViewController)() -&gt; ():ViewController.swift">
+         contextName = "MyInkKeyboard.TextProxyConsumer.handleBackwardTimer (MyInkKeyboard.TextProxyConsumer)(ObjectiveC.NSTimer) -&gt; ():TextProxyConsumer.swift">
          <PersistentStrings>
             <PersistentString
-               value = "testAtlas.characters">
+               value = "message">
+            </PersistentString>
+            <PersistentString
+               value = "lastLine">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
