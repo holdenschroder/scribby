@@ -20,7 +20,7 @@ class ShareImageController: UIViewController, UIAlertViewDelegate {
         super.viewWillAppear(animated)
         imageView?.image = _image
         
-        Flurry.logEvent("Screen Loaded - Share Image")
+        MyInkAnalytics.TrackEvent("Screen Loaded - Share Image")
     }
     
     func loadImage(image:UIImage) {
@@ -87,12 +87,12 @@ class ShareImageController: UIViewController, UIAlertViewDelegate {
         let composer = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
         composer.addImage(_image)
         self.presentViewController(composer, animated: true, completion: nil)
-        Flurry.logEvent(FlurryEvent_ShareMessage, withParameters: [FlurryEvent_ShareMessage_Parameter_Activity:"button.twitter"])
+        MyInkAnalytics.TrackEvent(FlurryEvent_ShareMessage, parameters: [FlurryEvent_ShareMessage_Parameter_Activity:"button.twitter"])
     }
     
     func HandleActivityViewCompleted(activityType:String?, completed:Bool, items:[AnyObject]?, error:NSError?) {
         if completed {
-            Flurry.logEvent(FlurryEvent_ShareMessage, withParameters: [FlurryEvent_ShareMessage_Parameter_Activity:activityType ?? "UnknownActivity"])
+            MyInkAnalytics.TrackEvent(FlurryEvent_ShareMessage, parameters: [FlurryEvent_ShareMessage_Parameter_Activity:activityType ?? "UnknownActivity"])
         }
         else if error != nil
         {

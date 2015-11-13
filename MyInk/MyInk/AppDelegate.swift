@@ -22,12 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Fabric.with([Crashlytics.self()])
-        Flurry.startSession("843TZFS358BTRKCZRZ4R")
-        //Parse uses the App Group to communicate with the Keyboard Extension
-        Parse.enableDataSharingWithApplicationGroupIdentifier("group.myinkapp")
-        Parse.setApplicationId("5YZOLO126JD9pt3GKmqu5JsT8UHDCouWqZVOieSE",
-            clientKey: "Kf1X4TGQlbtXSF3wS0NDeDwOCAlyA5YlHPSnO8RD")
-        PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
+        
+        MyInkAnalytics.Initialize([FlurryWrapper(), ParseWrapper(launchOptions: launchOptions)])
+        
         return true
     }
 

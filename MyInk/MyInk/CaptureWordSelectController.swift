@@ -53,7 +53,7 @@ class CaptureWordSelectController: UIViewController, UIImagePickerControllerDele
         selectionView?.clearImage()
         selectBtn?.enabled = false
         
-        Flurry.logEvent("Screen Loaded - Capture - Word Select")
+        MyInkAnalytics.TrackEvent("Screen Loaded - Capture - Word Select")
     }
     
     override func viewDidDisappear(animated: Bool) {

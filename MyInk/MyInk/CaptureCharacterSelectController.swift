@@ -45,7 +45,7 @@ class CaptureCharacterSelectController:UIViewController {
         selectionView?.clearImage()
         continueButton?.enabled = false
         
-        Flurry.logEvent("Screen Loaded - Capture - Character Select")
+        MyInkAnalytics.TrackEvent("Screen Loaded - Capture - Character Select")
     }
     
     override func viewDidDisappear(animated: Bool) {

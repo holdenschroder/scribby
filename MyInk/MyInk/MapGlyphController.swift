@@ -22,7 +22,7 @@ class MapGlyphController:UIViewController, UITextFieldDelegate {
         textfield?.text = ""
         saveBtn.enabled = false
         
-        Flurry.logEvent("Screen Loaded - Capture - Map Glyph")
+        MyInkAnalytics.TrackEvent("Screen Loaded - Capture - Map Glyph")
     }
     
     func setCallback(callback:InputCallback) {

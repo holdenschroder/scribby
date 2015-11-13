@@ -172,10 +172,10 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
     
     private func LogWordForAnalytics(word:String, isStarting:Bool) {
         if isStarting {
-            Flurry.logEvent("Tutorial - Word Started", withParameters: ["Word":word])
+            MyInkAnalytics.TrackEvent("Tutorial - Word Started", parameters: ["Word":word])
         }
         else {
-            Flurry.logEvent("Tutorial - Word Finished", withParameters: ["Word":word])
+             MyInkAnalytics.TrackEvent("Tutorial - Word Finished", parameters: ["Word":word])
         }
     }
     

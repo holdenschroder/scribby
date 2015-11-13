@@ -39,7 +39,7 @@ class ComposeMessageController: UIViewController, UITextViewDelegate, UIPickerVi
         }
         
         registerForKeyboardNotifications()
-        Flurry.logEvent("Screen Loaded - Compose Message")
+        MyInkAnalytics.TrackEvent("Screen Loaded - Compose Message")
     }
     
     override func viewWillDisappear(animated: Bool) {
