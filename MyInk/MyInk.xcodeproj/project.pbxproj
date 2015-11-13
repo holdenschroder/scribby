@@ -47,6 +47,15 @@
 		585277911B7A679200C1B90B /* Embedded_data.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = 5852778F1B7A679200C1B90B /* Embedded_data.sqlite-shm */; };
 		585277921B7A679200C1B90B /* Embedded_data.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = 585277901B7A679200C1B90B /* Embedded_data.sqlite-wal */; };
 		5859CDE71BC221210066A2BD /* PromptForRotationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5859CDE61BC221210066A2BD /* PromptForRotationController.swift */; };
+		585D1FA51BF547940093CA8A /* KeyboardAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585D1FA41BF547940093CA8A /* KeyboardAnalytics.swift */; };
+		585D1FB21BF54AE80093CA8A /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585D1FB01BF54AE80093CA8A /* Parse.framework */; };
+		585D1FB31BF54B100093CA8A /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585D1FB01BF54AE80093CA8A /* Parse.framework */; };
+		585D1FB51BF54CFD0093CA8A /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585D1FB41BF54CFD0093CA8A /* Bolts.framework */; };
+		585D1FB61BF54CFD0093CA8A /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585D1FB41BF54CFD0093CA8A /* Bolts.framework */; };
+		585D1FB71BF54D3F0093CA8A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585D1FA71BF549720093CA8A /* AudioToolbox.framework */; };
+		585D1FB91BF54D5A0093CA8A /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 585D1FB81BF54D5A0093CA8A /* libsqlite3.tbd */; };
+		585D1FBA1BF54EEA0093CA8A /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 585D1FB81BF54D5A0093CA8A /* libsqlite3.tbd */; };
+		585D1FBC1BF54F340093CA8A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FD80F61B804E07003D58D1 /* SystemConfiguration.framework */; };
 		58765AE41BAA46C70022AF80 /* SwiftMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58765AE31BAA46C70022AF80 /* SwiftMath.swift */; };
 		5893ACE11BC5F1F50099D95C /* UIMyInkKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5893ACE01BC5F1F50099D95C /* UIMyInkKey.swift */; };
 		58A696471BB0DEFE00B068AA /* UINavigationControllerOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A696461BB0DEFE00B068AA /* UINavigationControllerOrientation.swift */; };
@@ -145,6 +154,12 @@
 		5852778F1B7A679200C1B90B /* Embedded_data.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Embedded_data.sqlite-shm"; sourceTree = "<group>"; };
 		585277901B7A679200C1B90B /* Embedded_data.sqlite-wal */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Embedded_data.sqlite-wal"; sourceTree = "<group>"; };
 		5859CDE61BC221210066A2BD /* PromptForRotationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromptForRotationController.swift; sourceTree = "<group>"; };
+		585D1FA41BF547940093CA8A /* KeyboardAnalytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardAnalytics.swift; sourceTree = "<group>"; };
+		585D1FA71BF549720093CA8A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		585D1FAB1BF549900093CA8A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		585D1FB01BF54AE80093CA8A /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		585D1FB41BF54CFD0093CA8A /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		585D1FB81BF54D5A0093CA8A /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		58765AE31BAA46C70022AF80 /* SwiftMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftMath.swift; sourceTree = "<group>"; };
 		5893ACE01BC5F1F50099D95C /* UIMyInkKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIMyInkKey.swift; sourceTree = "<group>"; };
 		58A696461BB0DEFE00B068AA /* UINavigationControllerOrientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationControllerOrientation.swift; sourceTree = "<group>"; };
@@ -184,6 +199,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				585D1FBC1BF54F340093CA8A /* SystemConfiguration.framework in Frameworks */,
+				585D1FB21BF54AE80093CA8A /* Parse.framework in Frameworks */,
+				585D1FB61BF54CFD0093CA8A /* Bolts.framework in Frameworks */,
+				585D1FBA1BF54EEA0093CA8A /* libsqlite3.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,6 +215,10 @@
 				58FD80F71B804E07003D58D1 /* SystemConfiguration.framework in Frameworks */,
 				580A6B321B606BB4006AEF44 /* Crashlytics.framework in Frameworks */,
 				580A6B311B606BB4006AEF44 /* Fabric.framework in Frameworks */,
+				585D1FB31BF54B100093CA8A /* Parse.framework in Frameworks */,
+				585D1FB51BF54CFD0093CA8A /* Bolts.framework in Frameworks */,
+				585D1FB71BF54D3F0093CA8A /* AudioToolbox.framework in Frameworks */,
+				585D1FB91BF54D5A0093CA8A /* libsqlite3.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,6 +269,7 @@
 				58CC72C61B71412100A4AB62 /* KeyboardViewController.swift */,
 				581601FF1B87E49700F9F704 /* TextProxyConsumer.swift */,
 				5893ACE01BC5F1F50099D95C /* UIMyInkKey.swift */,
+				585D1FA41BF547940093CA8A /* KeyboardAnalytics.swift */,
 				5838B9321B87ACB100961AFD /* Images.xcassets */,
 				58CC72C41B71412100A4AB62 /* Supporting Files */,
 			);
@@ -263,6 +287,8 @@
 		58DF90611B4F1C9600E36BB1 = {
 			isa = PBXGroup;
 			children = (
+				585D1FAB1BF549900093CA8A /* CoreGraphics.framework */,
+				585D1FA71BF549720093CA8A /* AudioToolbox.framework */,
 				58FD80F81B804E10003D58D1 /* Security.framework */,
 				58FD80F61B804E07003D58D1 /* SystemConfiguration.framework */,
 				58DF906C1B4F1C9600E36BB1 /* MyInk */,
@@ -287,6 +313,9 @@
 			children = (
 				583EB9EA1B72E49100357957 /* MyInk.entitlements */,
 				58FD80FC1B804F84003D58D1 /* bridging_header.h */,
+				585D1FB81BF54D5A0093CA8A /* libsqlite3.tbd */,
+				585D1FB41BF54CFD0093CA8A /* Bolts.framework */,
+				585D1FB01BF54AE80093CA8A /* Parse.framework */,
 				580A6B2F1B606BB4006AEF44 /* Fabric.framework */,
 				580A6B301B606BB4006AEF44 /* Crashlytics.framework */,
 				58DF90921B4F1CFA00E36BB1 /* Data */,
@@ -453,6 +482,9 @@
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
 							};
+							com.apple.Keychain = {
+								enabled = 1;
+							};
 						};
 					};
 					58DF90691B4F1C9600E36BB1 = {
@@ -460,6 +492,9 @@
 						DevelopmentTeam = 8YDH8TXREA;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.Keychain = {
 								enabled = 1;
 							};
 							com.apple.SafariKeychain = {
@@ -553,6 +588,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				585D1FA51BF547940093CA8A /* KeyboardAnalytics.swift in Sources */,
 				583EB9E51B72C2AF00357957 /* FontMessageRenderer.swift in Sources */,
 				581602001B87E49700F9F704 /* TextProxyConsumer.swift in Sources */,
 				5893ACE11BC5F1F50099D95C /* UIMyInkKey.swift in Sources */,
@@ -661,6 +697,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/MyInk",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -684,6 +721,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/MyInk",
 				);
 				INFOPLIST_FILE = MyInkKeyboard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
@@ -788,6 +826,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/MyInk",
 				);
 				INFOPLIST_FILE = MyInk/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -812,6 +851,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/MyInk",
 				);
 				INFOPLIST_FILE = MyInk/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

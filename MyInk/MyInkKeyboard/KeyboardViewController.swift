@@ -56,6 +56,8 @@ class KeyboardViewController: UIInputViewController {
         }
         
         _textProxyConsumer = TextProxyConsumer()
+        
+        KeyboardAnalytics.Initialize()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -72,6 +74,14 @@ class KeyboardViewController: UIInputViewController {
             
             updateShiftButtonVisualization()
         }
+        
+        KeyboardAnalytics.TrackEvent("Keyboard_Appeared")
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        KeyboardAnalytics.TrackEvent("Keyboard_Disappeared")
     }
     
     override func viewDidLayoutSubviews() {
@@ -104,6 +114,10 @@ class KeyboardViewController: UIInputViewController {
         }
         
         let bounds = inputView!.bounds
+        
+        if _currentKeyboardLayout != layout {
+            KeyboardAnalytics.TrackEvent("SwitchedKeyboard", parameters: ["Type":String(layout)])
+        }
         
         _currentKeyboardLayout = layout
         
@@ -631,6 +645,9 @@ class KeyboardViewController: UIInputViewController {
                     }, completion: { (completed:Bool) in
                         floatingText.removeFromSuperview()
                 })
+                
+                let numCharacters:Int = message.characters.count
+                KeyboardAnalytics.TrackEvent("RenderMessage", parameters: ["NumCharacters":String(numCharacters)])
             }
         }
     }
