@@ -160,8 +160,8 @@
 		585D1FA41BF547940093CA8A /* KeyboardAnalytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardAnalytics.swift; sourceTree = "<group>"; };
 		585D1FA71BF549720093CA8A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		585D1FAB1BF549900093CA8A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		585D1FB01BF54AE80093CA8A /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
-		585D1FB41BF54CFD0093CA8A /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		585D1FB01BF54AE80093CA8A /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = MyInk/Parse.framework; sourceTree = "<group>"; };
+		585D1FB41BF54CFD0093CA8A /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = MyInk/Bolts.framework; sourceTree = "<group>"; };
 		585D1FB81BF54D5A0093CA8A /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		585D1FBD1BF56FD20093CA8A /* MyInkAnalytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyInkAnalytics.swift; sourceTree = "<group>"; };
 		585D1FC01BF58A760093CA8A /* FlurryWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlurryWrapper.swift; sourceTree = "<group>"; };
@@ -238,6 +238,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		535C81D31BFA68D800030D25 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				585D1FB41BF54CFD0093CA8A /* Bolts.framework */,
+				585D1FB01BF54AE80093CA8A /* Parse.framework */,
+				580A6B2F1B606BB4006AEF44 /* Fabric.framework */,
+				580A6B301B606BB4006AEF44 /* Crashlytics.framework */,
+				585D1FAB1BF549900093CA8A /* CoreGraphics.framework */,
+				585D1FA71BF549720093CA8A /* AudioToolbox.framework */,
+				58FD80F81B804E10003D58D1 /* Security.framework */,
+				58FD80F61B804E07003D58D1 /* SystemConfiguration.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		582D3FA61B50433300D08255 /* Filters */ = {
 			isa = PBXGroup;
 			children = (
@@ -293,13 +308,10 @@
 		58DF90611B4F1C9600E36BB1 = {
 			isa = PBXGroup;
 			children = (
-				585D1FAB1BF549900093CA8A /* CoreGraphics.framework */,
-				585D1FA71BF549720093CA8A /* AudioToolbox.framework */,
-				58FD80F81B804E10003D58D1 /* Security.framework */,
-				58FD80F61B804E07003D58D1 /* SystemConfiguration.framework */,
 				58DF906C1B4F1C9600E36BB1 /* MyInk */,
 				58DF90851B4F1C9700E36BB1 /* MyInkTests */,
 				58CC72C31B71412100A4AB62 /* MyInkKeyboard */,
+				535C81D31BFA68D800030D25 /* Frameworks */,
 				58DF906B1B4F1C9600E36BB1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -320,10 +332,6 @@
 				583EB9EA1B72E49100357957 /* MyInk.entitlements */,
 				58FD80FC1B804F84003D58D1 /* bridging_header.h */,
 				585D1FB81BF54D5A0093CA8A /* libsqlite3.tbd */,
-				585D1FB41BF54CFD0093CA8A /* Bolts.framework */,
-				585D1FB01BF54AE80093CA8A /* Parse.framework */,
-				580A6B2F1B606BB4006AEF44 /* Fabric.framework */,
-				580A6B301B606BB4006AEF44 /* Crashlytics.framework */,
 				58DF90921B4F1CFA00E36BB1 /* Data */,
 				582D3FA61B50433300D08255 /* Filters */,
 				58FD80F21B804D2E003D58D1 /* Flurry */,
