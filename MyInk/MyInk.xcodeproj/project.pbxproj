@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		535C82231BFA9B6900030D25 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 535C82221BFA9B6900030D25 /* ParseCrashReporting.framework */; };
+		535C82251BFA9C0000030D25 /* libstdc++.6.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 535C82241BFA9C0000030D25 /* libstdc++.6.tbd */; };
 		5802FEA01B5476200013BCEA /* MapGlyphController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5802FE9F1B5476200013BCEA /* MapGlyphController.swift */; };
 		580A6B311B606BB4006AEF44 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 580A6B2F1B606BB4006AEF44 /* Fabric.framework */; };
 		580A6B321B606BB4006AEF44 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 580A6B301B606BB4006AEF44 /* Crashlytics.framework */; };
@@ -121,6 +123,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		535C82221BFA9B6900030D25 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseCrashReporting.framework; path = MyInk/ParseCrashReporting.framework; sourceTree = "<group>"; };
+		535C82241BFA9C0000030D25 /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
 		5802FE9F1B5476200013BCEA /* MapGlyphController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapGlyphController.swift; sourceTree = "<group>"; };
 		580A6B2F1B606BB4006AEF44 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
 		580A6B301B606BB4006AEF44 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
@@ -216,7 +220,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				535C82251BFA9C0000030D25 /* libstdc++.6.tbd in Frameworks */,
 				584C902F1BC7523700317BA8 /* libFlurry_7.2.1.a in Frameworks */,
+				535C82231BFA9B6900030D25 /* ParseCrashReporting.framework in Frameworks */,
 				58FD80F91B804E10003D58D1 /* Security.framework in Frameworks */,
 				58FD80F71B804E07003D58D1 /* SystemConfiguration.framework in Frameworks */,
 				580A6B321B606BB4006AEF44 /* Crashlytics.framework in Frameworks */,
@@ -241,6 +247,8 @@
 		535C81D31BFA68D800030D25 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				535C82241BFA9C0000030D25 /* libstdc++.6.tbd */,
+				535C82221BFA9B6900030D25 /* ParseCrashReporting.framework */,
 				585D1FB41BF54CFD0093CA8A /* Bolts.framework */,
 				585D1FB01BF54AE80093CA8A /* Parse.framework */,
 				580A6B2F1B606BB4006AEF44 /* Fabric.framework */,

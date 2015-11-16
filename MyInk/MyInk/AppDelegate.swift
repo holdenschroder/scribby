@@ -22,7 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Fabric.with([Crashlytics.self()])
-        
         MyInkAnalytics.Initialize([FlurryWrapper(), ParseWrapper(launchOptions: launchOptions)])
         
         return true
