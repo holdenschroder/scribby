@@ -72,7 +72,6 @@
 		58CE61EF1B7AC50B00730D32 /* Embedded_data.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 585277891B797DD000C1B90B /* Embedded_data.sqlite */; };
 		58CE61F01B7AC50B00730D32 /* Embedded_atlas.png in Resources */ = {isa = PBXBuildFile; fileRef = 5852778A1B797DD000C1B90B /* Embedded_atlas.png */; };
 		58CE61F21B7ACF6400730D32 /* MainMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CE61F11B7ACF6400730D32 /* MainMenuController.swift */; };
-		58DA98531BA8D30200DD6D6C /* UIDrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DA98521BA8D30200DD6D6C /* UIDrawView.swift */; };
 		58DF90701B4F1C9600E36BB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DF906F1B4F1C9600E36BB1 /* AppDelegate.swift */; };
 		58DF90751B4F1C9600E36BB1 /* CaptureWordSelectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DF90741B4F1C9600E36BB1 /* CaptureWordSelectController.swift */; };
 		58DF90781B4F1C9600E36BB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58DF90761B4F1C9600E36BB1 /* Main.storyboard */; };
@@ -82,6 +81,7 @@
 		58DF90A01B4F1D2C00E36BB1 /* FontAtlasGlyph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DF909E1B4F1D2C00E36BB1 /* FontAtlasGlyph.swift */; };
 		58DF90A11B4F1D2C00E36BB1 /* FontAtlasData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DF909F1B4F1D2C00E36BB1 /* FontAtlasData.swift */; };
 		58ECED381B7D76A200988CA0 /* MyInk.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 58CE61E71B7AB8A900730D32 /* MyInk.xcdatamodeld */; };
+		58F02CDE1BFA671A00BA6334 /* UIDrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F02CDD1BFA671A00BA6334 /* UIDrawView.swift */; };
 		58F64A911BC356FC00D00BC4 /* TutorialPhraseOutroController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F64A901BC356FC00D00BC4 /* TutorialPhraseOutroController.swift */; };
 		58FBA5291B853FC4009CF809 /* SharedMyInkValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FBA5281B853FC4009CF809 /* SharedMyInkValues.swift */; };
 		58FBA52A1B853FC4009CF809 /* SharedMyInkValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FBA5281B853FC4009CF809 /* SharedMyInkValues.swift */; };
@@ -178,7 +178,6 @@
 		58CE61E81B7AB8A900730D32 /* MyInk.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyInk.xcdatamodel; sourceTree = "<group>"; };
 		58CE61EA1B7ABBF700730D32 /* MyInk 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "MyInk 2.xcdatamodel"; sourceTree = "<group>"; };
 		58CE61F11B7ACF6400730D32 /* MainMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuController.swift; sourceTree = "<group>"; };
-		58DA98521BA8D30200DD6D6C /* UIDrawView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIDrawView.swift; path = ../../../../Testing/MyInkDrawingTest/MyInkTest/UIDrawView.swift; sourceTree = "<group>"; };
 		58DF906A1B4F1C9600E36BB1 /* MyInk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyInk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58DF906E1B4F1C9600E36BB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		58DF906F1B4F1C9600E36BB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -191,6 +190,7 @@
 		58DF90881B4F1C9700E36BB1 /* MyInkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInkTests.swift; sourceTree = "<group>"; };
 		58DF909E1B4F1D2C00E36BB1 /* FontAtlasGlyph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAtlasGlyph.swift; sourceTree = "<group>"; };
 		58DF909F1B4F1D2C00E36BB1 /* FontAtlasData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAtlasData.swift; sourceTree = "<group>"; };
+		58F02CDD1BFA671A00BA6334 /* UIDrawView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDrawView.swift; sourceTree = "<group>"; };
 		58F64A8F1BC336DD00D00BC4 /* MyInk 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "MyInk 3.xcdatamodel"; sourceTree = "<group>"; };
 		58F64A901BC356FC00D00BC4 /* TutorialPhraseOutroController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialPhraseOutroController.swift; sourceTree = "<group>"; };
 		58FBA5281B853FC4009CF809 /* SharedMyInkValues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedMyInkValues.swift; sourceTree = "<group>"; };
@@ -356,7 +356,7 @@
 				58F64A901BC356FC00D00BC4 /* TutorialPhraseOutroController.swift */,
 				582A4E8D1BB21EC600D7543B /* UIDrawCaptureView.swift */,
 				582D3FAC1B50433300D08255 /* UIDrawSelectionView.swift */,
-				58DA98521BA8D30200DD6D6C /* UIDrawView.swift */,
+				58F02CDD1BFA671A00BA6334 /* UIDrawView.swift */,
 				582D3FAD1B50433300D08255 /* UIImageExtensions.swift */,
 				58A696461BB0DEFE00B068AA /* UINavigationControllerOrientation.swift */,
 				582D3FB41B50433300D08255 /* UIPanZoomImageView.swift */,
@@ -620,6 +620,7 @@
 				585D1FBE1BF56FD20093CA8A /* MyInkAnalytics.swift in Sources */,
 				58DF90A01B4F1D2C00E36BB1 /* FontAtlasGlyph.swift in Sources */,
 				582A4E8E1BB21EC600D7543B /* UIDrawCaptureView.swift in Sources */,
+				58F02CDE1BFA671A00BA6334 /* UIDrawView.swift in Sources */,
 				58F64A911BC356FC00D00BC4 /* TutorialPhraseOutroController.swift in Sources */,
 				58FBA5291B853FC4009CF809 /* SharedMyInkValues.swift in Sources */,
 				58DF90751B4F1C9600E36BB1 /* CaptureWordSelectController.swift in Sources */,
@@ -641,7 +642,6 @@
 				582D3FC71B50779000D08255 /* FontAtlasImage.swift in Sources */,
 				5802FEA01B5476200013BCEA /* MapGlyphController.swift in Sources */,
 				580A6B341B606F9F006AEF44 /* ShareImageController.swift in Sources */,
-				58DA98531BA8D30200DD6D6C /* UIDrawView.swift in Sources */,
 				582A4E901BB346AE00D7543B /* TutorialPhraseController.swift in Sources */,
 				582D3FBB1B50433300D08255 /* CaptureCharacterSelectController.swift in Sources */,
 				58DF90A11B4F1D2C00E36BB1 /* FontAtlasData.swift in Sources */,
