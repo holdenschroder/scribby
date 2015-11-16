@@ -55,7 +55,7 @@ extension UIImage {
         let componentsPerPixel = 4
         let allocationSize = componentsPerPixel * Int(rect.width * rect.height)
         let rawData: UnsafeMutablePointer<Int8> = UnsafeMutablePointer<Int8>.alloc(allocationSize)
-        let context = CIContext(options: [kCIContextUseSoftwareRenderer : true])
+        let context = CIContext(options: nil)
         context.render(image_ci, toBitmap: rawData, rowBytes: componentsPerPixel * width, bounds: rect, format: kCIFormatRGBA8, colorSpace: CGColorSpaceCreateDeviceRGB())
         
         

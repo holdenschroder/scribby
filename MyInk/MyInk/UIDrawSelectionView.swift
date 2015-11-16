@@ -116,7 +116,7 @@ class UIDrawSelectionView:UIImageView {
             
             let bytesPerPixel = 4
             let rawData: UnsafeMutablePointer<Int8> = UnsafeMutablePointer<Int8>.alloc(bytesPerPixel * lastPixel)
-            let context = CIContext(options: [kCIContextUseSoftwareRenderer : true])
+            let context = CIContext(options: nil)
             context.render(image_ci, toBitmap: rawData, rowBytes: bytesPerPixel * Int(floor(rect.width)), bounds: rect, format: kCIFormatRGBA8, colorSpace: CGColorSpaceCreateDeviceRGB())
             
             var topLeft = CGPoint(x: image!.size.width, y: image!.size.height)

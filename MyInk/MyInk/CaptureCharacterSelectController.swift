@@ -86,7 +86,7 @@ class CaptureCharacterSelectController:UIViewController {
                 maskRect = selectionView!.GetContentRect(true)
             
                 //Compensate for mirroring issue
-                let context = CIContext(options: [kCIContextUseSoftwareRenderer : true])
+                let context = CIContext(options: nil)
                 let mask_cg = context.createCGImage(maskedOutput!, fromRect: maskedOutput!.extent)
             
                 setupCharacterController.LoadCharacter(UIImage(CGImage: mask_cg))
@@ -111,7 +111,7 @@ class CaptureCharacterSelectController:UIViewController {
     
     func ProcessImage(image:CIImage?) -> UIImage? {
         if(image != nil) {
-            let context = CIContext(options: [kCIContextUseSoftwareRenderer : true])
+            let context = CIContext(options: nil)
             
             let rect = image!.extent
             
