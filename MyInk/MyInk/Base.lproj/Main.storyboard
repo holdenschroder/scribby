@@ -572,7 +572,6 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="Test:forEvent:" destination="jGl-vX-Atg" eventType="touchUpInside" id="29e-vF-MPl"/>
                                     <action selector="openCamera:" destination="jGl-vX-Atg" eventType="touchUpInside" id="uC5-CM-vC0"/>
                                 </connections>
                             </button>
