@@ -20,7 +20,7 @@ class ImageCropUtility
         
         let bytesPerPixel = 4
         let rawData: UnsafeMutablePointer<Int8> = UnsafeMutablePointer<Int8>.alloc(bytesPerPixel * lastPixel)
-        let context = CIContext(options: nil)
+        let context = CIContext(options: [kCIContextUseSoftwareRenderer : true])
         context.render(image_ci, toBitmap: rawData, rowBytes: bytesPerPixel * Int(floor(rect.width)), bounds: rect, format: kCIFormatRGBA8, colorSpace: CGColorSpaceCreateDeviceRGB())
         
         var topLeft = CGPoint(x: image.size.width, y: image.size.height)
@@ -71,7 +71,7 @@ class ImageCropUtility
     }
     
     static func FindInkColor(image:CIImage) -> CIColor {
-        let context = CIContext(options: nil)
+        let context = CIContext(options: [kCIContextUseSoftwareRenderer : true])
         let cgImage = context.createCGImage(image, fromRect: image.extent)
         return FindInkColor(cgImage)
     }
