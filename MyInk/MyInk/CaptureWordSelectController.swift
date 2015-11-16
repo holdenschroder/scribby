@@ -53,7 +53,7 @@ class CaptureWordSelectController: UIViewController, UIImagePickerControllerDele
         selectionView?.clearImage()
         selectBtn?.enabled = false
         
-        MyInkAnalytics.TrackEvent("Screen Loaded - Capture - Word Select")
+        MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventScreenLoadedCaptureWordSelect)
     }
     
     override func viewDidDisappear(animated: Bool) {

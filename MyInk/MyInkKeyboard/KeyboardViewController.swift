@@ -75,13 +75,13 @@ class KeyboardViewController: UIInputViewController {
             updateShiftButtonVisualization()
         }
         
-        KeyboardAnalytics.TrackEvent("Keyboard_Appeared")
+        KeyboardAnalytics.TrackEvent(SharedMyInkValues.kEventKeyboardAppeared)
     }
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         
-        KeyboardAnalytics.TrackEvent("Keyboard_Disappeared")
+        KeyboardAnalytics.TrackEvent(SharedMyInkValues.kEventKeyboardDisappeared)
     }
     
     override func viewDidLayoutSubviews() {
@@ -116,7 +116,7 @@ class KeyboardViewController: UIInputViewController {
         let bounds = inputView!.bounds
         
         if _currentKeyboardLayout != layout {
-            KeyboardAnalytics.TrackEvent("SwitchedKeyboard", parameters: ["Type":String(layout)])
+            KeyboardAnalytics.TrackEvent(SharedMyInkValues.kEventKeyboardSwitched, parameters: ["Type":String(layout)])
         }
         
         _currentKeyboardLayout = layout
@@ -647,7 +647,7 @@ class KeyboardViewController: UIInputViewController {
                 })
                 
                 let numCharacters:Int = message.characters.count
-                KeyboardAnalytics.TrackEvent("RenderMessage", parameters: ["NumCharacters":String(numCharacters)])
+                KeyboardAnalytics.TrackEvent(SharedMyInkValues.kEventRenderMessage, parameters: ["NumCharacters":String(numCharacters)])
             }
         }
     }

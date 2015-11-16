@@ -45,7 +45,7 @@ class CaptureCharacterSelectController:UIViewController {
         selectionView?.clearImage()
         continueButton?.enabled = false
         
-        MyInkAnalytics.TrackEvent("Screen Loaded - Capture - Character Select")
+        MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventScreenLoadedCaptureCharacterSelect)
     }
     
     override func viewDidDisappear(animated: Bool) {

@@ -279,6 +279,7 @@
 		535C821B1BFA6DDD00030D25 /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				585D1FB81BF54D5A0093CA8A /* libsqlite3.tbd */,
 				585D1FC21BF58B650093CA8A /* ParseWrapper.swift */,
 				585D1FBD1BF56FD20093CA8A /* MyInkAnalytics.swift */,
 				58FD80F21B804D2E003D58D1 /* Flurry */,
@@ -290,12 +291,12 @@
 		535C821C1BFA6E0600030D25 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				58CE61F11B7ACF6400730D32 /* MainMenuController.swift */,
 				582D3FAA1B50433300D08255 /* CaptureCharacterSelectController.swift */,
 				58B056CF1BAA16C400FA4A26 /* CaptureTouchController.swift */,
 				58DF90741B4F1C9600E36BB1 /* CaptureWordSelectController.swift */,
 				58203A761B60132A00CFA42C /* ComposeMessageController.swift */,
 				584E31BC1B56F95D002E6703 /* LibraryTableController.swift */,
-				58CE61F11B7ACF6400730D32 /* MainMenuController.swift */,
 				5802FE9F1B5476200013BCEA /* MapGlyphController.swift */,
 				5859CDE61BC221210066A2BD /* PromptForRotationController.swift */,
 				582D3FAB1B50433300D08255 /* SetupCharacterController.swift */,
@@ -330,7 +331,6 @@
 		535C821F1BFA6E3500030D25 /* Helpers+Misc */ = {
 			isa = PBXGroup;
 			children = (
-				58FD80FC1B804F84003D58D1 /* bridging_header.h */,
 				582D3FA41B50433300D08255 /* CGPointExtensions.swift */,
 				583EB9E71B72DCC200357957 /* CoreDataHelper.swift */,
 				580DFBB91B59A0A500A3A223 /* FontMessageRenderer.swift */,
@@ -432,6 +432,7 @@
 		58DF906D1B4F1C9600E36BB1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				58FD80FC1B804F84003D58D1 /* bridging_header.h */,
 				583EB9EA1B72E49100357957 /* MyInk.entitlements */,
 				58DF906E1B4F1C9600E36BB1 /* Info.plist */,
 			);
@@ -458,7 +459,6 @@
 		58DF90921B4F1CFA00E36BB1 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				585D1FB81BF54D5A0093CA8A /* libsqlite3.tbd */,
 				58CE61E71B7AB8A900730D32 /* MyInk.xcdatamodeld */,
 				582D3FA51B50433300D08255 /* FontAtlas.swift */,
 				58DF909F1B4F1D2C00E36BB1 /* FontAtlasData.swift */,

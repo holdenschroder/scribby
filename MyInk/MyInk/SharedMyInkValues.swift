@@ -11,16 +11,43 @@
 import UIKit
 
 class SharedMyInkValues {
-    static let DefaultUserAtlas = "MyFont1"
     
+        
+    static let kEventScreenLoadedCaptureCharacterSelect =   "SCREEN_CAPTURE_CHARACTER-SELECT"
+    static let kEventScreenLoadedCaptureWordSelect =        "SCREEN_CAPTURE_WORD-SELECT"
+    static let kEventScreenLoadedCaptureMapGlyph =          "SCREEN_CAPTURE_MAP-GLYPH"
+    static let kEventScreenLoadedCaptureSetupCharacter =    "SCREEN_CAPTURE_SETUP-CHARACTER"
+    
+    static let kEventScreenLoadedComposeMessage =           "SCREEN_COMPOSE"
+    static let kEventScreenLoadedLibrary =                  "SCREEN_LIBRARY"
+    static let kEventScreenLoadedMainMenu =                 "SCREEN_MENU"
+    static let kEventScreenLoadedShareImage =               "SCREEN_SHARE-IMAGE"
+    
+    static let kEventTutorialWordStarted =                  "TUTORIAL_WORD-STARTED"
+    static let kEventTutorialWordFinished =                 "TUTORIAL_WORD-FINISHED"
+    static let kEventTutorialFirstPhrase =                  "TUTORIAL_FIRST-PHRASE"
+    
+    static let kEventKeyboardAppeared =                     "KEYBOARD-APPEARED"
+    static let kEventKeyboardDisappeared =                  "KEYBOARD-DISAPPEARED"
+    static let kEventKeyboardSwitched =                     "KEYBOARD-SWITCHED"
+    
+    static let kEventShareMessage =                         "SHARE-MESSAGE"
+    static let kEventShareMessageParameterActivity =        "SHARE-MESSAGE-ACTIVITY"
+    
+    static let kEventRenderMessage =                        "RENDER-MESSAGE"
+    
+    static let kEventMappedCharacter =                      "MAPPED-CHARACTER"
+    static let kEventMappedCharacterArgMapped =             "MAPPED"
+    static let kEventMappedCharacterArgNumAtlasChars =      "NUM-ATLAS-CHARS"
+    static let kEventMappedCharacterArgCaptureType =        "CAPTURE-TYPE"
+
+    
+    static let DefaultUserAtlas = "MyFont1"
     static let DefaultAtlasDirectory = "UserFonts"
     
     static let EmbeddedAtlasName = "Embedded"
-    
     static let EmbeddedAtlasDirectory = "Resources"
-    
     static let EmbeddedAtlasURL = "Embedded_atlas"
-    
     static let EmbeddedFontDataVersion = "3"
     
     static var FontPointSizeToPixelRatio:CGFloat = {
@@ -34,9 +61,5 @@ class SharedMyInkValues {
     
     static let AppGroup = "group.myinkapp"
     
-    static let Flurry_FirstPhraseEvent = "Tutorial - First Phrase"
-    static let Flurry_MappedCharacter = "Mapped character"
-    static let Flurry_MappedCharacter_Arg_Mapped = "Mapped"
-    static let Flurry_MappedCharacter_Arg_NumAtlasChars = "NumAtlasChars"
-    static let Flurry_MappedCharacter_Arg_CaptureType = "CaptureType"
+
 }

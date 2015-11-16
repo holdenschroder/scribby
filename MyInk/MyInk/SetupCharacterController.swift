@@ -25,7 +25,7 @@ class SetupCharacterController : UIViewController, UIScrollViewDelegate {
         }
         debugView?.hidden = true
         
-        MyInkAnalytics.TrackEvent("Screen Loaded - Capture - Setup Character")
+        MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventScreenLoadedCaptureSetupCharacter)
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -105,11 +105,11 @@ class SetupCharacterController : UIViewController, UIScrollViewDelegate {
         
         navigationController?.popViewControllerAnimated(true)
         if atlas != nil {
-            MyInkAnalytics.TrackEvent(SharedMyInkValues.Flurry_MappedCharacter, parameters:
+            MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventMappedCharacter, parameters:
                 [
-                    SharedMyInkValues.Flurry_MappedCharacter_Arg_Mapped:mapping,
-                    SharedMyInkValues.Flurry_MappedCharacter_Arg_NumAtlasChars:String(atlas!.glyphs.count),
-                    SharedMyInkValues.Flurry_MappedCharacter_Arg_CaptureType:"Camera"
+                    SharedMyInkValues.kEventMappedCharacterArgMapped:mapping,
+                    SharedMyInkValues.kEventMappedCharacterArgNumAtlasChars:String(atlas!.glyphs.count),
+                    SharedMyInkValues.kEventMappedCharacterArgCaptureType:"Camera"
                 ])
         }
     }

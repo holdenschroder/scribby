@@ -172,10 +172,10 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
     
     private func LogWordForAnalytics(word:String, isStarting:Bool) {
         if isStarting {
-            MyInkAnalytics.TrackEvent("Tutorial - Word Started", parameters: ["Word":word])
+            MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventTutorialWordStarted, parameters: ["Word":word])
         }
         else {
-             MyInkAnalytics.TrackEvent("Tutorial - Word Finished", parameters: ["Word":word])
+             MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventTutorialWordFinished, parameters: ["Word":word])
         }
     }
     

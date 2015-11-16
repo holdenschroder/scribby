@@ -27,7 +27,7 @@ class LibraryCollectionController:UICollectionViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        MyInkAnalytics.TrackEvent("Screen Loaded - Library")
+        MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventScreenLoadedLibrary)
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

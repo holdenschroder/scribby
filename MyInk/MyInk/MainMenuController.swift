@@ -17,7 +17,7 @@ class MainMenuController:UIViewController, UIImagePickerControllerDelegate, UINa
     
         let tutorialState = (UIApplication.sharedApplication().delegate as! AppDelegate).tutorialState
         if tutorialState != nil && tutorialState!.isTutorialFlagSet(TutorialState.TutorialFlags.StartingPhrase) == false {
-            MyInkAnalytics.StartTimedEvent(SharedMyInkValues.Flurry_FirstPhraseEvent, parameters: ["Resuming":String(Int(tutorialState!.wordIndex) > 0)])
+            MyInkAnalytics.StartTimedEvent(SharedMyInkValues.kEventTutorialFirstPhrase, parameters: ["Resuming":String(Int(tutorialState!.wordIndex) > 0)])
             let welcomeScreen = storyboard?.instantiateViewControllerWithIdentifier("WelcomeScreen")
             if welcomeScreen != nil {
                 self.presentViewController(welcomeScreen!, animated: true, completion: nil)
@@ -27,7 +27,7 @@ class MainMenuController:UIViewController, UIImagePickerControllerDelegate, UINa
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        MyInkAnalytics.TrackEvent("Screen Loaded - Main Menu")
+        MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventScreenLoadedMainMenu)
     }
     
     //MARK: Button Handlers

@@ -11,8 +11,6 @@ import Social
 
 class ShareImageController: UIViewController, UIAlertViewDelegate {
     @IBOutlet var imageView:UIImageView?
-    let FlurryEvent_ShareMessage = "Share Message"
-    let FlurryEvent_ShareMessage_Parameter_Activity = "Activity"
     private var _image:UIImage?
     private var _documentController:UIDocumentInteractionController!
     
@@ -20,7 +18,7 @@ class ShareImageController: UIViewController, UIAlertViewDelegate {
         super.viewWillAppear(animated)
         imageView?.image = _image
         
-        MyInkAnalytics.TrackEvent("Screen Loaded - Share Image")
+        MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventScreenLoadedShareImage)
     }
     
     func loadImage(image:UIImage) {
@@ -87,16 +85,16 @@ class ShareImageController: UIViewController, UIAlertViewDelegate {
         let composer = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
         composer.addImage(_image)
         self.presentViewController(composer, animated: true, completion: nil)
-        MyInkAnalytics.TrackEvent(FlurryEvent_ShareMessage, parameters: [FlurryEvent_ShareMessage_Parameter_Activity:"button.twitter"])
+        MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventShareMessage, parameters: [SharedMyInkValues.kEventShareMessageParameterActivity:"button.twitter"])
     }
     
     func HandleActivityViewCompleted(activityType:String?, completed:Bool, items:[AnyObject]?, error:NSError?) {
         if completed {
-            MyInkAnalytics.TrackEvent(FlurryEvent_ShareMessage, parameters: [FlurryEvent_ShareMessage_Parameter_Activity:activityType ?? "UnknownActivity"])
+            MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventShareMessage, parameters: [SharedMyInkValues.kEventShareMessageParameterActivity:activityType ?? "UnknownActivity"])
         }
         else if error != nil
         {
-            Flurry.logError(FlurryEvent_ShareMessage, message: "Error while using UIActivityViewController", error: error)
+            Flurry.logError(SharedMyInkValues.kEventShareMessage, message: "Error while using UIActivityViewController", error: error)
         }
     }
 }

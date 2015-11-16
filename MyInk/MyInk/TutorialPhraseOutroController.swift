@@ -16,7 +16,7 @@ class TutorialPhaseOutroController: TapToContinueController {
         super.viewWillAppear(animated)
         messageImageView?.image = messageImage
         
-        MyInkAnalytics.EndTimedEvent(SharedMyInkValues.Flurry_FirstPhraseEvent, parameters: nil)
+        MyInkAnalytics.EndTimedEvent(SharedMyInkValues.kEventTutorialFirstPhrase, parameters: nil)
     }
     
     func setMessage(image:UIImage) {

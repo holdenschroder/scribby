@@ -27,10 +27,10 @@ class ParseWrapper:AnalyticsPackage {
     }
     
     func StartTimedEvent(eventName:String, parameters:[String:String]?) {
-        PFAnalytics.trackEvent("\(eventName) Started", dimensions: parameters)
+        PFAnalytics.trackEvent("\(eventName)_Started", dimensions: parameters)
     }
     
     func EndTimedEvent(eventName:String, parameters:[String:String]?) {
-        PFAnalytics.trackEvent("\(eventName) Ended", dimensions: parameters)
+        PFAnalytics.trackEvent("\(eventName)_Ended", dimensions: parameters)
     }
 }

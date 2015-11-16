@@ -53,11 +53,11 @@ class UIDrawCaptureView: UIDrawView {
         atlas?.AddGlyph(mapping, image: croppedImage, spacingCoords: spacingBounds, autoSave: saveAtlas)
         
         if atlas != nil {
-            MyInkAnalytics.TrackEvent(SharedMyInkValues.Flurry_MappedCharacter, parameters:
+            MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventMappedCharacter, parameters:
                 [
-                    SharedMyInkValues.Flurry_MappedCharacter_Arg_Mapped:mapping,
-                    SharedMyInkValues.Flurry_MappedCharacter_Arg_NumAtlasChars:String(atlas!.glyphs.count),
-                    SharedMyInkValues.Flurry_MappedCharacter_Arg_CaptureType:captureType
+                    SharedMyInkValues.kEventMappedCharacterArgMapped:mapping,
+                    SharedMyInkValues.kEventMappedCharacterArgNumAtlasChars:String(atlas!.glyphs.count),
+                    SharedMyInkValues.kEventMappedCharacterArgCaptureType:captureType
                 ])
             
             return true
