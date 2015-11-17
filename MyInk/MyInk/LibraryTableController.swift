@@ -11,6 +11,7 @@ import UIKit
 class LibraryCollectionController:UICollectionViewController {
     private var _atlas:FontAtlas?
     private var _atlasGlyphs:[FontAtlasGlyph]?
+    private var _mAtlasGlyphToPass: FontAtlasGlyph!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +30,27 @@ class LibraryCollectionController:UICollectionViewController {
         super.viewDidAppear(animated)
         MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventScreenLoadedLibrary)
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        super.prepareForSegue(segue, sender: sender)
+        
+        if segue.destinationViewController is LibraryItemController {
+            
+            let detailVC = segue.destinationViewController as! LibraryItemController;
+            detailVC._mAtlasGlyph = _mAtlasGlyphToPass
+            
+        }
+    }
+    
+    //MARK: Collection View Delegate
+    
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        print(indexPath.row)
+        _mAtlasGlyphToPass = _atlasGlyphs![indexPath.row]
+        self.performSegueWithIdentifier("captureSingleItemFromLibrary", sender: self)
+        
+    }
+    
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return _atlasGlyphs!.count

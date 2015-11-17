@@ -1,0 +1,34 @@
+//
+//  LibraryItemController.swift
+//  MyInk
+//
+//  Created by Jesse Scott on 2015-11-16.
+//  Copyright © 2015 E-Link. All rights reserved.
+//
+
+
+import UIKit
+
+class LibraryItemController:UIViewController {
+    @IBOutlet var drawCaptureView:UIDrawCaptureView?
+    private var lastImage:UIImage?
+    var _mAtlasGlyph: FontAtlasGlyph?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        print(_mAtlasGlyph)
+
+    }
+    
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.Portrait
+    }
+    
+    
+    @IBAction func map(sender: AnyObject) {
+        self.drawCaptureView?.save((_mAtlasGlyph?.mapping)!, captureType:"Touch")
+        self.drawCaptureView?.clear()
+    }
+    
+    
+}
