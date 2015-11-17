@@ -299,9 +299,12 @@
 		535C821C1BFA6E0600030D25 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				58A696461BB0DEFE00B068AA /* UINavigationControllerOrientation.swift */,
+				582A4E8F1BB346AE00D7543B /* TutorialPhraseController.swift */,
+				58F64A901BC356FC00D00BC4 /* TutorialPhraseOutroController.swift */,
 				58CE61F11B7ACF6400730D32 /* MainMenuController.swift */,
-				582D3FAA1B50433300D08255 /* CaptureCharacterSelectController.swift */,
 				58B056CF1BAA16C400FA4A26 /* CaptureTouchController.swift */,
+				582D3FAA1B50433300D08255 /* CaptureCharacterSelectController.swift */,
 				58DF90741B4F1C9600E36BB1 /* CaptureWordSelectController.swift */,
 				58203A761B60132A00CFA42C /* ComposeMessageController.swift */,
 				584E31BC1B56F95D002E6703 /* LibraryTableController.swift */,
@@ -310,9 +313,6 @@
 				582D3FAB1B50433300D08255 /* SetupCharacterController.swift */,
 				580A6B331B606F9F006AEF44 /* ShareImageController.swift */,
 				584336071BC3264200CB25F5 /* TapToContinueController.swift */,
-				582A4E8F1BB346AE00D7543B /* TutorialPhraseController.swift */,
-				58F64A901BC356FC00D00BC4 /* TutorialPhraseOutroController.swift */,
-				58A696461BB0DEFE00B068AA /* UINavigationControllerOrientation.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
