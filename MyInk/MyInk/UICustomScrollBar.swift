@@ -51,6 +51,10 @@ class UICustomScrollBar: UIView, UIScrollViewDelegate {
         let handlePath = UIBezierPath(roundedRect: handleRect, cornerRadius: cornerRadiusSize)
         tintColor.setFill()
         handlePath.fill()
+        
+        let mask = CAShapeLayer(layer: self.layer)
+        mask.path = outerPath.CGPath
+        self.layer.mask = mask
     }
     
     func setup() {
@@ -76,7 +80,7 @@ class UICustomScrollBar: UIView, UIScrollViewDelegate {
         switch (keyPath!, context) {
         case("contentOffset", &MyObservationContext):
             offsetRect = CGRect(origin: collectionView.contentOffset / collectionView.contentSize, size: collectionView.bounds.size / collectionView.contentSize)
-            offsetRect = offsetRect.intersect(CGRect(origin: CGPointZero, size: CGSize(width: 1, height: 1)))
+            //offsetRect = offsetRect.intersect(CGRect(origin: CGPointZero, size: CGSize(width: 1, height: 1)))
             setNeedsDisplay()
             
         default:
@@ -115,10 +119,8 @@ class UICustomScrollBar: UIView, UIScrollViewDelegate {
         let touch = touches.first
         if(touch != nil) {
             let point = touch!.locationInView(self)
-            if self.bounds.contains(point) {
-                let barPercentage = point.x / bounds.width - (offsetRect.width * 0.5)
-                collectionView.contentOffset = CGPoint(x: barPercentage * collectionView.contentSize.width, y: collectionView.contentOffset.y)
-            }
+            let barPercentage = point.x / bounds.width - (offsetRect.width * 0.5)
+            collectionView.contentOffset = CGPoint(x: barPercentage * collectionView.contentSize.width, y: collectionView.contentOffset.y)
         }
     }
 }
