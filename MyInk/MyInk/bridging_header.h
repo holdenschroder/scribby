@@ -10,4 +10,5 @@
 #define MyInk_bridging_header_h
 #import "UIImageView+GeometryConversion.h"
 #import "Flurry.h"
+#import <ParseCrashReporting/ParseCrashReporting.h>
 #endif

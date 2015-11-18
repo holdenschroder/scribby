@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		535C82231BFA9B6900030D25 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 535C82221BFA9B6900030D25 /* ParseCrashReporting.framework */; };
+		535C82251BFA9C0000030D25 /* libstdc++.6.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 535C82241BFA9C0000030D25 /* libstdc++.6.tbd */; };
+		53A2CDD11BFAB21800569105 /* LibraryItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CDD01BFAB21800569105 /* LibraryItemController.swift */; };
 		5802FEA01B5476200013BCEA /* MapGlyphController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5802FE9F1B5476200013BCEA /* MapGlyphController.swift */; };
 		5806CD7A1BFAA56B00B19716 /* UICustomScrollBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5806CD791BFAA56B00B19716 /* UICustomScrollBar.swift */; };
 		580A6B311B606BB4006AEF44 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 580A6B2F1B606BB4006AEF44 /* Fabric.framework */; };
@@ -122,6 +125,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		535C82221BFA9B6900030D25 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseCrashReporting.framework; path = MyInk/ParseCrashReporting.framework; sourceTree = "<group>"; };
+		535C82241BFA9C0000030D25 /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
+		53A2CDD01BFAB21800569105 /* LibraryItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryItemController.swift; sourceTree = "<group>"; };
 		5802FE9F1B5476200013BCEA /* MapGlyphController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapGlyphController.swift; sourceTree = "<group>"; };
 		5806CD791BFAA56B00B19716 /* UICustomScrollBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICustomScrollBar.swift; sourceTree = "<group>"; };
 		580A6B2F1B606BB4006AEF44 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
@@ -218,7 +224,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				535C82251BFA9C0000030D25 /* libstdc++.6.tbd in Frameworks */,
 				584C902F1BC7523700317BA8 /* libFlurry_7.2.1.a in Frameworks */,
+				535C82231BFA9B6900030D25 /* ParseCrashReporting.framework in Frameworks */,
 				58FD80F91B804E10003D58D1 /* Security.framework in Frameworks */,
 				58FD80F71B804E07003D58D1 /* SystemConfiguration.framework in Frameworks */,
 				580A6B321B606BB4006AEF44 /* Crashlytics.framework in Frameworks */,
@@ -243,6 +251,8 @@
 		535C81D31BFA68D800030D25 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				535C82241BFA9C0000030D25 /* libstdc++.6.tbd */,
+				535C82221BFA9B6900030D25 /* ParseCrashReporting.framework */,
 				585D1FB41BF54CFD0093CA8A /* Bolts.framework */,
 				585D1FB01BF54AE80093CA8A /* Parse.framework */,
 				580A6B2F1B606BB4006AEF44 /* Fabric.framework */,
@@ -293,20 +303,21 @@
 		535C821C1BFA6E0600030D25 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				58A696461BB0DEFE00B068AA /* UINavigationControllerOrientation.swift */,
+				582A4E8F1BB346AE00D7543B /* TutorialPhraseController.swift */,
+				58F64A901BC356FC00D00BC4 /* TutorialPhraseOutroController.swift */,
 				58CE61F11B7ACF6400730D32 /* MainMenuController.swift */,
-				582D3FAA1B50433300D08255 /* CaptureCharacterSelectController.swift */,
 				58B056CF1BAA16C400FA4A26 /* CaptureTouchController.swift */,
+				582D3FAA1B50433300D08255 /* CaptureCharacterSelectController.swift */,
 				58DF90741B4F1C9600E36BB1 /* CaptureWordSelectController.swift */,
 				58203A761B60132A00CFA42C /* ComposeMessageController.swift */,
 				584E31BC1B56F95D002E6703 /* LibraryTableController.swift */,
+				53A2CDD01BFAB21800569105 /* LibraryItemController.swift */,
 				5802FE9F1B5476200013BCEA /* MapGlyphController.swift */,
 				5859CDE61BC221210066A2BD /* PromptForRotationController.swift */,
 				582D3FAB1B50433300D08255 /* SetupCharacterController.swift */,
 				580A6B331B606F9F006AEF44 /* ShareImageController.swift */,
 				584336071BC3264200CB25F5 /* TapToContinueController.swift */,
-				582A4E8F1BB346AE00D7543B /* TutorialPhraseController.swift */,
-				58F64A901BC356FC00D00BC4 /* TutorialPhraseOutroController.swift */,
-				58A696461BB0DEFE00B068AA /* UINavigationControllerOrientation.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -698,6 +709,7 @@
 				582D3FB71B50433300D08255 /* FontAtlas.swift in Sources */,
 				582D3FBE1B50433300D08255 /* UIImageExtensions.swift in Sources */,
 				58DF90701B4F1C9600E36BB1 /* AppDelegate.swift in Sources */,
+				53A2CDD11BFAB21800569105 /* LibraryItemController.swift in Sources */,
 				5859CDE71BC221210066A2BD /* PromptForRotationController.swift in Sources */,
 				58203A771B60132A00CFA42C /* ComposeMessageController.swift in Sources */,
 				58765AE41BAA46C70022AF80 /* SwiftMath.swift in Sources */,

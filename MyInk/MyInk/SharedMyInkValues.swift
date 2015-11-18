@@ -12,7 +12,7 @@ import UIKit
 
 class SharedMyInkValues {
     
-        
+    
     static let kEventScreenLoadedCaptureCharacterSelect =   "SCREEN_CAPTURE_CHARACTER-SELECT"
     static let kEventScreenLoadedCaptureWordSelect =        "SCREEN_CAPTURE_WORD-SELECT"
     static let kEventScreenLoadedCaptureMapGlyph =          "SCREEN_CAPTURE_MAP-GLYPH"
@@ -40,7 +40,6 @@ class SharedMyInkValues {
     static let kEventMappedCharacterArgMapped =             "MAPPED"
     static let kEventMappedCharacterArgNumAtlasChars =      "NUM-ATLAS-CHARS"
     static let kEventMappedCharacterArgCaptureType =        "CAPTURE-TYPE"
-
     
     static let DefaultUserAtlas = "MyFont1"
     static let DefaultAtlasDirectory = "UserFonts"
