@@ -20,6 +20,8 @@ class SetupCharacterController : UIViewController, UIScrollViewDelegate {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.navigationBarHidden = false
+
         if(isMovingToParentViewController()) {
             imageView?.image = _baseImage
         }
@@ -77,7 +79,6 @@ class SetupCharacterController : UIViewController, UIScrollViewDelegate {
                 //self.navigationController?.popToRootViewControllerAnimated(true)
                 let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController];
                 self.navigationController!.popToViewController(viewControllers[viewControllers.count - 4], animated: true);
-
             }
             else {
                 should = true

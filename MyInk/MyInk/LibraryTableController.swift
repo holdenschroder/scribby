@@ -19,13 +19,16 @@ class LibraryCollectionController:UICollectionViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+
+        self.navigationController?.navigationBarHidden = false
+
         _atlas = (UIApplication.sharedApplication().delegate as! AppDelegate).currentAtlas
         _atlasGlyphs = _atlas?.glyphs
         _atlasGlyphs?.sortInPlace({ $0.mapping <  $1.mapping })
         
         self.collectionView!.reloadData()
         
-        super.viewWillAppear(animated)
     }
     
     override func viewDidAppear(animated: Bool) {

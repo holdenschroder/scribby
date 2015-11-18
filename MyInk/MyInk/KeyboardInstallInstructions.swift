@@ -15,6 +15,8 @@ class KeyboardInstallationInstructions:UIViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
+        self.navigationController?.navigationBarHidden = false
+
         contentView.layoutIfNeeded()
         contentView.frame.size.height = bottomItem.frame.origin.y + bottomItem.frame.height + 8
         scrollView.contentSize = contentView.bounds.size

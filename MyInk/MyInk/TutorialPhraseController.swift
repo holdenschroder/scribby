@@ -41,6 +41,8 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.navigationBarHidden = false
+
         
         if _tutorialState != nil {
             wordIndex = Int(_tutorialState!.wordIndex)

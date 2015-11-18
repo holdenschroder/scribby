@@ -28,6 +28,8 @@ class MainMenuController:UIViewController, UIImagePickerControllerDelegate, UINa
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventScreenLoadedMainMenu)
+        self.navigationController?.navigationBarHidden = true
+
     }
     
     //MARK: Button Handlers
