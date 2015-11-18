@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		535C82231BFA9B6900030D25 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 535C82221BFA9B6900030D25 /* ParseCrashReporting.framework */; };
 		535C82251BFA9C0000030D25 /* libstdc++.6.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 535C82241BFA9C0000030D25 /* libstdc++.6.tbd */; };
 		53A2CDD11BFAB21800569105 /* LibraryItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CDD01BFAB21800569105 /* LibraryItemController.swift */; };
 		5802FEA01B5476200013BCEA /* MapGlyphController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5802FE9F1B5476200013BCEA /* MapGlyphController.swift */; };
@@ -235,7 +234,6 @@
 			files = (
 				535C82251BFA9C0000030D25 /* libstdc++.6.tbd in Frameworks */,
 				584C902F1BC7523700317BA8 /* libFlurry_7.2.1.a in Frameworks */,
-				535C82231BFA9B6900030D25 /* ParseCrashReporting.framework in Frameworks */,
 				58FD80F91B804E10003D58D1 /* Security.framework in Frameworks */,
 				58FD80F71B804E07003D58D1 /* SystemConfiguration.framework in Frameworks */,
 				580A6B321B606BB4006AEF44 /* Crashlytics.framework in Frameworks */,

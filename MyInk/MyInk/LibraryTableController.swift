@@ -23,6 +23,8 @@ class LibraryCollectionController:UICollectionViewController {
         _atlasGlyphs = _atlas?.glyphs
         _atlasGlyphs?.sortInPlace({ $0.mapping <  $1.mapping })
         
+        self.collectionView!.reloadData()
+        
         super.viewWillAppear(animated)
     }
     
@@ -33,12 +35,9 @@ class LibraryCollectionController:UICollectionViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         super.prepareForSegue(segue, sender: sender)
-        
         if segue.destinationViewController is LibraryItemController {
-            
             let detailVC = segue.destinationViewController as! LibraryItemController;
             detailVC._mAtlasGlyph = _mAtlasGlyphToPass
-            
         }
     }
     

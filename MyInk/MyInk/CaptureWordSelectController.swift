@@ -9,7 +9,6 @@
 import UIKit
 import GLKit
 import CoreGraphics
-import Crashlytics
 
 class CaptureWordSelectController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -23,6 +22,8 @@ class CaptureWordSelectController: UIViewController, UIImagePickerControllerDele
     
     private var cameraImage:UIImage?
     private var inkColour:CIColor?
+    var _mAtlasGlyph: FontAtlasGlyph?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,18 +65,15 @@ class CaptureWordSelectController: UIViewController, UIImagePickerControllerDele
             selectionView?.clearImage()
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         super.prepareForSegue(segue, sender: sender)
         
         if segue.destinationViewController is CaptureCharacterSelectController {
             let processView = segue.destinationViewController as! CaptureCharacterSelectController
-            
+            if((_mAtlasGlyph) != nil) {
+                processView._mAtlasGlyph = _mAtlasGlyph
+            }
             let cropImage = selectionView!.CropImageBySelection(imageView!)
             if(cropImage != nil) {
                 processView.LoadImage(cropImage!, inkColor: inkColour)
