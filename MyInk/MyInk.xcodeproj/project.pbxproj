@@ -63,6 +63,12 @@
 		585D1FBE1BF56FD20093CA8A /* MyInkAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585D1FBD1BF56FD20093CA8A /* MyInkAnalytics.swift */; };
 		585D1FC11BF58A760093CA8A /* FlurryWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585D1FC01BF58A760093CA8A /* FlurryWrapper.swift */; };
 		585D1FC31BF58B650093CA8A /* ParseWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585D1FC21BF58B650093CA8A /* ParseWrapper.swift */; };
+		5870238B1BFD1B4300D9779F /* CGSizeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5870238A1BFD1B4300D9779F /* CGSizeExtensions.swift */; };
+		5870238D1BFD1BCB00D9779F /* CGFloatExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5870238C1BFD1BCB00D9779F /* CGFloatExtensions.swift */; };
+		5870238E1BFD20F200D9779F /* CGFloatExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5870238C1BFD1BCB00D9779F /* CGFloatExtensions.swift */; };
+		5870238F1BFD20F500D9779F /* CGSizeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5870238A1BFD1B4300D9779F /* CGSizeExtensions.swift */; };
+		587023911BFD222800D9779F /* CGRectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587023901BFD222800D9779F /* CGRectExtensions.swift */; };
+		587023921BFD223600D9779F /* CGRectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587023901BFD222800D9779F /* CGRectExtensions.swift */; };
 		58765AE41BAA46C70022AF80 /* SwiftMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58765AE31BAA46C70022AF80 /* SwiftMath.swift */; };
 		5893ACE11BC5F1F50099D95C /* UIMyInkKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5893ACE01BC5F1F50099D95C /* UIMyInkKey.swift */; };
 		58A696471BB0DEFE00B068AA /* UINavigationControllerOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A696461BB0DEFE00B068AA /* UINavigationControllerOrientation.swift */; };
@@ -174,6 +180,9 @@
 		585D1FBD1BF56FD20093CA8A /* MyInkAnalytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyInkAnalytics.swift; sourceTree = "<group>"; };
 		585D1FC01BF58A760093CA8A /* FlurryWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlurryWrapper.swift; sourceTree = "<group>"; };
 		585D1FC21BF58B650093CA8A /* ParseWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseWrapper.swift; sourceTree = "<group>"; };
+		5870238A1BFD1B4300D9779F /* CGSizeExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGSizeExtensions.swift; sourceTree = "<group>"; };
+		5870238C1BFD1BCB00D9779F /* CGFloatExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGFloatExtensions.swift; sourceTree = "<group>"; };
+		587023901BFD222800D9779F /* CGRectExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRectExtensions.swift; sourceTree = "<group>"; };
 		58765AE31BAA46C70022AF80 /* SwiftMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftMath.swift; sourceTree = "<group>"; };
 		5893ACE01BC5F1F50099D95C /* UIMyInkKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIMyInkKey.swift; sourceTree = "<group>"; };
 		58A696461BB0DEFE00B068AA /* UINavigationControllerOrientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationControllerOrientation.swift; sourceTree = "<group>"; };
@@ -345,7 +354,10 @@
 		535C821F1BFA6E3500030D25 /* Helpers+Misc */ = {
 			isa = PBXGroup;
 			children = (
+				5870238C1BFD1BCB00D9779F /* CGFloatExtensions.swift */,
 				582D3FA41B50433300D08255 /* CGPointExtensions.swift */,
+				587023901BFD222800D9779F /* CGRectExtensions.swift */,
+				5870238A1BFD1B4300D9779F /* CGSizeExtensions.swift */,
 				583EB9E71B72DCC200357957 /* CoreDataHelper.swift */,
 				580DFBB91B59A0A500A3A223 /* FontMessageRenderer.swift */,
 				582D3FA91B50433300D08255 /* ImageCropUtility.swift */,
@@ -681,9 +693,12 @@
 				5893ACE11BC5F1F50099D95C /* UIMyInkKey.swift in Sources */,
 				583EB9E41B72C1A100357957 /* CGPointExtensions.swift in Sources */,
 				583EB9E01B72C0FB00357957 /* FontAtlas.swift in Sources */,
+				5870238E1BFD20F200D9779F /* CGFloatExtensions.swift in Sources */,
 				583EB9E11B72C0FB00357957 /* FontAtlasData.swift in Sources */,
 				583EB9E21B72C0FB00357957 /* FontAtlasGlyph.swift in Sources */,
+				587023921BFD223600D9779F /* CGRectExtensions.swift in Sources */,
 				583EB9E91B72E06100357957 /* CoreDataHelper.swift in Sources */,
+				5870238F1BFD20F500D9779F /* CGSizeExtensions.swift in Sources */,
 				58ECED381B7D76A200988CA0 /* MyInk.xcdatamodeld in Sources */,
 				583EB9E31B72C0FB00357957 /* FontAtlasImage.swift in Sources */,
 				58CC72C71B71412100A4AB62 /* KeyboardViewController.swift in Sources */,
@@ -697,6 +712,7 @@
 			files = (
 				585D1FBE1BF56FD20093CA8A /* MyInkAnalytics.swift in Sources */,
 				58DF90A01B4F1D2C00E36BB1 /* FontAtlasGlyph.swift in Sources */,
+				5870238D1BFD1BCB00D9779F /* CGFloatExtensions.swift in Sources */,
 				582A4E8E1BB21EC600D7543B /* UIDrawCaptureView.swift in Sources */,
 				58F02CDE1BFA671A00BA6334 /* UIDrawView.swift in Sources */,
 				58F64A911BC356FC00D00BC4 /* TutorialPhraseOutroController.swift in Sources */,
@@ -725,11 +741,13 @@
 				582A4E901BB346AE00D7543B /* TutorialPhraseController.swift in Sources */,
 				582D3FBB1B50433300D08255 /* CaptureCharacterSelectController.swift in Sources */,
 				58DF90A11B4F1D2C00E36BB1 /* FontAtlasData.swift in Sources */,
+				5870238B1BFD1B4300D9779F /* CGSizeExtensions.swift in Sources */,
 				585D1FC31BF58B650093CA8A /* ParseWrapper.swift in Sources */,
 				582D3FB61B50433300D08255 /* CGPointExtensions.swift in Sources */,
 				58B5A4211BC0EC9B002628E9 /* TutorialState.swift in Sources */,
 				584336081BC3264200CB25F5 /* TapToContinueController.swift in Sources */,
 				58CE61E91B7AB8A900730D32 /* MyInk.xcdatamodeld in Sources */,
+				587023911BFD222800D9779F /* CGRectExtensions.swift in Sources */,
 				58CE61F21B7ACF6400730D32 /* MainMenuController.swift in Sources */,
 				582D3FBD1B50433300D08255 /* UIDrawSelectionView.swift in Sources */,
 				58B056D01BAA16C400FA4A26 /* CaptureTouchController.swift in Sources */,

@@ -10,9 +10,8 @@ import UIKit
 
 @IBDesignable
 class UICustomScrollBar: UIView, UIScrollViewDelegate {
-    @IBInspectable var innerFillColor:UIColor!
     @IBInspectable var outerFillColor:UIColor!
-    @IBOutlet weak var scrollView:UIScrollView!
+    @IBOutlet weak var collectionView:UICollectionView!
     private var offsetRect:CGRect!
     private var isSetup = false
     private var MyObservationContext = UInt8()
@@ -28,7 +27,7 @@ class UICustomScrollBar: UIView, UIScrollViewDelegate {
     }
     
     func commonInit() {
-        opaque = false
+        clearsContextBeforeDrawing = true
         userInteractionEnabled = true
     }
     
@@ -48,10 +47,10 @@ class UICustomScrollBar: UIView, UIScrollViewDelegate {
         let outerPath = UIBezierPath(roundedRect:rect, cornerRadius: cornerRadiusSize)
         outerFillColor.setFill()
         outerPath.fill()
-        let innerRect = offsetRect * rect.size
-        let innerPath = UIBezierPath(roundedRect: innerRect, cornerRadius: cornerRadiusSize)
-        innerFillColor.setFill()
-        innerPath.fill()
+        let handleRect = offsetRect * rect.size
+        let handlePath = UIBezierPath(roundedRect: handleRect, cornerRadius: cornerRadiusSize)
+        tintColor.setFill()
+        handlePath.fill()
     }
     
     func setup() {
@@ -60,11 +59,11 @@ class UICustomScrollBar: UIView, UIScrollViewDelegate {
         }
         
         isSetup = true
-        scrollView.showsHorizontalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = false
         
-        offsetRect = CGRect(origin: scrollView.contentOffset / scrollView.contentSize, size: scrollView.bounds.size / scrollView.contentSize)
+        offsetRect = CGRect(origin: collectionView.contentOffset / collectionView.contentSize, size: collectionView.bounds.size / collectionView.contentSize)
         
-        scrollView.addObserver(self, forKeyPath: "contentOffset", options: .New, context: &MyObservationContext)
+        collectionView.addObserver(self, forKeyPath: "contentOffset", options: .New, context: &MyObservationContext)
     }
     
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
@@ -76,7 +75,7 @@ class UICustomScrollBar: UIView, UIScrollViewDelegate {
         
         switch (keyPath!, context) {
         case("contentOffset", &MyObservationContext):
-            offsetRect = CGRect(origin: scrollView.contentOffset / scrollView.contentSize, size: scrollView.bounds.size / scrollView.contentSize)
+            offsetRect = CGRect(origin: collectionView.contentOffset / collectionView.contentSize, size: collectionView.bounds.size / collectionView.contentSize)
             offsetRect = offsetRect.intersect(CGRect(origin: CGPointZero, size: CGSize(width: 1, height: 1)))
             setNeedsDisplay()
             
@@ -95,7 +94,21 @@ class UICustomScrollBar: UIView, UIScrollViewDelegate {
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        let centerPoint = collectionView.contentOffset + (collectionView.bounds.size * 0.5)
+        var indexPath = collectionView.indexPathForItemAtPoint(centerPoint)
+        //If we don't find an index we need to either focus on the first or last item
+        if indexPath == nil {
+            if centerPoint.x < 0 {
+                indexPath = collectionView.indexPathsForVisibleItems().first
+            }
+            else {
+                indexPath = collectionView.indexPathsForVisibleItems().last
+            }
+        }
         
+        if indexPath != nil {
+            collectionView.scrollToItemAtIndexPath(indexPath!, atScrollPosition: .CenteredHorizontally, animated: true)
+        }
     }
     
     func moveToTouch(touches:Set<UITouch>) {
@@ -104,7 +117,7 @@ class UICustomScrollBar: UIView, UIScrollViewDelegate {
             let point = touch!.locationInView(self)
             if self.bounds.contains(point) {
                 let barPercentage = point.x / bounds.width - (offsetRect.width * 0.5)
-                scrollView.contentOffset = CGPoint(x: barPercentage * scrollView.contentSize.width, y: scrollView.contentOffset.y)
+                collectionView.contentOffset = CGPoint(x: barPercentage * collectionView.contentSize.width, y: collectionView.contentOffset.y)
             }
         }
     }
