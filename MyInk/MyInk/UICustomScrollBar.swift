@@ -84,4 +84,28 @@ class UICustomScrollBar: UIView, UIScrollViewDelegate {
             super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
         }
     }
+    
+    //MARK: Touch Handling
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        moveToTouch(touches)
+    }
+    
+    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        moveToTouch(touches)
+    }
+    
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        
+    }
+    
+    func moveToTouch(touches:Set<UITouch>) {
+        let touch = touches.first
+        if(touch != nil) {
+            let point = touch!.locationInView(self)
+            if self.bounds.contains(point) {
+                let barPercentage = point.x / bounds.width - (offsetRect.width * 0.5)
+                scrollView.contentOffset = CGPoint(x: barPercentage * scrollView.contentSize.width, y: scrollView.contentOffset.y)
+            }
+        }
+    }
 }
