@@ -9,7 +9,6 @@
 import UIKit
 import GLKit
 import CoreGraphics
-import Crashlytics // still needed ?
 
 class CaptureWordSelectController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
