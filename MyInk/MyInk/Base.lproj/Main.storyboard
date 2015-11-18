@@ -245,7 +245,7 @@
                                 </connections>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tMS-bo-i7h">
-                                <rect key="frame" x="20" y="556" width="560" height="44"/>
+                                <rect key="frame" x="20" y="512" width="560" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="4q2-39-htH"/>
                                 </constraints>
@@ -267,7 +267,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="JQh-QO-tKO" firstAttribute="width" secondItem="xam-hZ-0jj" secondAttribute="width" id="0ew-Qi-WmA"/>
-                            <constraint firstItem="xam-hZ-0jj" firstAttribute="centerY" secondItem="K76-ux-THm" secondAttribute="centerY" id="9EP-yh-z0M"/>
+                            <constraint firstItem="xam-hZ-0jj" firstAttribute="centerY" secondItem="K76-ux-THm" secondAttribute="centerY" constant="0.5" id="9EP-yh-z0M"/>
                             <constraint firstItem="JQh-QO-tKO" firstAttribute="centerY" secondItem="xam-hZ-0jj" secondAttribute="centerY" id="9ft-Vc-1cT"/>
                             <constraint firstItem="tMS-bo-i7h" firstAttribute="leading" secondItem="xam-hZ-0jj" secondAttribute="leading" id="FnF-3c-mNh"/>
                             <constraint firstItem="tMS-bo-i7h" firstAttribute="trailing" secondItem="xam-hZ-0jj" secondAttribute="trailing" id="MTe-dj-8gd"/>
@@ -275,10 +275,12 @@
                             <constraint firstItem="JQh-QO-tKO" firstAttribute="centerX" secondItem="xam-hZ-0jj" secondAttribute="centerX" id="dPG-xk-YHL"/>
                             <constraint firstItem="JQh-QO-tKO" firstAttribute="height" secondItem="xam-hZ-0jj" secondAttribute="height" id="hbe-8Z-J98"/>
                             <constraint firstItem="tMS-bo-i7h" firstAttribute="bottom" secondItem="ur7-4V-PqV" secondAttribute="top" id="o9K-BJ-fZ5"/>
-                            <constraint firstItem="ur7-4V-PqV" firstAttribute="top" secondItem="xam-hZ-0jj" secondAttribute="bottom" constant="62" id="twx-3l-c6N"/>
+                            <constraint firstItem="ur7-4V-PqV" firstAttribute="top" secondItem="xam-hZ-0jj" secondAttribute="bottom" constant="18" id="twx-3l-c6N"/>
                             <constraint firstItem="xam-hZ-0jj" firstAttribute="trailing" secondItem="K76-ux-THm" secondAttribute="trailingMargin" id="zy3-Be-Ze2"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="drawCaptureView" destination="xam-hZ-0jj" id="Jut-5P-pxF"/>
                     </connections>
@@ -1203,7 +1205,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gf4-K9-aVq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2010" y="3"/>
+            <point key="canvasLocation" x="2070" y="3"/>
         </scene>
         <!--Setup Character-->
         <scene sceneID="XbU-te-XRt">
@@ -1234,7 +1236,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="1yK-1d-qjS"/>
                                     <barButtonItem title="Map" width="50" id="NyT-Jj-lCg">
                                         <connections>
-                                            <segue destination="myQ-Qx-1Nc" kind="show" id="7AQ-SJ-TqA"/>
+                                            <segue destination="myQ-Qx-1Nc" kind="show" identifier="setupToMapGlyph" id="7AQ-SJ-TqA"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -1275,7 +1277,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ye-LT-EgH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2659" y="3"/>
+            <point key="canvasLocation" x="2759" y="3"/>
         </scene>
         <!--Map Glyph-->
         <scene sceneID="tQl-wh-cG8">
@@ -1514,7 +1516,7 @@
         <image name="Twitter_Logo" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="H3w-qn-b1v"/>
+        <segue reference="7AQ-SJ-TqA"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.92549019607843142" green="0.0" blue="0.44705882352941179" alpha="1" colorSpace="calibratedRGB"/>
 </document>

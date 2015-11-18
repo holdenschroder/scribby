@@ -7,13 +7,13 @@
 //
 
 import UIKit
-import Crashlytics
 
 class SetupCharacterController : UIViewController, UIScrollViewDelegate {
     @IBOutlet var imageView:UIPanZoomImageView?
     @IBOutlet var lineReference:UIImageView?
     @IBOutlet var debugView:UIView?
     private var _baseImage:UIImage?
+    var _mAtlasGlyph: FontAtlasGlyph?
     
     @IBInspectable var topLinePercent:CGFloat = 0.125
     @IBInspectable var bottomLinePercent:CGFloat = 0.625
@@ -60,11 +60,33 @@ class SetupCharacterController : UIViewController, UIScrollViewDelegate {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         super.prepareForSegue(segue, sender: sender)
-        
+    
         if segue.destinationViewController is MapGlyphController {
             let mapGlyph = segue.destinationViewController as! MapGlyphController
             mapGlyph.setCallback(HandleMapGlyphCallback)
         }
+        
+    }
+    
+    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+        var should = true
+        if identifier == "setupToMapGlyph" {
+            if((_mAtlasGlyph) != nil) {
+                SaveGlyph((_mAtlasGlyph?.mapping)!)
+                should = false
+                //self.navigationController?.popToRootViewControllerAnimated(true)
+                let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController];
+                self.navigationController!.popToViewController(viewControllers[viewControllers.count - 4], animated: true);
+
+            }
+            else {
+                should = true
+            }
+        }
+        else {
+            should = true
+        }
+        return should
     }
     
     private func HandleMapGlyphCallback(value:String?) {
