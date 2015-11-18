@@ -252,13 +252,13 @@
                                 <items>
                                     <barButtonItem title="Clear" id="19P-KF-aB7">
                                         <connections>
-                                            <action selector="handleClearBtn:" destination="nbS-CT-B7S" id="d62-gZ-6Qb"/>
+                                            <action selector="clearAction:" destination="H9w-3a-nZ2" id="gz1-Hw-fE8"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="lKa-az-lCb"/>
                                     <barButtonItem title="Map" id="hoy-hX-mcB">
                                         <connections>
-                                            <action selector="map:" destination="H9w-3a-nZ2" id="G2H-LQ-Ijc"/>
+                                            <action selector="mapAction:" destination="H9w-3a-nZ2" id="wtC-ze-40A"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>

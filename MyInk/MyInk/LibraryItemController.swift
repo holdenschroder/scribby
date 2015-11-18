@@ -25,10 +25,14 @@ class LibraryItemController:UIViewController {
     }
     
     
-    @IBAction func map(sender: AnyObject) {
+    @IBAction func mapAction(sender: AnyObject) {
         self.drawCaptureView?.save((_mAtlasGlyph?.mapping)!, captureType:"Touch")
         self.drawCaptureView?.clear()
         navigationController!.popViewControllerAnimated(true)
+    }
+    
+    @IBAction func clearAction(sender: AnyObject) {
+        self.drawCaptureView?.clear()
     }
     
     
