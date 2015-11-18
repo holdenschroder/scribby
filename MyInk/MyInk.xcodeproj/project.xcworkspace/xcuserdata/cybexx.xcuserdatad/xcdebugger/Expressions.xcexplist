@@ -3,13 +3,24 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "MyInk.CaptureTouchController.(SaveGlyph in _B1E2EA5140B317C0DF499E8A09BD0510) (MyInk.CaptureTouchController)(Swift.String) -&gt; ():CaptureTouchController.swift">
-      </ContextState>
-      <ContextState
-         contextName = "MyInk.UINavigationControllerOrientation.navigationController (MyInk.UINavigationControllerOrientation)(ObjectiveC.UINavigationController, willShowViewController : ObjectiveC.UIViewController, animated : Swift.Bool) -&gt; ():UINavigationControllerOrientation.swift">
+         contextName = "FontMessageRenderer.renderMessage(String, imageSize : CGSize, lineHeight : CGFloat, backgroundColor : UIColor, addWatermark : Bool, showDebugInfo : Bool) -&gt; UIImage?:FontMessageRenderer.swift">
          <PersistentStrings>
             <PersistentString
-               value = "viewController is CaptureTouchController">
+               value = "_watermark!.size.height">
+            </PersistentString>
+            <PersistentString
+               value = "renderBounds.size.height">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MyInkKeyboard.TextProxyConsumer.handleBackwardTimer (MyInkKeyboard.TextProxyConsumer)(ObjectiveC.NSTimer) -&gt; ():TextProxyConsumer.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "message">
+            </PersistentString>
+            <PersistentString
+               value = "lastLine">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -173,6 +184,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "UICustomScrollBar.commonInit() -&gt; ():UICustomScrollBar.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "scrollView">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "static ImageCropUtility.FindInkColor(CGImage) -&gt; CIColor:ImageCropUtility.swift">
          <PersistentStrings>
             <PersistentString
@@ -290,6 +309,22 @@
          contextName = "MyInk.FontAtlas.AddGlyph (MyInk.FontAtlas)(Swift.String, image : ObjectiveC.UIImage, relativeLineHeight : CoreGraphics.CGFloat, relativeLinePosition : CoreGraphics.CGFloat) -&gt; ():FontAtlas.swift">
       </ContextState>
       <ContextState
+         contextName = "KeyboardViewController.handleShiftTap(AnyObject?) -&gt; ():KeyboardViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "sender is UITouch">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "KeyboardViewController.updateButtonVisualization(UIControl) -&gt; ():KeyboardViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "key.keyData!.title">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "UIDrawCaptureView.save(String) -&gt; ():UIDrawCaptureView.swift">
          <PersistentStrings>
             <PersistentString
@@ -303,14 +338,6 @@
             </PersistentString>
             <PersistentString
                value = "mapping">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "KeyboardViewController.updateButtonVisualization(UIControl) -&gt; ():KeyboardViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "key.keyData!.title">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -329,9 +356,6 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "MyInk.AppDelegate.(persistentStoreCoordinator.getter : Swift.Optional&lt;ObjectiveC.NSPersistentStoreCoordinator&gt;).(closure #1):AppDelegate.swift">
-      </ContextState>
-      <ContextState
          contextName = "TutorialWordCell.populate(Character) -&gt; ():TutorialWordController.swift">
          <PersistentStrings>
             <PersistentString
@@ -348,12 +372,7 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "KeyboardViewController.handleShiftTap(AnyObject?) -&gt; ():KeyboardViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "sender is UITouch">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "MyInk.AppDelegate.(persistentStoreCoordinator.getter : Swift.Optional&lt;ObjectiveC.NSPersistentStoreCoordinator&gt;).(closure #1):AppDelegate.swift">
       </ContextState>
       <ContextState
          contextName = "TutorialPhraseController.(UpdateMessages in _AAA7D608108BD89027C7001D1B1EBCD1)() -&gt; ():TutorialPhraseController.swift">
@@ -446,6 +465,20 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "UICustomScrollBar.drawRect(CGRect) -&gt; ():UICustomScrollBar.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "offsetRect">
+            </PersistentString>
+            <PersistentString
+               value = "scrollView.bounds.size">
+            </PersistentString>
+            <PersistentString
+               value = "scrollView">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "TutorialWordController.(updateItemHeight in _421D483D9BAD99F53F210A5B0D071367)() -&gt; ():TutorialWordController.swift">
          <PersistentStrings>
             <PersistentString
@@ -474,13 +507,13 @@
          contextName = "MapGlyphController.Handle_TextFieldChanged(UITextField) -&gt; ():MapGlyphController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "sender.text!.characters.first">
+               value = "sender.text">
             </PersistentString>
             <PersistentString
                value = "text!.characters.first">
             </PersistentString>
             <PersistentString
-               value = "sender.text">
+               value = "sender.text!.characters.first">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -516,32 +549,21 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "MyInk.UINavigationControllerOrientation.navigationController (MyInk.UINavigationControllerOrientation)(ObjectiveC.UINavigationController, willShowViewController : ObjectiveC.UIViewController, animated : Swift.Bool) -&gt; ():UINavigationControllerOrientation.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "viewController is CaptureTouchController">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MyInk.CaptureTouchController.(SaveGlyph in _B1E2EA5140B317C0DF499E8A09BD0510) (MyInk.CaptureTouchController)(Swift.String) -&gt; ():CaptureTouchController.swift">
+      </ContextState>
+      <ContextState
          contextName = "MyInk.ViewController.viewDidLoad (MyInk.ViewController)() -&gt; ():ViewController.swift">
          <PersistentStrings>
             <PersistentString
                value = "testAtlas.characters">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "FontMessageRenderer.renderMessage(String, imageSize : CGSize, lineHeight : CGFloat, backgroundColor : UIColor, addWatermark : Bool, showDebugInfo : Bool) -&gt; UIImage?:FontMessageRenderer.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "_watermark!.size.height">
-            </PersistentString>
-            <PersistentString
-               value = "renderBounds.size.height">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "MyInkKeyboard.TextProxyConsumer.handleBackwardTimer (MyInkKeyboard.TextProxyConsumer)(ObjectiveC.NSTimer) -&gt; ():TextProxyConsumer.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "message">
-            </PersistentString>
-            <PersistentString
-               value = "lastLine">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

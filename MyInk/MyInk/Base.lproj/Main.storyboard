@@ -460,7 +460,7 @@
                                         </cells>
                                         <connections>
                                             <outlet property="dataSource" destination="BKL-Jx-rEd" id="q2v-Cb-4ZC"/>
-                                            <outlet property="delegate" destination="BKL-Jx-rEd" id="cHw-sE-YHi"/>
+                                            <outlet property="delegate" destination="BKL-Jx-rEd" id="Xs3-KD-GYG"/>
                                         </connections>
                                     </collectionView>
                                 </subviews>
@@ -473,7 +473,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Draw your characters into the boxes." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="18W-2S-BLp">
-                                <rect key="frame" x="20" y="450" width="560" height="106"/>
+                                <rect key="frame" x="20" y="487" width="560" height="69"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -500,22 +500,41 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RL9-qo-2t1">
                                 <rect key="frame" x="20" y="20" width="560" height="122"/>
                             </imageView>
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o5e-dA-sE3" customClass="UICustomScrollBar" customModule="MyInk" customModuleProvider="target">
+                                <rect key="frame" x="20" y="452" width="560" height="35"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="innerFillColor">
+                                        <color key="value" red="0.93333333330000001" green="0.0" blue="0.0086528124209459961" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="outerFillColor">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="scrollView" destination="qWc-GS-Url" id="adQ-Kt-mve"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="RL9-qo-2t1" firstAttribute="top" secondItem="U8o-Uh-b2b" secondAttribute="bottom" id="3Ru-JS-Jac"/>
                             <constraint firstAttribute="leadingMargin" secondItem="aFy-7h-Ms3" secondAttribute="leading" id="3eE-pn-6Xv"/>
+                            <constraint firstItem="o5e-dA-sE3" firstAttribute="height" secondItem="18W-2S-BLp" secondAttribute="height" multiplier="0.5" id="4vQ-wb-f5s"/>
                             <constraint firstAttribute="trailingMargin" secondItem="aFy-7h-Ms3" secondAttribute="trailing" id="50e-zL-y1k"/>
                             <constraint firstAttribute="trailingMargin" secondItem="RL9-qo-2t1" secondAttribute="trailing" id="6Wn-Cq-jU1"/>
+                            <constraint firstItem="18W-2S-BLp" firstAttribute="top" secondItem="o5e-dA-sE3" secondAttribute="bottom" id="Frj-D7-b0g"/>
                             <constraint firstItem="wuE-mG-G9h" firstAttribute="leading" secondItem="dLq-Ht-Ryv" secondAttribute="leadingMargin" constant="-20" id="HQC-zb-31s"/>
                             <constraint firstItem="aFy-7h-Ms3" firstAttribute="height" secondItem="dLq-Ht-Ryv" secondAttribute="height" multiplier="0.5" id="Mv9-ph-62w"/>
+                            <constraint firstItem="o5e-dA-sE3" firstAttribute="top" secondItem="qWc-GS-Url" secondAttribute="bottom" constant="2" id="ORw-HU-sQl"/>
                             <constraint firstItem="18W-2S-BLp" firstAttribute="top" secondItem="qWc-GS-Url" secondAttribute="bottom" id="OU3-6b-XcD"/>
                             <constraint firstItem="GvO-Ze-44r" firstAttribute="top" secondItem="18W-2S-BLp" secondAttribute="bottom" id="P9E-VK-zoN"/>
                             <constraint firstItem="wuE-mG-G9h" firstAttribute="top" secondItem="18W-2S-BLp" secondAttribute="bottom" id="REb-Jm-8DR"/>
                             <constraint firstAttribute="leadingMargin" secondItem="RL9-qo-2t1" secondAttribute="leading" id="RYx-Kt-wNE"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="o5e-dA-sE3" secondAttribute="trailing" id="S7s-zv-Jqz"/>
                             <constraint firstAttribute="leadingMargin" secondItem="18W-2S-BLp" secondAttribute="leading" id="WWj-Gf-bNU"/>
                             <constraint firstAttribute="trailingMargin" secondItem="18W-2S-BLp" secondAttribute="trailing" id="azc-kY-zvh"/>
                             <constraint firstAttribute="trailingMargin" secondItem="wuE-mG-G9h" secondAttribute="trailing" constant="-20" id="b1s-xc-D1T"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="o5e-dA-sE3" secondAttribute="leading" id="mmn-dn-gYH"/>
                             <constraint firstItem="aFy-7h-Ms3" firstAttribute="centerY" secondItem="dLq-Ht-Ryv" secondAttribute="centerY" id="q0w-w2-YpV"/>
                             <constraint firstItem="wuE-mG-G9h" firstAttribute="top" secondItem="18W-2S-BLp" secondAttribute="bottom" id="qnu-d7-Spq"/>
                             <constraint firstItem="qWc-GS-Url" firstAttribute="top" secondItem="RL9-qo-2t1" secondAttribute="bottom" constant="8" id="z4a-Wg-1Jt"/>
@@ -523,6 +542,7 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="OU3-6b-XcD"/>
                                 <exclude reference="qnu-d7-Spq"/>
                                 <exclude reference="P9E-VK-zoN"/>
                             </mask>

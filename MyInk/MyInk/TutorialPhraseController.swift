@@ -115,8 +115,9 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
     private func updateItemHeight(viewSize:CGSize) {
         if wordIndex < words.count {
             let layout = self.collectionView?.collectionViewLayout as! UICollectionViewFlowLayout
-            var itemHeight = (viewSize.width - (layout.minimumLineSpacing * (words[wordIndex].characters.count - 1))) / words[wordIndex].characters.count
-            itemHeight = min(itemHeight, viewSize.height)
+            //var itemHeight = (viewSize.width - (layout.minimumLineSpacing * (words[wordIndex].characters.count - 1))) / words[wordIndex].characters.count
+            //itemHeight = min(itemHeight, viewSize.height)
+            let itemHeight = viewSize.height
             layout.itemSize = CGSize(width: itemHeight, height: itemHeight)
         
             let cells = self.collectionView?.visibleCells()
@@ -154,9 +155,9 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
         updateItemHeight(collectionView!.bounds.size)
     }
     
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+    /*override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
         return UIInterfaceOrientationMask.Landscape
-    }
+    }*/
     
     //MARK: Rendering
     

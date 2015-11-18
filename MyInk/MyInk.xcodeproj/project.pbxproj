@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5802FEA01B5476200013BCEA /* MapGlyphController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5802FE9F1B5476200013BCEA /* MapGlyphController.swift */; };
+		5806CD7A1BFAA56B00B19716 /* UICustomScrollBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5806CD791BFAA56B00B19716 /* UICustomScrollBar.swift */; };
 		580A6B311B606BB4006AEF44 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 580A6B2F1B606BB4006AEF44 /* Fabric.framework */; };
 		580A6B321B606BB4006AEF44 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 580A6B301B606BB4006AEF44 /* Crashlytics.framework */; };
 		580A6B341B606F9F006AEF44 /* ShareImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580A6B331B606F9F006AEF44 /* ShareImageController.swift */; };
@@ -122,6 +123,7 @@
 
 /* Begin PBXFileReference section */
 		5802FE9F1B5476200013BCEA /* MapGlyphController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapGlyphController.swift; sourceTree = "<group>"; };
+		5806CD791BFAA56B00B19716 /* UICustomScrollBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICustomScrollBar.swift; sourceTree = "<group>"; };
 		580A6B2F1B606BB4006AEF44 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
 		580A6B301B606BB4006AEF44 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
 		580A6B331B606F9F006AEF44 /* ShareImageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareImageController.swift; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 		535C821E1BFA6E2600030D25 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5806CD791BFAA56B00B19716 /* UICustomScrollBar.swift */,
 				582A4E8D1BB21EC600D7543B /* UIDrawCaptureView.swift */,
 				582D3FAC1B50433300D08255 /* UIDrawSelectionView.swift */,
 				58F02CDD1BFA671A00BA6334 /* UIDrawView.swift */,
@@ -700,6 +703,7 @@
 				58765AE41BAA46C70022AF80 /* SwiftMath.swift in Sources */,
 				582D3FC21B50433300D08255 /* UIPanZoomImageView.swift in Sources */,
 				580DFBBA1B59A0A500A3A223 /* FontMessageRenderer.swift in Sources */,
+				5806CD7A1BFAA56B00B19716 /* UICustomScrollBar.swift in Sources */,
 				582D3FBA1B50433300D08255 /* ImageCropUtility.swift in Sources */,
 				585D1FC11BF58A760093CA8A /* FlurryWrapper.swift in Sources */,
 				582054281B82D235002C95BE /* KeyboardInstallInstructions.swift in Sources */,
