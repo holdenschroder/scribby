@@ -21,6 +21,7 @@ class CaptureCharacterSelectController:UIViewController {
     private var maskFilter:CIKernel?
     private var inkColor:CIColor = CIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
     var toleranceValue:Float = 0.2
+    var _mAtlasGlyph: FontAtlasGlyph?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,6 +71,9 @@ class CaptureCharacterSelectController:UIViewController {
         
         if segue.destinationViewController is SetupCharacterController {
             let setupCharacterController = segue.destinationViewController as! SetupCharacterController
+            if((_mAtlasGlyph) != nil) {
+                setupCharacterController._mAtlasGlyph = _mAtlasGlyph
+            }
             
             let croppedImage = selectionView!.CropImageBySelection(imageView!)
             var croppedMask = selectionView!.CropImageBySelection(selectionView!)
