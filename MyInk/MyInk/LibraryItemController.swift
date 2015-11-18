@@ -16,7 +16,7 @@ class LibraryItemController:UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(_mAtlasGlyph)
+        self.title = _mAtlasGlyph?.mapping
 
     }
     
