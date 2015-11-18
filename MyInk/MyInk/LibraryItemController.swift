@@ -16,8 +16,8 @@ class LibraryItemController:UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = _mAtlasGlyph?.mapping
-
+        
+        self.title = "\("Edit:") \(_mAtlasGlyph!.mapping.uppercaseString)"
     }
     
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
