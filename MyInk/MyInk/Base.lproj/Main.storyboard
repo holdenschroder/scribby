@@ -674,6 +674,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="main_menu_bg" translatesAutoresizingMaskIntoConstraints="NO" id="akZ-CN-mAZ" userLabel="Background Image">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7YR-0G-R6T" userLabel="box">
                                 <rect key="frame" x="180" y="20" width="240" height="362"/>
                                 <subviews>
@@ -704,12 +707,58 @@
                                     <constraint firstAttribute="height" constant="85" id="zE8-Va-fYE"/>
                                 </constraints>
                                 <color key="tintColor" red="0.92893503050000004" green="0.0010298617689999999" blue="0.44945487350000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" image="icon_tutorial">
+                                <state key="normal" image="icon_tutorial_green">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="openPhraseCapture:" destination="jGl-vX-Atg" eventType="touchUpInside" id="8FL-OY-5Lo"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nV7-Kf-fvn" userLabel="Touch Button">
+                                <rect key="frame" x="362" y="390" width="85" height="85"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="85" id="RkP-qH-Xol"/>
+                                    <constraint firstAttribute="width" constant="85" id="cAK-gA-lg1"/>
+                                </constraints>
+                                <state key="normal" image="icon_touch_green">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="nW4-cg-VOY" kind="show" id="YLf-hr-hoz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZQd-gU-a8y" userLabel="Library Button">
+                                <rect key="frame" x="152" y="495" width="85" height="85"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="85" id="2LZ-dv-38h"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="85" id="qBp-Yj-oB2"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="85" id="sbk-s9-tYK"/>
+                                    <constraint firstAttribute="width" constant="85" id="wIu-0o-FMN"/>
+                                </constraints>
+                                <state key="normal" image="icon_library_green">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="2js-4w-9Tp" kind="show" id="A3L-qE-uRe"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zgq-fz-rxe" userLabel="Keyboard Button">
+                                <rect key="frame" x="362" y="495" width="85" height="85"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="85" id="CUu-sc-1qz"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="85" id="P1k-5W-B5J"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="85" id="Rmz-Ns-wiR"/>
+                                    <constraint firstAttribute="width" constant="85" id="a7w-l6-1jB"/>
+                                </constraints>
+                                <state key="normal" image="icon_keyboard_green">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="xSs-A3-lAK" kind="show" id="2DK-bl-Mzu"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QvV-gN-P5n" userLabel="Compose Button">
@@ -719,7 +768,7 @@
                                     <constraint firstAttribute="width" constant="85" id="hP7-MN-74E"/>
                                 </constraints>
                                 <color key="tintColor" red="0.92893503050000004" green="0.0010298617689999999" blue="0.44945487350000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" image="icon_compose">
+                                <state key="normal" image="icon_compose_green">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -733,7 +782,7 @@
                                     <constraint firstAttribute="height" constant="85" id="8g0-PJ-JiW"/>
                                     <constraint firstAttribute="width" constant="85" id="cSv-jc-BFB"/>
                                 </constraints>
-                                <state key="normal" title="Camera Capture" image="icon_camera">
+                                <state key="normal" title="Camera Capture" image="icon_camera_green">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -741,57 +790,7 @@
                                     <action selector="openCamera:" destination="jGl-vX-Atg" eventType="touchUpInside" id="uC5-CM-vC0"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nV7-Kf-fvn" userLabel="Touch Button">
-                                <rect key="frame" x="362" y="390" width="85" height="85"/>
-                                <color key="backgroundColor" red="0.92893503050000004" green="0.0010298617689999999" blue="0.44945487350000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="85" id="RkP-qH-Xol"/>
-                                    <constraint firstAttribute="width" constant="85" id="cAK-gA-lg1"/>
-                                </constraints>
-                                <state key="normal" image="icon_touch">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="nW4-cg-VOY" kind="show" id="YLf-hr-hoz"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZQd-gU-a8y" userLabel="Library Button">
-                                <rect key="frame" x="152" y="495" width="85" height="85"/>
-                                <color key="backgroundColor" red="0.92893503050000004" green="0.0010298617689999999" blue="0.44945487350000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="85" id="2LZ-dv-38h"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="85" id="qBp-Yj-oB2"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="85" id="sbk-s9-tYK"/>
-                                    <constraint firstAttribute="width" constant="85" id="wIu-0o-FMN"/>
-                                </constraints>
-                                <state key="normal" image="icon_library">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="2js-4w-9Tp" kind="show" id="A3L-qE-uRe"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zgq-fz-rxe" userLabel="Keyboard Button">
-                                <rect key="frame" x="362" y="495" width="85" height="85"/>
-                                <color key="backgroundColor" red="0.92893503050000004" green="0.0010298617689999999" blue="0.44945487350000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="85" id="CUu-sc-1qz"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="85" id="P1k-5W-B5J"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="85" id="Rmz-Ns-wiR"/>
-                                    <constraint firstAttribute="width" constant="85" id="a7w-l6-1jB"/>
-                                </constraints>
-                                <state key="normal" image="icon_keyboard">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="xSs-A3-lAK" kind="show" id="2DK-bl-Mzu"/>
-                                </connections>
-                            </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.92941176470588238" green="0.0" blue="0.45098039215686275" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="ACZ-4x-c8l" firstAttribute="top" secondItem="zgq-fz-rxe" secondAttribute="bottom" constant="20" id="5Oy-oo-Jwk"/>
                             <constraint firstItem="ZQd-gU-a8y" firstAttribute="top" secondItem="QvV-gN-P5n" secondAttribute="bottom" constant="20" id="7HY-Ln-Dq8"/>
@@ -1637,12 +1636,13 @@
         <image name="SettingsMenu" width="512" height="235"/>
         <image name="Twitter_Logo" width="40" height="40"/>
         <image name="button_ink_green" width="114" height="114"/>
-        <image name="icon_camera" width="85" height="85"/>
-        <image name="icon_compose" width="85" height="85"/>
-        <image name="icon_keyboard" width="85" height="85"/>
-        <image name="icon_library" width="85" height="85"/>
-        <image name="icon_touch" width="85" height="85"/>
-        <image name="icon_tutorial" width="85" height="85"/>
+        <image name="icon_camera_green" width="114" height="114"/>
+        <image name="icon_compose_green" width="114" height="114"/>
+        <image name="icon_keyboard_green" width="114" height="114"/>
+        <image name="icon_library_green" width="114" height="114"/>
+        <image name="icon_touch_green" width="114" height="114"/>
+        <image name="icon_tutorial_green" width="114" height="114"/>
+        <image name="main_menu_bg" width="360" height="640"/>
         <image name="my_ink_logo" width="341" height="171"/>
     </resources>
     <inferredMetricsTieBreakers>
