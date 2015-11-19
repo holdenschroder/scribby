@@ -11,6 +11,8 @@ import QuartzCore
 
 class ComposeMessageController: UIViewController, UITextViewDelegate {
     
+    // MARK: - VARS
+    
     @IBOutlet var textView:UITextView?
     @IBOutlet var generateButton:UIButton?
     @IBOutlet weak var pointSizeStepper: UIStepper!
@@ -22,20 +24,14 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
     private var _fontMessageRenderer:FontMessageRenderer?
     private var _selectedPointSize = 3
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
+    // MARK: - LIFECYCLE
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         self.navigationController?.navigationBarHidden = false
         
         textView?.delegate = self
-
-        if isMovingToParentViewController() {
-            textView?.text = ""
-        }
-        if textView != nil {
-            generateButton?.enabled = textView!.hasText()
-            textView!.font = textView!.font!.fontWithSize(CGFloat(_pointSizeOptions[_selectedPointSize]))
-        }
         
         propertiesBar.layer.cornerRadius = 3.0
         
@@ -48,7 +44,7 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
         pointSizeStepper.autorepeat = false
         pointSizeStepper.minimumValue = 0.0
         pointSizeStepper.maximumValue = 8.0
-
+        
         
         let currentAtlas = (UIApplication.sharedApplication().delegate as! AppDelegate).currentAtlas
         let fallbackAtlas = (UIApplication.sharedApplication().delegate as! AppDelegate).embeddedAtlas
@@ -58,6 +54,19 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
         
         registerForKeyboardNotifications()
         MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventScreenLoadedComposeMessage)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if isMovingToParentViewController() {
+            textView?.text = ""
+        }
+        if textView != nil {
+            generateButton?.enabled = textView!.hasText()
+            textView!.font = textView!.font!.fontWithSize(CGFloat(_pointSizeOptions[_selectedPointSize]))
+        }
+        
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -82,17 +91,31 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
         }
     }
     
-    //-- Stepper
+    // MARK: - ACTIONS
     
     @IBAction func stepperValueChanged(sender: UIStepper) {
         fontSizeLabel.text = String(Int(_pointSizeOptions[Int(sender.value)]))
         textView!.font = textView!.font!.fontWithSize(CGFloat(_pointSizeOptions[Int(sender.value)]))
     }
     
-    //-- UITextViewDelegate Methods
+    // MARK: - TEXTVIEW DELEGATE
     
     func textViewDidChange(textView: UITextView) {
+
+        /*
+        if(textView.text.isEmpty) {
+        generateButton?.enabled = false
+        }
+        else {
+        generateButton?.enabled = true
+        if(generateButton?.frame.origin.y > (view.frame.size.height/2)) {
+        generateButton?.frame.origin.y -= bottomConstraint.constant
+        }
+        }
+        */
+        
         generateButton?.enabled = !textView.text.isEmpty
+        //print(generateButton?.frame.origin)
     }
     
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
@@ -103,7 +126,8 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
         return true
     }
     
-    //-- Keyboard Methods
+    // MARK: - KEYBOARD
+
     func registerForKeyboardNotifications() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleKeyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleKeyboardDidHide:", name: UIKeyboardDidHideNotification, object: nil)
