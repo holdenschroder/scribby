@@ -29,7 +29,11 @@ class LibraryItemController:UIViewController, UIImagePickerControllerDelegate, U
         navigationItem.rightBarButtonItem = camButton
         
         captureView = storyboard?.instantiateViewControllerWithIdentifier("CaptureView") as? CaptureWordSelectController
-        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBarHidden = false
     }
     
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {

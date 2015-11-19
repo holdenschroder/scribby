@@ -14,6 +14,8 @@ class TutorialPhaseOutroController: TapToContinueController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.navigationBarHidden = false
+
         messageImageView?.image = messageImage
         
         MyInkAnalytics.EndTimedEvent(SharedMyInkValues.kEventTutorialFirstPhrase, parameters: nil)

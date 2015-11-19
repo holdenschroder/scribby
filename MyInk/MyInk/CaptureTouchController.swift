@@ -14,7 +14,8 @@ class CaptureTouchController:UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-    
+        self.navigationController?.navigationBarHidden = false
+
         if isMovingToParentViewController() {
             drawCaptureView?.clear()
         }
