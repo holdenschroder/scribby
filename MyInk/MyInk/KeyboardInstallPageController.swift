@@ -17,18 +17,25 @@ class KeyboardInstallPageController: UIViewController, UIPageViewControllerDataS
     
     // Initialize it right away here
     private let contentImages = [
-        "keyboard_1.jpg",
-        "keyboard_2.jpg",
-        "keyboard_3.jpg",
-        "keyboard_4.jpg",
-        "keyboard_5.jpg",
-        "keyboard_6.jpg"
+        "keyboard_install_1.png",
+        "keyboard_install_2.png",
+        "keyboard_install_3.png",
+        "keyboard_install_4.png",
+        "keyboard_install_5.png",
+        "keyboard_install_6.png",
+        "keyboard_install_7.png",
+        "keyboard_install_8.png",
+        "keyboard_install_9.png"
     ];
     
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.navigationBarHidden = true
+
+        
         createPageViewController()
         setupPageControl()
     }
