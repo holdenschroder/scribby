@@ -11,3 +11,7 @@
 #import "UIImageView+GeometryConversion.h"
 #import "Flurry.h"
 #endif
+
+// MARK: Convenience Functions
+
+

@@ -7,12 +7,17 @@
 //
 
 import UIKit
+import QuartzCore
 
-class ComposeMessageController: UIViewController, UITextViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
+class ComposeMessageController: UIViewController, UITextViewDelegate {
+    
     @IBOutlet var textView:UITextView?
-    @IBOutlet var generateButton:UIBarButtonItem?
-    @IBOutlet var pointSizePicker:UIPickerView?
+    @IBOutlet var generateButton:UIButton?
+    @IBOutlet weak var pointSizeStepper: UIStepper!
+    @IBOutlet weak var fontSizeLabel: UILabel!
     @IBOutlet weak var bottomConstraint:NSLayoutConstraint!
+    @IBOutlet weak var propertiesBar: UIView!
+    
     private let _pointSizeOptions:[Float] = [10, 12, 14, 16, 18, 20, 24, 28, 32]
     private var _fontMessageRenderer:FontMessageRenderer?
     private var _selectedPointSize = 3
@@ -22,6 +27,8 @@ class ComposeMessageController: UIViewController, UITextViewDelegate, UIPickerVi
         
         self.navigationController?.navigationBarHidden = false
         
+        textView?.delegate = self
+
         if isMovingToParentViewController() {
             textView?.text = ""
         }
@@ -30,9 +37,18 @@ class ComposeMessageController: UIViewController, UITextViewDelegate, UIPickerVi
             textView!.font = textView!.font!.fontWithSize(CGFloat(_pointSizeOptions[_selectedPointSize]))
         }
         
-        if pointSizePicker != nil {
-            pointSizePicker?.selectRow(_selectedPointSize, inComponent: 0, animated: false)
-        }
+        propertiesBar.layer.cornerRadius = 3.0
+        
+        fontSizeLabel.layer.cornerRadius = 6.0
+        fontSizeLabel.layer.borderWidth = 1.0
+        fontSizeLabel.layer.borderColor = UIColor.blackColor().CGColor
+        fontSizeLabel.layer.masksToBounds = true
+        fontSizeLabel.text = "10"
+        
+        pointSizeStepper.autorepeat = false
+        pointSizeStepper.minimumValue = 0.0
+        pointSizeStepper.maximumValue = 8.0
+
         
         let currentAtlas = (UIApplication.sharedApplication().delegate as! AppDelegate).currentAtlas
         let fallbackAtlas = (UIApplication.sharedApplication().delegate as! AppDelegate).embeddedAtlas
@@ -66,37 +82,30 @@ class ComposeMessageController: UIViewController, UITextViewDelegate, UIPickerVi
         }
     }
     
+    //-- Stepper
+    
+    @IBAction func stepperValueChanged(sender: UIStepper) {
+        fontSizeLabel.text = String(Int(_pointSizeOptions[Int(sender.value)]))
+        textView!.font = textView!.font!.fontWithSize(CGFloat(_pointSizeOptions[Int(sender.value)]))
+    }
+    
     //-- UITextViewDelegate Methods
     
     func textViewDidChange(textView: UITextView) {
         generateButton?.enabled = !textView.text.isEmpty
     }
     
-    //-- UIPickerViewDataSource Methods
-    
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return _pointSizeOptions.count
-    }
-    
-    //-- UIPickerViewDelegate Methods
-    
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return "\(_pointSizeOptions[row])"
-    }
-    
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        _selectedPointSize = row
-        textView!.font = textView!.font!.fontWithSize(CGFloat(_pointSizeOptions[_selectedPointSize]))
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n"{
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
     }
     
     //-- Keyboard Methods
     func registerForKeyboardNotifications() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleKeyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
-        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleKeyboardDidHide:", name: UIKeyboardDidHideNotification, object: nil)
     }
     
@@ -110,8 +119,11 @@ class ComposeMessageController: UIViewController, UITextViewDelegate, UIPickerVi
             let kbRect = (info![UIKeyboardFrameBeginUserInfoKey] as! NSValue).CGRectValue()
             bottomConstraint.constant = kbRect.height + 20
             textView?.layoutIfNeeded()
-            
             textView!.scrollRangeToVisible(textView!.selectedRange)
+            
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(0.1 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) {
+                self.generateButton?.frame.origin.y -= kbRect.height
+            }
         }
     }
     
