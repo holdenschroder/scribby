@@ -674,18 +674,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="main_menu_bg" translatesAutoresizingMaskIntoConstraints="NO" id="akZ-CN-mAZ" userLabel="Background Image">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_menu_bg_one" translatesAutoresizingMaskIntoConstraints="NO" id="akZ-CN-mAZ" userLabel="Background Image">
+                                <rect key="frame" x="-20" y="-268" width="640" height="1136"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="akZ-CN-mAZ" secondAttribute="height" multiplier="40:71" id="FAu-vT-BQg"/>
+                                </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7YR-0G-R6T" userLabel="box">
                                 <rect key="frame" x="180" y="20" width="240" height="362"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="my_ink_logo" translatesAutoresizingMaskIntoConstraints="NO" id="iK1-wF-cip">
-                                        <rect key="frame" x="0.0" y="121" width="240" height="120"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="my_ink_logo_green" translatesAutoresizingMaskIntoConstraints="NO" id="iK1-wF-cip">
+                                        <rect key="frame" x="0.0" y="127" width="240" height="108"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="340" id="czK-dS-ntu"/>
-                                            <constraint firstAttribute="height" constant="120" id="iaU-Ge-TF0"/>
-                                            <constraint firstAttribute="width" constant="240" id="pbl-VQ-OLw"/>
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
@@ -695,9 +696,10 @@
                                     </imageView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="iK1-wF-cip" firstAttribute="centerX" secondItem="7YR-0G-R6T" secondAttribute="centerX" id="Qnk-Lm-qn1"/>
+                                    <constraint firstAttribute="trailing" secondItem="iK1-wF-cip" secondAttribute="trailing" id="Rmb-Cl-fJl"/>
                                     <constraint firstAttribute="width" constant="240" id="mpt-ZB-eEs"/>
-                                    <constraint firstItem="iK1-wF-cip" firstAttribute="centerY" secondItem="7YR-0G-R6T" secondAttribute="centerY" id="yLP-gs-nu6"/>
+                                    <constraint firstItem="iK1-wF-cip" firstAttribute="centerY" secondItem="7YR-0G-R6T" secondAttribute="centerY" id="s1E-1x-qRa"/>
+                                    <constraint firstItem="iK1-wF-cip" firstAttribute="leading" secondItem="7YR-0G-R6T" secondAttribute="leading" id="sPF-Id-wAO"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j5k-KR-iRZ" userLabel="Tutorial Button">
@@ -797,10 +799,12 @@
                             <constraint firstItem="j5k-KR-iRZ" firstAttribute="top" secondItem="9M8-B9-mKx" secondAttribute="bottom" constant="20" id="7dp-MB-hYK"/>
                             <constraint firstItem="j5k-KR-iRZ" firstAttribute="centerX" secondItem="8Fo-bD-HhK" secondAttribute="centerX" id="CfF-pK-Ev6"/>
                             <constraint firstItem="9M8-B9-mKx" firstAttribute="leading" secondItem="QvV-gN-P5n" secondAttribute="trailing" constant="20" id="FPs-Rd-vgt"/>
+                            <constraint firstItem="akZ-CN-mAZ" firstAttribute="centerY" secondItem="8Fo-bD-HhK" secondAttribute="centerY" id="GIc-lS-IUC"/>
                             <constraint firstItem="ACZ-4x-c8l" firstAttribute="top" secondItem="zgq-fz-rxe" secondAttribute="bottom" constant="20" id="Lek-lu-Y6S"/>
                             <constraint firstItem="nV7-Kf-fvn" firstAttribute="top" secondItem="7YR-0G-R6T" secondAttribute="bottom" constant="8" id="Lnf-zh-8Sl"/>
                             <constraint firstItem="zgq-fz-rxe" firstAttribute="leading" secondItem="j5k-KR-iRZ" secondAttribute="trailing" constant="20" id="Nvy-vB-wm6"/>
                             <constraint firstItem="9M8-B9-mKx" firstAttribute="leading" secondItem="QvV-gN-P5n" secondAttribute="trailing" constant="20" id="QSK-up-kjw"/>
+                            <constraint firstItem="akZ-CN-mAZ" firstAttribute="centerX" secondItem="8Fo-bD-HhK" secondAttribute="centerX" id="Tza-xy-V3b"/>
                             <constraint firstItem="7YR-0G-R6T" firstAttribute="centerX" secondItem="8Fo-bD-HhK" secondAttribute="centerX" id="V7n-cy-h3a"/>
                             <constraint firstItem="ACZ-4x-c8l" firstAttribute="top" secondItem="j5k-KR-iRZ" secondAttribute="bottom" constant="20" id="Vr1-km-SiO"/>
                             <constraint firstItem="zgq-fz-rxe" firstAttribute="top" secondItem="nV7-Kf-fvn" secondAttribute="bottom" constant="20" id="VvO-cX-9MU"/>
@@ -1396,7 +1400,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Which character should this Glyph be mapped to?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" translatesAutoresizingMaskIntoConstraints="NO" id="G9X-1e-mef">
-                                <rect key="frame" x="20" y="213" width="560" height="31"/>
+                                <rect key="frame" x="20" y="246" width="560" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="wXa-ET-zLR"/>
                                 </constraints>
@@ -1416,8 +1420,11 @@
                                 </items>
                             </toolbar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="A" borderStyle="roundedRect" textAlignment="center" minimumFontSize="16" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2Qd-SV-Skw">
-                                <rect key="frame" x="20" y="252" width="560" height="30"/>
+                                <rect key="frame" x="270" y="285" width="60" height="30"/>
                                 <rect key="contentStretch" x="0.0" y="1" width="1" height="1"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="Vsm-RA-abs"/>
+                                </constraints>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="21"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
@@ -1430,23 +1437,32 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Fbd-Ep-w4O" firstAttribute="top" secondItem="GRO-sv-Yc8" secondAttribute="bottom" id="6sD-Dg-RJ3"/>
-                            <constraint firstItem="2Qd-SV-Skw" firstAttribute="trailing" secondItem="rzO-ED-oJo" secondAttribute="trailingMargin" id="A3c-3g-NYe"/>
+                            <constraint firstItem="2Qd-SV-Skw" firstAttribute="centerY" secondItem="rzO-ED-oJo" secondAttribute="centerY" id="9Ca-I1-8Z6"/>
+                            <constraint firstItem="2Qd-SV-Skw" firstAttribute="trailing" secondItem="rzO-ED-oJo" secondAttribute="trailingMargin" constant="-235" id="A3c-3g-NYe"/>
                             <constraint firstItem="2Qd-SV-Skw" firstAttribute="top" secondItem="G9X-1e-mef" secondAttribute="bottom" constant="27" id="DIs-zu-Qyg"/>
                             <constraint firstItem="GRO-sv-Yc8" firstAttribute="leading" secondItem="rzO-ED-oJo" secondAttribute="leadingMargin" constant="-16" id="Eje-53-xoc"/>
                             <constraint firstAttribute="centerY" secondItem="2Qd-SV-Skw" secondAttribute="centerY" constant="33" id="IJ9-hS-51n"/>
-                            <constraint firstItem="2Qd-SV-Skw" firstAttribute="leading" secondItem="rzO-ED-oJo" secondAttribute="leadingMargin" id="JSB-51-BED"/>
+                            <constraint firstItem="2Qd-SV-Skw" firstAttribute="leading" secondItem="rzO-ED-oJo" secondAttribute="leadingMargin" constant="235" id="JSB-51-BED"/>
                             <constraint firstItem="G9X-1e-mef" firstAttribute="top" secondItem="I8M-2p-spA" secondAttribute="bottom" constant="27" id="U4B-xb-MQ5"/>
+                            <constraint firstItem="2Qd-SV-Skw" firstAttribute="centerY" secondItem="rzO-ED-oJo" secondAttribute="centerY" id="WoO-aU-2Kw"/>
+                            <constraint firstItem="2Qd-SV-Skw" firstAttribute="top" secondItem="G9X-1e-mef" secondAttribute="bottom" constant="8" symbolic="YES" id="ayz-uE-KUW"/>
                             <constraint firstItem="G9X-1e-mef" firstAttribute="trailing" secondItem="rzO-ED-oJo" secondAttribute="trailingMargin" id="cg9-4y-hzd"/>
-                            <constraint firstItem="2Qd-SV-Skw" firstAttribute="top" secondItem="G9X-1e-mef" secondAttribute="bottom" constant="8" id="d3J-d0-Etw"/>
                             <constraint firstItem="G9X-1e-mef" firstAttribute="leading" secondItem="rzO-ED-oJo" secondAttribute="leadingMargin" id="d8T-jo-2Ue"/>
+                            <constraint firstItem="2Qd-SV-Skw" firstAttribute="centerX" secondItem="rzO-ED-oJo" secondAttribute="centerX" id="e6B-32-cJS"/>
                             <constraint firstItem="Fbd-Ep-w4O" firstAttribute="top" secondItem="G9X-1e-mef" secondAttribute="bottom" constant="522" id="mWZ-sY-k7G"/>
                             <constraint firstAttribute="trailingMargin" secondItem="GRO-sv-Yc8" secondAttribute="trailing" constant="-16" id="nsh-Mc-74Z"/>
                             <constraint firstItem="2Qd-SV-Skw" firstAttribute="leading" secondItem="rzO-ED-oJo" secondAttribute="leadingMargin" id="sRR-TT-twB"/>
+                            <constraint firstItem="2Qd-SV-Skw" firstAttribute="centerX" secondItem="G9X-1e-mef" secondAttribute="centerX" id="xgU-sf-8Gn"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="U4B-xb-MQ5"/>
+                                <exclude reference="A3c-3g-NYe"/>
                                 <exclude reference="DIs-zu-Qyg"/>
+                                <exclude reference="IJ9-hS-51n"/>
+                                <exclude reference="JSB-51-BED"/>
+                                <exclude reference="WoO-aU-2Kw"/>
+                                <exclude reference="e6B-32-cJS"/>
                                 <exclude reference="sRR-TT-twB"/>
                                 <exclude reference="mWZ-sY-k7G"/>
                             </mask>
@@ -1642,8 +1658,8 @@
         <image name="icon_library_green" width="114" height="114"/>
         <image name="icon_touch_green" width="114" height="114"/>
         <image name="icon_tutorial_green" width="114" height="114"/>
-        <image name="main_menu_bg" width="360" height="640"/>
-        <image name="my_ink_logo" width="341" height="171"/>
+        <image name="main_menu_bg_one" width="640" height="1136"/>
+        <image name="my_ink_logo_green" width="288" height="108"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="H3w-qn-b1v"/>
