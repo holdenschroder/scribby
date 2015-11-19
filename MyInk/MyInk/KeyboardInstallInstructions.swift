@@ -7,18 +7,25 @@
 //
 
 import UIKit
+import QuartzCore   
 
 class KeyboardInstallationInstructions:UIViewController {
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var contentView: UIView!
-    @IBOutlet weak var bottomItem: UIView!
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
+    
+    @IBOutlet weak var installBtn: UIButton!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
         self.navigationController?.navigationBarHidden = false
+        
+        installBtn!.layer.cornerRadius = 3.0
+        installBtn!.layer.borderWidth = 1.0
+        installBtn!.layer.borderColor = UIColor.redColor().CGColor
+        installBtn!.layer.masksToBounds = true
 
-        contentView.layoutIfNeeded()
-        contentView.frame.size.height = bottomItem.frame.origin.y + bottomItem.frame.height + 8
-        scrollView.contentSize = contentView.bounds.size
     }
+    
+    
+
 }
