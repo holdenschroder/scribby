@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import QuartzCore
 
 class MapGlyphController:UIViewController, UITextFieldDelegate {
     typealias InputCallback = (value:String?) -> Void
@@ -15,6 +16,12 @@ class MapGlyphController:UIViewController, UITextFieldDelegate {
     @IBOutlet var textfield:UITextField?
     @IBOutlet weak var saveBtn: UIBarButtonItem!
     private var _callback:InputCallback?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventScreenLoadedCaptureMapGlyph)
+    }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -22,9 +29,13 @@ class MapGlyphController:UIViewController, UITextFieldDelegate {
 
         textfield?.clearsOnInsertion = true
         textfield?.text = ""
+        textfield!.layer.cornerRadius = 3.0
+        textfield!.layer.borderWidth = 1.0
+        textfield!.layer.borderColor = UIColor.darkGrayColor().CGColor
+        textfield!.layer.masksToBounds = true
+        
         saveBtn.enabled = false
         
-        MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventScreenLoadedCaptureMapGlyph)
     }
     
     func setCallback(callback:InputCallback) {

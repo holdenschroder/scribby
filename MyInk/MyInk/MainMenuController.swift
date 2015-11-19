@@ -13,6 +13,9 @@ class MainMenuController:UIViewController, UIImagePickerControllerDelegate, UINa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.navigationBarHidden = true
+
         captureView = storyboard?.instantiateViewControllerWithIdentifier("CaptureView") as? CaptureWordSelectController
     
         let tutorialState = (UIApplication.sharedApplication().delegate as! AppDelegate).tutorialState
