@@ -16,6 +16,8 @@ class ShareImageController: UIViewController, UIAlertViewDelegate {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.navigationBarHidden = false
+
         imageView?.image = _image
         
         MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventScreenLoadedShareImage)

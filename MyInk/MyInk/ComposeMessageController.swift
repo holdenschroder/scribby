@@ -7,15 +7,54 @@
 //
 
 import UIKit
+import QuartzCore
 
-class ComposeMessageController: UIViewController, UITextViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
+class ComposeMessageController: UIViewController, UITextViewDelegate {
+    
+    // MARK: - VARS
+    
     @IBOutlet var textView:UITextView?
-    @IBOutlet var generateButton:UIBarButtonItem?
-    @IBOutlet var pointSizePicker:UIPickerView?
+    @IBOutlet var generateButton:UIButton?
+    @IBOutlet weak var pointSizeStepper: UIStepper!
+    @IBOutlet weak var fontSizeLabel: UILabel!
     @IBOutlet weak var bottomConstraint:NSLayoutConstraint!
+    @IBOutlet weak var propertiesBar: UIView!
+    
     private let _pointSizeOptions:[Float] = [10, 12, 14, 16, 18, 20, 24, 28, 32]
     private var _fontMessageRenderer:FontMessageRenderer?
     private var _selectedPointSize = 3
+    
+    // MARK: - LIFECYCLE
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.navigationController?.navigationBarHidden = false
+        
+        textView?.delegate = self
+        
+        propertiesBar.layer.cornerRadius = 3.0
+        
+        fontSizeLabel.layer.cornerRadius = 6.0
+        fontSizeLabel.layer.borderWidth = 1.0
+        fontSizeLabel.layer.borderColor = UIColor.blackColor().CGColor
+        fontSizeLabel.layer.masksToBounds = true
+        fontSizeLabel.text = "10"
+        
+        pointSizeStepper.autorepeat = false
+        pointSizeStepper.minimumValue = 0.0
+        pointSizeStepper.maximumValue = 8.0
+        
+        
+        let currentAtlas = (UIApplication.sharedApplication().delegate as! AppDelegate).currentAtlas
+        let fallbackAtlas = (UIApplication.sharedApplication().delegate as! AppDelegate).embeddedAtlas
+        if(currentAtlas != nil) {
+            _fontMessageRenderer = FontMessageRenderer(atlas: currentAtlas!, fallbackAtlas:fallbackAtlas!, watermark: SharedMyInkValues.MyInkWatermark)
+        }
+        
+        registerForKeyboardNotifications()
+        MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventScreenLoadedComposeMessage)
+    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -28,18 +67,6 @@ class ComposeMessageController: UIViewController, UITextViewDelegate, UIPickerVi
             textView!.font = textView!.font!.fontWithSize(CGFloat(_pointSizeOptions[_selectedPointSize]))
         }
         
-        if pointSizePicker != nil {
-            pointSizePicker?.selectRow(_selectedPointSize, inComponent: 0, animated: false)
-        }
-        
-        let currentAtlas = (UIApplication.sharedApplication().delegate as! AppDelegate).currentAtlas
-        let fallbackAtlas = (UIApplication.sharedApplication().delegate as! AppDelegate).embeddedAtlas
-        if(currentAtlas != nil) {
-            _fontMessageRenderer = FontMessageRenderer(atlas: currentAtlas!, fallbackAtlas:fallbackAtlas!, watermark: SharedMyInkValues.MyInkWatermark)
-        }
-        
-        registerForKeyboardNotifications()
-        MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventScreenLoadedComposeMessage)
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -64,37 +91,45 @@ class ComposeMessageController: UIViewController, UITextViewDelegate, UIPickerVi
         }
     }
     
-    //-- UITextViewDelegate Methods
+    // MARK: - ACTIONS
+    
+    @IBAction func stepperValueChanged(sender: UIStepper) {
+        fontSizeLabel.text = String(Int(_pointSizeOptions[Int(sender.value)]))
+        textView!.font = textView!.font!.fontWithSize(CGFloat(_pointSizeOptions[Int(sender.value)]))
+    }
+    
+    // MARK: - TEXTVIEW DELEGATE
     
     func textViewDidChange(textView: UITextView) {
+
+        /*
+        if(textView.text.isEmpty) {
+        generateButton?.enabled = false
+        }
+        else {
+        generateButton?.enabled = true
+        if(generateButton?.frame.origin.y > (view.frame.size.height/2)) {
+        generateButton?.frame.origin.y -= bottomConstraint.constant
+        }
+        }
+        */
+        
         generateButton?.enabled = !textView.text.isEmpty
+        //print(generateButton?.frame.origin)
     }
     
-    //-- UIPickerViewDataSource Methods
-    
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-        return 1
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n"{
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
     }
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return _pointSizeOptions.count
-    }
-    
-    //-- UIPickerViewDelegate Methods
-    
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return "\(_pointSizeOptions[row])"
-    }
-    
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        _selectedPointSize = row
-        textView!.font = textView!.font!.fontWithSize(CGFloat(_pointSizeOptions[_selectedPointSize]))
-    }
-    
-    //-- Keyboard Methods
+    // MARK: - KEYBOARD
+
     func registerForKeyboardNotifications() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleKeyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
-        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleKeyboardDidHide:", name: UIKeyboardDidHideNotification, object: nil)
     }
     
@@ -108,8 +143,11 @@ class ComposeMessageController: UIViewController, UITextViewDelegate, UIPickerVi
             let kbRect = (info![UIKeyboardFrameBeginUserInfoKey] as! NSValue).CGRectValue()
             bottomConstraint.constant = kbRect.height + 20
             textView?.layoutIfNeeded()
-            
             textView!.scrollRangeToVisible(textView!.selectedRange)
+            
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(0.1 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) {
+                self.generateButton?.frame.origin.y -= kbRect.height
+            }
         }
     }
     
