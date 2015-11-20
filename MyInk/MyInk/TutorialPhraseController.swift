@@ -50,10 +50,8 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
             
             LogWordForAnalytics(words[wordIndex], isStarting:true)
         }
-        nextButton.enabled = false
         previousButton.enabled = wordIndex > 0
-        writtenCharacters.removeAll()
-        
+        UpdateAfterWordChange()
         let layout = collectionView?.collectionViewLayout as! UICollectionViewFlowLayout
         layout.minimumInteritemSpacing = 1000.0
         self.automaticallyAdjustsScrollViewInsets = false
@@ -189,8 +187,8 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
             LogWordForAnalytics(words[wordIndex], isStarting:true)
             updateItemHeight(collectionView!.bounds.size)
             collectionView.reloadData()
-            nextButton.enabled = false
-            writtenCharacters.removeAll()
+            collectionView.contentOffset = CGPointZero
+            UpdateAfterWordChange()
             UpdateMessages()
             _tutorialState?.wordIndex = Int32(wordIndex)
             previousButton.enabled = wordIndex > 0
@@ -228,6 +226,21 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
             _tutorialState?.wordIndex = Int32(wordIndex)
             previousButton.enabled = wordIndex > 0
         }
+    }
+    
+    //MARK: Helpers
+    
+    private func UpdateAfterWordChange() {
+        writtenCharacters.removeAll()
+        let atlas = (UIApplication.sharedApplication().delegate as! AppDelegate).currentAtlas
+        if atlas != nil {
+            for character in words[wordIndex].characters {
+                if atlas!.hasGlyphMapping(String(character)) {
+                    writtenCharacters.insert(character)
+                }
+            }
+        }
+        nextButton.enabled = writtenCharacters.count == words[wordIndex].characters.count
     }
 }
 
@@ -269,6 +282,16 @@ class TutorialCharacterCell: UICollectionViewCell {
         drawCaptureView?.clear()
         label?.alpha = _initialLabelAlpha
         _character = value
+        
+        let atlas = (UIApplication.sharedApplication().delegate as! AppDelegate).currentAtlas
+        let characterString = String(value)
+        if atlas!.hasGlyphMapping(characterString) {
+            let glyphData = atlas!.getGlyphData(characterString)!
+            let imageData = glyphData.image as! FontAtlasImage
+            let subImage = UIImage(CGImage: CGImageCreateWithImageInRect(imageData.loadedImage!.CGImage, glyphData.imageCoord * imageData.loadedImage!.size)!);
+            drawCaptureView?.loadImage(subImage, rect: glyphData.glyphBounds)
+            clearButton?.hidden = false
+        }
     }
     
     func handleDrawEvent(drawView:UIDrawView, eventType:UIDrawView.DrawEventType) {
