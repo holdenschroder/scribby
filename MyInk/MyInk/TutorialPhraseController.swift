@@ -11,14 +11,13 @@ import UIKit
 class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIGestureRecognizerDelegate {
     private let phrase:String! = "QUICK BROWN FOX JUMPS OVER THE LAZY DOG"
     private var words:[String]!
-    private var writtenCharacters = Set<Character>()
-    private var wordIndex = 0
+    private var unwrittenCharacters = Set<Character>()
     private var _messageRenderer:FontMessageRenderer?
     private var _tutorialState:TutorialState?
     private var _updateSizesTimer:NSTimer?
+    private var _sections:NSIndexSet!
     @IBOutlet weak var collectionView:UICollectionView!
-    @IBOutlet weak var nextButton: UIBarButtonItem!
-    @IBOutlet weak var previousButton:UIBarButtonItem!
+    @IBOutlet weak var finishButton: UIBarButtonItem!
     @IBOutlet weak var messageImageView:UIImageView!
     
     //MARK: Initialization and Setup
@@ -43,20 +42,21 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
         super.viewWillAppear(animated)
         self.navigationController?.navigationBarHidden = false
 
-        
-        if _tutorialState != nil {
-            wordIndex = Int(_tutorialState!.wordIndex)
-            if wordIndex >= words.count {
-                wordIndex = 0
-            }
-            
-            LogWordForAnalytics(words[wordIndex], isStarting:true)
-        }
-        previousButton.enabled = wordIndex > 0
-        UpdateAfterWordChange()
         let layout = collectionView?.collectionViewLayout as! UICollectionViewFlowLayout
         layout.minimumInteritemSpacing = 1000.0
         self.automaticallyAdjustsScrollViewInsets = false
+        
+        let currentAtlas = (UIApplication.sharedApplication().delegate as! AppDelegate).currentAtlas
+        if currentAtlas != nil {
+            for word in words {
+                for character in word.characters {
+                    if !currentAtlas!.hasGlyphMapping(String(character)) {
+                        unwrittenCharacters.insert(character)
+                    }
+                }
+            }
+        }
+        finishButton?.enabled = unwrittenCharacters.count == 0
         
         UpdateSizes()
     }
@@ -64,13 +64,17 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
     //MARK: Collection View Methods
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return words[wordIndex].characters.count
+        return words[section].characters.count
+    }
+    
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return words.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CharacterCapture", forIndexPath: indexPath) as! TutorialCharacterCell
-        let characterIndex = words[wordIndex].characters.startIndex.advancedBy(indexPath.item)
-        let character = words[wordIndex].characters[characterIndex]
+        let characterIndex = words[indexPath.section].characters.startIndex.advancedBy(indexPath.item)
+        let character = words[indexPath.section].characters[characterIndex]
         cell.populate(character)
         cell.addEventSubscriber(self, handler: HandleCellEvent)
         return cell
@@ -81,6 +85,17 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
         let tutorialWordCell = cell as! TutorialCharacterCell
         tutorialWordCell.save()
         tutorialWordCell.removeEventSubscriber(self)
+    }
+    
+    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        switch kind {
+        case UICollectionElementKindSectionHeader:
+            return collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "SectionHeader", forIndexPath: indexPath)
+        case UICollectionElementKindSectionFooter:
+            return collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "SectionFooter", forIndexPath: indexPath)
+        default:
+            assert(false, "Unexpected kind for supplementary element")
+        }
     }
     
     func handlePanGesture(recognizer:UIPanGestureRecognizer) {
@@ -103,28 +118,26 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
     
     private func HandleCellEvent(cell:TutorialCharacterCell, state:TutorialCharacterCell.CellEventType) {
         if(state == .EndedDrawing && cell.character != nil) {
-            writtenCharacters.insert(cell.character!)
+            unwrittenCharacters.remove(cell.character!)
         }
         else if(state == .Cleared && cell.character != nil) {
-            writtenCharacters.remove(cell.character!)
+            unwrittenCharacters.insert(cell.character!)
         }
         
-        nextButton.enabled = writtenCharacters.count == words[wordIndex].characters.count
+        finishButton?.enabled = unwrittenCharacters.count == 0
     }
     
     private func updateItemHeight(viewSize:CGSize) {
-        if wordIndex < words.count {
-            let layout = self.collectionView?.collectionViewLayout as! UICollectionViewFlowLayout
-            //var itemHeight = (viewSize.width - (layout.minimumLineSpacing * (words[wordIndex].characters.count - 1))) / words[wordIndex].characters.count
-            //itemHeight = min(itemHeight, viewSize.height)
-            let itemHeight = viewSize.height
-            layout.itemSize = CGSize(width: itemHeight, height: itemHeight)
-        
-            let cells = self.collectionView?.visibleCells()
-            if(cells != nil) {
-                for cell in cells! as! [TutorialCharacterCell] {
-                    cell.updateSize(itemHeight)
-                }
+        let layout = self.collectionView?.collectionViewLayout as! UICollectionViewFlowLayout
+        //var itemHeight = (viewSize.width - (layout.minimumLineSpacing * (words[wordIndex].characters.count - 1))) / words[wordIndex].characters.count
+        //itemHeight = min(itemHeight, viewSize.height)
+        let itemHeight = viewSize.height
+        layout.itemSize = CGSize(width: itemHeight, height: itemHeight)
+    
+        let cells = self.collectionView?.visibleCells()
+        if(cells != nil) {
+            for cell in cells! as! [TutorialCharacterCell] {
+                cell.updateSize(itemHeight)
             }
         }
     }
@@ -182,67 +195,32 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
     
     //MARK: Button Handlers
     
-    @IBAction func HandleNextBtn(sender:AnyObject) {
-        LogWordForAnalytics(words[wordIndex], isStarting:false)
-        ++wordIndex
-        if wordIndex < words.count {
-            LogWordForAnalytics(words[wordIndex], isStarting:true)
-            updateItemHeight(collectionView!.bounds.size)
-            collectionView.reloadData()
-            collectionView.contentOffset = CGPointZero
-            UpdateAfterWordChange()
-            UpdateMessages()
-            _tutorialState?.wordIndex = Int32(wordIndex)
-            previousButton.enabled = wordIndex > 0
-        }
-        else {
-            _tutorialState?.wordIndex = 0
-            //Move to next screen
-            _tutorialState?.setTutorialFlag(TutorialState.TutorialFlags.StartingPhrase)
-            let postTutorialScreen = storyboard?.instantiateViewControllerWithIdentifier("PostTutorialScreen")
-            if postTutorialScreen != nil && _messageRenderer != nil {
-                if postTutorialScreen is TutorialPhaseOutroController {
-                    let tutorialPhraseController = postTutorialScreen as! TutorialPhaseOutroController
-                    let image = RenderMessage()
-                    if image != nil {
-                        tutorialPhraseController.setMessage(image!)
-                    }
-                }
-                
-                self.presentViewController(postTutorialScreen!, animated: true, completion: nil)
-            }
-        }
+    @IBAction func HandleFinishBtn(sender:AnyObject) {
         let atlas = (UIApplication.sharedApplication().delegate as! AppDelegate).currentAtlas
         atlas?.Save()
-    }
-    
-    @IBAction func HandlePreviousBtn(sender:AnyObject) {
-        if wordIndex > 0 {
-            LogWordForAnalytics(words[wordIndex], isStarting:false)
-            --wordIndex
-            updateItemHeight(collectionView!.bounds.size)
-            collectionView.reloadData()
-            nextButton.enabled = false
-            writtenCharacters.removeAll()
-            UpdateMessages()
-            _tutorialState?.wordIndex = Int32(wordIndex)
-            previousButton.enabled = wordIndex > 0
-        }
-    }
-    
-    //MARK: Helpers
-    
-    private func UpdateAfterWordChange() {
-        writtenCharacters.removeAll()
-        let atlas = (UIApplication.sharedApplication().delegate as! AppDelegate).currentAtlas
-        if atlas != nil {
-            for character in words[wordIndex].characters {
-                if atlas!.hasGlyphMapping(String(character)) {
-                    writtenCharacters.insert(character)
+        
+        _tutorialState?.wordIndex = 0
+        //Move to next screen
+        _tutorialState?.setTutorialFlag(TutorialState.TutorialFlags.StartingPhrase)
+        let postTutorialScreen = storyboard?.instantiateViewControllerWithIdentifier("PostTutorialScreen")
+        if postTutorialScreen != nil && _messageRenderer != nil {
+            if postTutorialScreen is TutorialPhaseOutroController {
+                let tutorialPhraseController = postTutorialScreen as! TutorialPhaseOutroController
+                let image = RenderMessage()
+                if image != nil {
+                    tutorialPhraseController.setMessage(image!)
                 }
             }
+            
+            self.presentViewController(postTutorialScreen!, animated: true, completion: nil)
         }
-        nextButton.enabled = writtenCharacters.count == words[wordIndex].characters.count
+    }
+    
+    @IBAction func HandleSkipBtn(sender:AnyObject) {
+        let navigationRoot = storyboard?.instantiateViewControllerWithIdentifier("NavigationRoot")
+        if navigationRoot != nil {
+            self.presentViewController(navigationRoot!, animated: true, completion: nil)
+        }
     }
 }
 
