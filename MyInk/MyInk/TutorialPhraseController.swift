@@ -95,6 +95,8 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
             return collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "SectionFooter", forIndexPath: indexPath)
         default:
             assert(false, "Unexpected kind for supplementary element")
+            return collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "SectionFooter", forIndexPath: indexPath)
+            // TODO: hack to compile
         }
     }
     
