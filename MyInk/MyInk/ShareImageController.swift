@@ -23,8 +23,16 @@ class ShareImageController: UIViewController, UIAlertViewDelegate {
 
         imageView?.image = _image
         
-        //let igImg : UIImage? = UIImage(named:"icon_instagram.png")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-        instagramBtn.setBackButtonBackgroundImage(UIImage(named:"icon_instagram.png")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), forState: .Normal, barMetrics: .Default)
+        let igImg : UIImage? = UIImage(named:"icon_instagram.png")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        let igBtn = UIButton()
+        igBtn.setImage(igImg, forState: .Normal)
+        igBtn.frame = CGRectMake(0, 0, 30, 30)
+        //igBtn.addTarget(self, action: Selector("action"), forControlEvents: .TouchUpInside)
+
+        let _instagramBtn = UIBarButtonItem(customView: igBtn)
+        instagramBtn = _instagramBtn
+        
+        //instagramBtn.setBackButtonBackgroundImage(UIImage(named:"icon_instagram.png")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), forState: .Normal, barMetrics: .Default)
         
         //let twImg : UIImage? = UIImage(named:"icon_twitter.png")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
         twitterBtn.setBackButtonBackgroundImage(UIImage(named:"icon_twitter.png")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), forState: .Normal, barMetrics: .Default)
