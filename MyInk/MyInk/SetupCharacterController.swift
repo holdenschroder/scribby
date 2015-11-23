@@ -62,12 +62,10 @@ class SetupCharacterController : UIViewController, UIScrollViewDelegate {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         super.prepareForSegue(segue, sender: sender)
-    
         if segue.destinationViewController is MapGlyphController {
             let mapGlyph = segue.destinationViewController as! MapGlyphController
             mapGlyph.setCallback(HandleMapGlyphCallback)
         }
-        
     }
     
     override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
@@ -76,7 +74,6 @@ class SetupCharacterController : UIViewController, UIScrollViewDelegate {
             if((_mAtlasGlyph) != nil) {
                 SaveGlyph((_mAtlasGlyph?.mapping)!)
                 should = false
-                //self.navigationController?.popToRootViewControllerAnimated(true)
                 let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController];
                 self.navigationController!.popToViewController(viewControllers[viewControllers.count - 4], animated: true);
             }
@@ -102,7 +99,6 @@ class SetupCharacterController : UIViewController, UIScrollViewDelegate {
                 self.SaveGlyph(value!)
             }))
             alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
-            //We need to wait a bit to present the alert because we can't present it before this view is represented
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC)), dispatch_get_main_queue(), { () -> Void in
                self.presentViewController(alert, animated: true, completion: nil)
             })
@@ -123,9 +119,7 @@ class SetupCharacterController : UIViewController, UIScrollViewDelegate {
     private func SaveGlyph(mapping:String) {
         let spacingBounds = getSpacingBounds()
         let atlas = (UIApplication.sharedApplication().delegate as! AppDelegate).currentAtlas
-        
         atlas?.AddGlyph(mapping, image: imageView!.image!, spacingCoords: spacingBounds)
-        
         navigationController?.popViewControllerAnimated(true)
         if atlas != nil {
             MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventMappedCharacter, parameters:

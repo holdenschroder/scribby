@@ -31,6 +31,11 @@ class LibraryItemController:UIViewController, UIImagePickerControllerDelegate, U
         captureView = storyboard?.instantiateViewControllerWithIdentifier("CaptureView") as? CaptureWordSelectController
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventScreenLoadedLibraryItem)
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBarHidden = false
@@ -118,6 +123,7 @@ class LibraryItemController:UIViewController, UIImagePickerControllerDelegate, U
         
         picker.dismissViewControllerAnimated(true, completion: nil)
         showCaptureView(img)
+        MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventScreenLoadedLibraryPhotoTaken)
     }
     
     

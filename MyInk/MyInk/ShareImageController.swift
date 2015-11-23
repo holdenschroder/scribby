@@ -89,14 +89,18 @@ class ShareImageController: UIViewController, UIAlertViewDelegate {
             _documentController = UIDocumentInteractionController(URL: filePathURL)
             _documentController.UTI = "com.instagram.exclusivegram"
             if(_documentController.presentOpenInMenuFromBarButtonItem(sender, animated: true) == false) {
-                //Instagram is not installed, probably. Apparently Slack and Messenger can try and fail to share this filetype as well.
                 let alert = UIAlertView(title: "Instagram Not Installed", message: "The Instagram App must be installed to share with Instagram.", delegate: self, cancelButtonTitle: "Okay")
                 alert.show()
+            }
+            else {
+                MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventShareMessage, parameters: [SharedMyInkValues.kEventShareMessageParameterActivity:"button.instagram"])
             }
         }
         else
         {
             print("\(filePathURL) Instagram Image FAILED to Save.")
+            let error = NSError?()
+            Flurry.logError(SharedMyInkValues.kEventShareMessage, message: "Error while saving Instagram photo", error: error)
         }
     }
     

@@ -80,8 +80,8 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
             
             let message = textView?.text
             if(message != nil && (message!).characters.count > 0 && _fontMessageRenderer != nil) {
-                let calculatedLineHeight = CGFloat(_pointSizeOptions[_selectedPointSize]) * SharedMyInkValues.FontPointSizeToPixelRatio
                 
+                let calculatedLineHeight = CGFloat(_pointSizeOptions[_selectedPointSize]) * SharedMyInkValues.FontPointSizeToPixelRatio
                 let imageMessage = _fontMessageRenderer!.renderMessage(message!, imageSize: CGSize(width: 1024, height: 4096), lineHeight:calculatedLineHeight, backgroundColor: UIColor.whiteColor())
                 if imageMessage != nil {
                     shareImageController.loadImage(imageMessage!)
@@ -146,7 +146,7 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
             textView!.scrollRangeToVisible(textView!.selectedRange)
             
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(0.1 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) {
-                self.generateButton?.frame.origin.y -= kbRect.height
+                //self.generateButton?.frame.origin.y -= kbRect.height
             }
         }
     }

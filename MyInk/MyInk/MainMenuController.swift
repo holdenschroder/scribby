@@ -59,7 +59,7 @@ class MainMenuController:UIViewController, UIImagePickerControllerDelegate, UINa
         //If the user can trigger this we can assume they are not in the initial tutorial and thus we should reset the word to give a consistent flow
         let tutorialState = (UIApplication.sharedApplication().delegate as! AppDelegate).tutorialState
         tutorialState?.wordIndex = 0
-        
+        MyInkAnalytics.StartTimedEvent(SharedMyInkValues.kEventTutorialFirstPhrase, parameters: ["Resuming":String(Int(tutorialState!.wordIndex) > 0)])
         let phraseScreen = storyboard?.instantiateViewControllerWithIdentifier("TutorialPhrase")
         if phraseScreen != nil {
             self.presentViewController(phraseScreen!, animated: true, completion: nil)

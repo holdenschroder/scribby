@@ -19,6 +19,7 @@ class CaptureTouchController:UIViewController {
         if isMovingToParentViewController() {
             drawCaptureView?.clear()
         }
+        MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventScreenLoadedCaptureTouch)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -43,7 +44,6 @@ class CaptureTouchController:UIViewController {
                 self.drawCaptureView?.clear()
             }))
             alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
-            //We need to wait a bit to present the alert because we can't present it before this view is represented
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC)), dispatch_get_main_queue(), { () -> Void in
                 self.presentViewController(alert, animated: true, completion: nil)
             })
@@ -51,7 +51,6 @@ class CaptureTouchController:UIViewController {
         else if currentAtlas?.glyphs.count >= currentAtlas?.glyphLimit {
             let alert = UIAlertController(title: "Atlas Full", message: "Sorry the font atlas can only hold \(currentAtlas!.glyphLimit) characters.", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil))
-            
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC)), dispatch_get_main_queue(), { () -> Void in
                 self.presentViewController(alert, animated: true, completion: nil)
             })

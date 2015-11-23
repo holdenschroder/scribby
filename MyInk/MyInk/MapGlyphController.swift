@@ -19,8 +19,6 @@ class MapGlyphController:UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventScreenLoadedCaptureMapGlyph)
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -35,7 +33,7 @@ class MapGlyphController:UIViewController, UITextFieldDelegate {
         textfield!.layer.masksToBounds = true
         
         saveBtn.enabled = false
-        
+        MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventScreenLoadedCaptureMapGlyph)
     }
     
     func setCallback(callback:InputCallback) {

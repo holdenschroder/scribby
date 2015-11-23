@@ -12,20 +12,30 @@ import UIKit
 
 class SharedMyInkValues {
     
-    
+    static let kEventScreenLoadedCapturePhotoTaken =        "SCREEN_CAPTURE_PHOTO-TAKEN"
     static let kEventScreenLoadedCaptureCharacterSelect =   "SCREEN_CAPTURE_CHARACTER-SELECT"
     static let kEventScreenLoadedCaptureWordSelect =        "SCREEN_CAPTURE_WORD-SELECT"
     static let kEventScreenLoadedCaptureMapGlyph =          "SCREEN_CAPTURE_MAP-GLYPH"
     static let kEventScreenLoadedCaptureSetupCharacter =    "SCREEN_CAPTURE_SETUP-CHARACTER"
+    static let kEventScreenLoadedCaptureTouch =             "SCREEN_CAPTURE_TOUCH"
     
     static let kEventScreenLoadedComposeMessage =           "SCREEN_COMPOSE"
-    static let kEventScreenLoadedLibrary =                  "SCREEN_LIBRARY"
+    static let kEventScreenLoadedLibraryList =              "SCREEN_LIBRARY_LIST"
+    static let kEventScreenLoadedLibraryItem =              "SCREEN_LIBRARY_ITEM"
+    static let kEventScreenLoadedLibraryPhotoTaken =        "SCREEN_LIBRARY_PHOTO-TAKEN"
+    static let kEventScreenLoadedKeyboardInstructions =     "SCREEN_KEYBOARD_INSTRUCTIONS"
+    static let kEventScreenLoadedKeyboardAllPages =         "SCREEN_KEYBOARD_INSTRUCTIONS-ALL-PAGES"
+
+    
     static let kEventScreenLoadedMainMenu =                 "SCREEN_MENU"
     static let kEventScreenLoadedShareImage =               "SCREEN_SHARE-IMAGE"
     
     static let kEventTutorialWordStarted =                  "TUTORIAL_WORD-STARTED"
     static let kEventTutorialWordFinished =                 "TUTORIAL_WORD-FINISHED"
     static let kEventTutorialFirstPhrase =                  "TUTORIAL_FIRST-PHRASE"
+    static let kEventTutorialSkipped =                      "TUTORIAL_SKIPPED"
+    static let kEventTutorialFinished =                     "TUTORIAL_FINISHED"
+
     
     static let kEventKeyboardAppeared =                     "KEYBOARD-APPEARED"
     static let kEventKeyboardDisappeared =                  "KEYBOARD-DISAPPEARED"
@@ -59,6 +69,5 @@ class SharedMyInkValues {
     }()
     
     static let AppGroup = "group.myinkapp"
-    
 
 }

@@ -23,7 +23,11 @@ class KeyboardInstallationInstructions:UIViewController {
         installBtn!.layer.borderWidth = 1.0
         installBtn!.layer.borderColor = UIColor.redColor().CGColor
         installBtn!.layer.masksToBounds = true
-
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventScreenLoadedKeyboardInstructions)
     }
     
     

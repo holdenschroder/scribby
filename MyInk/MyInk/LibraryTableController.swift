@@ -33,7 +33,7 @@ class LibraryCollectionController:UICollectionViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventScreenLoadedLibrary)
+        MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventScreenLoadedLibraryList)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

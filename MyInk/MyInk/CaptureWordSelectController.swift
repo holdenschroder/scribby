@@ -59,6 +59,12 @@ class CaptureWordSelectController: UIViewController, UIImagePickerControllerDele
         MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventScreenLoadedCaptureWordSelect)
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        let error = NSError?()
+        Flurry.logError(SharedMyInkValues.kEventScreenLoadedCaptureCharacterSelect, message: "Memory Warning", error: error)
+    }
+    
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(true)
         if self.isMovingFromParentViewController() {
@@ -149,6 +155,7 @@ class CaptureWordSelectController: UIViewController, UIImagePickerControllerDele
         imageView?.image = UIImage(CIImage: transformedImage)
         picker.dismissViewControllerAnimated(true, completion: nil)
         selectBtn?.enabled = true
+        MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventScreenLoadedCapturePhotoTaken)
     }
 
     func resizeImage(image:UIImage, newSize:CGSize) -> UIImage

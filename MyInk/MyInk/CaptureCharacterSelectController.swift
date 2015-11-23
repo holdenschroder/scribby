@@ -65,7 +65,8 @@ class CaptureCharacterSelectController:UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        let error = NSError?()
+        Flurry.logError(SharedMyInkValues.kEventScreenLoadedCaptureCharacterSelect, message: "Memory Warning", error: error)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

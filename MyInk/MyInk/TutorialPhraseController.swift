@@ -205,6 +205,7 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
         let postTutorialScreen = storyboard?.instantiateViewControllerWithIdentifier("PostTutorialScreen")
         if postTutorialScreen != nil && _messageRenderer != nil {
             if postTutorialScreen is TutorialPhaseOutroController {
+                MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventTutorialFinished)
                 let tutorialPhraseController = postTutorialScreen as! TutorialPhaseOutroController
                 let image = RenderMessage()
                 if image != nil {
@@ -223,13 +224,17 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
         }
         alert.addAction(cancelAction)
         let SkipAction = UIAlertAction(title: "Skip", style: .Default) { (action) in
+            MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventTutorialSkipped)
+            MyInkAnalytics.EndTimedEvent(SharedMyInkValues.kEventTutorialFirstPhrase, parameters: nil)
             let navigationRoot = self.storyboard?.instantiateViewControllerWithIdentifier("NavigationRoot")
             if navigationRoot != nil {
                 self.presentViewController(navigationRoot!, animated: true, completion: nil)
             }
         }
         alert.addAction(SkipAction)
-        self.presentViewController(alert, animated: true, completion: nil)
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC)), dispatch_get_main_queue(), { () -> Void in
+            self.presentViewController(alert, animated: true, completion: nil)
+        })
     }
 }
 

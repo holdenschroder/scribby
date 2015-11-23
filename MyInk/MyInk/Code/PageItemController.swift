@@ -46,9 +46,15 @@ class PageItemController: UIViewController {
         self.view.addSubview(xBtn)
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if(itemIndex == 8) {
+            MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventScreenLoadedKeyboardAllPages)
+        }
+    }
+    
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        
         self.navigationController?.navigationBarHidden = false
     }
     
