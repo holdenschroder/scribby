@@ -259,6 +259,73 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		530F33FF1C03C3E900B16F88 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				584336071BC3264200CB25F5 /* TapToContinueController.swift */,
+				582A4E8F1BB346AE00D7543B /* TutorialPhraseController.swift */,
+				58F64A901BC356FC00D00BC4 /* TutorialPhraseOutroController.swift */,
+				5859CDE61BC221210066A2BD /* PromptForRotationController.swift */,
+			);
+			name = Onboarding;
+			sourceTree = "<group>";
+		};
+		530F34001C03C3F500B16F88 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				58A696461BB0DEFE00B068AA /* UINavigationControllerOrientation.swift */,
+				58CE61F11B7ACF6400730D32 /* MainMenuController.swift */,
+			);
+			name = Menu;
+			sourceTree = "<group>";
+		};
+		530F34011C03C41300B16F88 /* Compose + Share */ = {
+			isa = PBXGroup;
+			children = (
+				58203A761B60132A00CFA42C /* ComposeMessageController.swift */,
+				580A6B331B606F9F006AEF44 /* ShareImageController.swift */,
+			);
+			name = "Compose + Share";
+			sourceTree = "<group>";
+		};
+		530F34021C03C4BB00B16F88 /* Capture Camera */ = {
+			isa = PBXGroup;
+			children = (
+				58DF90741B4F1C9600E36BB1 /* CaptureWordSelectController.swift */,
+				582D3FAA1B50433300D08255 /* CaptureCharacterSelectController.swift */,
+				582D3FAB1B50433300D08255 /* SetupCharacterController.swift */,
+			);
+			name = "Capture Camera";
+			sourceTree = "<group>";
+		};
+		530F34031C03C4E500B16F88 /* Capture Touch */ = {
+			isa = PBXGroup;
+			children = (
+				58B056CF1BAA16C400FA4A26 /* CaptureTouchController.swift */,
+				5802FE9F1B5476200013BCEA /* MapGlyphController.swift */,
+			);
+			name = "Capture Touch";
+			sourceTree = "<group>";
+		};
+		530F34041C03C50900B16F88 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				584E31BC1B56F95D002E6703 /* LibraryTableController.swift */,
+				53A2CDD01BFAB21800569105 /* LibraryItemController.swift */,
+			);
+			name = Library;
+			sourceTree = "<group>";
+		};
+		530F34051C03C52400B16F88 /* Instructions */ = {
+			isa = PBXGroup;
+			children = (
+				582054271B82D235002C95BE /* KeyboardInstallInstructions.swift */,
+				53D757921BFE6C9500C39E7C /* KeyboardInstallPageController.swift */,
+				53D757941BFE6DE700C39E7C /* PageItemController.swift */,
+			);
+			name = Instructions;
+			sourceTree = "<group>";
+		};
 		535C81D31BFA68D800030D25 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -283,6 +350,7 @@
 				535C821C1BFA6E0600030D25 /* Controllers */,
 				535C821E1BFA6E2600030D25 /* Views */,
 				535C821F1BFA6E3500030D25 /* Helpers+Misc */,
+				58FD80F21B804D2E003D58D1 /* Analytics */,
 				535C821B1BFA6DDD00030D25 /* libs */,
 			);
 			name = Code;
@@ -303,9 +371,6 @@
 			isa = PBXGroup;
 			children = (
 				585D1FB81BF54D5A0093CA8A /* libsqlite3.tbd */,
-				585D1FC21BF58B650093CA8A /* ParseWrapper.swift */,
-				585D1FBD1BF56FD20093CA8A /* MyInkAnalytics.swift */,
-				58FD80F21B804D2E003D58D1 /* Flurry */,
 				582D3FAE1B50433300D08255 /* UIImageView-GeometryConversion */,
 			);
 			name = libs;
@@ -314,24 +379,13 @@
 		535C821C1BFA6E0600030D25 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				58A696461BB0DEFE00B068AA /* UINavigationControllerOrientation.swift */,
-				582A4E8F1BB346AE00D7543B /* TutorialPhraseController.swift */,
-				58F64A901BC356FC00D00BC4 /* TutorialPhraseOutroController.swift */,
-				58CE61F11B7ACF6400730D32 /* MainMenuController.swift */,
-				58B056CF1BAA16C400FA4A26 /* CaptureTouchController.swift */,
-				582D3FAA1B50433300D08255 /* CaptureCharacterSelectController.swift */,
-				58DF90741B4F1C9600E36BB1 /* CaptureWordSelectController.swift */,
-				58203A761B60132A00CFA42C /* ComposeMessageController.swift */,
-				584E31BC1B56F95D002E6703 /* LibraryTableController.swift */,
-				53A2CDD01BFAB21800569105 /* LibraryItemController.swift */,
-				5802FE9F1B5476200013BCEA /* MapGlyphController.swift */,
-				5859CDE61BC221210066A2BD /* PromptForRotationController.swift */,
-				582D3FAB1B50433300D08255 /* SetupCharacterController.swift */,
-				580A6B331B606F9F006AEF44 /* ShareImageController.swift */,
-				584336071BC3264200CB25F5 /* TapToContinueController.swift */,
-				582054271B82D235002C95BE /* KeyboardInstallInstructions.swift */,
-				53D757921BFE6C9500C39E7C /* KeyboardInstallPageController.swift */,
-				53D757941BFE6DE700C39E7C /* PageItemController.swift */,
+				530F33FF1C03C3E900B16F88 /* Onboarding */,
+				530F34001C03C3F500B16F88 /* Menu */,
+				530F34011C03C41300B16F88 /* Compose + Share */,
+				530F34021C03C4BB00B16F88 /* Capture Camera */,
+				530F34031C03C4E500B16F88 /* Capture Touch */,
+				530F34041C03C50900B16F88 /* Library */,
+				530F34051C03C52400B16F88 /* Instructions */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -499,14 +553,16 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
-		58FD80F21B804D2E003D58D1 /* Flurry */ = {
+		58FD80F21B804D2E003D58D1 /* Analytics */ = {
 			isa = PBXGroup;
 			children = (
+				585D1FC21BF58B650093CA8A /* ParseWrapper.swift */,
+				585D1FBD1BF56FD20093CA8A /* MyInkAnalytics.swift */,
 				585D1FC01BF58A760093CA8A /* FlurryWrapper.swift */,
 				584C902E1BC7523700317BA8 /* libFlurry_7.2.1.a */,
 				58FD80F51B804DD5003D58D1 /* Flurry.h */,
 			);
-			name = Flurry;
+			name = Analytics;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
