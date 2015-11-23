@@ -50,9 +50,11 @@ class LibraryCollectionController:UICollectionViewController {
         print(indexPath.row)
         _mAtlasGlyphToPass = _atlasGlyphs![indexPath.row]
         self.performSegueWithIdentifier("captureSingleItemFromLibrary", sender: self)
-        
     }
     
+    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
+    }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return _atlasGlyphs!.count
@@ -60,7 +62,6 @@ class LibraryCollectionController:UICollectionViewController {
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("LibraryCell", forIndexPath: indexPath) as! LibraryCollectionCell
-        
         cell.populate(_atlasGlyphs![indexPath.item])
         return cell
     }

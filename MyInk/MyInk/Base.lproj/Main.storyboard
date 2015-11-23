@@ -430,15 +430,15 @@
                                     <constraint firstAttribute="height" constant="44" id="5zd-mH-PL2"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem image="icon_instagram" id="iGl-Lt-YCy" userLabel="Instagram Item">
-                                        <color key="tintColor" red="0.92549019610000005" green="0.0" blue="0.44705882349999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    <barButtonItem image="Instagram_Glyph" width="25" id="iGl-Lt-YCy" userLabel="Instagram Item">
+                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="ShareToInstagram:" destination="Cqx-HG-Dfg" id="zvE-e7-bVX"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem width="20" style="plain" systemItem="fixedSpace" id="nvn-w7-2g3"/>
                                     <barButtonItem image="icon_twitter" width="25" id="SpW-HW-2vH" userLabel="Twitter Item">
-                                        <color key="tintColor" red="0.92549019610000005" green="0.0" blue="0.44705882349999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="ShareToTwitter:" destination="Cqx-HG-Dfg" id="upc-uu-3TP"/>
                                         </connections>
@@ -1348,13 +1348,13 @@
         <image name="68E5C15E-9276-4EFC-B50F-515163A33EE9" width="32" height="32"/>
         <image name="ClearButton" width="42" height="42"/>
         <image name="Crosshair" width="32" height="32"/>
+        <image name="Instagram_Glyph" width="40" height="40"/>
         <image name="LineheightReference" width="256" height="512"/>
         <image name="LineheightReference_medium" width="256" height="384"/>
         <image name="LineheightReference_squared" width="256" height="256"/>
         <image name="button_ink_green" width="114" height="114"/>
         <image name="icon_camera_green" width="114" height="114"/>
         <image name="icon_compose_green" width="114" height="114"/>
-        <image name="icon_instagram" width="40" height="40"/>
         <image name="icon_keyboard_green" width="114" height="114"/>
         <image name="icon_library_green" width="114" height="114"/>
         <image name="icon_touch_green" width="114" height="114"/>
