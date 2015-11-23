@@ -431,12 +431,14 @@
                                 </constraints>
                                 <items>
                                     <barButtonItem image="icon_instagram" id="iGl-Lt-YCy" userLabel="Instagram Item">
+                                        <color key="tintColor" red="0.92549019610000005" green="0.0" blue="0.44705882349999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="ShareToInstagram:" destination="Cqx-HG-Dfg" id="zvE-e7-bVX"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem width="20" style="plain" systemItem="fixedSpace" id="nvn-w7-2g3"/>
                                     <barButtonItem image="icon_twitter" width="25" id="SpW-HW-2vH" userLabel="Twitter Item">
+                                        <color key="tintColor" red="0.92549019610000005" green="0.0" blue="0.44705882349999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="ShareToTwitter:" destination="Cqx-HG-Dfg" id="upc-uu-3TP"/>
                                         </connections>

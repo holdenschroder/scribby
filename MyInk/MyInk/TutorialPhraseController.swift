@@ -217,10 +217,19 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
     }
     
     @IBAction func HandleSkipBtn(sender:AnyObject) {
-        let navigationRoot = storyboard?.instantiateViewControllerWithIdentifier("NavigationRoot")
-        if navigationRoot != nil {
-            self.presentViewController(navigationRoot!, animated: true, completion: nil)
+        let alert = UIAlertController(title: "Skip Tutorial?", message: "Are you sure that you want to skip? Your font will be reset to the default.", preferredStyle: .Alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
+            print("Skip Cancelled")
         }
+        alert.addAction(cancelAction)
+        let SkipAction = UIAlertAction(title: "Skip", style: .Default) { (action) in
+            let navigationRoot = self.storyboard?.instantiateViewControllerWithIdentifier("NavigationRoot")
+            if navigationRoot != nil {
+                self.presentViewController(navigationRoot!, animated: true, completion: nil)
+            }
+        }
+        alert.addAction(SkipAction)
+        self.presentViewController(alert, animated: true, completion: nil)
     }
 }
 
