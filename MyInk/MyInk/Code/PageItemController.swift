@@ -30,6 +30,8 @@ class PageItemController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.navigationController?.navigationBarHidden = true
+        
         let xBtn = UIButton()
         xBtn.setTitle("x", forState: .Normal)
         xBtn.setTitleColor(UIColor.whiteColor(), forState: .Normal)
@@ -42,6 +44,12 @@ class PageItemController: UIViewController {
         xBtn.addTarget(self, action: "pressed", forControlEvents: .TouchUpInside)
         
         self.view.addSubview(xBtn)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.navigationController?.navigationBarHidden = false
     }
     
     // MARK: - Actions
