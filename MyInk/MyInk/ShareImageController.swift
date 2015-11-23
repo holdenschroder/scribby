@@ -10,6 +10,9 @@ import UIKit
 import Social
 
 class ShareImageController: UIViewController, UIAlertViewDelegate {
+    
+    @IBOutlet weak var instagramBtn: UIBarButtonItem!
+    @IBOutlet weak var twitterBtn: UIBarButtonItem!
     @IBOutlet var imageView:UIImageView?
     private var _image:UIImage?
     private var _documentController:UIDocumentInteractionController!
@@ -19,6 +22,12 @@ class ShareImageController: UIViewController, UIAlertViewDelegate {
         self.navigationController?.navigationBarHidden = false
 
         imageView?.image = _image
+        
+        //let igImg : UIImage? = UIImage(named:"icon_instagram.png")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        instagramBtn.setBackButtonBackgroundImage(UIImage(named:"icon_instagram.png")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), forState: .Normal, barMetrics: .Default)
+        
+        //let twImg : UIImage? = UIImage(named:"icon_twitter.png")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        twitterBtn.setBackButtonBackgroundImage(UIImage(named:"icon_twitter.png")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), forState: .Normal, barMetrics: .Default)
         
         MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventScreenLoadedShareImage)
     }
