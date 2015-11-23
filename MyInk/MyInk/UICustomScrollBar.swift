@@ -103,10 +103,11 @@ class UICustomScrollBar: UIView, UIScrollViewDelegate {
         //If we don't find an index we need to either focus on the first or last item
         if indexPath == nil {
             if centerPoint.x < 0 {
-                indexPath = collectionView.indexPathsForVisibleItems().first
+                indexPath = NSIndexPath(forItem: 0, inSection: 0)
             }
             else {
-                indexPath = collectionView.indexPathsForVisibleItems().last
+                let lastSection = collectionView.numberOfSections() - 1
+                indexPath = NSIndexPath(forItem: collectionView.numberOfItemsInSection(lastSection) - 1, inSection: lastSection)
             }
         }
         

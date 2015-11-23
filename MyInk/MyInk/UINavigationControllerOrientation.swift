@@ -35,7 +35,7 @@ class UINavigationControllerOrientation: UINavigationController, UINavigationCon
         }
         else
         {
-            return UIInterfaceOrientationMask.Portrait
+            return UIInterfaceOrientationMask.All
         }
     }
     

@@ -24,8 +24,8 @@ class UIDrawView: UIView {
     let brushWidthMin: CGFloat = 5.0
     let brushWidthMax: CGFloat = 20.0
     private var lastBrushWidth: CGFloat = 0.0
-    private var mainImageView:UIImageView!
-    private var tempImageView:UIImageView!
+    internal var mainImageView:UIImageView!
+    internal var tempImageView:UIImageView!
     
     enum DrawEventType {
         case Began
