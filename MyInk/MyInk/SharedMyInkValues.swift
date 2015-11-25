@@ -64,10 +64,15 @@ class SharedMyInkValues {
     }()
     
     static let MyInkPinkColor = UIColor(red: 0.93, green: 0, blue: 0.45, alpha: 1.0)
+    static let MyInkDarkColor = UIColor(red: 208/255, green: 20/255, blue: 68/255, alpha: 1.0)
+    static let MyInkLightColor = UIColor(red: 205/255, green: 23/255, blue: 56/255, alpha: 1.0)
+    
     static var MyInkWatermark:UIImage? = {
         return UIImage(named: "MyInk_Watermark")
     }()
     
     static let AppGroup = "group.myinkapp"
+    
+    static let kDefaultsUserHasBoarded                      = "kDefaultsUserHasBoarded"
 
 }

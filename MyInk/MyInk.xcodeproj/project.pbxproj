@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		533CB3DA1C065F4000EA7438 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 533CB3D91C065F4000EA7438 /* Onboarding.storyboard */; };
+		533CB3DC1C06628700EA7438 /* SplashController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533CB3DB1C06628700EA7438 /* SplashController.swift */; };
 		535C82251BFA9C0000030D25 /* libstdc++.6.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 535C82241BFA9C0000030D25 /* libstdc++.6.tbd */; };
 		53A2CDD11BFAB21800569105 /* LibraryItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CDD01BFAB21800569105 /* LibraryItemController.swift */; };
 		53D757931BFE6C9500C39E7C /* KeyboardInstallPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D757921BFE6C9500C39E7C /* KeyboardInstallPageController.swift */; };
@@ -132,6 +134,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		533CB3D91C065F4000EA7438 /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
+		533CB3DB1C06628700EA7438 /* SplashController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashController.swift; sourceTree = "<group>"; };
 		535C82221BFA9B6900030D25 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseCrashReporting.framework; path = MyInk/ParseCrashReporting.framework; sourceTree = "<group>"; };
 		535C82241BFA9C0000030D25 /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
 		53A2CDD01BFAB21800569105 /* LibraryItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryItemController.swift; sourceTree = "<group>"; };
@@ -262,6 +266,7 @@
 		530F33FF1C03C3E900B16F88 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				533CB3DB1C06628700EA7438 /* SplashController.swift */,
 				584336071BC3264200CB25F5 /* TapToContinueController.swift */,
 				582A4E8F1BB346AE00D7543B /* TutorialPhraseController.swift */,
 				58F64A901BC356FC00D00BC4 /* TutorialPhraseOutroController.swift */,
@@ -359,6 +364,7 @@
 		535C821A1BFA6DBF00030D25 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				533CB3D91C065F4000EA7438 /* Onboarding.storyboard */,
 				58DF90761B4F1C9600E36BB1 /* Main.storyboard */,
 				58DF907B1B4F1C9600E36BB1 /* LaunchScreen.xib */,
 				58DF90791B4F1C9600E36BB1 /* Images.xcassets */,
@@ -413,6 +419,7 @@
 		535C821F1BFA6E3500030D25 /* Helpers+Misc */ = {
 			isa = PBXGroup;
 			children = (
+				58FBA5281B853FC4009CF809 /* SharedMyInkValues.swift */,
 				5870238C1BFD1BCB00D9779F /* CGFloatExtensions.swift */,
 				582D3FA41B50433300D08255 /* CGPointExtensions.swift */,
 				587023901BFD222800D9779F /* CGRectExtensions.swift */,
@@ -420,7 +427,6 @@
 				583EB9E71B72DCC200357957 /* CoreDataHelper.swift */,
 				580DFBB91B59A0A500A3A223 /* FontMessageRenderer.swift */,
 				582D3FA91B50433300D08255 /* ImageCropUtility.swift */,
-				58FBA5281B853FC4009CF809 /* SharedMyInkValues.swift */,
 				58765AE31BAA46C70022AF80 /* SwiftMath.swift */,
 				582D3FAD1B50433300D08255 /* UIImageExtensions.swift */,
 			);
@@ -704,6 +710,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				533CB3DA1C065F4000EA7438 /* Onboarding.storyboard in Resources */,
 				585277921B7A679200C1B90B /* Embedded_data.sqlite-wal in Resources */,
 				58DF90781B4F1C9600E36BB1 /* Main.storyboard in Resources */,
 				58DF907D1B4F1C9600E36BB1 /* LaunchScreen.xib in Resources */,
@@ -814,6 +821,7 @@
 				582D3FBD1B50433300D08255 /* UIDrawSelectionView.swift in Sources */,
 				58B056D01BAA16C400FA4A26 /* CaptureTouchController.swift in Sources */,
 				582D3FBC1B50433300D08255 /* SetupCharacterController.swift in Sources */,
+				533CB3DC1C06628700EA7438 /* SplashController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
