@@ -44,7 +44,7 @@ class ExampleController: UIViewController, UIAlertViewDelegate {
         createBtn.layer.masksToBounds = true
         
         xBtn.layer.cornerRadius = 3.0
-        xBtn.layer.borderWidth = 2.0
+        xBtn.layer.borderWidth = 1.0
         xBtn.layer.borderColor = UIColor.whiteColor().CGColor
         xBtn.layer.masksToBounds = true
         
@@ -85,7 +85,7 @@ class ExampleController: UIViewController, UIAlertViewDelegate {
     }
     
     @IBAction func shareAction(sender: AnyObject) {
-        let alert = UIAlertController(title: "Share", message: "Why don't you share it to yourself? \n(then you can see what it looks like!)", preferredStyle: .Alert)
+        let alert = UIAlertController(title: "Share", message: "Why don't you send it to yourself? \n(then you can see what it looks like!)", preferredStyle: .Alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
             print("Share Cancelled")
         }

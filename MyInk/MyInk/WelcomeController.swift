@@ -39,7 +39,7 @@ class WelcomeController: UIViewController, UITextFieldDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.destinationViewController is ExampleController {
             let vc = segue.destinationViewController as! ExampleController
-            let message = "Cop This Shit" //mTextField?.text
+            let message = "You're So Pretty" //mTextField?.text
             if(/*message != nil && */(message).characters.count > 0 && _fontMessageRenderer != nil) {
                 let calculatedLineHeight = 18.0 * SharedMyInkValues.FontPointSizeToPixelRatio
                 let imageMessage = _fontMessageRenderer!.renderMessage(message, imageSize: CGSize(width: 1024, height: 4096), lineHeight:calculatedLineHeight, backgroundColor: UIColor.whiteColor())

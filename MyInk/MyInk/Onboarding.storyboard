@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_menu_bg" translatesAutoresizingMaskIntoConstraints="NO" id="Df7-Y0-Mj0" userLabel="background">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="-20" y="0.0" width="640" height="640"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Df7-Y0-Mj0" secondAttribute="height" multiplier="1:1" id="YTs-Ti-01l"/>
                                 </constraints>
@@ -34,14 +34,25 @@
                         </subviews>
                         <color key="backgroundColor" red="0.81568627449999997" green="0.078431372550000003" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="Df7-Y0-Mj0" firstAttribute="centerX" secondItem="Qyx-N6-Ld7" secondAttribute="centerX" id="2wI-Ba-y3k"/>
                             <constraint firstItem="Qyx-N6-Ld7" firstAttribute="centerX" secondItem="ODa-eb-WQq" secondAttribute="centerX" id="7zp-wD-cxr"/>
                             <constraint firstItem="Df7-Y0-Mj0" firstAttribute="centerY" secondItem="ODa-eb-WQq" secondAttribute="centerY" id="8U4-GM-gtP"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Qyx-N6-Ld7" secondAttribute="trailing" constant="50" id="ICO-Su-kah"/>
                             <constraint firstItem="Df7-Y0-Mj0" firstAttribute="centerX" secondItem="ODa-eb-WQq" secondAttribute="centerX" id="MmF-fi-lHV"/>
                             <constraint firstItem="Qyx-N6-Ld7" firstAttribute="leading" secondItem="ODa-eb-WQq" secondAttribute="leadingMargin" constant="50" id="dtr-HH-ko8"/>
                             <constraint firstItem="Qyx-N6-Ld7" firstAttribute="centerY" secondItem="ODa-eb-WQq" secondAttribute="centerY" id="kHk-Co-KDZ"/>
+                            <constraint firstItem="Df7-Y0-Mj0" firstAttribute="centerX" secondItem="ODa-eb-WQq" secondAttribute="centerX" id="rJU-Gt-0Gd"/>
+                            <constraint firstItem="Df7-Y0-Mj0" firstAttribute="bottom" secondItem="aQb-49-JBc" secondAttribute="top" id="rez-2I-Cd5"/>
                             <constraint firstItem="Df7-Y0-Mj0" firstAttribute="top" secondItem="ODa-eb-WQq" secondAttribute="topMargin" id="uiX-lD-yzS"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="2wI-Ba-y3k"/>
+                                <exclude reference="8U4-GM-gtP"/>
+                                <exclude reference="MmF-fi-lHV"/>
+                                <exclude reference="rez-2I-Cd5"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="logo" destination="Qyx-N6-Ld7" id="vi8-Cf-TmM"/>
@@ -91,7 +102,7 @@ do cool things
 with handwritten type
 
 Try it out:</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="18"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
@@ -134,6 +145,7 @@ Try it out:</string>
                             <constraint firstItem="isJ-3U-irS" firstAttribute="top" secondItem="CLY-jL-YGR" secondAttribute="bottom" constant="352" id="LnV-nO-lcJ"/>
                             <constraint firstItem="Z7Y-dS-Isd" firstAttribute="width" secondItem="Z7Y-dS-Isd" secondAttribute="height" multiplier="1:1" id="VnB-ve-qkG"/>
                             <constraint firstItem="CLY-jL-YGR" firstAttribute="trailing" secondItem="wjC-T9-PLN" secondAttribute="trailing" id="XVT-PT-FZh"/>
+                            <constraint firstItem="Z7Y-dS-Isd" firstAttribute="centerX" secondItem="OVt-1W-xZ2" secondAttribute="centerX" id="jxm-L6-br4"/>
                             <constraint firstItem="RdP-fL-r71" firstAttribute="centerX" secondItem="OVt-1W-xZ2" secondAttribute="centerX" id="mCt-3G-FS2"/>
                             <constraint firstAttribute="trailingMargin" secondItem="wjC-T9-PLN" secondAttribute="trailing" constant="130" id="pkX-mA-gXP"/>
                             <constraint firstItem="Z7Y-dS-Isd" firstAttribute="top" secondItem="OVt-1W-xZ2" secondAttribute="top" id="tY1-QM-DFv"/>
@@ -146,6 +158,8 @@ Try it out:</string>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="7DG-qv-kAU"/>
+                                <exclude reference="VnB-ve-qkG"/>
+                                <exclude reference="02T-7S-k8h"/>
                                 <exclude reference="pkX-mA-gXP"/>
                                 <exclude reference="u1K-kb-lbF"/>
                                 <exclude reference="Cxr-A4-gKh"/>
@@ -176,7 +190,13 @@ Try it out:</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1JJ-9H-Uf5">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_menu_bg" translatesAutoresizingMaskIntoConstraints="NO" id="R4L-fO-VZZ" userLabel="background">
+                                <rect key="frame" x="-20" y="0.0" width="640" height="640"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="R4L-fO-VZZ" secondAttribute="height" multiplier="1:1" id="AW9-uj-gKl"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1JJ-9H-Uf5" userLabel="render">
                                 <rect key="frame" x="150" y="263" width="300" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="0SC-UQ-0Dg"/>
@@ -192,17 +212,9 @@ Try it out:</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Now do something with it:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lle-Qb-gqy">
-                                <rect key="frame" x="150" y="358" width="300" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="XSA-X5-af1"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZOi-Fc-BAJ">
                                 <rect key="frame" x="223" y="399" width="150" height="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
                                 <state key="normal" title="Type something else">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -215,6 +227,7 @@ Try it out:</string>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="sz3-Yb-Ct6"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
                                 <state key="normal" title="Send it to someone">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -224,6 +237,7 @@ Try it out:</string>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ENt-xJ-70P">
                                 <rect key="frame" x="223" y="475" width="150" height="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
                                 <state key="normal" title="Create your own font">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -232,8 +246,13 @@ Try it out:</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ozj-ND-kbC">
-                                <rect key="frame" x="20" y="28" width="30" height="34"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <rect key="frame" x="20" y="28" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ozj-ND-kbC" secondAttribute="height" multiplier="1:1" id="1aF-uG-Mhq"/>
+                                    <constraint firstAttribute="width" constant="30" id="WPP-Hp-Wi5"/>
+                                    <constraint firstAttribute="height" constant="30" id="YUz-9z-9f3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="18"/>
                                 <state key="normal" title=" X ">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -241,14 +260,26 @@ Try it out:</string>
                                     <action selector="closeAction:" destination="Uo0-Y4-CuX" eventType="touchUpInside" id="OH6-Yr-2g0"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Now do something with it:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lle-Qb-gqy">
+                                <rect key="frame" x="150" y="358" width="300" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="XSA-X5-af1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.81568627449999997" green="0.078431372550000003" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="1JJ-9H-Uf5" firstAttribute="centerY" secondItem="OSo-uY-cWx" secondAttribute="centerY" id="1WN-KW-HlD"/>
                             <constraint firstItem="lle-Qb-gqy" firstAttribute="centerX" secondItem="G79-Ji-qBJ" secondAttribute="centerX" id="3tX-Mg-ct0"/>
+                            <constraint firstItem="R4L-fO-VZZ" firstAttribute="bottom" secondItem="6RG-N7-lTe" secondAttribute="top" id="7OF-Pu-F2g"/>
                             <constraint firstItem="1JJ-9H-Uf5" firstAttribute="top" secondItem="G79-Ji-qBJ" secondAttribute="bottom" constant="19" id="9EB-i7-HeF"/>
+                            <constraint firstItem="R4L-fO-VZZ" firstAttribute="centerX" secondItem="OSo-uY-cWx" secondAttribute="centerX" id="CHA-dA-fII"/>
                             <constraint firstItem="ozj-ND-kbC" firstAttribute="top" secondItem="S11-lS-SSY" secondAttribute="bottom" constant="8" id="CsZ-wA-JJj"/>
                             <constraint firstItem="lle-Qb-gqy" firstAttribute="top" secondItem="1JJ-9H-Uf5" secondAttribute="bottom" constant="8" symbolic="YES" id="Dd9-XT-M3g"/>
+                            <constraint firstItem="R4L-fO-VZZ" firstAttribute="centerX" secondItem="G79-Ji-qBJ" secondAttribute="centerX" id="Ff6-QU-nKs"/>
                             <constraint firstItem="ENt-xJ-70P" firstAttribute="centerX" secondItem="OSo-uY-cWx" secondAttribute="centerX" constant="-2" id="I7m-mG-k0F"/>
                             <constraint firstItem="C85-mN-7on" firstAttribute="leading" secondItem="ENt-xJ-70P" secondAttribute="leading" id="JYq-B5-TY1"/>
                             <constraint firstItem="G79-Ji-qBJ" firstAttribute="top" secondItem="S11-lS-SSY" secondAttribute="bottom" constant="93" id="Slm-dF-dnA"/>
@@ -261,11 +292,14 @@ Try it out:</string>
                             <constraint firstItem="lle-Qb-gqy" firstAttribute="top" secondItem="1JJ-9H-Uf5" secondAttribute="bottom" constant="20" id="fWK-pZ-H64"/>
                             <constraint firstItem="C85-mN-7on" firstAttribute="leading" secondItem="ZOi-Fc-BAJ" secondAttribute="leading" id="k3M-94-nNc"/>
                             <constraint firstItem="lle-Qb-gqy" firstAttribute="trailing" secondItem="1JJ-9H-Uf5" secondAttribute="trailing" id="lfE-gW-Ofu"/>
+                            <constraint firstItem="R4L-fO-VZZ" firstAttribute="top" secondItem="OSo-uY-cWx" secondAttribute="topMargin" id="njG-H2-ZsM"/>
                             <constraint firstItem="ZOi-Fc-BAJ" firstAttribute="centerX" secondItem="OSo-uY-cWx" secondAttribute="centerX" constant="-2" id="rLX-G6-UP9"/>
                             <constraint firstItem="ZOi-Fc-BAJ" firstAttribute="top" secondItem="lle-Qb-gqy" secondAttribute="bottom" constant="11" id="zPG-fd-trb"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="7OF-Pu-F2g"/>
+                                <exclude reference="Ff6-QU-nKs"/>
                                 <exclude reference="Slm-dF-dnA"/>
                                 <exclude reference="Dd9-XT-M3g"/>
                             </mask>
