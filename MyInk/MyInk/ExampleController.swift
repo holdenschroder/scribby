@@ -9,14 +9,16 @@
 import Foundation
 import UIKit
 import QuartzCore
+import MessageUI    
 
 
-class ExampleController: UIViewController, UIAlertViewDelegate {
+class ExampleController: UIViewController, UIAlertViewDelegate, MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate {
     
     private var _image:UIImage?
+    private var messageVC:MFMessageComposeViewController!
+    private var mailVC:MFMailComposeViewController!
+    
     @IBOutlet var imageView:UIImageView?
-    
-    
     @IBOutlet weak var redoBtn: UIButton!
     @IBOutlet weak var shareBtn: UIButton!
     @IBOutlet weak var createBtn: UIButton!
@@ -25,6 +27,9 @@ class ExampleController: UIViewController, UIAlertViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        messageVC = MFMessageComposeViewController()
+        mailVC = MFMailComposeViewController()
         
         imageView?.image = _image
         
@@ -59,40 +64,67 @@ class ExampleController: UIViewController, UIAlertViewDelegate {
     
     // MARK: - Misc Methods
     
-    func shareRequested() {
-        /*
-        if _image != nil {
-            let activityView = UIActivityViewController(activityItems: [_image!], applicationActivities: nil)
-            activityView.completionWithItemsHandler = HandleActivityViewCompleted
-            presentViewController(activityView, animated: true, completion: nil)
+    func shareEmail() {
+        if(MFMailComposeViewController.canSendMail()) {
+            mailVC.mailComposeDelegate = self;
+            mailVC .setSubject("MyInk Test")
+            mailVC.setMessageBody("You're So Pretty", isHTML: true)
+            let data: NSData = UIImagePNGRepresentation(_image!)!
+            mailVC.addAttachmentData(data, mimeType: "image/jpg", fileName: "image.jpg")
+            self.presentViewController(mailVC, animated: true, completion: nil)
         }
-        */
-        let messageComposer = MessageComposer()
-        // Make sure the device can send text messages
-        if (messageComposer.canSendText()) {
-            // Obtain a configured MFMessageComposeViewController
-            let messageComposeVC = messageComposer.configuredMessageComposeViewController()
-            
-            // Present the configured MFMessageComposeViewController instance
-            // Note that the dismissal of the VC will be handled by the messageComposer instance,
-            // since it implements the appropriate delegate call-back
-            presentViewController(messageComposeVC, animated: true, completion: nil)
-        } else {
-            // Let the user know if his/her device isn't able to send text messages
-            let errorAlert = UIAlertView(title: "Cannot Send Text Message", message: "Your device is not able to send text messages.", delegate: self, cancelButtonTitle: "OK")
+        else {
+            let errorAlert = UIAlertView(title: "Cannot Send Email", message: "Your device is not configured to send email.", delegate: self, cancelButtonTitle: "OK")
             errorAlert.show()
         }
     }
-
-    func HandleActivityViewCompleted(activityType:String?, completed:Bool, items:[AnyObject]?, error:NSError?) {
-        if completed {
-            
+    
+    func shareMessage() {
+        messageVC.body = "You're So Pretty";
+        messageVC.addAttachmentData(UIImageJPEGRepresentation(_image!, 1)!, typeIdentifier: "image/jpg", filename: "image.jpg")
+        messageVC.recipients = ["1-604-649-3832"]
+        messageVC.messageComposeDelegate = self;
+        if(MFMessageComposeViewController.canSendText()) {
+            self.presentViewController(messageVC, animated: true, completion: nil)
+        }
+        else {
+            let errorAlert = UIAlertView(title: "Cannot Send Text Message", message: "Your device is not able to send text messages.", delegate: self, cancelButtonTitle: "OK")
+            errorAlert.show()
         }
     }
 
     
     // MARK: - Delegate Methods
     
+    func messageComposeViewController(controller: MFMessageComposeViewController, didFinishWithResult result: MessageComposeResult) {
+        switch (result.rawValue) {
+        case MessageComposeResultCancelled.rawValue:
+            print("Message Cancelled")
+        case MessageComposeResultFailed.rawValue:
+            print("Message Failed")
+        case MessageComposeResultSent.rawValue:
+            print("Message Sent")
+        default:
+            break;
+        }
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func mailComposeController(controller:MFMailComposeViewController, didFinishWithResult result:MFMailComposeResult, error:NSError?) {
+        switch result.rawValue {
+        case MFMailComposeResultCancelled.rawValue:
+            print("Email Cancelled")
+        case MFMailComposeResultSaved.rawValue:
+            print("Email Saved")
+        case MFMailComposeResultSent.rawValue:
+            print("Email Sent")
+        case MFMailComposeResultFailed.rawValue:
+            print("Email Failed")
+        default:
+            break;
+        }
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
 
     
     // MARK: - Actions
@@ -107,17 +139,21 @@ class ExampleController: UIViewController, UIAlertViewDelegate {
     }
     
     @IBAction func shareAction(sender: AnyObject) {
-        let alert = UIAlertController(title: "Share", message: "Why don't you send it to yourself? \n(then you can see what it looks like!)", preferredStyle: .Alert)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
+        let options = UIAlertController(title: nil, message: "Choose Option: \nHint: Try sending it to yourself... \nThen you can see what it looks like!", preferredStyle: .ActionSheet)
+        let messageAction = UIAlertAction(title: "iMessage", style: .Default) { (action) in
+            self.shareMessage()
+        }
+        let mailAction = UIAlertAction(title: "Email", style: .Default) { (action) in
+            self.shareEmail()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Default) { (action) in
             print("Share Cancelled")
         }
-        alert.addAction(cancelAction)
-        let ShareAction = UIAlertAction(title: "Share", style: .Default) { (action) in
-            self.shareRequested()
-        }
-        alert.addAction(ShareAction)
+        options.addAction(messageAction)
+        options.addAction(mailAction)
+        options.addAction(cancelAction)
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC)), dispatch_get_main_queue(), { () -> Void in
-            self.presentViewController(alert, animated: true, completion: nil)
+            self.presentViewController(options, animated: true, completion: nil)
         })
     }
 
