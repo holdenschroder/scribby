@@ -226,10 +226,7 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
         let SkipAction = UIAlertAction(title: "Skip", style: .Default) { (action) in
             MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventTutorialSkipped)
             MyInkAnalytics.EndTimedEvent(SharedMyInkValues.kEventTutorialFirstPhrase, parameters: nil)
-            let navigationRoot = self.storyboard?.instantiateViewControllerWithIdentifier("NavigationRoot")
-            if navigationRoot != nil {
-                self.presentViewController(navigationRoot!, animated: true, completion: nil)
-            }
+            self.presentViewController(UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("NavigationRoot") as UIViewController, animated: true, completion: nil)
         }
         alert.addAction(SkipAction)
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC)), dispatch_get_main_queue(), { () -> Void in

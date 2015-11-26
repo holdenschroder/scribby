@@ -75,7 +75,6 @@ class ExampleController: UIViewController, UIAlertViewDelegate, MFMessageCompose
     func shareMessage() {
         messageVC.body = "You're So Pretty";
         messageVC.addAttachmentData(UIImageJPEGRepresentation(_image!, 1)!, typeIdentifier: "image/jpg", filename: "image.jpg")
-        messageVC.recipients = ["1-604-649-3832"]
         messageVC.messageComposeDelegate = self;
         if(MFMessageComposeViewController.canSendText()) {
             self.presentViewController(messageVC, animated: true, completion: nil)
@@ -156,11 +155,11 @@ class ExampleController: UIViewController, UIAlertViewDelegate, MFMessageCompose
     }
 
     @IBAction func createAction(sender: AnyObject) {
-        presentViewController(UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("TutorialPhrase") as UIViewController, animated: true, completion: nil)
+        presentViewController(UIStoryboard(name: "Tutorial", bundle: nil).instantiateViewControllerWithIdentifier("TutorialIntro") as UIViewController, animated: true, completion: nil)
     }
     
     @IBAction func closeAction(sender: AnyObject) {
-        presentViewController(UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("MainMenu") as UIViewController, animated: true, completion: nil)
+        presentViewController(UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("NavigationRoot") as UIViewController, animated: true, completion: nil)
     }
     
 }

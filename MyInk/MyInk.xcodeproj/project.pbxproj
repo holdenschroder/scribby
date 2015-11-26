@@ -15,6 +15,8 @@
 		53A2CDD11BFAB21800569105 /* LibraryItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CDD01BFAB21800569105 /* LibraryItemController.swift */; };
 		53D757931BFE6C9500C39E7C /* KeyboardInstallPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D757921BFE6C9500C39E7C /* KeyboardInstallPageController.swift */; };
 		53D757951BFE6DE700C39E7C /* PageItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D757941BFE6DE700C39E7C /* PageItemController.swift */; };
+		53DBD30A1C079B2D00E8EAB5 /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53DBD3091C079B2C00E8EAB5 /* Tutorial.storyboard */; };
+		53DBD30D1C07B3AC00E8EAB5 /* TutorialIntroController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DBD30C1C07B3AC00E8EAB5 /* TutorialIntroController.swift */; };
 		5802FEA01B5476200013BCEA /* MapGlyphController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5802FE9F1B5476200013BCEA /* MapGlyphController.swift */; };
 		5806CD7A1BFAA56B00B19716 /* UICustomScrollBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5806CD791BFAA56B00B19716 /* UICustomScrollBar.swift */; };
 		580A6B311B606BB4006AEF44 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 580A6B2F1B606BB4006AEF44 /* Fabric.framework */; };
@@ -144,6 +146,8 @@
 		53A2CDD01BFAB21800569105 /* LibraryItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryItemController.swift; sourceTree = "<group>"; };
 		53D757921BFE6C9500C39E7C /* KeyboardInstallPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardInstallPageController.swift; sourceTree = "<group>"; };
 		53D757941BFE6DE700C39E7C /* PageItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PageItemController.swift; path = Code/PageItemController.swift; sourceTree = "<group>"; };
+		53DBD3091C079B2C00E8EAB5 /* Tutorial.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tutorial.storyboard; sourceTree = "<group>"; };
+		53DBD30C1C07B3AC00E8EAB5 /* TutorialIntroController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialIntroController.swift; sourceTree = "<group>"; };
 		5802FE9F1B5476200013BCEA /* MapGlyphController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapGlyphController.swift; sourceTree = "<group>"; };
 		5806CD791BFAA56B00B19716 /* UICustomScrollBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICustomScrollBar.swift; sourceTree = "<group>"; };
 		580A6B2F1B606BB4006AEF44 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
@@ -272,10 +276,6 @@
 				533CB3DB1C06628700EA7438 /* SplashController.swift */,
 				533CB3DD1C066EB300EA7438 /* WelcomeController.swift */,
 				533CB3DF1C0688AD00EA7438 /* ExampleController.swift */,
-				584336071BC3264200CB25F5 /* TapToContinueController.swift */,
-				582A4E8F1BB346AE00D7543B /* TutorialPhraseController.swift */,
-				58F64A901BC356FC00D00BC4 /* TutorialPhraseOutroController.swift */,
-				5859CDE61BC221210066A2BD /* PromptForRotationController.swift */,
 			);
 			name = Onboarding;
 			sourceTree = "<group>";
@@ -368,9 +368,10 @@
 		535C821A1BFA6DBF00030D25 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				58DF907B1B4F1C9600E36BB1 /* LaunchScreen.xib */,
 				533CB3D91C065F4000EA7438 /* Onboarding.storyboard */,
 				58DF90761B4F1C9600E36BB1 /* Main.storyboard */,
-				58DF907B1B4F1C9600E36BB1 /* LaunchScreen.xib */,
+				53DBD3091C079B2C00E8EAB5 /* Tutorial.storyboard */,
 				58DF90791B4F1C9600E36BB1 /* Images.xcassets */,
 				582D3FC41B5043D000D08255 /* Testing.xcassets */,
 			);
@@ -390,6 +391,7 @@
 			isa = PBXGroup;
 			children = (
 				530F33FF1C03C3E900B16F88 /* Onboarding */,
+				53DBD30B1C07B23500E8EAB5 /* Tutorial */,
 				530F34001C03C3F500B16F88 /* Menu */,
 				530F34011C03C41300B16F88 /* Compose + Share */,
 				530F34021C03C4BB00B16F88 /* Capture Camera */,
@@ -435,6 +437,18 @@
 				582D3FAD1B50433300D08255 /* UIImageExtensions.swift */,
 			);
 			name = "Helpers+Misc";
+			sourceTree = "<group>";
+		};
+		53DBD30B1C07B23500E8EAB5 /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				53DBD30C1C07B3AC00E8EAB5 /* TutorialIntroController.swift */,
+				582A4E8F1BB346AE00D7543B /* TutorialPhraseController.swift */,
+				58F64A901BC356FC00D00BC4 /* TutorialPhraseOutroController.swift */,
+				584336071BC3264200CB25F5 /* TapToContinueController.swift */,
+				5859CDE61BC221210066A2BD /* PromptForRotationController.swift */,
+			);
+			name = Tutorial;
 			sourceTree = "<group>";
 		};
 		582D3FA61B50433300D08255 /* Filters */ = {
@@ -724,6 +738,7 @@
 				582D3FB91B50433300D08255 /* maskfilter.cikernel in Resources */,
 				582D3FC51B5043D000D08255 /* Testing.xcassets in Resources */,
 				5852778B1B797DD000C1B90B /* Embedded_data.sqlite in Resources */,
+				53DBD30A1C079B2D00E8EAB5 /* Tutorial.storyboard in Resources */,
 				582D3FB81B50433300D08255 /* isolationfilter.cikernel in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -825,6 +840,7 @@
 				587023911BFD222800D9779F /* CGRectExtensions.swift in Sources */,
 				58CE61F21B7ACF6400730D32 /* MainMenuController.swift in Sources */,
 				582D3FBD1B50433300D08255 /* UIDrawSelectionView.swift in Sources */,
+				53DBD30D1C07B3AC00E8EAB5 /* TutorialIntroController.swift in Sources */,
 				58B056D01BAA16C400FA4A26 /* CaptureTouchController.swift in Sources */,
 				582D3FBC1B50433300D08255 /* SetupCharacterController.swift in Sources */,
 				533CB3DC1C06628700EA7438 /* SplashController.swift in Sources */,

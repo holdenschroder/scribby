@@ -682,11 +682,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_menu_bg_one" translatesAutoresizingMaskIntoConstraints="NO" id="akZ-CN-mAZ" userLabel="Background Image">
-                                <rect key="frame" x="-20" y="-268" width="640" height="1136"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_menu_bg" translatesAutoresizingMaskIntoConstraints="NO" id="akZ-CN-mAZ" userLabel="Background Image">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="akZ-CN-mAZ" secondAttribute="height" multiplier="40:71" id="FAu-vT-BQg"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="FAu-vT-BQg"/>
+                                    </mask>
+                                </variation>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7YR-0G-R6T" userLabel="box">
                                 <rect key="frame" x="180" y="20" width="240" height="362"/>
@@ -809,12 +814,13 @@
                             </button>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="akZ-CN-mAZ" firstAttribute="top" secondItem="8Fo-bD-HhK" secondAttribute="top" id="0ME-t2-Mfl"/>
                             <constraint firstItem="ACZ-4x-c8l" firstAttribute="top" secondItem="zgq-fz-rxe" secondAttribute="bottom" constant="20" id="5Oy-oo-Jwk"/>
                             <constraint firstItem="ZQd-gU-a8y" firstAttribute="top" secondItem="QvV-gN-P5n" secondAttribute="bottom" constant="20" id="7HY-Ln-Dq8"/>
                             <constraint firstItem="j5k-KR-iRZ" firstAttribute="top" secondItem="9M8-B9-mKx" secondAttribute="bottom" constant="20" id="7dp-MB-hYK"/>
                             <constraint firstItem="j5k-KR-iRZ" firstAttribute="centerX" secondItem="8Fo-bD-HhK" secondAttribute="centerX" id="CfF-pK-Ev6"/>
                             <constraint firstItem="9M8-B9-mKx" firstAttribute="leading" secondItem="QvV-gN-P5n" secondAttribute="trailing" constant="20" id="FPs-Rd-vgt"/>
-                            <constraint firstItem="akZ-CN-mAZ" firstAttribute="centerY" secondItem="8Fo-bD-HhK" secondAttribute="centerY" id="GIc-lS-IUC"/>
+                            <constraint firstItem="akZ-CN-mAZ" firstAttribute="leading" secondItem="8Fo-bD-HhK" secondAttribute="leading" id="GAy-Ah-ZMR"/>
                             <constraint firstItem="ACZ-4x-c8l" firstAttribute="top" secondItem="zgq-fz-rxe" secondAttribute="bottom" constant="20" id="Lek-lu-Y6S"/>
                             <constraint firstItem="nV7-Kf-fvn" firstAttribute="top" secondItem="7YR-0G-R6T" secondAttribute="bottom" constant="8" id="Lnf-zh-8Sl"/>
                             <constraint firstItem="zgq-fz-rxe" firstAttribute="leading" secondItem="j5k-KR-iRZ" secondAttribute="trailing" constant="20" id="Nvy-vB-wm6"/>
@@ -824,8 +830,10 @@
                             <constraint firstItem="ACZ-4x-c8l" firstAttribute="top" secondItem="j5k-KR-iRZ" secondAttribute="bottom" constant="20" id="Vr1-km-SiO"/>
                             <constraint firstItem="zgq-fz-rxe" firstAttribute="top" secondItem="nV7-Kf-fvn" secondAttribute="bottom" constant="20" id="VvO-cX-9MU"/>
                             <constraint firstItem="nV7-Kf-fvn" firstAttribute="leading" secondItem="9M8-B9-mKx" secondAttribute="trailing" constant="20" id="Ykt-IE-2vo"/>
+                            <constraint firstItem="akZ-CN-mAZ" firstAttribute="bottom" secondItem="ACZ-4x-c8l" secondAttribute="top" id="YsV-RZ-mPq"/>
                             <constraint firstItem="9M8-B9-mKx" firstAttribute="centerX" secondItem="8Fo-bD-HhK" secondAttribute="centerX" id="b5s-ag-CXu"/>
                             <constraint firstItem="ACZ-4x-c8l" firstAttribute="top" secondItem="ZQd-gU-a8y" secondAttribute="bottom" constant="20" id="c0Y-Ld-NvP"/>
+                            <constraint firstItem="akZ-CN-mAZ" firstAttribute="centerX" secondItem="9M8-B9-mKx" secondAttribute="centerX" id="gbD-sA-Rgw"/>
                             <constraint firstItem="7YR-0G-R6T" firstAttribute="leading" secondItem="8Fo-bD-HhK" secondAttribute="leading" constant="180" id="kCv-mY-3x9"/>
                             <constraint firstItem="ZQd-gU-a8y" firstAttribute="top" secondItem="QvV-gN-P5n" secondAttribute="bottom" constant="20" id="mgy-Qf-UQe"/>
                             <constraint firstItem="nV7-Kf-fvn" firstAttribute="leading" secondItem="9M8-B9-mKx" secondAttribute="trailing" constant="20" id="tLJ-g5-LLt"/>
@@ -835,6 +843,7 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="Tza-xy-V3b"/>
                                 <exclude reference="kCv-mY-3x9"/>
                             </mask>
                         </variation>
@@ -1237,7 +1246,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="68E5C15E-9276-4EFC-B50F-515163A33EE9" translatesAutoresizingMaskIntoConstraints="NO" id="KBE-GC-hGx">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="my_ink_logo" translatesAutoresizingMaskIntoConstraints="NO" id="KBE-GC-hGx">
                                 <rect key="frame" x="20" y="28" width="560" height="150"/>
                             </imageView>
                         </subviews>
@@ -1267,7 +1276,7 @@
         <!--Navigation Controller Orientation-->
         <scene sceneID="9AF-4R-z7K">
             <objects>
-                <navigationController storyboardIdentifier="NavigationRoot" id="Yh6-1F-Gdw" customClass="UINavigationControllerOrientation" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavigationRoot" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Yh6-1F-Gdw" customClass="UINavigationControllerOrientation" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="53p-Wb-Zba">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1352,7 +1361,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="68E5C15E-9276-4EFC-B50F-515163A33EE9" width="32" height="32"/>
         <image name="ClearButton" width="42" height="42"/>
         <image name="Crosshair" width="32" height="32"/>
         <image name="Instagram_Glyph" width="40" height="40"/>
@@ -1373,7 +1381,7 @@
         <image name="icon_tutorial_default" width="114" height="114"/>
         <image name="icon_tutorial_tapped" width="114" height="114"/>
         <image name="icon_twitter" width="40" height="40"/>
-        <image name="main_menu_bg_one" width="640" height="1136"/>
+        <image name="main_menu_bg" width="360" height="640"/>
         <image name="my_ink_logo" width="342" height="172"/>
     </resources>
     <inferredMetricsTieBreakers>
