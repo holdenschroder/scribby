@@ -140,7 +140,6 @@
 		533CB3DB1C06628700EA7438 /* SplashController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashController.swift; sourceTree = "<group>"; };
 		533CB3DD1C066EB300EA7438 /* WelcomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeController.swift; sourceTree = "<group>"; };
 		533CB3DF1C0688AD00EA7438 /* ExampleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleController.swift; sourceTree = "<group>"; };
-		535C82221BFA9B6900030D25 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseCrashReporting.framework; path = MyInk/ParseCrashReporting.framework; sourceTree = "<group>"; };
 		535C82241BFA9C0000030D25 /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
 		53A2CDD01BFAB21800569105 /* LibraryItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryItemController.swift; sourceTree = "<group>"; };
 		53D757921BFE6C9500C39E7C /* KeyboardInstallPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardInstallPageController.swift; sourceTree = "<group>"; };
@@ -341,7 +340,6 @@
 			isa = PBXGroup;
 			children = (
 				535C82241BFA9C0000030D25 /* libstdc++.6.tbd */,
-				535C82221BFA9B6900030D25 /* ParseCrashReporting.framework */,
 				585D1FB41BF54CFD0093CA8A /* Bolts.framework */,
 				585D1FB01BF54AE80093CA8A /* Parse.framework */,
 				580A6B2F1B606BB4006AEF44 /* Fabric.framework */,
@@ -648,7 +646,7 @@
 				TargetAttributes = {
 					58CC72C11B71412100A4AB62 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = 8YDH8TXREA;
+						DevelopmentTeam = V3F4MJ33H5;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -660,7 +658,7 @@
 					};
 					58DF90691B4F1C9600E36BB1 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = 8YDH8TXREA;
+						DevelopmentTeam = V3F4MJ33H5;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -880,8 +878,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = MyInkKeyboard/MyInkKeyboard.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -893,9 +891,9 @@
 				);
 				INFOPLIST_FILE = MyInkKeyboard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.myinkapp.myink.keyboard;
+				PRODUCT_BUNDLE_IDENTIFIER = com.elink.cursive.keyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "f24b37ab-bd58-4718-bd5c-f1e962c308cd";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -904,8 +902,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = MyInkKeyboard/MyInkKeyboard.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -913,9 +911,9 @@
 				);
 				INFOPLIST_FILE = MyInkKeyboard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.myinkapp.myink.keyboard;
+				PRODUCT_BUNDLE_IDENTIFIER = com.elink.cursive.keyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "f24b37ab-bd58-4718-bd5c-f1e962c308cd";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -937,6 +935,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -960,6 +959,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "9eed46e1-6bd6-420f-a274-eed86ee55c73";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -983,6 +983,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -998,6 +999,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "9eed46e1-6bd6-420f-a274-eed86ee55c73";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1009,8 +1011,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MyInk/MyInk.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1022,9 +1024,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/MyInk",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.myinkapp.myink;
+				PRODUCT_BUNDLE_IDENTIFIER = com.elink.cursive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "9eed46e1-6bd6-420f-a274-eed86ee55c73";
 				SWIFT_OBJC_BRIDGING_HEADER = MyInk/bridging_header.h;
 			};
 			name = Debug;
@@ -1034,8 +1036,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MyInk/MyInk.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1047,9 +1049,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/MyInk",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.myinkapp.myink;
+				PRODUCT_BUNDLE_IDENTIFIER = com.elink.cursive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "9eed46e1-6bd6-420f-a274-eed86ee55c73";
 				SWIFT_OBJC_BRIDGING_HEADER = MyInk/bridging_header.h;
 			};
 			name = Release;
