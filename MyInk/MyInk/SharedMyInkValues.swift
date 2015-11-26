@@ -71,7 +71,8 @@ class SharedMyInkValues {
         return UIImage(named: "MyInk_Watermark")
     }()
     
-    static let AppGroup = "group.myinkapp"
+    static let AppGroup = "group.myInk"
+    static let AppParent = "com.elink.cursive"
     
     static let kDefaultsUserHasBoarded                      = "kDefaultsUserHasBoarded"
 

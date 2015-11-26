@@ -52,14 +52,7 @@ class ExampleController: UIViewController, UIAlertViewDelegate, MFMessageCompose
         xBtn.layer.borderWidth = 1.0
         xBtn.layer.borderColor = UIColor.whiteColor().CGColor
         xBtn.layer.masksToBounds = true
-        
     }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
- 
-    }
-    
 
     
     // MARK: - Misc Methods
@@ -100,30 +93,35 @@ class ExampleController: UIViewController, UIAlertViewDelegate, MFMessageCompose
         switch (result.rawValue) {
         case MessageComposeResultCancelled.rawValue:
             print("Message Cancelled")
+            self.dismissViewControllerAnimated(true, completion: nil)
         case MessageComposeResultFailed.rawValue:
             print("Message Failed")
+            self.dismissViewControllerAnimated(true, completion: nil)
         case MessageComposeResultSent.rawValue:
             print("Message Sent")
+            self.dismissViewControllerAnimated(true, completion: nil)
         default:
             break;
         }
-        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func mailComposeController(controller:MFMailComposeViewController, didFinishWithResult result:MFMailComposeResult, error:NSError?) {
         switch result.rawValue {
         case MFMailComposeResultCancelled.rawValue:
             print("Email Cancelled")
+            self.dismissViewControllerAnimated(true, completion: nil)
         case MFMailComposeResultSaved.rawValue:
             print("Email Saved")
+            self.dismissViewControllerAnimated(true, completion: nil)
         case MFMailComposeResultSent.rawValue:
             print("Email Sent")
+            self.dismissViewControllerAnimated(true, completion: nil)
         case MFMailComposeResultFailed.rawValue:
             print("Email Failed")
+            self.dismissViewControllerAnimated(true, completion: nil)
         default:
             break;
         }
-        self.dismissViewControllerAnimated(true, completion: nil)
     }
 
     
