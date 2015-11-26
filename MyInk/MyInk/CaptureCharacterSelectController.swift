@@ -41,7 +41,9 @@ class CaptureCharacterSelectController:UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
         self.navigationController?.navigationBarHidden = false
+        self.navigationController?.navigationItem.leftBarButtonItem?.title = ""
 
         modifiedImage = ProcessImage(baseImage!)
         imageView?.image = modifiedImage

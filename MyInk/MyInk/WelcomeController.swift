@@ -11,7 +11,7 @@ import UIKit
 
 class WelcomeController: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet var mTextField: UITextField?
+    @IBOutlet var textfield: UITextField?
     @IBOutlet weak var mButton: UIButton!
     
     private var _fontMessageRenderer:FontMessageRenderer?
@@ -19,7 +19,7 @@ class WelcomeController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.mTextField!.delegate = self
+        self.textfield!.delegate = self
         
         let currentAtlas = (UIApplication.sharedApplication().delegate as! AppDelegate).currentAtlas
         let fallbackAtlas = (UIApplication.sharedApplication().delegate as! AppDelegate).embeddedAtlas
@@ -53,7 +53,8 @@ class WelcomeController: UIViewController, UITextFieldDelegate {
     
     // MARK: - Delegate Methods
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?){
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        print("touchesBegan")
         self.view.endEditing(true)
         super.touchesBegan(touches, withEvent: event)
     }
@@ -62,23 +63,12 @@ class WelcomeController: UIViewController, UITextFieldDelegate {
         
     }
     
-    func textFieldShouldEndEditing(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return false
-    }
-    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        mTextField!.resignFirstResponder()
+        textField.resignFirstResponder()
         return true
     }
     
     // MARK: - Actions
-    
-    @IBAction func textFieldDidEndOnExit(sender: UITextField) {
-        mTextField!.resignFirstResponder()
-        sender.resignFirstResponder()
-    }
-
     
     @IBAction func HandleInkButton(sender: AnyObject) {
         performSegueWithIdentifier("segueWelcomeToExample", sender: self)

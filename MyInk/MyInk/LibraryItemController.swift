@@ -39,6 +39,7 @@ class LibraryItemController:UIViewController, UIImagePickerControllerDelegate, U
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBarHidden = false
+        self.navigationController?.navigationItem.leftBarButtonItem?.title = ""
     }
     
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {

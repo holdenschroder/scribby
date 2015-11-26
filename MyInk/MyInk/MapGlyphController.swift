@@ -24,6 +24,7 @@ class MapGlyphController:UIViewController, UITextFieldDelegate {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBarHidden = false
+        self.navigationController?.navigationItem.leftBarButtonItem?.title = ""
 
         textfield?.clearsOnInsertion = true
         textfield?.text = ""

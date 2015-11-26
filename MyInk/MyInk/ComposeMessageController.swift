@@ -29,22 +29,13 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.navigationBarHidden = false
-        
         textView?.delegate = self
         
         propertiesBar.layer.cornerRadius = 3.0
-        
-        fontSizeLabel.layer.cornerRadius = 6.0
-        fontSizeLabel.layer.borderWidth = 1.0
-        fontSizeLabel.layer.borderColor = UIColor.blackColor().CGColor
-        fontSizeLabel.layer.masksToBounds = true
         fontSizeLabel.text = "10"
-        
         pointSizeStepper.autorepeat = false
         pointSizeStepper.minimumValue = 0.0
         pointSizeStepper.maximumValue = 8.0
-        
         
         let currentAtlas = (UIApplication.sharedApplication().delegate as! AppDelegate).currentAtlas
         let fallbackAtlas = (UIApplication.sharedApplication().delegate as! AppDelegate).embeddedAtlas
@@ -58,6 +49,7 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.navigationBarHidden = false
         
         if isMovingToParentViewController() {
             textView?.text = ""

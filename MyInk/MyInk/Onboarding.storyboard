@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_menu_bg" translatesAutoresizingMaskIntoConstraints="NO" id="Df7-Y0-Mj0" userLabel="background">
-                                <rect key="frame" x="-20" y="0.0" width="640" height="640"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Df7-Y0-Mj0" secondAttribute="height" multiplier="1:1" id="YTs-Ti-01l"/>
                                 </constraints>
@@ -37,6 +37,7 @@
                             <constraint firstItem="Df7-Y0-Mj0" firstAttribute="centerX" secondItem="Qyx-N6-Ld7" secondAttribute="centerX" id="2wI-Ba-y3k"/>
                             <constraint firstItem="Qyx-N6-Ld7" firstAttribute="centerX" secondItem="ODa-eb-WQq" secondAttribute="centerX" id="7zp-wD-cxr"/>
                             <constraint firstItem="Df7-Y0-Mj0" firstAttribute="centerY" secondItem="ODa-eb-WQq" secondAttribute="centerY" id="8U4-GM-gtP"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="Df7-Y0-Mj0" secondAttribute="bottom" id="GVA-WP-mNA"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Qyx-N6-Ld7" secondAttribute="trailing" constant="50" id="ICO-Su-kah"/>
                             <constraint firstItem="Df7-Y0-Mj0" firstAttribute="centerX" secondItem="ODa-eb-WQq" secondAttribute="centerX" id="MmF-fi-lHV"/>
                             <constraint firstItem="Qyx-N6-Ld7" firstAttribute="leading" secondItem="ODa-eb-WQq" secondAttribute="leadingMargin" constant="50" id="dtr-HH-ko8"/>
@@ -61,7 +62,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="auR-zU-9ln" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-553" y="160"/>
+            <point key="canvasLocation" x="-545" y="160"/>
         </scene>
         <!--Welcome-->
         <scene sceneID="rbJ-o2-KFb">
@@ -75,8 +76,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_menu_bg" translatesAutoresizingMaskIntoConstraints="NO" id="Z7Y-dS-Isd" userLabel="background">
-                                <rect key="frame" x="-20" y="0.0" width="640" height="640"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_menu_bg" translatesAutoresizingMaskIntoConstraints="NO" id="Z7Y-dS-Isd" userLabel="background">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Z7Y-dS-Isd" secondAttribute="height" multiplier="1:1" id="mrH-AA-CEr"/>
                                 </constraints>
@@ -111,28 +112,27 @@ Try it out:</string>
                                     </mask>
                                 </variation>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="tell me that i'm pretty" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="RdP-fL-r71">
-                                <rect key="frame" x="150" y="258" width="300" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="Cut-v3-Fny"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
-                                <connections>
-                                    <action selector="textFieldDidEndOnExit:" destination="bim-qh-NbQ" eventType="editingDidEndOnExit" id="oZm-uc-eVc"/>
-                                    <outlet property="delegate" destination="bim-qh-NbQ" id="7H8-b9-JMR"/>
-                                </connections>
-                            </textField>
                             <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DPP-n6-cKz">
                                 <rect key="frame" x="243" y="466" width="114" height="114"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="DPP-n6-cKz" secondAttribute="height" multiplier="1:1" id="fZj-Gh-E4n"/>
                                 </constraints>
-                                <state key="normal" image="button_ink"/>
+                                <state key="normal" image="button_ink_outline"/>
                                 <connections>
                                     <action selector="HandleInkButton:" destination="bim-qh-NbQ" eventType="touchUpInside" id="uhK-JW-0G0"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tell me that I'm pretty..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VOi-Sc-Mto">
+                                <rect key="frame" x="200" y="269" width="200" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="m1Q-og-O6T"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <connections>
+                                    <outlet property="delegate" destination="bim-qh-NbQ" id="3qn-Lj-DdH"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.81568627449999997" green="0.078431372550000003" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -143,14 +143,16 @@ Try it out:</string>
                             <constraint firstItem="isJ-3U-irS" firstAttribute="top" secondItem="DPP-n6-cKz" secondAttribute="bottom" constant="20" id="HqQ-1O-lex"/>
                             <constraint firstItem="CLY-jL-YGR" firstAttribute="top" secondItem="wjC-T9-PLN" secondAttribute="bottom" constant="8" id="Iwy-R4-nnM"/>
                             <constraint firstItem="isJ-3U-irS" firstAttribute="top" secondItem="CLY-jL-YGR" secondAttribute="bottom" constant="352" id="LnV-nO-lcJ"/>
+                            <constraint firstItem="VOi-Sc-Mto" firstAttribute="top" secondItem="CLY-jL-YGR" secondAttribute="bottom" constant="33" id="OH2-3L-ltr"/>
                             <constraint firstItem="Z7Y-dS-Isd" firstAttribute="width" secondItem="Z7Y-dS-Isd" secondAttribute="height" multiplier="1:1" id="VnB-ve-qkG"/>
                             <constraint firstItem="CLY-jL-YGR" firstAttribute="trailing" secondItem="wjC-T9-PLN" secondAttribute="trailing" id="XVT-PT-FZh"/>
+                            <constraint firstItem="VOi-Sc-Mto" firstAttribute="centerX" secondItem="CLY-jL-YGR" secondAttribute="centerX" id="gJK-KJ-zbo"/>
                             <constraint firstItem="Z7Y-dS-Isd" firstAttribute="centerX" secondItem="OVt-1W-xZ2" secondAttribute="centerX" id="jxm-L6-br4"/>
-                            <constraint firstItem="RdP-fL-r71" firstAttribute="centerX" secondItem="OVt-1W-xZ2" secondAttribute="centerX" id="mCt-3G-FS2"/>
+                            <constraint firstItem="VOi-Sc-Mto" firstAttribute="top" secondItem="CLY-jL-YGR" secondAttribute="bottom" constant="8" symbolic="YES" id="lMN-Au-8gG"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="Z7Y-dS-Isd" secondAttribute="bottom" id="nBQ-GX-KXY"/>
                             <constraint firstAttribute="trailingMargin" secondItem="wjC-T9-PLN" secondAttribute="trailing" constant="130" id="pkX-mA-gXP"/>
                             <constraint firstItem="Z7Y-dS-Isd" firstAttribute="top" secondItem="OVt-1W-xZ2" secondAttribute="top" id="tY1-QM-DFv"/>
                             <constraint firstItem="wjC-T9-PLN" firstAttribute="leading" secondItem="OVt-1W-xZ2" secondAttribute="leadingMargin" constant="130" id="u1K-kb-lbF"/>
-                            <constraint firstItem="RdP-fL-r71" firstAttribute="top" secondItem="CLY-jL-YGR" secondAttribute="bottom" constant="22" id="wk3-Hq-7US"/>
                             <constraint firstItem="wjC-T9-PLN" firstAttribute="centerX" secondItem="OVt-1W-xZ2" secondAttribute="centerX" id="wrR-Ao-b5y"/>
                             <constraint firstItem="DPP-n6-cKz" firstAttribute="centerX" secondItem="OVt-1W-xZ2" secondAttribute="centerX" id="wzu-Hu-ZoK"/>
                             <constraint firstItem="CLY-jL-YGR" firstAttribute="centerX" secondItem="wjC-T9-PLN" secondAttribute="centerX" id="xCa-rW-TLS"/>
@@ -164,13 +166,14 @@ Try it out:</string>
                                 <exclude reference="u1K-kb-lbF"/>
                                 <exclude reference="Cxr-A4-gKh"/>
                                 <exclude reference="XVT-PT-FZh"/>
+                                <exclude reference="lMN-Au-8gG"/>
                                 <exclude reference="LnV-nO-lcJ"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
                         <outlet property="mButton" destination="DPP-n6-cKz" id="41j-1P-uYk"/>
-                        <outlet property="mTextField" destination="RdP-fL-r71" id="1He-rb-tp7"/>
+                        <outlet property="textfield" destination="VOi-Sc-Mto" id="Rkv-tP-C1L"/>
                         <segue destination="Uo0-Y4-CuX" kind="presentation" identifier="segueWelcomeToExample" id="4j2-sX-3bN"/>
                     </connections>
                 </viewController>
@@ -191,7 +194,7 @@ Try it out:</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_menu_bg" translatesAutoresizingMaskIntoConstraints="NO" id="R4L-fO-VZZ" userLabel="background">
-                                <rect key="frame" x="-20" y="0.0" width="640" height="640"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="R4L-fO-VZZ" secondAttribute="height" multiplier="1:1" id="AW9-uj-gKl"/>
                                 </constraints>
@@ -291,6 +294,7 @@ Try it out:</string>
                             <constraint firstItem="ENt-xJ-70P" firstAttribute="top" secondItem="C85-mN-7on" secondAttribute="bottom" constant="8" symbolic="YES" id="cWC-PQ-iCW"/>
                             <constraint firstItem="lle-Qb-gqy" firstAttribute="top" secondItem="1JJ-9H-Uf5" secondAttribute="bottom" constant="20" id="fWK-pZ-H64"/>
                             <constraint firstItem="C85-mN-7on" firstAttribute="leading" secondItem="ZOi-Fc-BAJ" secondAttribute="leading" id="k3M-94-nNc"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="R4L-fO-VZZ" secondAttribute="bottom" id="k8b-8F-ArK"/>
                             <constraint firstItem="lle-Qb-gqy" firstAttribute="trailing" secondItem="1JJ-9H-Uf5" secondAttribute="trailing" id="lfE-gW-Ofu"/>
                             <constraint firstItem="R4L-fO-VZZ" firstAttribute="top" secondItem="OSo-uY-cWx" secondAttribute="topMargin" id="njG-H2-ZsM"/>
                             <constraint firstItem="ZOi-Fc-BAJ" firstAttribute="centerX" secondItem="OSo-uY-cWx" secondAttribute="centerX" constant="-2" id="rLX-G6-UP9"/>
@@ -319,7 +323,7 @@ Try it out:</string>
         </scene>
     </scenes>
     <resources>
-        <image name="button_ink" width="114" height="114"/>
+        <image name="button_ink_outline" width="114" height="114"/>
         <image name="main_menu_bg" width="360" height="640"/>
         <image name="my_ink_logo" width="342" height="172"/>
     </resources>

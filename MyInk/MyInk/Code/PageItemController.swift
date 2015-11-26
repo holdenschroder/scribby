@@ -33,7 +33,7 @@ class PageItemController: UIViewController {
         self.navigationController?.navigationBarHidden = true
         
         let xBtn = UIButton()
-        xBtn.setTitle("x", forState: .Normal)
+        xBtn.setTitle("X", forState: .Normal)
         xBtn.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         xBtn.frame = CGRectMake(22, 22, 33, 33)
         xBtn.layer.cornerRadius = 3.0
@@ -41,13 +41,14 @@ class PageItemController: UIViewController {
         xBtn.layer.borderColor = UIColor.whiteColor().CGColor
         xBtn.layer.backgroundColor = UIColor.blackColor().CGColor
         xBtn.layer.masksToBounds = true
-        xBtn.addTarget(self, action: "pressed", forControlEvents: .TouchUpInside)
-        
+        xBtn.addTarget(self, action: "HandleXBtn", forControlEvents: .TouchUpInside)
         self.view.addSubview(xBtn)
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        self.navigationController?.navigationBarHidden = true
+
         if(itemIndex == 8) {
             MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventScreenLoadedKeyboardAllPages)
         }
@@ -60,7 +61,7 @@ class PageItemController: UIViewController {
     
     // MARK: - Actions
     
-    func pressed() {
+    func HandleXBtn() {
         if let navController = self.navigationController {
             navController.popViewControllerAnimated(true)
         }
