@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		533CB3DA1C065F4000EA7438 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 533CB3D91C065F4000EA7438 /* Onboarding.storyboard */; };
 		533CB3DC1C06628700EA7438 /* SplashController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533CB3DB1C06628700EA7438 /* SplashController.swift */; };
+		533CB3DE1C066EB300EA7438 /* WelcomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533CB3DD1C066EB300EA7438 /* WelcomeController.swift */; };
 		535C82251BFA9C0000030D25 /* libstdc++.6.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 535C82241BFA9C0000030D25 /* libstdc++.6.tbd */; };
 		53A2CDD11BFAB21800569105 /* LibraryItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CDD01BFAB21800569105 /* LibraryItemController.swift */; };
 		53D757931BFE6C9500C39E7C /* KeyboardInstallPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D757921BFE6C9500C39E7C /* KeyboardInstallPageController.swift */; };
@@ -136,6 +137,7 @@
 /* Begin PBXFileReference section */
 		533CB3D91C065F4000EA7438 /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		533CB3DB1C06628700EA7438 /* SplashController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashController.swift; sourceTree = "<group>"; };
+		533CB3DD1C066EB300EA7438 /* WelcomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeController.swift; sourceTree = "<group>"; };
 		535C82221BFA9B6900030D25 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseCrashReporting.framework; path = MyInk/ParseCrashReporting.framework; sourceTree = "<group>"; };
 		535C82241BFA9C0000030D25 /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
 		53A2CDD01BFAB21800569105 /* LibraryItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryItemController.swift; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				533CB3DB1C06628700EA7438 /* SplashController.swift */,
+				533CB3DD1C066EB300EA7438 /* WelcomeController.swift */,
 				584336071BC3264200CB25F5 /* TapToContinueController.swift */,
 				582A4E8F1BB346AE00D7543B /* TutorialPhraseController.swift */,
 				58F64A901BC356FC00D00BC4 /* TutorialPhraseOutroController.swift */,
@@ -785,6 +788,7 @@
 				58F64A911BC356FC00D00BC4 /* TutorialPhraseOutroController.swift in Sources */,
 				58FBA5291B853FC4009CF809 /* SharedMyInkValues.swift in Sources */,
 				58DF90751B4F1C9600E36BB1 /* CaptureWordSelectController.swift in Sources */,
+				533CB3DE1C066EB300EA7438 /* WelcomeController.swift in Sources */,
 				582D3FC11B50433300D08255 /* UIImageView+GeometryConversion.m in Sources */,
 				58A696471BB0DEFE00B068AA /* UINavigationControllerOrientation.swift in Sources */,
 				583EB9E81B72DCC200357957 /* CoreDataHelper.swift in Sources */,
