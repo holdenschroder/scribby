@@ -42,7 +42,7 @@ class SplashController: UIViewController {
             performSegueWithIdentifier("segueSplashToWelcome", sender: self)
         }
         else {
-            presentViewController( UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("MainMenu") as UIViewController, animated: true, completion: nil)
+            presentViewController(UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("MainMenu") as UIViewController, animated: true, completion: nil)
         }
     }
 

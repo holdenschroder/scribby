@@ -691,10 +691,11 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7YR-0G-R6T" userLabel="box">
                                 <rect key="frame" x="180" y="20" width="240" height="362"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="my_ink_logo" translatesAutoresizingMaskIntoConstraints="NO" id="iK1-wF-cip">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="my_ink_logo" translatesAutoresizingMaskIntoConstraints="NO" id="iK1-wF-cip">
                                         <rect key="frame" x="0.0" y="127" width="240" height="108"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="340" id="czK-dS-ntu"/>
+                                            <constraint firstAttribute="width" secondItem="iK1-wF-cip" secondAttribute="height" multiplier="20:9" id="tjZ-fW-8O0"/>
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
