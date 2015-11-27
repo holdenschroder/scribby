@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TutorialPhaseOutroController: TapToContinueController {
+class TutorialPhaseOutroController: UIViewController {
     @IBOutlet weak var messageImageView:UIImageView!
     private var messageImage:UIImage?
     
@@ -27,4 +27,10 @@ class TutorialPhaseOutroController: TapToContinueController {
         }
         messageImage = image
     }
+    
+    @IBAction func HandleOkBtn(sender: AnyObject) {
+        presentViewController(UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("NavigationRoot") as UIViewController, animated: true, completion: nil)
+    }
+    
+    
 }

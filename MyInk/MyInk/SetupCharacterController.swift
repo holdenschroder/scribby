@@ -20,7 +20,9 @@ class SetupCharacterController : UIViewController, UIScrollViewDelegate {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
         self.navigationController?.navigationBarHidden = false
+        self.navigationController?.navigationItem.leftBarButtonItem?.title = ""
 
         if(isMovingToParentViewController()) {
             imageView?.image = _baseImage

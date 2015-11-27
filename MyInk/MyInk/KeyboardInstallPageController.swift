@@ -40,7 +40,7 @@ class KeyboardInstallPageController: UIViewController, UIPageViewControllerDataS
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationController?.navigationBarHidden = false
+        self.navigationController?.navigationBarHidden = true
     }
     
     override func viewWillDisappear(animated: Bool) {

@@ -12,7 +12,7 @@ import Parse
 class ParseWrapper:AnalyticsPackage {
     init(launchOptions: [NSObject: AnyObject]?) {
         //Parse uses the App Group to communicate with the Keyboard Extension
-        Parse.enableDataSharingWithApplicationGroupIdentifier("group.myinkapp")
+        Parse.enableDataSharingWithApplicationGroupIdentifier(SharedMyInkValues.AppGroup)
         Parse.setApplicationId("5YZOLO126JD9pt3GKmqu5JsT8UHDCouWqZVOieSE",
             clientKey: "Kf1X4TGQlbtXSF3wS0NDeDwOCAlyA5YlHPSnO8RD")
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)

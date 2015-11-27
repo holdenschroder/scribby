@@ -51,7 +51,9 @@ class CaptureWordSelectController: UIViewController, UIImagePickerControllerDele
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
         self.navigationController?.navigationBarHidden = false
+        self.navigationController?.navigationItem.leftBarButtonItem?.title = ""
 
         selectionView?.clearImage()
         selectBtn?.enabled = false

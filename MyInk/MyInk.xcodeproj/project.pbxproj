@@ -7,10 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		533CB3DA1C065F4000EA7438 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 533CB3D91C065F4000EA7438 /* Onboarding.storyboard */; };
+		533CB3DC1C06628700EA7438 /* SplashController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533CB3DB1C06628700EA7438 /* SplashController.swift */; };
+		533CB3DE1C066EB300EA7438 /* WelcomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533CB3DD1C066EB300EA7438 /* WelcomeController.swift */; };
+		533CB3E01C0688AD00EA7438 /* ExampleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533CB3DF1C0688AD00EA7438 /* ExampleController.swift */; };
 		535C82251BFA9C0000030D25 /* libstdc++.6.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 535C82241BFA9C0000030D25 /* libstdc++.6.tbd */; };
 		53A2CDD11BFAB21800569105 /* LibraryItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CDD01BFAB21800569105 /* LibraryItemController.swift */; };
 		53D757931BFE6C9500C39E7C /* KeyboardInstallPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D757921BFE6C9500C39E7C /* KeyboardInstallPageController.swift */; };
 		53D757951BFE6DE700C39E7C /* PageItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D757941BFE6DE700C39E7C /* PageItemController.swift */; };
+		53DBD30A1C079B2D00E8EAB5 /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53DBD3091C079B2C00E8EAB5 /* Tutorial.storyboard */; };
+		53DBD30D1C07B3AC00E8EAB5 /* TutorialIntroController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DBD30C1C07B3AC00E8EAB5 /* TutorialIntroController.swift */; };
 		5802FEA01B5476200013BCEA /* MapGlyphController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5802FE9F1B5476200013BCEA /* MapGlyphController.swift */; };
 		5806CD7A1BFAA56B00B19716 /* UICustomScrollBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5806CD791BFAA56B00B19716 /* UICustomScrollBar.swift */; };
 		580A6B311B606BB4006AEF44 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 580A6B2F1B606BB4006AEF44 /* Fabric.framework */; };
@@ -132,10 +138,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		533CB3D91C065F4000EA7438 /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
+		533CB3DB1C06628700EA7438 /* SplashController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashController.swift; sourceTree = "<group>"; };
+		533CB3DD1C066EB300EA7438 /* WelcomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeController.swift; sourceTree = "<group>"; };
+		533CB3DF1C0688AD00EA7438 /* ExampleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleController.swift; sourceTree = "<group>"; };
 		535C82241BFA9C0000030D25 /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
 		53A2CDD01BFAB21800569105 /* LibraryItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryItemController.swift; sourceTree = "<group>"; };
 		53D757921BFE6C9500C39E7C /* KeyboardInstallPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardInstallPageController.swift; sourceTree = "<group>"; };
 		53D757941BFE6DE700C39E7C /* PageItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PageItemController.swift; path = Code/PageItemController.swift; sourceTree = "<group>"; };
+		53DBD3091C079B2C00E8EAB5 /* Tutorial.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tutorial.storyboard; sourceTree = "<group>"; };
+		53DBD30C1C07B3AC00E8EAB5 /* TutorialIntroController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialIntroController.swift; sourceTree = "<group>"; };
 		5802FE9F1B5476200013BCEA /* MapGlyphController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapGlyphController.swift; sourceTree = "<group>"; };
 		5806CD791BFAA56B00B19716 /* UICustomScrollBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICustomScrollBar.swift; sourceTree = "<group>"; };
 		580A6B2F1B606BB4006AEF44 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
@@ -261,10 +273,9 @@
 		530F33FF1C03C3E900B16F88 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				584336071BC3264200CB25F5 /* TapToContinueController.swift */,
-				582A4E8F1BB346AE00D7543B /* TutorialPhraseController.swift */,
-				58F64A901BC356FC00D00BC4 /* TutorialPhraseOutroController.swift */,
-				5859CDE61BC221210066A2BD /* PromptForRotationController.swift */,
+				533CB3DB1C06628700EA7438 /* SplashController.swift */,
+				533CB3DD1C066EB300EA7438 /* WelcomeController.swift */,
+				533CB3DF1C0688AD00EA7438 /* ExampleController.swift */,
 			);
 			name = Onboarding;
 			sourceTree = "<group>";
@@ -357,8 +368,10 @@
 		535C821A1BFA6DBF00030D25 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				58DF90761B4F1C9600E36BB1 /* Main.storyboard */,
 				58DF907B1B4F1C9600E36BB1 /* LaunchScreen.xib */,
+				533CB3D91C065F4000EA7438 /* Onboarding.storyboard */,
+				58DF90761B4F1C9600E36BB1 /* Main.storyboard */,
+				53DBD3091C079B2C00E8EAB5 /* Tutorial.storyboard */,
 				58DF90791B4F1C9600E36BB1 /* Images.xcassets */,
 				582D3FC41B5043D000D08255 /* Testing.xcassets */,
 			);
@@ -378,6 +391,7 @@
 			isa = PBXGroup;
 			children = (
 				530F33FF1C03C3E900B16F88 /* Onboarding */,
+				53DBD30B1C07B23500E8EAB5 /* Tutorial */,
 				530F34001C03C3F500B16F88 /* Menu */,
 				530F34011C03C41300B16F88 /* Compose + Share */,
 				530F34021C03C4BB00B16F88 /* Capture Camera */,
@@ -411,6 +425,7 @@
 		535C821F1BFA6E3500030D25 /* Helpers+Misc */ = {
 			isa = PBXGroup;
 			children = (
+				58FBA5281B853FC4009CF809 /* SharedMyInkValues.swift */,
 				5870238C1BFD1BCB00D9779F /* CGFloatExtensions.swift */,
 				582D3FA41B50433300D08255 /* CGPointExtensions.swift */,
 				587023901BFD222800D9779F /* CGRectExtensions.swift */,
@@ -418,11 +433,22 @@
 				583EB9E71B72DCC200357957 /* CoreDataHelper.swift */,
 				580DFBB91B59A0A500A3A223 /* FontMessageRenderer.swift */,
 				582D3FA91B50433300D08255 /* ImageCropUtility.swift */,
-				58FBA5281B853FC4009CF809 /* SharedMyInkValues.swift */,
 				58765AE31BAA46C70022AF80 /* SwiftMath.swift */,
 				582D3FAD1B50433300D08255 /* UIImageExtensions.swift */,
 			);
 			name = "Helpers+Misc";
+			sourceTree = "<group>";
+		};
+		53DBD30B1C07B23500E8EAB5 /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				53DBD30C1C07B3AC00E8EAB5 /* TutorialIntroController.swift */,
+				582A4E8F1BB346AE00D7543B /* TutorialPhraseController.swift */,
+				58F64A901BC356FC00D00BC4 /* TutorialPhraseOutroController.swift */,
+				584336071BC3264200CB25F5 /* TapToContinueController.swift */,
+				5859CDE61BC221210066A2BD /* PromptForRotationController.swift */,
+			);
+			name = Tutorial;
 			sourceTree = "<group>";
 		};
 		582D3FA61B50433300D08255 /* Filters */ = {
@@ -634,7 +660,7 @@
 				TargetAttributes = {
 					58CC72C11B71412100A4AB62 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = 8YDH8TXREA;
+						DevelopmentTeam = V3F4MJ33H5;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -646,7 +672,7 @@
 					};
 					58DF90691B4F1C9600E36BB1 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = 8YDH8TXREA;
+						DevelopmentTeam = V3F4MJ33H5;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -702,6 +728,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				533CB3DA1C065F4000EA7438 /* Onboarding.storyboard in Resources */,
 				585277921B7A679200C1B90B /* Embedded_data.sqlite-wal in Resources */,
 				58DF90781B4F1C9600E36BB1 /* Main.storyboard in Resources */,
 				58DF907D1B4F1C9600E36BB1 /* LaunchScreen.xib in Resources */,
@@ -711,6 +738,7 @@
 				582D3FB91B50433300D08255 /* maskfilter.cikernel in Resources */,
 				582D3FC51B5043D000D08255 /* Testing.xcassets in Resources */,
 				5852778B1B797DD000C1B90B /* Embedded_data.sqlite in Resources */,
+				53DBD30A1C079B2D00E8EAB5 /* Tutorial.storyboard in Resources */,
 				582D3FB81B50433300D08255 /* isolationfilter.cikernel in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -776,6 +804,7 @@
 				58F64A911BC356FC00D00BC4 /* TutorialPhraseOutroController.swift in Sources */,
 				58FBA5291B853FC4009CF809 /* SharedMyInkValues.swift in Sources */,
 				58DF90751B4F1C9600E36BB1 /* CaptureWordSelectController.swift in Sources */,
+				533CB3DE1C066EB300EA7438 /* WelcomeController.swift in Sources */,
 				582D3FC11B50433300D08255 /* UIImageView+GeometryConversion.m in Sources */,
 				58A696471BB0DEFE00B068AA /* UINavigationControllerOrientation.swift in Sources */,
 				583EB9E81B72DCC200357957 /* CoreDataHelper.swift in Sources */,
@@ -785,6 +814,7 @@
 				53D757951BFE6DE700C39E7C /* PageItemController.swift in Sources */,
 				58DF90701B4F1C9600E36BB1 /* AppDelegate.swift in Sources */,
 				53A2CDD11BFAB21800569105 /* LibraryItemController.swift in Sources */,
+				533CB3E01C0688AD00EA7438 /* ExampleController.swift in Sources */,
 				53D757931BFE6C9500C39E7C /* KeyboardInstallPageController.swift in Sources */,
 				5859CDE71BC221210066A2BD /* PromptForRotationController.swift in Sources */,
 				58203A771B60132A00CFA42C /* ComposeMessageController.swift in Sources */,
@@ -810,8 +840,10 @@
 				587023911BFD222800D9779F /* CGRectExtensions.swift in Sources */,
 				58CE61F21B7ACF6400730D32 /* MainMenuController.swift in Sources */,
 				582D3FBD1B50433300D08255 /* UIDrawSelectionView.swift in Sources */,
+				53DBD30D1C07B3AC00E8EAB5 /* TutorialIntroController.swift in Sources */,
 				58B056D01BAA16C400FA4A26 /* CaptureTouchController.swift in Sources */,
 				582D3FBC1B50433300D08255 /* SetupCharacterController.swift in Sources */,
+				533CB3DC1C06628700EA7438 /* SplashController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -862,8 +894,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = MyInkKeyboard/MyInkKeyboard.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -875,9 +907,9 @@
 				);
 				INFOPLIST_FILE = MyInkKeyboard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.myinkapp.myink.keyboard;
+				PRODUCT_BUNDLE_IDENTIFIER = com.elink.cursive.keyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "788913ff-e393-444d-bd42-36f9b13451fc";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -886,8 +918,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = MyInkKeyboard/MyInkKeyboard.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -895,9 +927,9 @@
 				);
 				INFOPLIST_FILE = MyInkKeyboard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.myinkapp.myink.keyboard;
+				PRODUCT_BUNDLE_IDENTIFIER = com.elink.cursive.keyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "788913ff-e393-444d-bd42-36f9b13451fc";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -943,6 +975,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "9eed46e1-6bd6-420f-a274-eed86ee55c73";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -982,6 +1015,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "9eed46e1-6bd6-420f-a274-eed86ee55c73";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -993,8 +1027,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MyInk/MyInk.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1006,9 +1040,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/MyInk",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.myinkapp.myink;
+				PRODUCT_BUNDLE_IDENTIFIER = com.elink.cursive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "d5cf942f-a83c-4ab3-8687-1c160d48bed2";
 				SWIFT_OBJC_BRIDGING_HEADER = MyInk/bridging_header.h;
 			};
 			name = Debug;
@@ -1018,8 +1052,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MyInk/MyInk.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1031,9 +1065,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/MyInk",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.myinkapp.myink;
+				PRODUCT_BUNDLE_IDENTIFIER = com.elink.cursive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "d5cf942f-a83c-4ab3-8687-1c160d48bed2";
 				SWIFT_OBJC_BRIDGING_HEADER = MyInk/bridging_header.h;
 			};
 			name = Release;
