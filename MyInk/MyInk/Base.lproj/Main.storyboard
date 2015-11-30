@@ -117,11 +117,16 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LineheightReference_medium" translatesAutoresizingMaskIntoConstraints="NO" id="R9R-uh-Vfc">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LineheightReference_squared" translatesAutoresizingMaskIntoConstraints="NO" id="R9R-uh-Vfc">
                                 <rect key="frame" x="20" y="28" width="560" height="519"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nbS-CT-B7S" customClass="UIDrawCaptureView" customModule="MyInk" customModuleProvider="target">
                                 <rect key="frame" x="20" y="28" width="560" height="519"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="topLinePercent">
+                                        <real key="value" value="0.25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="referenceImage" destination="R9R-uh-Vfc" id="7sj-5K-Rwu"/>
                                 </connections>
@@ -239,7 +244,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LineheightReference_medium" translatesAutoresizingMaskIntoConstraints="NO" id="JQh-QO-tKO">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LineheightReference_squared" translatesAutoresizingMaskIntoConstraints="NO" id="JQh-QO-tKO">
                                 <rect key="frame" x="20" y="63" width="560" height="475"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xam-hZ-0jj" customClass="UIDrawCaptureView" customModule="MyInk" customModuleProvider="target">
@@ -1083,7 +1088,7 @@
         <image name="Crosshair" width="32" height="32"/>
         <image name="Instagram_Glyph" width="40" height="40"/>
         <image name="LineheightReference" width="256" height="512"/>
-        <image name="LineheightReference_medium" width="256" height="384"/>
+        <image name="LineheightReference_squared" width="256" height="270"/>
         <image name="button_ink" width="114" height="114"/>
         <image name="icon_camera_default" width="114" height="114"/>
         <image name="icon_camera_tapped" width="114" height="114"/>

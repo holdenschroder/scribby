@@ -131,7 +131,6 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
         else if(state == .Cleared && cell.character != nil) {
             unwrittenCharacters.insert(cell.character!)
         }
-        //yesButton.enabled = unwrittenCharacters.count == words[wordIndex].characters.count
         finishButton?.enabled = unwrittenCharacters.count == 0
     }
     
