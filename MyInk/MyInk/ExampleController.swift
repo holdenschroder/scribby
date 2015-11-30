@@ -98,7 +98,9 @@ class ExampleController: UIViewController, UIAlertViewDelegate, MFMessageCompose
             self.dismissViewControllerAnimated(true, completion: nil)
         case MessageComposeResultSent.rawValue:
             print("Message Sent")
-            self.dismissViewControllerAnimated(true, completion: nil)
+            self.dismissViewControllerAnimated(true, completion: {
+                self.closeScreen()
+            })
         default:
             break;
         }
@@ -114,7 +116,9 @@ class ExampleController: UIViewController, UIAlertViewDelegate, MFMessageCompose
             self.dismissViewControllerAnimated(true, completion: nil)
         case MFMailComposeResultSent.rawValue:
             print("Email Sent")
-            self.dismissViewControllerAnimated(true, completion: nil)
+            self.dismissViewControllerAnimated(true, completion: {
+                self.closeScreen()
+            })
         case MFMailComposeResultFailed.rawValue:
             print("Email Failed")
             self.dismissViewControllerAnimated(true, completion: nil)
@@ -125,6 +129,14 @@ class ExampleController: UIViewController, UIAlertViewDelegate, MFMessageCompose
 
     
     // MARK: - Actions
+    
+    func closeScreen() {
+        let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(0.5 * Double(NSEC_PER_SEC)))
+        dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: SharedMyInkValues.kDefaultsUserHasBoarded)
+            self.presentViewController(UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("NavigationRoot") as UIViewController, animated: true, completion: nil)
+        })
+    }
     
     func loadImage(image:UIImage) {
         _image = image
@@ -159,7 +171,7 @@ class ExampleController: UIViewController, UIAlertViewDelegate, MFMessageCompose
     }
     
     @IBAction func closeAction(sender: AnyObject) {
-        presentViewController(UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("NavigationRoot") as UIViewController, animated: true, completion: nil)
+        closeScreen()
     }
     
 }

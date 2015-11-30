@@ -212,7 +212,6 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
                     tutorialPhraseController.setMessage(image!)
                 }
             }
-            
             self.presentViewController(postTutorialScreen!, animated: true, completion: nil)
         }
     }
@@ -226,6 +225,7 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
         let SkipAction = UIAlertAction(title: "Skip", style: .Default) { (action) in
             MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventTutorialSkipped)
             MyInkAnalytics.EndTimedEvent(SharedMyInkValues.kEventTutorialFirstPhrase, parameters: nil)
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: SharedMyInkValues.kDefaultsUserHasBoarded)
             self.presentViewController(UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("NavigationRoot") as UIViewController, animated: true, completion: nil)
         }
         alert.addAction(SkipAction)

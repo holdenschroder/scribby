@@ -17,8 +17,7 @@ class SplashController: UIViewController {
         super.viewDidLoad()
         
         let defaults = NSUserDefaults.standardUserDefaults()
-        defaults.setBool(false, forKey: SharedMyInkValues.kDefaultsUserHasBoarded)
-
+        //defaults.setBool(false, forKey: SharedMyInkValues.kDefaultsUserHasBoarded) // DEBUG ONLY
         shouldShowOnboarding = true
         if(defaults.boolForKey(SharedMyInkValues.kDefaultsUserHasBoarded) ) {
             shouldShowOnboarding = false
