@@ -527,12 +527,12 @@
 		58DF906C1B4F1C9600E36BB1 /* MyInk */ = {
 			isa = PBXGroup;
 			children = (
+				535C82191BFA6DAF00030D25 /* Code */,
+				535C821A1BFA6DBF00030D25 /* UI */,
 				58DF90921B4F1CFA00E36BB1 /* Data */,
 				582D3FA61B50433300D08255 /* Filters */,
 				585277881B797DD000C1B90B /* Resources */,
 				58DF906D1B4F1C9600E36BB1 /* Supporting Files */,
-				535C82191BFA6DAF00030D25 /* Code */,
-				535C821A1BFA6DBF00030D25 /* UI */,
 			);
 			path = MyInk;
 			sourceTree = "<group>";
