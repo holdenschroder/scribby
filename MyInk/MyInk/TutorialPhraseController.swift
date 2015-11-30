@@ -328,8 +328,8 @@ class TutorialCharacterCell: UICollectionViewCell {
     func handleDrawEvent(drawView:UIDrawView, eventType:UIDrawView.DrawEventType) {
         switch(eventType) {
         case .Began:
-            UIView.animateWithDuration(0.5, animations: {
-                self.label?.alpha = 0.1
+            UIView.animateWithDuration(0.25, animations: {
+                self.label?.alpha = 0.0
             })
             broadcastToSubscribers(CellEventType.StartedDrawing)
         case .Ended:
