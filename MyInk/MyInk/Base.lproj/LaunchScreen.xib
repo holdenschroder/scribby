@@ -12,7 +12,7 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchScreen" translatesAutoresizingMaskIntoConstraints="NO" id="qKx-m8-eE7">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_menu_bg" translatesAutoresizingMaskIntoConstraints="NO" id="qKx-m8-eE7">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="qKx-m8-eE7" secondAttribute="height" multiplier="1:1" id="Y4d-wu-ZLX"/>
@@ -21,23 +21,15 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="qKx-m8-eE7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="2YV-vd-mCB"/>
                 <constraint firstItem="qKx-m8-eE7" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="LcJ-KS-23O"/>
-                <constraint firstAttribute="trailing" secondItem="qKx-m8-eE7" secondAttribute="trailing" id="TLT-sO-xmP"/>
                 <constraint firstAttribute="bottom" secondItem="qKx-m8-eE7" secondAttribute="bottom" id="Yi1-VX-iF4"/>
                 <constraint firstItem="qKx-m8-eE7" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="xcO-xs-mpj"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="2YV-vd-mCB"/>
-                    <exclude reference="TLT-sO-xmP"/>
-                </mask>
-            </variation>
             <point key="canvasLocation" x="548" y="455"/>
         </view>
     </objects>
     <resources>
-        <image name="LaunchScreen" width="512" height="512"/>
+        <image name="main_menu_bg" width="360" height="640"/>
     </resources>
 </document>
