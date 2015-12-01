@@ -34,26 +34,14 @@
                         </subviews>
                         <color key="backgroundColor" red="0.81568627449999997" green="0.078431372550000003" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="Df7-Y0-Mj0" firstAttribute="centerX" secondItem="Qyx-N6-Ld7" secondAttribute="centerX" id="2wI-Ba-y3k"/>
                             <constraint firstItem="Qyx-N6-Ld7" firstAttribute="centerX" secondItem="ODa-eb-WQq" secondAttribute="centerX" id="7zp-wD-cxr"/>
-                            <constraint firstItem="Df7-Y0-Mj0" firstAttribute="centerY" secondItem="ODa-eb-WQq" secondAttribute="centerY" id="8U4-GM-gtP"/>
                             <constraint firstAttribute="bottomMargin" secondItem="Df7-Y0-Mj0" secondAttribute="bottom" id="GVA-WP-mNA"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Qyx-N6-Ld7" secondAttribute="trailing" constant="50" id="ICO-Su-kah"/>
-                            <constraint firstItem="Df7-Y0-Mj0" firstAttribute="centerX" secondItem="ODa-eb-WQq" secondAttribute="centerX" id="MmF-fi-lHV"/>
                             <constraint firstItem="Qyx-N6-Ld7" firstAttribute="leading" secondItem="ODa-eb-WQq" secondAttribute="leadingMargin" constant="50" id="dtr-HH-ko8"/>
                             <constraint firstItem="Qyx-N6-Ld7" firstAttribute="centerY" secondItem="ODa-eb-WQq" secondAttribute="centerY" id="kHk-Co-KDZ"/>
                             <constraint firstItem="Df7-Y0-Mj0" firstAttribute="centerX" secondItem="ODa-eb-WQq" secondAttribute="centerX" id="rJU-Gt-0Gd"/>
-                            <constraint firstItem="Df7-Y0-Mj0" firstAttribute="bottom" secondItem="aQb-49-JBc" secondAttribute="top" id="rez-2I-Cd5"/>
                             <constraint firstItem="Df7-Y0-Mj0" firstAttribute="top" secondItem="ODa-eb-WQq" secondAttribute="topMargin" id="uiX-lD-yzS"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="2wI-Ba-y3k"/>
-                                <exclude reference="8U4-GM-gtP"/>
-                                <exclude reference="MmF-fi-lHV"/>
-                                <exclude reference="rez-2I-Cd5"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="logo" destination="Qyx-N6-Ld7" id="vi8-Cf-TmM"/>
@@ -136,40 +124,18 @@ Try it out:</string>
                         </subviews>
                         <color key="backgroundColor" red="0.81568627449999997" green="0.078431372550000003" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="wjC-T9-PLN" firstAttribute="centerX" secondItem="Z7Y-dS-Isd" secondAttribute="centerX" id="02T-7S-k8h"/>
                             <constraint firstItem="wjC-T9-PLN" firstAttribute="top" secondItem="Io6-rL-zMN" secondAttribute="bottom" constant="60" id="2HG-Cp-gxc"/>
-                            <constraint firstItem="Z7Y-dS-Isd" firstAttribute="bottom" secondItem="isJ-3U-irS" secondAttribute="top" id="7DG-qv-kAU"/>
-                            <constraint firstItem="CLY-jL-YGR" firstAttribute="leading" secondItem="wjC-T9-PLN" secondAttribute="leading" id="Cxr-A4-gKh"/>
                             <constraint firstItem="isJ-3U-irS" firstAttribute="top" secondItem="DPP-n6-cKz" secondAttribute="bottom" constant="20" id="HqQ-1O-lex"/>
                             <constraint firstItem="CLY-jL-YGR" firstAttribute="top" secondItem="wjC-T9-PLN" secondAttribute="bottom" constant="8" id="Iwy-R4-nnM"/>
-                            <constraint firstItem="isJ-3U-irS" firstAttribute="top" secondItem="CLY-jL-YGR" secondAttribute="bottom" constant="352" id="LnV-nO-lcJ"/>
                             <constraint firstItem="VOi-Sc-Mto" firstAttribute="top" secondItem="CLY-jL-YGR" secondAttribute="bottom" constant="33" id="OH2-3L-ltr"/>
-                            <constraint firstItem="Z7Y-dS-Isd" firstAttribute="width" secondItem="Z7Y-dS-Isd" secondAttribute="height" multiplier="1:1" id="VnB-ve-qkG"/>
-                            <constraint firstItem="CLY-jL-YGR" firstAttribute="trailing" secondItem="wjC-T9-PLN" secondAttribute="trailing" id="XVT-PT-FZh"/>
                             <constraint firstItem="VOi-Sc-Mto" firstAttribute="centerX" secondItem="CLY-jL-YGR" secondAttribute="centerX" id="gJK-KJ-zbo"/>
                             <constraint firstItem="Z7Y-dS-Isd" firstAttribute="centerX" secondItem="OVt-1W-xZ2" secondAttribute="centerX" id="jxm-L6-br4"/>
-                            <constraint firstItem="VOi-Sc-Mto" firstAttribute="top" secondItem="CLY-jL-YGR" secondAttribute="bottom" constant="8" symbolic="YES" id="lMN-Au-8gG"/>
                             <constraint firstAttribute="bottomMargin" secondItem="Z7Y-dS-Isd" secondAttribute="bottom" id="nBQ-GX-KXY"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="wjC-T9-PLN" secondAttribute="trailing" constant="130" id="pkX-mA-gXP"/>
                             <constraint firstItem="Z7Y-dS-Isd" firstAttribute="top" secondItem="OVt-1W-xZ2" secondAttribute="top" id="tY1-QM-DFv"/>
-                            <constraint firstItem="wjC-T9-PLN" firstAttribute="leading" secondItem="OVt-1W-xZ2" secondAttribute="leadingMargin" constant="130" id="u1K-kb-lbF"/>
                             <constraint firstItem="wjC-T9-PLN" firstAttribute="centerX" secondItem="OVt-1W-xZ2" secondAttribute="centerX" id="wrR-Ao-b5y"/>
                             <constraint firstItem="DPP-n6-cKz" firstAttribute="centerX" secondItem="OVt-1W-xZ2" secondAttribute="centerX" id="wzu-Hu-ZoK"/>
                             <constraint firstItem="CLY-jL-YGR" firstAttribute="centerX" secondItem="wjC-T9-PLN" secondAttribute="centerX" id="xCa-rW-TLS"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="7DG-qv-kAU"/>
-                                <exclude reference="VnB-ve-qkG"/>
-                                <exclude reference="02T-7S-k8h"/>
-                                <exclude reference="pkX-mA-gXP"/>
-                                <exclude reference="u1K-kb-lbF"/>
-                                <exclude reference="Cxr-A4-gKh"/>
-                                <exclude reference="XVT-PT-FZh"/>
-                                <exclude reference="lMN-Au-8gG"/>
-                                <exclude reference="LnV-nO-lcJ"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="mButton" destination="DPP-n6-cKz" id="41j-1P-uYk"/>

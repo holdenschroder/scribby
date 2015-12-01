@@ -17,8 +17,7 @@ class SplashController: UIViewController {
         super.viewDidLoad()
         
         let defaults = NSUserDefaults.standardUserDefaults()
-        defaults.setBool(false, forKey: SharedMyInkValues.kDefaultsUserHasBoarded)
-
+        //defaults.setBool(false, forKey: SharedMyInkValues.kDefaultsUserHasBoarded) // DEBUG ONLY
         shouldShowOnboarding = true
         if(defaults.boolForKey(SharedMyInkValues.kDefaultsUserHasBoarded) ) {
             shouldShowOnboarding = false
@@ -42,7 +41,7 @@ class SplashController: UIViewController {
             performSegueWithIdentifier("segueSplashToWelcome", sender: self)
         }
         else {
-            presentViewController(UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("MainMenu") as UIViewController, animated: true, completion: nil)
+            presentViewController(UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("NavigationRoot") as UIViewController, animated: true, completion: nil)
         }
     }
 

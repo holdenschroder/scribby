@@ -16,6 +16,8 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
     private var _tutorialState:TutorialState?
     private var _updateSizesTimer:NSTimer?
     private var _sections:NSIndexSet!
+    private var wordIndex = 0
+
     @IBOutlet weak var collectionView:UICollectionView!
     @IBOutlet weak var finishButton: UIBarButtonItem!
     @IBOutlet weak var messageImageView:UIImageView!
@@ -56,7 +58,14 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
                 }
             }
         }
+        if _tutorialState != nil {
+            wordIndex = Int(_tutorialState!.wordIndex)
+            if wordIndex >= words.count {
+                wordIndex = 0
+            }
+        }
         finishButton?.enabled = unwrittenCharacters.count == 0
+        unwrittenCharacters.removeAll()
         
         UpdateSizes()
     }
@@ -64,7 +73,7 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
     //MARK: Collection View Methods
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return words[section].characters.count
+        return words[wordIndex].characters.count
     }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -73,15 +82,14 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CharacterCapture", forIndexPath: indexPath) as! TutorialCharacterCell
-        let characterIndex = words[indexPath.section].characters.startIndex.advancedBy(indexPath.item)
-        let character = words[indexPath.section].characters[characterIndex]
+        let characterIndex = words[wordIndex].characters.startIndex.advancedBy(indexPath.item)
+        let character = words[wordIndex].characters[characterIndex]
         cell.populate(character)
         cell.addEventSubscriber(self, handler: HandleCellEvent)
         return cell
     }
     
     func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
-        
         let tutorialWordCell = cell as! TutorialCharacterCell
         tutorialWordCell.save()
         tutorialWordCell.removeEventSubscriber(self)
@@ -123,7 +131,6 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
         else if(state == .Cleared && cell.character != nil) {
             unwrittenCharacters.insert(cell.character!)
         }
-        
         finishButton?.enabled = unwrittenCharacters.count == 0
     }
     
@@ -162,7 +169,6 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
         if self.view.frame == CGRectZero {
             return
         }
-        
         timer.invalidate()
         UpdateMessages()
         updateItemHeight(collectionView!.bounds.size)
@@ -189,18 +195,47 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
             MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventTutorialWordStarted, parameters: ["Word":word])
         }
         else {
-             MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventTutorialWordFinished, parameters: ["Word":word])
+            MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventTutorialWordFinished, parameters: ["Word":word])
         }
     }
     
     //MARK: Button Handlers
+    
+    @IBAction func HandleNextBtn(sender:AnyObject) {
+        LogWordForAnalytics(words[wordIndex], isStarting:false)
+        ++wordIndex
+        if wordIndex < words.count {
+            LogWordForAnalytics(words[wordIndex], isStarting:true)
+            updateItemHeight(collectionView!.bounds.size)
+            collectionView.reloadData()
+            unwrittenCharacters.removeAll()
+            UpdateMessages()
+            _tutorialState?.wordIndex = Int32(wordIndex)
+        }
+        else {
+            _tutorialState?.wordIndex = 0
+            _tutorialState?.setTutorialFlag(TutorialState.TutorialFlags.StartingPhrase)
+            let postTutorialScreen = storyboard?.instantiateViewControllerWithIdentifier("PostTutorialScreen")
+            if postTutorialScreen != nil && _messageRenderer != nil {
+                if postTutorialScreen is TutorialPhaseOutroController {
+                    let tutorialPhraseController = postTutorialScreen as! TutorialPhaseOutroController
+                    let image = RenderMessage()
+                    if image != nil {
+                        tutorialPhraseController.setMessage(image!)
+                    }
+                }
+                self.presentViewController(postTutorialScreen!, animated: true, completion: nil)
+            }
+        }
+        let atlas = (UIApplication.sharedApplication().delegate as! AppDelegate).currentAtlas
+        atlas?.Save()
+    }
     
     @IBAction func HandleFinishBtn(sender:AnyObject) {
         let atlas = (UIApplication.sharedApplication().delegate as! AppDelegate).currentAtlas
         atlas?.Save()
         
         _tutorialState?.wordIndex = 0
-        //Move to next screen
         _tutorialState?.setTutorialFlag(TutorialState.TutorialFlags.StartingPhrase)
         let postTutorialScreen = storyboard?.instantiateViewControllerWithIdentifier("PostTutorialScreen")
         if postTutorialScreen != nil && _messageRenderer != nil {
@@ -212,7 +247,6 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
                     tutorialPhraseController.setMessage(image!)
                 }
             }
-            
             self.presentViewController(postTutorialScreen!, animated: true, completion: nil)
         }
     }
@@ -226,6 +260,7 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
         let SkipAction = UIAlertAction(title: "Skip", style: .Default) { (action) in
             MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventTutorialSkipped)
             MyInkAnalytics.EndTimedEvent(SharedMyInkValues.kEventTutorialFirstPhrase, parameters: nil)
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: SharedMyInkValues.kDefaultsUserHasBoarded)
             self.presentViewController(UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("NavigationRoot") as UIViewController, animated: true, completion: nil)
         }
         alert.addAction(SkipAction)
@@ -245,7 +280,8 @@ class TutorialCharacterCell: UICollectionViewCell {
     
     @IBOutlet var label:UILabel?
     @IBOutlet var drawCaptureView:UIDrawCaptureView?
-    @IBOutlet var clearButton:UIImageView?
+    @IBOutlet var clearButton:UIButton?
+    @IBOutlet var saveButton:UIButton?
     private var _initialLabelAlpha:CGFloat!
     private var _character:Character?
     
@@ -265,6 +301,8 @@ class TutorialCharacterCell: UICollectionViewCell {
         clearButton?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "handleClearBtn:"))
         clearButton?.userInteractionEnabled = true
         clearButton?.hidden = true
+        saveButton?.userInteractionEnabled = true
+        saveButton?.hidden = true
     }
     
     func populate(value:Character) {
@@ -282,22 +320,25 @@ class TutorialCharacterCell: UICollectionViewCell {
             let subImage = UIImage(CGImage: CGImageCreateWithImageInRect(imageData.loadedImage!.CGImage, glyphData.imageCoord * imageData.loadedImage!.size)!);
             drawCaptureView?.loadImage(subImage, rect: glyphData.glyphBounds)
             clearButton?.hidden = false
+            saveButton?.hidden = false
         }
     }
     
     func handleDrawEvent(drawView:UIDrawView, eventType:UIDrawView.DrawEventType) {
         switch(eventType) {
         case .Began:
-            UIView.animateWithDuration(0.5, animations: {
-                self.label?.alpha = 0.1
+            UIView.animateWithDuration(0.25, animations: {
+                self.label?.alpha = 0.0
             })
             broadcastToSubscribers(CellEventType.StartedDrawing)
         case .Ended:
             save()
             clearButton?.hidden = false
+            saveButton?.hidden = false
             broadcastToSubscribers(CellEventType.EndedDrawing)
         case .Cleared:
             clearButton?.hidden = true
+            saveButton?.hidden = true
             label?.alpha = _initialLabelAlpha
             broadcastToSubscribers(CellEventType.Cleared)
         }

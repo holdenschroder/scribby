@@ -29,6 +29,7 @@ class TutorialPhaseOutroController: UIViewController {
     }
     
     @IBAction func HandleOkBtn(sender: AnyObject) {
+        NSUserDefaults.standardUserDefaults().setBool(true, forKey: SharedMyInkValues.kDefaultsUserHasBoarded)
         presentViewController(UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("NavigationRoot") as UIViewController, animated: true, completion: nil)
     }
     

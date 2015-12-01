@@ -28,7 +28,6 @@ class LibraryCollectionController:UICollectionViewController {
         _atlasGlyphs?.sortInPlace({ $0.mapping <  $1.mapping })
         
         self.collectionView!.reloadData()
-        
     }
     
     override func viewDidAppear(animated: Bool) {
