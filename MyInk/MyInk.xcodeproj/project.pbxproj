@@ -13,6 +13,7 @@
 		533CB3E01C0688AD00EA7438 /* ExampleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533CB3DF1C0688AD00EA7438 /* ExampleController.swift */; };
 		535C82251BFA9C0000030D25 /* libstdc++.6.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 535C82241BFA9C0000030D25 /* libstdc++.6.tbd */; };
 		53A2CDD11BFAB21800569105 /* LibraryItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CDD01BFAB21800569105 /* LibraryItemController.swift */; };
+		53BCA3CC1C0E1BF4004D1900 /* Release_Process in Resources */ = {isa = PBXBuildFile; fileRef = 53BCA3CB1C0E1BF4004D1900 /* Release_Process */; };
 		53D757931BFE6C9500C39E7C /* KeyboardInstallPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D757921BFE6C9500C39E7C /* KeyboardInstallPageController.swift */; };
 		53D757951BFE6DE700C39E7C /* PageItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D757941BFE6DE700C39E7C /* PageItemController.swift */; };
 		53DBD30A1C079B2D00E8EAB5 /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53DBD3091C079B2C00E8EAB5 /* Tutorial.storyboard */; };
@@ -144,6 +145,7 @@
 		533CB3DF1C0688AD00EA7438 /* ExampleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleController.swift; sourceTree = "<group>"; };
 		535C82241BFA9C0000030D25 /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
 		53A2CDD01BFAB21800569105 /* LibraryItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryItemController.swift; sourceTree = "<group>"; };
+		53BCA3CB1C0E1BF4004D1900 /* Release_Process */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Release_Process; sourceTree = "<group>"; };
 		53D757921BFE6C9500C39E7C /* KeyboardInstallPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardInstallPageController.swift; sourceTree = "<group>"; };
 		53D757941BFE6DE700C39E7C /* PageItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PageItemController.swift; path = Code/PageItemController.swift; sourceTree = "<group>"; };
 		53DBD3091C079B2C00E8EAB5 /* Tutorial.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tutorial.storyboard; sourceTree = "<group>"; };
@@ -533,6 +535,7 @@
 				582D3FA61B50433300D08255 /* Filters */,
 				585277881B797DD000C1B90B /* Resources */,
 				58DF906D1B4F1C9600E36BB1 /* Supporting Files */,
+				53BCA3CB1C0E1BF4004D1900 /* Release_Process */,
 			);
 			path = MyInk;
 			sourceTree = "<group>";
@@ -734,6 +737,7 @@
 				58DF907D1B4F1C9600E36BB1 /* LaunchScreen.xib in Resources */,
 				585277911B7A679200C1B90B /* Embedded_data.sqlite-shm in Resources */,
 				58DF907A1B4F1C9600E36BB1 /* Images.xcassets in Resources */,
+				53BCA3CC1C0E1BF4004D1900 /* Release_Process in Resources */,
 				5852778C1B797DD000C1B90B /* Embedded_atlas.png in Resources */,
 				582D3FB91B50433300D08255 /* maskfilter.cikernel in Resources */,
 				582D3FC51B5043D000D08255 /* Testing.xcassets in Resources */,
