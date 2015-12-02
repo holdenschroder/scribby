@@ -11,6 +11,7 @@
 		533CB3DC1C06628700EA7438 /* SplashController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533CB3DB1C06628700EA7438 /* SplashController.swift */; };
 		533CB3DE1C066EB300EA7438 /* WelcomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533CB3DD1C066EB300EA7438 /* WelcomeController.swift */; };
 		533CB3E01C0688AD00EA7438 /* ExampleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533CB3DF1C0688AD00EA7438 /* ExampleController.swift */; };
+		535C33261C0F8D190075DDD6 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535C33251C0F8D190075DDD6 /* SettingsController.swift */; };
 		535C82251BFA9C0000030D25 /* libstdc++.6.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 535C82241BFA9C0000030D25 /* libstdc++.6.tbd */; };
 		53A2CDD11BFAB21800569105 /* LibraryItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CDD01BFAB21800569105 /* LibraryItemController.swift */; };
 		53BCA3CC1C0E1BF4004D1900 /* Release_Process in Resources */ = {isa = PBXBuildFile; fileRef = 53BCA3CB1C0E1BF4004D1900 /* Release_Process */; };
@@ -143,6 +144,7 @@
 		533CB3DB1C06628700EA7438 /* SplashController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashController.swift; sourceTree = "<group>"; };
 		533CB3DD1C066EB300EA7438 /* WelcomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeController.swift; sourceTree = "<group>"; };
 		533CB3DF1C0688AD00EA7438 /* ExampleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleController.swift; sourceTree = "<group>"; };
+		535C33251C0F8D190075DDD6 /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		535C82241BFA9C0000030D25 /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
 		53A2CDD01BFAB21800569105 /* LibraryItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryItemController.swift; sourceTree = "<group>"; };
 		53BCA3CB1C0E1BF4004D1900 /* Release_Process */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Release_Process; sourceTree = "<group>"; };
@@ -338,6 +340,14 @@
 			name = Instructions;
 			sourceTree = "<group>";
 		};
+		535C33271C0F8D200075DDD6 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				535C33251C0F8D190075DDD6 /* SettingsController.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
 		535C81D31BFA68D800030D25 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -400,6 +410,7 @@
 				530F34031C03C4E500B16F88 /* Capture Touch */,
 				530F34041C03C50900B16F88 /* Library */,
 				530F34051C03C52400B16F88 /* Instructions */,
+				535C33271C0F8D200075DDD6 /* Settings */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -803,6 +814,7 @@
 				585D1FBE1BF56FD20093CA8A /* MyInkAnalytics.swift in Sources */,
 				58DF90A01B4F1D2C00E36BB1 /* FontAtlasGlyph.swift in Sources */,
 				5870238D1BFD1BCB00D9779F /* CGFloatExtensions.swift in Sources */,
+				535C33261C0F8D190075DDD6 /* SettingsController.swift in Sources */,
 				582A4E8E1BB21EC600D7543B /* UIDrawCaptureView.swift in Sources */,
 				58F02CDE1BFA671A00BA6334 /* UIDrawView.swift in Sources */,
 				58F64A911BC356FC00D00BC4 /* TutorialPhraseOutroController.swift in Sources */,
