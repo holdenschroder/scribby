@@ -312,21 +312,38 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version + Build" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ygb-oc-iFY">
-                                <rect key="frame" x="150" y="144" width="300" height="22"/>
+                                <rect key="frame" x="150" y="100" width="300" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="IzY-Af-DnV"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" red="0.81568627449999997" green="0.078431372550000003" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l0v-2b-eyx">
+                                <rect key="frame" x="150" y="162" width="202" height="30"/>
+                                <color key="backgroundColor" red="0.81568627449999997" green="0.078431372550000003" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="202" id="TIj-Rk-McF"/>
+                                    <constraint firstAttribute="height" constant="30" id="VEq-4S-DHt"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Reset Onboarding">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="HandleResetOnboarding:" destination="zds-5W-Hib" eventType="touchUpInside" id="h8e-xl-C4H"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="l0v-2b-eyx" firstAttribute="leading" secondItem="ygb-oc-iFY" secondAttribute="leading" id="6j6-Ry-hvd"/>
                             <constraint firstItem="ygb-oc-iFY" firstAttribute="centerX" secondItem="MSd-Sx-UFX" secondAttribute="centerX" id="9EL-wT-kr7"/>
+                            <constraint firstItem="l0v-2b-eyx" firstAttribute="top" secondItem="ygb-oc-iFY" secondAttribute="bottom" constant="40" id="GLU-iL-NP0"/>
                             <constraint firstItem="ygb-oc-iFY" firstAttribute="leading" secondItem="MSd-Sx-UFX" secondAttribute="leadingMargin" constant="40" id="nHI-He-Oe4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ygb-oc-iFY" secondAttribute="trailing" constant="40" id="qcd-Rh-7jS"/>
-                            <constraint firstItem="ygb-oc-iFY" firstAttribute="top" secondItem="Mu2-g6-BtI" secondAttribute="bottom" constant="124" id="x0r-h0-GoK"/>
+                            <constraint firstItem="ygb-oc-iFY" firstAttribute="top" secondItem="Mu2-g6-BtI" secondAttribute="bottom" constant="80" id="x0r-h0-GoK"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">

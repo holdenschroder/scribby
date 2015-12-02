@@ -44,6 +44,13 @@ class SettingsController: UIViewController {
     }
     
 
+    @IBAction func HandleResetOnboarding(sender: AnyObject) {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setBool(false, forKey: SharedMyInkValues.kDefaultsUserHasBoarded)
+        let alert = UIAlertController(title: "Onboarding Reset", message: "Next time you open the app, you will experience the intro pages as if you were a new user.", preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
     
 }
 
