@@ -8,6 +8,8 @@
 
 
 import UIKit
+import CoreData
+
 
 class SettingsController: UIViewController {
     
@@ -43,6 +45,45 @@ class SettingsController: UIViewController {
         }
     }
     
+//    func deleteCoreData() {
+//        
+//        // remove the deleted item from the model
+//        let delegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+//        let context : NSManagedObjectContext = delegate.coreData.managedObjectContext!
+//        
+//        context.deleteObject(delegate.currentAtlas as! NSManagedObject)
+//        context.save(nil)
+//        
+//    }
+    
+    func deleteAllData(entity: String)
+    {
+        let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.coreData.managedObjectContext!
+        let fetchRequest = NSFetchRequest(entityName: entity)
+        fetchRequest.returnsObjectsAsFaults = false
+        var result: [AnyObject]?
+        do {
+            result = try managedContext.executeFetchRequest(fetchRequest)
+            for managedObject in result!
+            {
+                let managedObjectData:NSManagedObject = managedObject as! NSManagedObject
+                managedContext.deleteObject(managedObjectData)
+            }
+            let alert = UIAlertController(title: "Reset", message: "Starting from scratch!", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+        catch let error as NSError {
+            print("Detele all data in \(entity) error : \(error) \(error.userInfo)")
+            result = nil
+            let alert = UIAlertController(title: "Error", message: "Unable to clear your data.", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+        catch {}
+    }
+    
 
     @IBAction func HandleResetOnboarding(sender: AnyObject) {
         let defaults = NSUserDefaults.standardUserDefaults()
@@ -50,6 +91,24 @@ class SettingsController: UIViewController {
         let alert = UIAlertController(title: "Onboarding Reset", message: "Next time you open the app, you will experience the intro pages as if you were a new user.", preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    
+    @IBAction func HandleResetAtlas(sender: AnyObject) {
+        
+        let alert = UIAlertController(title: "Reset?", message: "Are you sure that you want to reset this? Your font will be reset to the default.", preferredStyle: .Alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
+            print("Reset Cancelled")
+        }
+        alert.addAction(cancelAction)
+        let ResetAction = UIAlertAction(title: "Reset", style: .Default) { (action) in
+            self.deleteAllData("FontAtlasData")
+        }
+        alert.addAction(ResetAction)
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC)), dispatch_get_main_queue(), { () -> Void in
+            self.presentViewController(alert, animated: true, completion: nil)
+        })
+        
     }
     
 }

@@ -25,7 +25,18 @@ class LibraryCollectionController:UICollectionViewController {
 
         _atlas = (UIApplication.sharedApplication().delegate as! AppDelegate).currentAtlas
         _atlasGlyphs = _atlas?.glyphs
-        _atlasGlyphs?.sortInPlace({ $0.mapping <  $1.mapping })
+        if(_atlasGlyphs!.count > 0) {
+            _atlasGlyphs?.sortInPlace({ $0.mapping <  $1.mapping })
+        }
+        else {
+            let alert = UIAlertController(title: "Empty", message: "There is nothing in your library - go and capture some characters!", preferredStyle: .Alert)
+            let AlrightAction = UIAlertAction(title: "Alright!", style: .Default) { (action) in
+                self.navigationController?.popViewControllerAnimated(true)
+            }
+            alert.addAction(AlrightAction)
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+
         
         self.collectionView!.reloadData()
     }
