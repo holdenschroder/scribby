@@ -22,8 +22,6 @@ class ExampleController: UIViewController, UIAlertViewDelegate, MFMessageCompose
     @IBOutlet weak var redoBtn: UIButton!
     @IBOutlet weak var shareBtn: UIButton!
     @IBOutlet weak var createBtn: UIButton!
-    @IBOutlet weak var xBtn: UIButton!
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,11 +45,6 @@ class ExampleController: UIViewController, UIAlertViewDelegate, MFMessageCompose
         createBtn.layer.borderWidth = 1.0
         createBtn.layer.borderColor = UIColor.whiteColor().CGColor
         createBtn.layer.masksToBounds = true
-        
-        xBtn.layer.cornerRadius = 3.0
-        xBtn.layer.borderWidth = 1.0
-        xBtn.layer.borderColor = UIColor.whiteColor().CGColor
-        xBtn.layer.masksToBounds = true
     }
 
     

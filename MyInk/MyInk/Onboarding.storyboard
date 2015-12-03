@@ -214,15 +214,14 @@ Try it out:</string>
                                     <action selector="createAction:" destination="Uo0-Y4-CuX" eventType="touchUpInside" id="9or-gj-NnC"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ozj-ND-kbC">
-                                <rect key="frame" x="20" y="28" width="30" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ozj-ND-kbC">
+                                <rect key="frame" x="20" y="28" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ozj-ND-kbC" secondAttribute="height" multiplier="1:1" id="1aF-uG-Mhq"/>
-                                    <constraint firstAttribute="width" constant="30" id="WPP-Hp-Wi5"/>
-                                    <constraint firstAttribute="height" constant="30" id="YUz-9z-9f3"/>
+                                    <constraint firstAttribute="width" constant="44" id="WPP-Hp-Wi5"/>
+                                    <constraint firstAttribute="height" constant="44" id="YUz-9z-9f3"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="18"/>
-                                <state key="normal" title=" X ">
+                                <state key="normal" title=" X" image="button_x">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -280,7 +279,6 @@ Try it out:</string>
                         <outlet property="imageView" destination="1JJ-9H-Uf5" id="Atv-zs-ysh"/>
                         <outlet property="redoBtn" destination="ZOi-Fc-BAJ" id="Ubr-iD-diM"/>
                         <outlet property="shareBtn" destination="C85-mN-7on" id="iGr-Gj-qTB"/>
-                        <outlet property="xBtn" destination="ozj-ND-kbC" id="7B4-lA-mCF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R7Q-bM-ZuT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -290,6 +288,7 @@ Try it out:</string>
     </scenes>
     <resources>
         <image name="button_ink_outline" width="114" height="114"/>
+        <image name="button_x" width="44" height="44"/>
         <image name="main_menu_bg" width="360" height="640"/>
         <image name="my_ink_logo" width="342" height="172"/>
     </resources>
