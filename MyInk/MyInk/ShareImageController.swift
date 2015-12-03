@@ -20,7 +20,8 @@ class ShareImageController: UIViewController, UIAlertViewDelegate {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationController?.navigationBarHidden = false
+        //self.navigationController?.navigationBarHidden = false
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
 
         imageView?.image = _image
         
@@ -29,12 +30,9 @@ class ShareImageController: UIViewController, UIAlertViewDelegate {
         igBtn.setImage(igImg, forState: .Normal)
         igBtn.frame = CGRectMake(0, 0, 30, 30)
         //igBtn.addTarget(self, action: Selector("action"), forControlEvents: .TouchUpInside)
-
         let _instagramBtn = UIBarButtonItem(customView: igBtn)
         instagramBtn = _instagramBtn
-        
         //instagramBtn.setBackButtonBackgroundImage(UIImage(named:"icon_instagram.png")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), forState: .Normal, barMetrics: .Default)
-        
         //let twImg : UIImage? = UIImage(named:"icon_twitter.png")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
         twitterBtn.setBackButtonBackgroundImage(UIImage(named:"icon_twitter.png")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), forState: .Normal, barMetrics: .Default)
         

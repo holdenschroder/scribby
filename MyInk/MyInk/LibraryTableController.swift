@@ -21,7 +21,8 @@ class LibraryCollectionController:UICollectionViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
 
-        self.navigationController?.navigationBarHidden = false
+        //self.navigationController?.navigationBarHidden = false
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
 
         _atlas = (UIApplication.sharedApplication().delegate as! AppDelegate).currentAtlas
         _atlasGlyphs = _atlas?.glyphs

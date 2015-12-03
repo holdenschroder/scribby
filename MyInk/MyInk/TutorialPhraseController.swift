@@ -42,7 +42,9 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBarHidden = false
+        
+        //self.navigationController?.navigationBarHidden = false
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
 
         let layout = collectionView?.collectionViewLayout as! UICollectionViewFlowLayout
         layout.minimumInteritemSpacing = 1000.0

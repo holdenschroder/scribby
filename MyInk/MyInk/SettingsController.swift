@@ -20,18 +20,14 @@ class SettingsController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
         readWriteVersion()
-
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.navigationController?.navigationBarHidden = false
-
-
+        //self.navigationController?.navigationBarHidden = false
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     
@@ -44,17 +40,6 @@ class SettingsController: UIViewController {
             }
         }
     }
-    
-//    func deleteCoreData() {
-//        
-//        // remove the deleted item from the model
-//        let delegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-//        let context : NSManagedObjectContext = delegate.coreData.managedObjectContext!
-//        
-//        context.deleteObject(delegate.currentAtlas as! NSManagedObject)
-//        context.save(nil)
-//        
-//    }
     
     func deleteAllData(entity: String)
     {
@@ -95,7 +80,6 @@ class SettingsController: UIViewController {
     
     
     @IBAction func HandleResetAtlas(sender: AnyObject) {
-        
         let alert = UIAlertController(title: "Reset?", message: "Are you sure that you want to reset this? Your font will be reset to the default.", preferredStyle: .Alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
             print("Reset Cancelled")
@@ -108,7 +92,6 @@ class SettingsController: UIViewController {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC)), dispatch_get_main_queue(), { () -> Void in
             self.presentViewController(alert, animated: true, completion: nil)
         })
-        
     }
     
 }

@@ -605,10 +605,9 @@
                                     <constraint firstItem="iK1-wF-cip" firstAttribute="leading" secondItem="7YR-0G-R6T" secondAttribute="leading" id="sPF-Id-wAO"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SHR-df-IcO">
-                                <rect key="frame" x="20" y="28" width="90" height="30"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
-                                <state key="normal" title="Settings">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SHR-df-IcO">
+                                <rect key="frame" x="20" y="28" width="44" height="44"/>
+                                <state key="normal" image="button_settings">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -1217,6 +1216,7 @@
         <image name="LineheightReference" width="256" height="512"/>
         <image name="LineheightReference_squared" width="256" height="270"/>
         <image name="button_ink" width="114" height="114"/>
+        <image name="button_settings" width="44" height="44"/>
         <image name="icon_camera_default" width="114" height="114"/>
         <image name="icon_camera_tapped" width="114" height="114"/>
         <image name="icon_compose_default" width="114" height="114"/>

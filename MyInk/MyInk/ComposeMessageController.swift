@@ -49,8 +49,9 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBarHidden = false
-        
+        //self.navigationController?.navigationBarHidden = false
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+
         if isMovingToParentViewController() {
             textView?.text = ""
         }
