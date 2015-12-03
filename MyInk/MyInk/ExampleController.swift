@@ -31,18 +31,18 @@ class ExampleController: UIViewController, UIAlertViewDelegate, MFMessageCompose
         
         imageView?.image = _image
         
-        redoBtn.layer.cornerRadius = 3.0
-        redoBtn.layer.borderWidth = 1.0
+        redoBtn.layer.cornerRadius = 6.0
+        redoBtn.layer.borderWidth = 2.0
         redoBtn.layer.borderColor = UIColor.whiteColor().CGColor
         redoBtn.layer.masksToBounds = true
         
-        shareBtn.layer.cornerRadius = 3.0
-        shareBtn.layer.borderWidth = 1.0
+        shareBtn.layer.cornerRadius = 6.0
+        shareBtn.layer.borderWidth = 2.0
         shareBtn.layer.borderColor = UIColor.whiteColor().CGColor
         shareBtn.layer.masksToBounds = true
         
-        createBtn.layer.cornerRadius = 3.0
-        createBtn.layer.borderWidth = 1.0
+        createBtn.layer.cornerRadius = 6.0
+        createBtn.layer.borderWidth = 2.0
         createBtn.layer.borderColor = UIColor.whiteColor().CGColor
         createBtn.layer.masksToBounds = true
     }

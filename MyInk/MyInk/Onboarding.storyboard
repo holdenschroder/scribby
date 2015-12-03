@@ -181,39 +181,6 @@ Try it out:</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZOi-Fc-BAJ">
-                                <rect key="frame" x="223" y="399" width="150" height="30"/>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
-                                <state key="normal" title="Type something else">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="redoAction:" destination="Uo0-Y4-CuX" eventType="touchUpInside" id="XUu-ON-FzV"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C85-mN-7on">
-                                <rect key="frame" x="223" y="437" width="150" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="sz3-Yb-Ct6"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
-                                <state key="normal" title="Send it to someone">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="shareAction:" destination="Uo0-Y4-CuX" eventType="touchUpInside" id="C2G-hq-KFR"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ENt-xJ-70P">
-                                <rect key="frame" x="223" y="475" width="150" height="30"/>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
-                                <state key="normal" title="Create your own font">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="createAction:" destination="Uo0-Y4-CuX" eventType="touchUpInside" id="9or-gj-NnC"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ozj-ND-kbC">
                                 <rect key="frame" x="20" y="28" width="44" height="44"/>
                                 <constraints>
@@ -237,42 +204,77 @@ Try it out:</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZOi-Fc-BAJ">
+                                <rect key="frame" x="200" y="396" width="200" height="39"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="5l1-7W-Zpp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <inset key="contentEdgeInsets" minX="15" minY="10" maxX="15" maxY="10"/>
+                                <state key="normal" title="Type something else">
+                                    <color key="titleColor" red="0.81568627449999997" green="0.078431372550000003" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="redoAction:" destination="Uo0-Y4-CuX" eventType="touchUpInside" id="XUu-ON-FzV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C85-mN-7on">
+                                <rect key="frame" x="200" y="445" width="200" height="39"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="gLG-LW-uVA"/>
+                                    <constraint firstAttribute="width" constant="175" id="sz3-Yb-Ct6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <inset key="contentEdgeInsets" minX="15" minY="10" maxX="15" maxY="10"/>
+                                <state key="normal" title="Send it to someone">
+                                    <color key="titleColor" red="0.81568627449999997" green="0.078431372550000003" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="sz3-Yb-Ct6"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="shareAction:" destination="Uo0-Y4-CuX" eventType="touchUpInside" id="C2G-hq-KFR"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ENt-xJ-70P">
+                                <rect key="frame" x="200" y="494" width="200" height="39"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <inset key="contentEdgeInsets" minX="15" minY="10" maxX="15" maxY="10"/>
+                                <state key="normal" title="Create your own font">
+                                    <color key="titleColor" red="0.81568627449999997" green="0.078431372550000003" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="createAction:" destination="Uo0-Y4-CuX" eventType="touchUpInside" id="9or-gj-NnC"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.81568627449999997" green="0.078431372550000003" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="1JJ-9H-Uf5" firstAttribute="centerY" secondItem="OSo-uY-cWx" secondAttribute="centerY" id="1WN-KW-HlD"/>
                             <constraint firstItem="lle-Qb-gqy" firstAttribute="centerX" secondItem="G79-Ji-qBJ" secondAttribute="centerX" id="3tX-Mg-ct0"/>
-                            <constraint firstItem="R4L-fO-VZZ" firstAttribute="bottom" secondItem="6RG-N7-lTe" secondAttribute="top" id="7OF-Pu-F2g"/>
+                            <constraint firstItem="C85-mN-7on" firstAttribute="top" secondItem="ZOi-Fc-BAJ" secondAttribute="bottom" constant="10" id="6sF-kX-CHf"/>
+                            <constraint firstItem="C85-mN-7on" firstAttribute="leading" secondItem="ENt-xJ-70P" secondAttribute="leading" id="7K6-Qq-ylI"/>
+                            <constraint firstItem="ENt-xJ-70P" firstAttribute="centerX" secondItem="OSo-uY-cWx" secondAttribute="centerX" id="7xI-jM-R3I"/>
                             <constraint firstItem="1JJ-9H-Uf5" firstAttribute="top" secondItem="G79-Ji-qBJ" secondAttribute="bottom" constant="19" id="9EB-i7-HeF"/>
                             <constraint firstItem="R4L-fO-VZZ" firstAttribute="centerX" secondItem="OSo-uY-cWx" secondAttribute="centerX" id="CHA-dA-fII"/>
                             <constraint firstItem="ozj-ND-kbC" firstAttribute="top" secondItem="S11-lS-SSY" secondAttribute="bottom" constant="8" id="CsZ-wA-JJj"/>
-                            <constraint firstItem="lle-Qb-gqy" firstAttribute="top" secondItem="1JJ-9H-Uf5" secondAttribute="bottom" constant="8" symbolic="YES" id="Dd9-XT-M3g"/>
-                            <constraint firstItem="R4L-fO-VZZ" firstAttribute="centerX" secondItem="G79-Ji-qBJ" secondAttribute="centerX" id="Ff6-QU-nKs"/>
-                            <constraint firstItem="ENt-xJ-70P" firstAttribute="centerX" secondItem="OSo-uY-cWx" secondAttribute="centerX" constant="-2" id="I7m-mG-k0F"/>
-                            <constraint firstItem="C85-mN-7on" firstAttribute="leading" secondItem="ENt-xJ-70P" secondAttribute="leading" id="JYq-B5-TY1"/>
-                            <constraint firstItem="G79-Ji-qBJ" firstAttribute="top" secondItem="S11-lS-SSY" secondAttribute="bottom" constant="93" id="Slm-dF-dnA"/>
+                            <constraint firstItem="C85-mN-7on" firstAttribute="trailing" secondItem="ENt-xJ-70P" secondAttribute="trailing" id="Fyw-ca-QQp"/>
+                            <constraint firstItem="ZOi-Fc-BAJ" firstAttribute="centerX" secondItem="lle-Qb-gqy" secondAttribute="centerX" id="Iu9-Bk-Brf"/>
                             <constraint firstItem="lle-Qb-gqy" firstAttribute="leading" secondItem="1JJ-9H-Uf5" secondAttribute="leading" id="TWp-ss-bsW"/>
-                            <constraint firstItem="C85-mN-7on" firstAttribute="trailing" secondItem="ZOi-Fc-BAJ" secondAttribute="trailing" id="UNJ-j5-6Z3"/>
                             <constraint firstItem="1JJ-9H-Uf5" firstAttribute="centerX" secondItem="OSo-uY-cWx" secondAttribute="centerX" id="WZO-cH-hcN"/>
-                            <constraint firstItem="C85-mN-7on" firstAttribute="top" secondItem="ZOi-Fc-BAJ" secondAttribute="bottom" constant="8" symbolic="YES" id="XF8-kp-PN6"/>
                             <constraint firstItem="ozj-ND-kbC" firstAttribute="leading" secondItem="OSo-uY-cWx" secondAttribute="leadingMargin" id="ba8-Gj-85B"/>
-                            <constraint firstItem="ENt-xJ-70P" firstAttribute="top" secondItem="C85-mN-7on" secondAttribute="bottom" constant="8" symbolic="YES" id="cWC-PQ-iCW"/>
+                            <constraint firstItem="ENt-xJ-70P" firstAttribute="top" secondItem="C85-mN-7on" secondAttribute="bottom" constant="10" id="cWC-PQ-iCW"/>
+                            <constraint firstItem="ZOi-Fc-BAJ" firstAttribute="top" secondItem="lle-Qb-gqy" secondAttribute="bottom" constant="8" symbolic="YES" id="djF-YC-lkp"/>
                             <constraint firstItem="lle-Qb-gqy" firstAttribute="top" secondItem="1JJ-9H-Uf5" secondAttribute="bottom" constant="20" id="fWK-pZ-H64"/>
-                            <constraint firstItem="C85-mN-7on" firstAttribute="leading" secondItem="ZOi-Fc-BAJ" secondAttribute="leading" id="k3M-94-nNc"/>
                             <constraint firstAttribute="bottomMargin" secondItem="R4L-fO-VZZ" secondAttribute="bottom" id="k8b-8F-ArK"/>
                             <constraint firstItem="lle-Qb-gqy" firstAttribute="trailing" secondItem="1JJ-9H-Uf5" secondAttribute="trailing" id="lfE-gW-Ofu"/>
                             <constraint firstItem="R4L-fO-VZZ" firstAttribute="top" secondItem="OSo-uY-cWx" secondAttribute="topMargin" id="njG-H2-ZsM"/>
-                            <constraint firstItem="ZOi-Fc-BAJ" firstAttribute="centerX" secondItem="OSo-uY-cWx" secondAttribute="centerX" constant="-2" id="rLX-G6-UP9"/>
-                            <constraint firstItem="ZOi-Fc-BAJ" firstAttribute="top" secondItem="lle-Qb-gqy" secondAttribute="bottom" constant="11" id="zPG-fd-trb"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="7OF-Pu-F2g"/>
-                                <exclude reference="Ff6-QU-nKs"/>
-                                <exclude reference="Slm-dF-dnA"/>
-                                <exclude reference="Dd9-XT-M3g"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="createBtn" destination="ENt-xJ-70P" id="ZDo-0J-Kzg"/>
