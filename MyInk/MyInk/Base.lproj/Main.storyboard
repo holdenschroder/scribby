@@ -447,16 +447,6 @@
                                     <constraint firstAttribute="trailing" secondItem="sMl-TU-0rv" secondAttribute="trailing" constant="8" id="vF7-l9-bgG"/>
                                 </constraints>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" text="Type your message here" translatesAutoresizingMaskIntoConstraints="NO" id="JMB-nW-yz1">
-                                <rect key="frame" x="8" y="83" width="584" height="517"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="textColor" red="0.80392156859999997" green="0.090196078430000007" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
-                                <connections>
-                                    <outlet property="delegate" destination="PAC-fV-XAW" id="OhB-sx-tlV"/>
-                                </connections>
-                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rsk-76-yNR">
                                 <rect key="frame" x="243" y="466" width="114" height="114"/>
                                 <constraints>
@@ -468,6 +458,19 @@
                                     <segue destination="Cqx-HG-Dfg" kind="show" id="roj-Ob-7hm"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" text="Type your message here" translatesAutoresizingMaskIntoConstraints="NO" id="JMB-nW-yz1">
+                                <rect key="frame" x="8" y="83" width="584" height="150"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="4Sx-65-cfI"/>
+                                </constraints>
+                                <color key="textColor" red="0.80392156859999997" green="0.090196078430000007" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="PAC-fV-XAW" id="OhB-sx-tlV"/>
+                                </connections>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -480,10 +483,17 @@
                             <constraint firstAttribute="trailingMargin" secondItem="Ci4-HF-xVh" secondAttribute="trailing" constant="-12" id="br5-tt-Bq4"/>
                             <constraint firstItem="JMB-nW-yz1" firstAttribute="top" secondItem="Ci4-HF-xVh" secondAttribute="bottom" constant="8" id="jUt-e7-bXF"/>
                             <constraint firstItem="JMB-nW-yz1" firstAttribute="top" secondItem="Ci4-HF-xVh" secondAttribute="bottom" constant="8" id="lT9-gX-nPd"/>
-                            <constraint firstItem="uIR-ZB-RIu" firstAttribute="top" secondItem="JMB-nW-yz1" secondAttribute="bottom" id="leQ-Rv-WOf"/>
+                            <constraint firstItem="uIR-ZB-RIu" firstAttribute="top" secondItem="JMB-nW-yz1" secondAttribute="bottom" constant="367" id="leQ-Rv-WOf"/>
                             <constraint firstItem="rsk-76-yNR" firstAttribute="centerX" secondItem="S2m-QF-bxb" secondAttribute="centerX" id="vKE-01-bqN"/>
                             <constraint firstAttribute="trailingMargin" secondItem="JMB-nW-yz1" secondAttribute="trailing" constant="-12" id="wyy-qm-ydT"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="jUt-e7-bXF"/>
+                                <exclude reference="lT9-gX-nPd"/>
+                                <exclude reference="leQ-Rv-WOf"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Compose" id="gDw-oS-go8">
                         <barButtonItem key="backBarButtonItem" title=" " id="ukR-Bs-2QS">

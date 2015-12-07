@@ -87,6 +87,10 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
     
     // MARK: - ACTIONS
     
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     @IBAction func stepperValueChanged(sender: UIStepper) {
         fontSizeLabel.text = String(_pointSizeStrings[Int(sender.value)])
         textView!.font = textView!.font!.fontWithSize(CGFloat(_pointSizeOptions[Int(sender.value)]))
@@ -95,30 +99,17 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
     // MARK: - TEXTVIEW DELEGATE
     
     func textViewDidChange(textView: UITextView) {
-
-        /*
-        if(textView.text.isEmpty) {
-        generateButton?.enabled = false
-        }
-        else {
-        generateButton?.enabled = true
-        if(generateButton?.frame.origin.y > (view.frame.size.height/2)) {
-        generateButton?.frame.origin.y -= bottomConstraint.constant
-        }
-        }
-        */
-        
         generateButton?.enabled = !textView.text.isEmpty
-        //print(generateButton?.frame.origin)
     }
     
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         if text == "\n"{
-            textView.resignFirstResponder()
-            return false
+            //textView.resignFirstResponder()
+            //return false
         }
         return true
     }
+
     
     // MARK: - KEYBOARD
 
