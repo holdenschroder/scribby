@@ -398,7 +398,7 @@
                                         <color key="backgroundColor" red="0.80392156859999997" green="0.090196078430000007" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Font Size:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qrg-kS-9US">
-                                        <rect key="frame" x="20" y="2" width="99" height="44"/>
+                                        <rect key="frame" x="8" y="2" width="99" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="189" id="yn6-HD-p3s"/>
                                         </constraints>
@@ -412,7 +412,7 @@
                                         </variation>
                                     </label>
                                     <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="sMl-TU-0rv">
-                                        <rect key="frame" x="478" y="9" width="94" height="29"/>
+                                        <rect key="frame" x="482" y="9" width="94" height="29"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="29" id="HdO-ZO-HBk"/>
                                             <constraint firstAttribute="width" constant="94" id="Wgi-ee-40J"/>
@@ -421,12 +421,12 @@
                                             <action selector="stepperValueChanged:" destination="PAC-fV-XAW" eventType="valueChanged" id="KJ9-9o-lKp"/>
                                         </connections>
                                     </stepper>
-                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GjG-hH-VJh">
-                                        <rect key="frame" x="127" y="4" width="40" height="41"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medium" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GjG-hH-VJh">
+                                        <rect key="frame" x="115" y="3" width="80" height="41"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="40" id="r3J-oe-B4o"/>
+                                            <constraint firstAttribute="width" constant="80" id="r3J-oe-B4o"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
                                         <color key="textColor" red="0.80392156859999997" green="0.090196078430000007" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -436,15 +436,15 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="sMl-TU-0rv" firstAttribute="top" secondItem="Ci4-HF-xVh" secondAttribute="topMargin" constant="1" id="2td-Vc-IDu"/>
-                                    <constraint firstItem="qrg-kS-9US" firstAttribute="leading" secondItem="Ci4-HF-xVh" secondAttribute="leading" constant="20" id="Caz-29-oae"/>
-                                    <constraint firstItem="GjG-hH-VJh" firstAttribute="baseline" secondItem="qrg-kS-9US" secondAttribute="baseline" constant="-1" id="Oy3-6Y-50Q"/>
+                                    <constraint firstItem="qrg-kS-9US" firstAttribute="leading" secondItem="Ci4-HF-xVh" secondAttribute="leading" constant="8" id="Caz-29-oae"/>
+                                    <constraint firstItem="GjG-hH-VJh" firstAttribute="baseline" secondItem="qrg-kS-9US" secondAttribute="baseline" constant="-2" id="Oy3-6Y-50Q"/>
                                     <constraint firstAttribute="bottom" secondItem="sMl-TU-0rv" secondAttribute="bottom" constant="9" id="Qgh-3z-r7i"/>
                                     <constraint firstItem="qrg-kS-9US" firstAttribute="top" secondItem="Ci4-HF-xVh" secondAttribute="top" constant="2" id="dL7-rD-nK8"/>
                                     <constraint firstAttribute="bottom" secondItem="qrg-kS-9US" secondAttribute="bottom" constant="1" id="f3D-9l-5x6"/>
                                     <constraint firstItem="GjG-hH-VJh" firstAttribute="leading" secondItem="qrg-kS-9US" secondAttribute="trailing" constant="8" id="l2g-7o-blt"/>
                                     <constraint firstAttribute="height" constant="47" id="oJO-U3-Wis"/>
-                                    <constraint firstItem="GjG-hH-VJh" firstAttribute="firstBaseline" secondItem="qrg-kS-9US" secondAttribute="firstBaseline" constant="2" id="stL-BP-YOr"/>
-                                    <constraint firstAttribute="trailing" secondItem="sMl-TU-0rv" secondAttribute="trailing" constant="12" id="vF7-l9-bgG"/>
+                                    <constraint firstItem="GjG-hH-VJh" firstAttribute="firstBaseline" secondItem="qrg-kS-9US" secondAttribute="firstBaseline" constant="1" id="stL-BP-YOr"/>
+                                    <constraint firstAttribute="trailing" secondItem="sMl-TU-0rv" secondAttribute="trailing" constant="8" id="vF7-l9-bgG"/>
                                 </constraints>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" translatesAutoresizingMaskIntoConstraints="NO" id="JMB-nW-yz1">

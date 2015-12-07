@@ -20,9 +20,10 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var bottomConstraint:NSLayoutConstraint!
     @IBOutlet weak var propertiesBar: UIView!
     
-    private let _pointSizeOptions:[Float] = [10, 12, 14, 16, 18, 20, 24, 28, 32]
+    private let _pointSizeOptions:[Float] = [12, 24, 36]
+    private let _pointSizeStrings:[String] = ["Small", "Medium", "Large"]
     private var _fontMessageRenderer:FontMessageRenderer?
-    private var _selectedPointSize = 3
+    private var _selectedPointSize = 0
     
     // MARK: - LIFECYCLE
     
@@ -32,10 +33,10 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
         textView?.delegate = self
         
         propertiesBar.layer.cornerRadius = 3.0
-        fontSizeLabel.text = "10"
+        fontSizeLabel.text = String(_pointSizeStrings[_selectedPointSize])
         pointSizeStepper.autorepeat = false
         pointSizeStepper.minimumValue = 0.0
-        pointSizeStepper.maximumValue = 8.0
+        pointSizeStepper.maximumValue = 2.0
         
         let currentAtlas = (UIApplication.sharedApplication().delegate as! AppDelegate).currentAtlas
         let fallbackAtlas = (UIApplication.sharedApplication().delegate as! AppDelegate).embeddedAtlas
@@ -49,7 +50,6 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        //self.navigationController?.navigationBarHidden = false
         self.navigationController?.setNavigationBarHidden(false, animated: true)
 
         if isMovingToParentViewController() {
@@ -87,7 +87,7 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
     // MARK: - ACTIONS
     
     @IBAction func stepperValueChanged(sender: UIStepper) {
-        fontSizeLabel.text = String(Int(_pointSizeOptions[Int(sender.value)]))
+        fontSizeLabel.text = String(_pointSizeStrings[Int(sender.value)])
         textView!.font = textView!.font!.fontWithSize(CGFloat(_pointSizeOptions[Int(sender.value)]))
     }
     
