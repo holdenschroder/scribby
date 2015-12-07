@@ -591,38 +591,30 @@
                                     <constraint firstAttribute="width" secondItem="Ikw-Jm-Dei" secondAttribute="height" multiplier="1:1" id="k5f-gL-4CV"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7YR-0G-R6T" userLabel="box">
-                                <rect key="frame" x="180" y="20" width="240" height="320"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="my_ink_logo" translatesAutoresizingMaskIntoConstraints="NO" id="iK1-wF-cip">
-                                        <rect key="frame" x="0.0" y="106" width="240" height="108"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="iK1-wF-cip" secondAttribute="height" multiplier="20:9" id="tjZ-fW-8O0"/>
-                                        </constraints>
-                                    </imageView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="iK1-wF-cip" secondAttribute="trailing" id="Rmb-Cl-fJl"/>
-                                    <constraint firstAttribute="width" constant="240" id="mpt-ZB-eEs"/>
-                                    <constraint firstItem="iK1-wF-cip" firstAttribute="centerY" secondItem="7YR-0G-R6T" secondAttribute="centerY" id="s1E-1x-qRa"/>
-                                    <constraint firstItem="iK1-wF-cip" firstAttribute="leading" secondItem="7YR-0G-R6T" secondAttribute="leading" id="sPF-Id-wAO"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cAn-6f-i16" userLabel="Camera View">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SHR-df-IcO">
+                                <rect key="frame" x="8" y="28" width="44" height="44"/>
+                                <state key="normal" image="button_settings">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="zds-5W-Hib" kind="show" id="0a9-wT-QXW"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cAn-6f-i16" userLabel="Draw View">
                                 <rect key="frame" x="258" y="340" width="85" height="110"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9M8-B9-mKx" userLabel="Camera Button">
+                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9M8-B9-mKx" userLabel="Draw Button">
                                         <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
-                                        <state key="normal" title="Camera Capture" image="icon_camera_default">
+                                        <state key="normal" image="icon_touch_default">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <state key="selected" image="icon_camera_tapped"/>
+                                        <state key="selected" image="icon_touch_tapped"/>
                                         <connections>
-                                            <action selector="openCamera:" destination="jGl-vX-Atg" eventType="touchUpInside" id="uC5-CM-vC0"/>
+                                            <segue destination="nW4-cg-VOY" kind="show" id="HMX-t8-q7n"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Camera" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZnI-93-AB5">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Draw" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZnI-93-AB5" userLabel="Draw">
                                         <rect key="frame" x="0.0" y="85" width="85" height="20"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -687,21 +679,21 @@
                                     <constraint firstAttribute="height" constant="110" id="fa7-2Z-sme"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eo3-vK-hXd" userLabel="Touch View">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eo3-vK-hXd" userLabel="Camera View">
                                 <rect key="frame" x="363" y="340" width="85" height="110"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nV7-Kf-fvn" userLabel="Touch Button">
+                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nV7-Kf-fvn" userLabel="Camera Button">
                                         <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
-                                        <state key="normal" image="icon_touch_default">
+                                        <state key="normal" image="icon_camera_default">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <state key="selected" image="icon_touch_tapped"/>
+                                        <state key="selected" image="icon_camera_tapped"/>
                                         <connections>
-                                            <segue destination="nW4-cg-VOY" kind="show" id="YLf-hr-hoz"/>
+                                            <action selector="openCamera:" destination="jGl-vX-Atg" eventType="touchUpInside" id="W72-8r-pOY"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Draw" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gxr-te-7xO">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Camera" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gxr-te-7xO" userLabel="Camera">
                                         <rect key="frame" x="0.0" y="85" width="85" height="20"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -766,15 +758,23 @@
                                     <constraint firstAttribute="height" constant="110" id="rTn-4i-e7o"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SHR-df-IcO">
-                                <rect key="frame" x="8" y="28" width="44" height="44"/>
-                                <state key="normal" image="button_settings">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="zds-5W-Hib" kind="show" id="0a9-wT-QXW"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7YR-0G-R6T" userLabel="box">
+                                <rect key="frame" x="180" y="20" width="240" height="320"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="my_ink_logo" translatesAutoresizingMaskIntoConstraints="NO" id="iK1-wF-cip">
+                                        <rect key="frame" x="0.0" y="106" width="240" height="108"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="iK1-wF-cip" secondAttribute="height" multiplier="20:9" id="tjZ-fW-8O0"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="iK1-wF-cip" secondAttribute="trailing" id="Rmb-Cl-fJl"/>
+                                    <constraint firstAttribute="width" constant="240" id="mpt-ZB-eEs"/>
+                                    <constraint firstItem="iK1-wF-cip" firstAttribute="centerY" secondItem="7YR-0G-R6T" secondAttribute="centerY" id="s1E-1x-qRa"/>
+                                    <constraint firstItem="iK1-wF-cip" firstAttribute="leading" secondItem="7YR-0G-R6T" secondAttribute="leading" id="sPF-Id-wAO"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.80392156859999997" green="0.090196078430000007" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
