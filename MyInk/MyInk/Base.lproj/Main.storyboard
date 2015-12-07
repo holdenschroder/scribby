@@ -608,15 +608,6 @@
                                     <constraint firstItem="iK1-wF-cip" firstAttribute="leading" secondItem="7YR-0G-R6T" secondAttribute="leading" id="sPF-Id-wAO"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SHR-df-IcO">
-                                <rect key="frame" x="20" y="28" width="44" height="44"/>
-                                <state key="normal" image="button_settings">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="zds-5W-Hib" kind="show" id="0a9-wT-QXW"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cAn-6f-i16" userLabel="Camera View">
                                 <rect key="frame" x="258" y="340" width="85" height="110"/>
                                 <subviews>
@@ -775,6 +766,15 @@
                                     <constraint firstAttribute="height" constant="110" id="rTn-4i-e7o"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SHR-df-IcO">
+                                <rect key="frame" x="8" y="28" width="44" height="44"/>
+                                <state key="normal" image="button_settings">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="zds-5W-Hib" kind="show" id="0a9-wT-QXW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.80392156859999997" green="0.090196078430000007" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
