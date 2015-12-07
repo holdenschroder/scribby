@@ -20,9 +20,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xzt-pt-WSD" userLabel="Rendered Image View">
-                                <rect key="frame" x="20" y="20" width="560" height="60"/>
+                                <rect key="frame" x="20" y="20" width="560" height="80"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="RmI-bk-Kc2"/>
+                                    <constraint firstAttribute="height" constant="80" id="RmI-bk-Kc2"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YnH-fm-1lr" userLabel="Container View">
@@ -172,7 +172,7 @@
                             <constraint firstAttribute="leadingMargin" secondItem="xzt-pt-WSD" secondAttribute="leading" id="8hi-JS-WOg"/>
                             <constraint firstItem="oSm-jv-tos" firstAttribute="top" secondItem="E5I-r7-hsH" secondAttribute="bottom" constant="10" id="Bh3-Hi-hmg"/>
                             <constraint firstItem="YnH-fm-1lr" firstAttribute="height" secondItem="rZK-JP-L7T" secondAttribute="height" multiplier="0.5" id="DRv-HW-U03"/>
-                            <constraint firstItem="YnH-fm-1lr" firstAttribute="top" secondItem="xzt-pt-WSD" secondAttribute="bottom" constant="70" id="FXh-uX-v1I"/>
+                            <constraint firstItem="YnH-fm-1lr" firstAttribute="top" secondItem="xzt-pt-WSD" secondAttribute="bottom" constant="50" id="FXh-uX-v1I"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hwo-Mq-uGK" secondAttribute="trailing" constant="-20" id="Jia-qd-Bjx"/>
                             <constraint firstItem="YnH-fm-1lr" firstAttribute="centerX" secondItem="rZK-JP-L7T" secondAttribute="centerX" id="RuI-71-2wb"/>
                             <constraint firstItem="YnH-fm-1lr" firstAttribute="centerY" secondItem="rZK-JP-L7T" secondAttribute="centerY" id="TVK-0g-4db"/>

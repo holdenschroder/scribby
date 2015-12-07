@@ -9,7 +9,7 @@
 import UIKit
 
 class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIGestureRecognizerDelegate {
-    private let phrase:String! = "QUICK BROWN FOX JUMPS OVER THE LAZY DOG"
+    private let phrase:String! = "QUICK BROWN FOX JUMPS\n OVER THE LAZY DOG"
     private var words:[String]!
     private var unwrittenCharacters = Set<Character>()
     private var _messageRenderer:FontMessageRenderer?
@@ -187,7 +187,7 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
     }
     
     private func RenderMessage() -> UIImage? {
-        return _messageRenderer!.renderMessage(phrase, imageSize:  CGSize(width: 2048, height: messageImageView.frame.height), lineHeight: messageImageView.frame.size.height * 0.5, backgroundColor: UIColor.clearColor())
+        return _messageRenderer!.renderMessage(phrase, imageSize:  CGSize(width: 2048, height: messageImageView.frame.height), lineHeight: messageImageView.frame.size.height * 0.33, backgroundColor: UIColor.clearColor())
     }
     
     //Mark: Analytics
