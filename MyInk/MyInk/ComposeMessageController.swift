@@ -31,6 +31,7 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
         
         textView?.delegate = self
+        textView?.text = "Type your message here"
         
         propertiesBar.layer.cornerRadius = 3.0
         fontSizeLabel.text = String(_pointSizeStrings[_selectedPointSize])
@@ -53,7 +54,7 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
 
         if isMovingToParentViewController() {
-            textView?.text = ""
+            //textView?.text = ""
         }
         if textView != nil {
             generateButton?.enabled = textView!.hasText()
@@ -132,6 +133,9 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
     
     func handleKeyboardDidShow(notification:NSNotification) {
         let info = notification.userInfo as? [String:AnyObject]
+        if(textView?.text == "Type your message here") {
+            textView?.text = ""
+        }
         if info != nil && textView != nil {
             let kbRect = (info![UIKeyboardFrameBeginUserInfoKey] as! NSValue).CGRectValue()
             bottomConstraint.constant = kbRect.height + 20
