@@ -214,35 +214,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We are going to start you off creating your personal font. To do this we are going to present you with a short phrase." textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="VCB-T0-Yoa">
-                                <rect key="frame" x="50" y="175" width="500" height="250"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="24"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2R5-36-yD9">
-                                <rect key="frame" x="280" y="433" width="41" height="48"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="48" id="ZFf-CG-fde"/>
-                                </constraints>
+                                <rect key="frame" x="280" y="445" width="41" height="48"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="30"/>
                                 <state key="normal" title="OK">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="0.80392156859999997" green="0.090196078430000007" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="Xpz-K4-Xpf" kind="show" id="Vsv-Hy-8ht"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We are going to start you off creating your personal font. To do this we are going to present you with a short phrase." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="VCB-T0-Yoa">
+                                <rect key="frame" x="50" y="175" width="500" height="250"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="24"/>
+                                <color key="textColor" red="0.80392156859999997" green="0.090196078430000007" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.92941176469999998" green="0.0" blue="0.45098039220000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="leadingMargin" secondItem="VCB-T0-Yoa" secondAttribute="leading" constant="-30" id="AB6-GX-Hd6"/>
-                            <constraint firstItem="VCB-T0-Yoa" firstAttribute="top" secondItem="Pqv-6S-NgG" secondAttribute="bottom" constant="155" id="O9D-G7-1d4"/>
-                            <constraint firstItem="2R5-36-yD9" firstAttribute="centerX" secondItem="VCB-T0-Yoa" secondAttribute="centerX" id="aHr-YE-qrm"/>
-                            <constraint firstItem="2R5-36-yD9" firstAttribute="top" secondItem="VCB-T0-Yoa" secondAttribute="bottom" constant="8" symbolic="YES" id="fK3-RF-pKb"/>
-                            <constraint firstItem="VCB-T0-Yoa" firstAttribute="centerY" secondItem="rKF-8F-dNW" secondAttribute="centerY" id="lA1-48-Wtf"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="VCB-T0-Yoa" secondAttribute="trailing" constant="30" id="pv8-yy-uG6"/>
+                            <constraint firstItem="2R5-36-yD9" firstAttribute="centerX" secondItem="rKF-8F-dNW" secondAttribute="centerX" id="RQ7-95-4iu"/>
+                            <constraint firstItem="VCB-T0-Yoa" firstAttribute="leading" secondItem="rKF-8F-dNW" secondAttribute="leadingMargin" constant="30" id="agQ-bW-Rui"/>
+                            <constraint firstItem="VCB-T0-Yoa" firstAttribute="centerX" secondItem="2R5-36-yD9" secondAttribute="centerX" id="gxR-z2-83g"/>
+                            <constraint firstItem="VCB-T0-Yoa" firstAttribute="top" secondItem="Pqv-6S-NgG" secondAttribute="bottom" constant="155" id="lpr-R8-Db6"/>
+                            <constraint firstItem="VCB-T0-Yoa" firstAttribute="centerY" secondItem="rKF-8F-dNW" secondAttribute="centerY" id="uob-Tn-eLD"/>
                             <constraint firstItem="SHR-Ri-mF5" firstAttribute="top" secondItem="2R5-36-yD9" secondAttribute="bottom" constant="119" id="yLY-Ib-8u3"/>
+                            <constraint firstItem="2R5-36-yD9" firstAttribute="top" secondItem="VCB-T0-Yoa" secondAttribute="bottom" constant="20" id="z2d-ZZ-dhS"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -277,21 +274,21 @@
                                 </constraints>
                                 <string key="text">Congratulations, you have created the basics of your first font. You can now try capturing more characters, composing messages or install the keyboard to bring MyInk into your favorite messaging apps.</string>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="24"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.80392156859999997" green="0.090196078430000007" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4DD-d1-gtb">
                                 <rect key="frame" x="280" y="474" width="41" height="48"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="30"/>
                                 <state key="normal" title="OK">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="0.80392156859999997" green="0.090196078430000007" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="HandleOkBtn:" destination="962-V9-fvJ" eventType="touchUpInside" id="He3-g8-xQz"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.92941176469999998" green="0.0" blue="0.45098039220000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="leadingMargin" secondItem="ZvX-gf-veQ" secondAttribute="leading" id="DPf-3w-Zup"/>
                             <constraint firstItem="2Am-e2-zrN" firstAttribute="top" secondItem="mHT-Yr-9AS" secondAttribute="bottom" constant="8" id="FRA-a0-gWe"/>
