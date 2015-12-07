@@ -44,7 +44,8 @@ class MapGlyphController:UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func Handle_SaveButton(sender: AnyObject) {
-        self.navigationController?.popViewControllerAnimated(false)
+        let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController];
+        self.navigationController!.popToViewController(viewControllers[0], animated: true);
         if(_callback != nil) {
             let string:String? = textfield!.text
             _callback!(value: string)
