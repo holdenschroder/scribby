@@ -20,7 +20,7 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var bottomConstraint:NSLayoutConstraint!
     @IBOutlet weak var propertiesBar: UIView!
     
-    private let _pointSizeOptions:[Float] = [12, 24, 36]
+    private let _pointSizeOptions:[Float] = [18, 24, 36]
     private let _pointSizeStrings:[String] = ["Small", "Medium", "Large"]
     private var _fontMessageRenderer:FontMessageRenderer?
     private var _selectedPointSize = 0
@@ -55,16 +55,27 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
         if isMovingToParentViewController() {
             //textView?.text = ""
         }
+
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         if textView != nil {
             generateButton?.enabled = textView!.hasText()
             textView!.font = textView!.font!.fontWithSize(CGFloat(_pointSizeOptions[_selectedPointSize]))
             fontSizeLabel.text = String(_pointSizeStrings[_selectedPointSize])
+            UIView.animateWithDuration(0.5, animations: {
+                self.textView?.becomeFirstResponder()
+            })
         }
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         unregisterKeyboardNotifications()
+        UIView.animateWithDuration(0.5, animations: {
+            self.textView?.resignFirstResponder()
+        })
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
