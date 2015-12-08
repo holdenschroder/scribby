@@ -165,6 +165,9 @@ Try it out:</string>
                                     <constraint firstAttribute="width" secondItem="R4L-fO-VZZ" secondAttribute="height" multiplier="1:1" id="AW9-uj-gKl"/>
                                 </constraints>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1JJ-9H-Uf5" userLabel="render">
+                                <rect key="frame" x="20" y="90" width="560" height="140"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Awesome!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G79-Ji-qBJ">
                                 <rect key="frame" x="203" y="35" width="194" height="29"/>
                                 <constraints>
@@ -189,7 +192,7 @@ Try it out:</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Now do something with it:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lle-Qb-gqy">
-                                <rect key="frame" x="150" y="358" width="300" height="30"/>
+                                <rect key="frame" x="150" y="285" width="300" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="XSA-X5-af1"/>
                                 </constraints>
@@ -198,34 +201,44 @@ Try it out:</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZOi-Fc-BAJ">
-                                <rect key="frame" x="200" y="396" width="200" height="39"/>
+                                <rect key="frame" x="150" y="335" width="300" height="60"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="5l1-7W-Zpp"/>
+                                    <constraint firstAttribute="width" constant="300" id="En8-Kk-6Oy"/>
+                                    <constraint firstAttribute="height" constant="60" id="wAu-57-tI3"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
                                 <inset key="contentEdgeInsets" minX="15" minY="10" maxX="15" maxY="10"/>
                                 <state key="normal" title="Type something else">
                                     <color key="titleColor" red="0.81568627449999997" green="0.078431372550000003" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="5l1-7W-Zpp"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <action selector="redoAction:" destination="Uo0-Y4-CuX" eventType="touchUpInside" id="XUu-ON-FzV"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C85-mN-7on">
-                                <rect key="frame" x="200" y="445" width="200" height="39"/>
+                                <rect key="frame" x="150" y="405" width="300" height="60"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="Ggd-ag-Qp9"/>
+                                    <constraint firstAttribute="height" constant="60" id="fQF-iv-1JC"/>
                                     <constraint firstAttribute="width" constant="200" id="gLG-LW-uVA"/>
                                     <constraint firstAttribute="width" constant="175" id="sz3-Yb-Ct6"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
                                 <inset key="contentEdgeInsets" minX="15" minY="10" maxX="15" maxY="10"/>
                                 <state key="normal" title="Send it to someone">
                                     <color key="titleColor" red="0.81568627449999997" green="0.078431372550000003" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="gLG-LW-uVA"/>
                                         <exclude reference="sz3-Yb-Ct6"/>
                                     </mask>
                                 </variation>
@@ -234,9 +247,13 @@ Try it out:</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ENt-xJ-70P">
-                                <rect key="frame" x="200" y="494" width="200" height="39"/>
+                                <rect key="frame" x="150" y="475" width="300" height="60"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="GWW-qF-NL6"/>
+                                    <constraint firstAttribute="width" constant="300" id="WcE-Fb-gkk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
                                 <inset key="contentEdgeInsets" minX="15" minY="10" maxX="15" maxY="10"/>
                                 <state key="normal" title="Create your own font">
                                     <color key="titleColor" red="0.81568627449999997" green="0.078431372550000003" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
@@ -245,43 +262,38 @@ Try it out:</string>
                                     <action selector="createAction:" destination="Uo0-Y4-CuX" eventType="touchUpInside" id="9or-gj-NnC"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1JJ-9H-Uf5" userLabel="render">
-                                <rect key="frame" x="20" y="210" width="560" height="140"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="140" id="cGp-kS-4bS"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.81568627449999997" green="0.078431372550000003" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="C85-mN-7on" firstAttribute="top" secondItem="ZOi-Fc-BAJ" secondAttribute="bottom" constant="10" id="6sF-kX-CHf"/>
-                            <constraint firstItem="C85-mN-7on" firstAttribute="leading" secondItem="ENt-xJ-70P" secondAttribute="leading" id="7K6-Qq-ylI"/>
-                            <constraint firstItem="ENt-xJ-70P" firstAttribute="centerX" secondItem="OSo-uY-cWx" secondAttribute="centerX" id="7xI-jM-R3I"/>
-                            <constraint firstItem="lle-Qb-gqy" firstAttribute="top" secondItem="1JJ-9H-Uf5" secondAttribute="bottom" constant="8" symbolic="YES" id="8Hc-cS-qYT"/>
+                            <constraint firstItem="1JJ-9H-Uf5" firstAttribute="leading" secondItem="ozj-ND-kbC" secondAttribute="leading" id="7oW-i5-qh5"/>
+                            <constraint firstItem="ZOi-Fc-BAJ" firstAttribute="centerX" secondItem="OSo-uY-cWx" secondAttribute="centerX" id="9p1-sR-XQf"/>
                             <constraint firstItem="R4L-fO-VZZ" firstAttribute="centerX" secondItem="OSo-uY-cWx" secondAttribute="centerX" id="CHA-dA-fII"/>
                             <constraint firstItem="ozj-ND-kbC" firstAttribute="top" secondItem="S11-lS-SSY" secondAttribute="bottom" constant="8" id="CsZ-wA-JJj"/>
-                            <constraint firstItem="C85-mN-7on" firstAttribute="trailing" secondItem="ENt-xJ-70P" secondAttribute="trailing" id="Fyw-ca-QQp"/>
-                            <constraint firstItem="1JJ-9H-Uf5" firstAttribute="leading" secondItem="ozj-ND-kbC" secondAttribute="leading" id="HoA-5J-TX2"/>
-                            <constraint firstItem="1JJ-9H-Uf5" firstAttribute="centerX" secondItem="G79-Ji-qBJ" secondAttribute="centerX" id="I9y-qh-gaQ"/>
-                            <constraint firstItem="ZOi-Fc-BAJ" firstAttribute="centerX" secondItem="lle-Qb-gqy" secondAttribute="centerX" id="Iu9-Bk-Brf"/>
-                            <constraint firstItem="1JJ-9H-Uf5" firstAttribute="top" secondItem="OSo-uY-cWx" secondAttribute="top" constant="210" id="JgV-VJ-AWn"/>
-                            <constraint firstItem="lle-Qb-gqy" firstAttribute="leading" secondItem="1JJ-9H-Uf5" secondAttribute="leading" constant="130" id="TWp-ss-bsW"/>
+                            <constraint firstItem="1JJ-9H-Uf5" firstAttribute="centerX" secondItem="ENt-xJ-70P" secondAttribute="centerX" id="DmB-gk-QcD"/>
+                            <constraint firstItem="1JJ-9H-Uf5" firstAttribute="centerX" secondItem="lle-Qb-gqy" secondAttribute="centerX" id="Dtn-Nd-nn3"/>
+                            <constraint firstItem="ENt-xJ-70P" firstAttribute="top" secondItem="C85-mN-7on" secondAttribute="bottom" constant="10" id="FKY-u7-fHQ"/>
+                            <constraint firstItem="1JJ-9H-Uf5" firstAttribute="centerX" secondItem="G79-Ji-qBJ" secondAttribute="centerX" id="IRQ-uH-hKP"/>
+                            <constraint firstItem="C85-mN-7on" firstAttribute="centerX" secondItem="OSo-uY-cWx" secondAttribute="centerX" id="Ivc-KB-Izn"/>
                             <constraint firstItem="ozj-ND-kbC" firstAttribute="leading" secondItem="OSo-uY-cWx" secondAttribute="leadingMargin" id="ba8-Gj-85B"/>
-                            <constraint firstItem="1JJ-9H-Uf5" firstAttribute="centerX" secondItem="C85-mN-7on" secondAttribute="centerX" id="bfS-gH-IXn"/>
-                            <constraint firstItem="ENt-xJ-70P" firstAttribute="top" secondItem="C85-mN-7on" secondAttribute="bottom" constant="10" id="cWC-PQ-iCW"/>
-                            <constraint firstItem="ZOi-Fc-BAJ" firstAttribute="top" secondItem="lle-Qb-gqy" secondAttribute="bottom" constant="8" symbolic="YES" id="djF-YC-lkp"/>
+                            <constraint firstItem="1JJ-9H-Uf5" firstAttribute="top" secondItem="ozj-ND-kbC" secondAttribute="bottom" constant="18" id="d6Z-dR-15B"/>
+                            <constraint firstItem="C85-mN-7on" firstAttribute="top" secondItem="ZOi-Fc-BAJ" secondAttribute="bottom" constant="10" id="e4X-cz-9aO"/>
+                            <constraint firstItem="lle-Qb-gqy" firstAttribute="top" secondItem="1JJ-9H-Uf5" secondAttribute="bottom" constant="55" id="eAM-f8-aC6"/>
+                            <constraint firstItem="ENt-xJ-70P" firstAttribute="top" secondItem="C85-mN-7on" secondAttribute="bottom" constant="10" id="f6I-3z-rxK"/>
+                            <constraint firstItem="1JJ-9H-Uf5" firstAttribute="centerX" secondItem="C85-mN-7on" secondAttribute="centerX" id="g9c-5E-4dt"/>
+                            <constraint firstItem="ZOi-Fc-BAJ" firstAttribute="top" secondItem="lle-Qb-gqy" secondAttribute="bottom" constant="20" id="gFs-jT-qCR"/>
                             <constraint firstAttribute="bottomMargin" secondItem="R4L-fO-VZZ" secondAttribute="bottom" id="k8b-8F-ArK"/>
-                            <constraint firstItem="lle-Qb-gqy" firstAttribute="trailing" secondItem="1JJ-9H-Uf5" secondAttribute="trailing" constant="-130" id="lfE-gW-Ofu"/>
                             <constraint firstItem="G79-Ji-qBJ" firstAttribute="centerY" secondItem="ozj-ND-kbC" secondAttribute="centerY" id="mI8-Cm-ED3"/>
-                            <constraint firstItem="G79-Ji-qBJ" firstAttribute="centerX" secondItem="1JJ-9H-Uf5" secondAttribute="centerX" id="mqr-Mx-e0g"/>
                             <constraint firstItem="R4L-fO-VZZ" firstAttribute="top" secondItem="OSo-uY-cWx" secondAttribute="topMargin" id="njG-H2-ZsM"/>
-                            <constraint firstItem="1JJ-9H-Uf5" firstAttribute="centerX" secondItem="lle-Qb-gqy" secondAttribute="centerX" id="zU1-yI-oGV"/>
+                            <constraint firstItem="1JJ-9H-Uf5" firstAttribute="centerX" secondItem="ZOi-Fc-BAJ" secondAttribute="centerX" id="q7f-39-yOx"/>
+                            <constraint firstItem="1JJ-9H-Uf5" firstAttribute="centerX" secondItem="R4L-fO-VZZ" secondAttribute="centerX" id="rxe-uw-ELy"/>
+                            <constraint firstItem="lle-Qb-gqy" firstAttribute="centerY" secondItem="OSo-uY-cWx" secondAttribute="centerY" id="wou-sY-2Do"/>
+                            <constraint firstItem="ENt-xJ-70P" firstAttribute="centerX" secondItem="OSo-uY-cWx" secondAttribute="centerX" id="ygI-fH-Mh7"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="mqr-Mx-e0g"/>
-                                <exclude reference="TWp-ss-bsW"/>
-                                <exclude reference="lfE-gW-Ofu"/>
+                                <exclude reference="DmB-gk-QcD"/>
+                                <exclude reference="g9c-5E-4dt"/>
+                                <exclude reference="q7f-39-yOx"/>
                             </mask>
                         </variation>
                     </view>
