@@ -24,7 +24,6 @@ class MapGlyphController:UIViewController, UITextFieldDelegate {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        //self.navigationController?.navigationBarHidden = false
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.navigationController?.navigationItem.leftBarButtonItem?.title = ""
 
@@ -37,6 +36,15 @@ class MapGlyphController:UIViewController, UITextFieldDelegate {
         
         saveBtn.enabled = false
         MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventScreenLoadedCaptureMapGlyph)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if textfield != nil {
+            UIView.animateWithDuration(0.5, animations: {
+                self.textfield?.becomeFirstResponder()
+            })
+        }
     }
     
     func setCallback(callback:InputCallback) {
