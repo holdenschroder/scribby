@@ -352,9 +352,9 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version + Build" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ygb-oc-iFY">
-                                <rect key="frame" x="200" y="100" width="200" height="22"/>
+                                <rect key="frame" x="200" y="100" width="300" height="22"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="IzY-Af-DnV"/>
+                                    <constraint firstAttribute="width" constant="300" id="IzY-Af-DnV"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" red="0.81568627449999997" green="0.078431372550000003" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
@@ -364,7 +364,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="l0v-2b-eyx" firstAttribute="leading" secondItem="ygb-oc-iFY" secondAttribute="leading" id="6j6-Ry-hvd"/>
-                            <constraint firstItem="ygb-oc-iFY" firstAttribute="centerX" secondItem="MSd-Sx-UFX" secondAttribute="centerX" id="9EL-wT-kr7"/>
+                            <constraint firstItem="ygb-oc-iFY" firstAttribute="centerX" secondItem="MSd-Sx-UFX" secondAttribute="centerX" constant="50" id="9EL-wT-kr7"/>
                             <constraint firstItem="l0v-2b-eyx" firstAttribute="top" secondItem="ygb-oc-iFY" secondAttribute="bottom" constant="40" id="GLU-iL-NP0"/>
                             <constraint firstItem="l0v-2b-eyx" firstAttribute="centerX" secondItem="MSd-Sx-UFX" secondAttribute="centerX" id="Jrl-Oa-F3h"/>
                             <constraint firstItem="VYK-Ag-tTW" firstAttribute="centerX" secondItem="MSd-Sx-UFX" secondAttribute="centerX" id="K7i-K4-hlV"/>
