@@ -1,19 +1,34 @@
 
 
-1. Switch Profile
+1. Switch Team
 
     External/Holden
-        TEAM:   MyInk LLC
-        ID:     com.myinkapp.(myink)(keyboard)
-        PP:     MyInk App Distribution / MyInkKeyboard Distribution
+        MyInk LLC
 
     Internal/ELink
-        TEAM:   E-Link Enterainment Ltd.
-        ID:     com.elink.(cursive)(keyboard)
-        PP:     MyInk Distribution Profile / MyInkKeyboard Distribution Profile
+        E-Link Enterainment Ltd.
+
+2. Switch App ID
+
+    External/Holden
+        com.myinkapp.(myink)(keyboard)
+
+    Internal/ELink
+        com.elink.(cursive)(keyboard)
+
+3. Switch Profile
+
+    External/Holden
+        MyInk App Distribution / MyInkKeyboard Distribution
+
+    Internal/ELink
+        MyInk Distribution Profile / MyInkKeyboard Distribution Profile
 
 
-2. Switch App Group
+-- BUILD --
+
+
+4. Switch App Group
 
     EXTERNAL:
         group.myinkapp
@@ -21,8 +36,10 @@
     INTERNAL:
         group.myink
 
+-- BUILD --
 
-3. Switch Keychain Sharing
+
+5. Switch Keychain Sharing
 
     EXTERNAL:
         com.myinkapp.myink.keyboard
@@ -31,10 +48,12 @@
         com.elink.cursive.keyboard
 
 
-4. Switch AppGroup/AppParent vals
+6. Switch AppGroup/AppParent vals
 
     EXTERNAL:
         group.myinkapp / com.myinkapp.myink
 
     INTERNAL:
         group.myInk / com.elink.cursive
+
+-- BUILD --

@@ -674,7 +674,7 @@
 				TargetAttributes = {
 					58CC72C11B71412100A4AB62 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = 8YDH8TXREA;
+						DevelopmentTeam = V3F4MJ33H5;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -686,7 +686,7 @@
 					};
 					58DF90691B4F1C9600E36BB1 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = 8YDH8TXREA;
+						DevelopmentTeam = V3F4MJ33H5;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -923,7 +923,7 @@
 				);
 				INFOPLIST_FILE = MyInkKeyboard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.myinkapp.myink.keyboard;
+				PRODUCT_BUNDLE_IDENTIFIER = com.elink.cursive.keyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
@@ -943,7 +943,7 @@
 				);
 				INFOPLIST_FILE = MyInkKeyboard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.myinkapp.myink.keyboard;
+				PRODUCT_BUNDLE_IDENTIFIER = com.elink.cursive.keyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
@@ -1056,7 +1056,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/MyInk",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.myinkapp.myink;
+				PRODUCT_BUNDLE_IDENTIFIER = com.elink.cursive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = MyInk/bridging_header.h;
@@ -1081,7 +1081,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/MyInk",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.myinkapp.myink;
+				PRODUCT_BUNDLE_IDENTIFIER = com.elink.cursive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = MyInk/bridging_header.h;
