@@ -1,0 +1,29 @@
+
+
+1. CoreDataHelper
+
+    static var saveDirectory:NSURL = {
+        return applicationDocumentsDirectory
+    }()
+
+
+2. App Delegate
+
+    lazy var currentAtlas:FontAtlas? = {
+        var atlas = FontAtlas(name: SharedMyInkValues.EmbeddedAtlasName, atlasDirectory: SharedMyInkValues.EmbeddedAtlasDirectory, managedObjectContext: self.coreData.managedObjectContext!)
+        atlas.onSaveEvents.append(self.handleAtlasSave)
+        return atlas
+    }()
+
+
+3. FontAtlasImage
+
+func save() {
+    if _loadedImage == nil || filepath.isEmpty /*|| filepath.hasPrefix(SharedMyInkValues.EmbeddedAtlasDirectory)*/ {
+        return
+    }
+
+4. Export Container
+
+
+5. Replace files in Resources

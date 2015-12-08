@@ -36,7 +36,7 @@ class FontAtlasImage: NSManagedObject {
     }
     
     func save() {
-        if _loadedImage == nil || filepath.isEmpty || filepath.hasPrefix(SharedMyInkValues.EmbeddedAtlasDirectory) {
+        if _loadedImage == nil || filepath.isEmpty /*|| filepath.hasPrefix(SharedMyInkValues.EmbeddedAtlasDirectory)*/ {
             return
         }
         
