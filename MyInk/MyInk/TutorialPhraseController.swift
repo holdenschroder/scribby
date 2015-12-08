@@ -141,9 +141,8 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
             finishButton?.enabled = false
         }
         else {
-             finishButton?.enabled = true
+            finishButton?.enabled = true
         }
-        //finishButton?.enabled = unwrittenCharacters.count == 0
     }
     
     private func updateItemHeight(viewSize:CGSize) {
@@ -332,7 +331,7 @@ class TutorialCharacterCell: UICollectionViewCell {
         switch(eventType) {
         case .Began:
             UIView.animateWithDuration(0.25, animations: {
-                self.label?.alpha = 0.0
+                self.label?.alpha = 0.05
             })
             broadcastToSubscribers(CellEventType.StartedDrawing)
         case .Ended:
