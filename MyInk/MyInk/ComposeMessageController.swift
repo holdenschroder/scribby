@@ -34,7 +34,6 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
         textView?.text = "Type your message here"
         
         propertiesBar.layer.cornerRadius = 3.0
-        fontSizeLabel.text = String(_pointSizeStrings[_selectedPointSize])
         pointSizeStepper.autorepeat = false
         pointSizeStepper.minimumValue = 0.0
         pointSizeStepper.maximumValue = 2.0
@@ -59,8 +58,8 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
         if textView != nil {
             generateButton?.enabled = textView!.hasText()
             textView!.font = textView!.font!.fontWithSize(CGFloat(_pointSizeOptions[_selectedPointSize]))
+            fontSizeLabel.text = String(_pointSizeStrings[_selectedPointSize])
         }
-        
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -71,16 +70,24 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.destinationViewController is ShareImageController {
             let shareImageController = segue.destinationViewController as! ShareImageController
-            
-            let message = textView?.text
-            if(message != nil && (message!).characters.count > 0 && _fontMessageRenderer != nil) {
-                
-                let calculatedLineHeight = CGFloat(_pointSizeOptions[_selectedPointSize]) * SharedMyInkValues.FontPointSizeToPixelRatio
-                let imageMessage = _fontMessageRenderer!.renderMessage(message!, imageSize: CGSize(width: 1024, height: 4096), lineHeight:calculatedLineHeight, backgroundColor: UIColor.whiteColor())
-                if imageMessage != nil {
-                    shareImageController.loadImage(imageMessage!)
+            if(textView?.text.characters.count > 0) {
+                var message = ""
+                if(textView?.text.characters.count < 30) {
+                    message += "          "
+                    message += (textView?.text!)!
+                    message += "          "
                 }
-                //navigationController?.showViewController(shareImageController, sender: self)
+                else {
+                    message = (textView?.text)!
+                }
+                print(message)
+                if(_fontMessageRenderer != nil) {
+                    let calculatedLineHeight = CGFloat(_pointSizeOptions[_selectedPointSize]) * SharedMyInkValues.FontPointSizeToPixelRatio
+                    let imageMessage = _fontMessageRenderer!.renderMessage(message, imageSize: CGSize(width: 1024, height: 4096), lineHeight:calculatedLineHeight, backgroundColor: UIColor.whiteColor())
+                    if imageMessage != nil {
+                        shareImageController.loadImage(imageMessage!)
+                    }
+                }
             }
         }
     }
