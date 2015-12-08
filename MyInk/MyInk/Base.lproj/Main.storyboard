@@ -461,7 +461,7 @@
                                 </constraints>
                                 <state key="normal" image="button_ink"/>
                                 <connections>
-                                    <segue destination="Cqx-HG-Dfg" kind="show" id="roj-Ob-7hm"/>
+                                    <action selector="HandleInkAction:" destination="PAC-fV-XAW" eventType="touchUpInside" id="9Mb-Xk-aUG"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" text="Type your message here" translatesAutoresizingMaskIntoConstraints="NO" id="JMB-nW-yz1">
@@ -513,6 +513,7 @@
                         <outlet property="pointSizeStepper" destination="sMl-TU-0rv" id="mbw-Yu-ats"/>
                         <outlet property="propertiesBar" destination="Ci4-HF-xVh" id="dnV-zU-sl0"/>
                         <outlet property="textView" destination="JMB-nW-yz1" id="HvF-nE-qqq"/>
+                        <segue destination="Cqx-HG-Dfg" kind="show" identifier="composeToShare" id="7Bl-lE-oWc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8jb-Qw-i6D" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1161,7 +1162,7 @@
                                 <string key="text">Which character should 
 this be mapped to?</string>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="24"/>
-                                <color key="textColor" red="0.92893503050000004" green="0.0010298617689999999" blue="0.44945487350000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.80392156859999997" green="0.090196078430000007" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>

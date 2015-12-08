@@ -100,10 +100,23 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
                     }
                 }
             }
+
         }
     }
     
     // MARK: - ACTIONS
+    
+    
+    @IBAction func HandleInkAction(sender: AnyObject) {
+        if(textView?.text?.characters.count > 0) {
+            performSegueWithIdentifier("composeToShare", sender: self)
+        }
+        else {
+            let alert = UIAlertController(title: "Wait!", message: "Please type a message", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+    }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
