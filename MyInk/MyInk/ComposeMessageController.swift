@@ -53,12 +53,7 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-
         mActivityIndicator.hidden = true
-        if isMovingToParentViewController() {
-            //textView?.text = ""
-        }
-
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -106,7 +101,6 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
                     }
                 }
             }
-
         }
     }
     
@@ -126,8 +120,20 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
         }
     }
     
+    func pulseButton() {
+        let pulseAnimation:CABasicAnimation = CABasicAnimation(keyPath: "transform.scale");
+        pulseAnimation.duration = 1.0;
+        pulseAnimation.toValue = NSNumber(float: 1.05);
+        pulseAnimation.fromValue = NSNumber(float: 0.95)
+        pulseAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut);
+        pulseAnimation.autoreverses = true;
+        pulseAnimation.repeatCount = FLT_MAX;
+        self.generateButton!.layer.addAnimation(pulseAnimation, forKey: nil)
+    }
+    
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
+        pulseButton()
     }
     
     @IBAction func stepperValueChanged(sender: UIStepper) {
@@ -142,7 +148,6 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
     }
     
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
-        //textView.textColor = SharedMyInkValues.MyInkLightColor
         if(textView.text == "Type your message here") {
             textView.text = ""
             textView.textColor = SharedMyInkValues.MyInkLightColor
@@ -164,9 +169,6 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
     
     func handleKeyboardDidShow(notification:NSNotification) {
         let info = notification.userInfo as? [String:AnyObject]
-        if(textView?.text == "Type your message here") {
-            //textView?.text = ""
-        }
         if info != nil && textView != nil {
             let kbRect = (info![UIKeyboardFrameBeginUserInfoKey] as! NSValue).CGRectValue()
             bottomConstraint.constant = kbRect.height + 20
