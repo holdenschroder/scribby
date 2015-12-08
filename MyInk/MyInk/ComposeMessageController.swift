@@ -19,6 +19,7 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var fontSizeLabel: UILabel!
     @IBOutlet weak var bottomConstraint:NSLayoutConstraint!
     @IBOutlet weak var propertiesBar: UIView!
+    @IBOutlet weak var mActivityIndicator: UIActivityIndicatorView!
     
     private let _pointSizeOptions:[Float] = [18, 24, 36]
     private let _pointSizeStrings:[String] = ["Small", "Medium", "Large"]
@@ -32,6 +33,7 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
         
         textView?.delegate = self
         textView?.text = "Type your message here"
+        textView?.textColor = UIColor.lightGrayColor()
         
         propertiesBar.layer.cornerRadius = 3.0
         pointSizeStepper.autorepeat = false
@@ -52,6 +54,7 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
 
+        mActivityIndicator.hidden = true
         if isMovingToParentViewController() {
             //textView?.text = ""
         }
@@ -98,6 +101,9 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
                     if imageMessage != nil {
                         shareImageController.loadImage(imageMessage!)
                     }
+                    if(mActivityIndicator.isAnimating()) {
+                        mActivityIndicator.startAnimating()
+                    }
                 }
             }
 
@@ -109,6 +115,8 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
     
     @IBAction func HandleInkAction(sender: AnyObject) {
         if(textView?.text?.characters.count > 0) {
+            mActivityIndicator.hidden = false
+            mActivityIndicator.startAnimating()
             performSegueWithIdentifier("composeToShare", sender: self)
         }
         else {
@@ -134,9 +142,10 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
     }
     
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
-        if text == "\n"{
-            //textView.resignFirstResponder()
-            //return false
+        //textView.textColor = SharedMyInkValues.MyInkLightColor
+        if(textView.text == "Type your message here") {
+            textView.text = ""
+            textView.textColor = SharedMyInkValues.MyInkLightColor
         }
         return true
     }
@@ -156,17 +165,13 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
     func handleKeyboardDidShow(notification:NSNotification) {
         let info = notification.userInfo as? [String:AnyObject]
         if(textView?.text == "Type your message here") {
-            textView?.text = ""
+            //textView?.text = ""
         }
         if info != nil && textView != nil {
             let kbRect = (info![UIKeyboardFrameBeginUserInfoKey] as! NSValue).CGRectValue()
             bottomConstraint.constant = kbRect.height + 20
             textView?.layoutIfNeeded()
             textView!.scrollRangeToVisible(textView!.selectedRange)
-            
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(0.1 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) {
-                //self.generateButton?.frame.origin.y -= kbRect.height
-            }
         }
     }
     
