@@ -269,7 +269,6 @@ Try it out:</string>
                             <constraint firstItem="ZOi-Fc-BAJ" firstAttribute="centerX" secondItem="OSo-uY-cWx" secondAttribute="centerX" id="9p1-sR-XQf"/>
                             <constraint firstItem="R4L-fO-VZZ" firstAttribute="centerX" secondItem="OSo-uY-cWx" secondAttribute="centerX" id="CHA-dA-fII"/>
                             <constraint firstItem="ozj-ND-kbC" firstAttribute="top" secondItem="S11-lS-SSY" secondAttribute="bottom" constant="8" id="CsZ-wA-JJj"/>
-                            <constraint firstItem="1JJ-9H-Uf5" firstAttribute="centerX" secondItem="ENt-xJ-70P" secondAttribute="centerX" id="DmB-gk-QcD"/>
                             <constraint firstItem="1JJ-9H-Uf5" firstAttribute="centerX" secondItem="lle-Qb-gqy" secondAttribute="centerX" id="Dtn-Nd-nn3"/>
                             <constraint firstItem="ENt-xJ-70P" firstAttribute="top" secondItem="C85-mN-7on" secondAttribute="bottom" constant="10" id="FKY-u7-fHQ"/>
                             <constraint firstItem="1JJ-9H-Uf5" firstAttribute="centerX" secondItem="G79-Ji-qBJ" secondAttribute="centerX" id="IRQ-uH-hKP"/>
@@ -279,23 +278,14 @@ Try it out:</string>
                             <constraint firstItem="C85-mN-7on" firstAttribute="top" secondItem="ZOi-Fc-BAJ" secondAttribute="bottom" constant="10" id="e4X-cz-9aO"/>
                             <constraint firstItem="lle-Qb-gqy" firstAttribute="top" secondItem="1JJ-9H-Uf5" secondAttribute="bottom" constant="55" id="eAM-f8-aC6"/>
                             <constraint firstItem="ENt-xJ-70P" firstAttribute="top" secondItem="C85-mN-7on" secondAttribute="bottom" constant="10" id="f6I-3z-rxK"/>
-                            <constraint firstItem="1JJ-9H-Uf5" firstAttribute="centerX" secondItem="C85-mN-7on" secondAttribute="centerX" id="g9c-5E-4dt"/>
                             <constraint firstItem="ZOi-Fc-BAJ" firstAttribute="top" secondItem="lle-Qb-gqy" secondAttribute="bottom" constant="20" id="gFs-jT-qCR"/>
                             <constraint firstAttribute="bottomMargin" secondItem="R4L-fO-VZZ" secondAttribute="bottom" id="k8b-8F-ArK"/>
                             <constraint firstItem="G79-Ji-qBJ" firstAttribute="centerY" secondItem="ozj-ND-kbC" secondAttribute="centerY" id="mI8-Cm-ED3"/>
                             <constraint firstItem="R4L-fO-VZZ" firstAttribute="top" secondItem="OSo-uY-cWx" secondAttribute="topMargin" id="njG-H2-ZsM"/>
-                            <constraint firstItem="1JJ-9H-Uf5" firstAttribute="centerX" secondItem="ZOi-Fc-BAJ" secondAttribute="centerX" id="q7f-39-yOx"/>
                             <constraint firstItem="1JJ-9H-Uf5" firstAttribute="centerX" secondItem="R4L-fO-VZZ" secondAttribute="centerX" id="rxe-uw-ELy"/>
                             <constraint firstItem="lle-Qb-gqy" firstAttribute="centerY" secondItem="OSo-uY-cWx" secondAttribute="centerY" id="wou-sY-2Do"/>
                             <constraint firstItem="ENt-xJ-70P" firstAttribute="centerX" secondItem="OSo-uY-cWx" secondAttribute="centerX" id="ygI-fH-Mh7"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="DmB-gk-QcD"/>
-                                <exclude reference="g9c-5E-4dt"/>
-                                <exclude reference="q7f-39-yOx"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="createBtn" destination="ENt-xJ-70P" id="ZDo-0J-Kzg"/>
