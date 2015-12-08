@@ -14,6 +14,8 @@ class LibraryItemController:UIViewController, UIImagePickerControllerDelegate, U
     // MARK: VARS
     
     @IBOutlet var drawCaptureView:UIDrawCaptureView?
+    @IBOutlet weak var characterLabel: UILabel!
+    
     private var lastImage:UIImage?
     var _mAtlasGlyph: FontAtlasGlyph?
     var captureView:CaptureWordSelectController!
@@ -24,7 +26,12 @@ class LibraryItemController:UIViewController, UIImagePickerControllerDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "\("Edit:") \(_mAtlasGlyph!.mapping.uppercaseString)"
+        self.title = "\("Edit:") \(_mAtlasGlyph!.mapping)"
+        self.characterLabel.text = _mAtlasGlyph!.mapping
+        UIView.animateWithDuration(0.5, animations: {
+            self.characterLabel?.alpha = 0.05
+        })
+        
         let camButton = UIBarButtonItem(barButtonSystemItem: .Camera, target: self, action: "openCapture")
         navigationItem.rightBarButtonItem = camButton
         
