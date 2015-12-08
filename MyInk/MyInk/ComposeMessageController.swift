@@ -122,9 +122,9 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
     
     func pulseButton() {
         let pulseAnimation:CABasicAnimation = CABasicAnimation(keyPath: "transform.scale");
-        pulseAnimation.duration = 1.0;
-        pulseAnimation.toValue = NSNumber(float: 1.05);
-        pulseAnimation.fromValue = NSNumber(float: 0.95)
+        pulseAnimation.duration = 0.66;
+        pulseAnimation.toValue = NSNumber(float: 1.03);
+        pulseAnimation.fromValue = NSNumber(float: 0.97)
         pulseAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut);
         pulseAnimation.autoreverses = true;
         pulseAnimation.repeatCount = FLT_MAX;

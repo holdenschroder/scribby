@@ -548,7 +548,7 @@
                                     <constraint firstAttribute="height" constant="44" id="5zd-mH-PL2"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem image="Instagram_Glyph" width="25" id="iGl-Lt-YCy" userLabel="Instagram Item">
+                                    <barButtonItem image="icon_instagram" width="25" id="iGl-Lt-YCy" userLabel="Instagram Item">
                                         <color key="tintColor" red="0.80392156859999997" green="0.090196078430000007" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="ShareToInstagram:" destination="Cqx-HG-Dfg" id="zvE-e7-bVX"/>
@@ -1242,7 +1242,6 @@ this be mapped to?</string>
     </scenes>
     <resources>
         <image name="Crosshair" width="32" height="32"/>
-        <image name="Instagram_Glyph" width="40" height="40"/>
         <image name="button_ink" width="114" height="114"/>
         <image name="button_settings" width="44" height="44"/>
         <image name="glyph_guidelines" width="194" height="238"/>
@@ -1250,6 +1249,7 @@ this be mapped to?</string>
         <image name="icon_camera_tapped" width="114" height="114"/>
         <image name="icon_compose_default" width="114" height="114"/>
         <image name="icon_compose_tapped" width="114" height="114"/>
+        <image name="icon_instagram" width="40" height="40"/>
         <image name="icon_keyboard_default" width="114" height="114"/>
         <image name="icon_keyboard_tapped" width="114" height="114"/>
         <image name="icon_library_default" width="114" height="114"/>

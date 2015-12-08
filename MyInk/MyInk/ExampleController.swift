@@ -53,7 +53,7 @@ class ExampleController: UIViewController, UIAlertViewDelegate, MFMessageCompose
     func shareEmail() {
         if(MFMailComposeViewController.canSendMail()) {
             mailVC.mailComposeDelegate = self;
-            mailVC .setSubject("MyInk Test")
+            mailVC .setSubject("MyInk")
             mailVC.setMessageBody("You're So Pretty", isHTML: true)
             let data: NSData = UIImagePNGRepresentation(_image!)!
             mailVC.addAttachmentData(data, mimeType: "image/jpg", fileName: "image.jpg")
