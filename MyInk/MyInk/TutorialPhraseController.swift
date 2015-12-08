@@ -314,7 +314,7 @@ class TutorialCharacterCell: UICollectionViewCell {
         drawCaptureView?.clear()
         label?.alpha = _initialLabelAlpha
         _character = value
-        
+        /*
         let atlas = (UIApplication.sharedApplication().delegate as! AppDelegate).currentAtlas
         let characterString = String(value)
         if atlas!.hasGlyphMapping(characterString) {
@@ -325,6 +325,7 @@ class TutorialCharacterCell: UICollectionViewCell {
             clearButton?.hidden = false
             saveButton?.hidden = false
         }
+        */
     }
     
     func handleDrawEvent(drawView:UIDrawView, eventType:UIDrawView.DrawEventType) {
