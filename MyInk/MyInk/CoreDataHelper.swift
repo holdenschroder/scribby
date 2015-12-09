@@ -19,7 +19,7 @@ class CoreDataHelper {
     }()
     
     static var saveDirectory:NSURL = {
-        return applicationDocumentsDirectory
+        return appGroupSharedDirectory
     }()
     
     lazy var managedObjectModel: NSManagedObjectModel = {
