@@ -129,7 +129,7 @@
                                 <rect key="frame" x="20" y="28" width="560" height="519"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="topLinePercent">
-                                        <real key="value" value="0.0"/>
+                                        <real key="value" value="-0.16600000000000001"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="bottomLinePercent">
                                         <real key="value" value="0.66000000000000003"/>
@@ -259,19 +259,9 @@
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C7o-mw-dWA" userLabel="Character Label">
                                 <rect key="frame" x="20" y="63" width="560" height="475"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="190" id="J1E-4w-6Sa"/>
-                                    <constraint firstAttribute="height" constant="300" id="gPw-A7-AtA"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" name="MyHandwriting" family="My Handwriting" pointSize="300"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="J1E-4w-6Sa"/>
-                                        <exclude reference="gPw-A7-AtA"/>
-                                    </mask>
-                                </variation>
                             </label>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tMS-bo-i7h">
                                 <rect key="frame" x="20" y="512" width="560" height="44"/>
@@ -291,6 +281,14 @@
                             </toolbar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xam-hZ-0jj" customClass="UIDrawCaptureView" customModule="MyInk" customModuleProvider="target">
                                 <rect key="frame" x="20" y="75" width="560" height="449"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="topLinePercent">
+                                        <real key="value" value="-0.16600000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="bottomLinePercent">
+                                        <real key="value" value="0.66000000000000003"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="referenceImage" destination="JQh-QO-tKO" id="Lmx-uW-Lue"/>
                                 </connections>
@@ -298,7 +296,6 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="tMS-bo-i7h" firstAttribute="top" secondItem="C7o-mw-dWA" secondAttribute="bottom" constant="26" id="4tk-1I-5ox"/>
                             <constraint firstItem="xam-hZ-0jj" firstAttribute="top" secondItem="JQh-QO-tKO" secondAttribute="top" constant="12" id="BFT-Gd-fzO"/>
                             <constraint firstItem="JQh-QO-tKO" firstAttribute="leading" secondItem="xam-hZ-0jj" secondAttribute="leading" id="FGZ-ru-dyg"/>
                             <constraint firstItem="C7o-mw-dWA" firstAttribute="top" secondItem="JQh-QO-tKO" secondAttribute="top" id="Fd6-ym-qzR"/>
@@ -316,11 +313,6 @@
                             <constraint firstItem="xam-hZ-0jj" firstAttribute="bottom" secondItem="JQh-QO-tKO" secondAttribute="bottom" constant="-14" id="wxy-24-jFk"/>
                             <constraint firstItem="JQh-QO-tKO" firstAttribute="centerY" secondItem="K76-ux-THm" secondAttribute="centerY" id="xMj-cB-Ydw"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="4tk-1I-5ox"/>
-                            </mask>
-                        </variation>
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>

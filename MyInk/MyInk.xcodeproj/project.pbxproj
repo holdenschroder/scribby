@@ -443,11 +443,11 @@
 			isa = PBXGroup;
 			children = (
 				58FBA5281B853FC4009CF809 /* SharedMyInkValues.swift */,
+				583EB9E71B72DCC200357957 /* CoreDataHelper.swift */,
 				5870238C1BFD1BCB00D9779F /* CGFloatExtensions.swift */,
 				582D3FA41B50433300D08255 /* CGPointExtensions.swift */,
 				587023901BFD222800D9779F /* CGRectExtensions.swift */,
 				5870238A1BFD1B4300D9779F /* CGSizeExtensions.swift */,
-				583EB9E71B72DCC200357957 /* CoreDataHelper.swift */,
 				580DFBB91B59A0A500A3A223 /* FontMessageRenderer.swift */,
 				582D3FA91B50433300D08255 /* ImageCropUtility.swift */,
 				58765AE31BAA46C70022AF80 /* SwiftMath.swift */,

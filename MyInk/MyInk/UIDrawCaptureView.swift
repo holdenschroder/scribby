@@ -17,8 +17,8 @@ class UIDrawCaptureView: UIDrawView {
     /** This image view is used as a reference when determining the positioning of the drawn character. It determines line spacing */
     @IBOutlet var referenceImage:UIImageView?
     
-    @IBInspectable var topLinePercent:CGFloat = 0.166
-    @IBInspectable var bottomLinePercent:CGFloat = 0.834
+    @IBInspectable var topLinePercent:CGFloat =  0.166 //-0.166
+    @IBInspectable var bottomLinePercent:CGFloat = 0.834 //0.66
     
     func save(mapping:String, captureType:String, saveAtlas:Bool = true) -> Bool {
         let imageSize = referenceImage!.image!.size
