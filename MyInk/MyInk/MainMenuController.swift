@@ -15,15 +15,6 @@ class MainMenuController:UIViewController, UIImagePickerControllerDelegate, UINa
         super.viewDidLoad()
         
         captureView = storyboard?.instantiateViewControllerWithIdentifier("CaptureView") as? CaptureWordSelectController
-    
-//        let tutorialState = (UIApplication.sharedApplication().delegate as! AppDelegate).tutorialState
-//        if tutorialState != nil && tutorialState!.isTutorialFlagSet(TutorialState.TutorialFlags.StartingPhrase) == false {
-//            MyInkAnalytics.StartTimedEvent(SharedMyInkValues.kEventTutorialFirstPhrase, parameters: ["Resuming":String(Int(tutorialState!.wordIndex) > 0)])
-//            let welcomeScreen = storyboard?.instantiateViewControllerWithIdentifier("WelcomeScreen")
-//            if welcomeScreen != nil {
-//                self.presentViewController(welcomeScreen!, animated: true, completion: nil)
-//            }
-//        }
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -53,18 +44,10 @@ class MainMenuController:UIViewController, UIImagePickerControllerDelegate, UINa
     }
     
     @IBAction func openPhraseCapture(sender:AnyObject) {
-        //TODO: Redesign the phrase view so that it can be better used for non-tutorial capture flows
-        
-        //If the user can trigger this we can assume they are not in the initial tutorial and thus we should reset the word to give a consistent flow
         let tutorialState = (UIApplication.sharedApplication().delegate as! AppDelegate).tutorialState
         tutorialState?.wordIndex = 0
         MyInkAnalytics.StartTimedEvent(SharedMyInkValues.kEventTutorialFirstPhrase, parameters: ["Resuming":String(Int(tutorialState!.wordIndex) > 0)])
         presentViewController(UIStoryboard(name: "Tutorial", bundle: nil).instantiateViewControllerWithIdentifier("TutorialIntro") as UIViewController, animated: true, completion: nil)
-
-//        let phraseScreen = storyboard?.instantiateViewControllerWithIdentifier("TutorialPhrase")
-//        if phraseScreen != nil {
-//            self.presentViewController(phraseScreen!, animated: true, completion: nil)
-//        }
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {

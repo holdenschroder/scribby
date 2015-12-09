@@ -32,8 +32,8 @@ class LibraryItemController:UIViewController, UIImagePickerControllerDelegate, U
             self.characterLabel?.alpha = 0.05
         })
         
-        let camButton = UIBarButtonItem(barButtonSystemItem: .Camera, target: self, action: "openCapture")
-        navigationItem.rightBarButtonItem = camButton
+        //let camButton = UIBarButtonItem(barButtonSystemItem: .Camera, target: self, action: "openCapture")
+        //navigationItem.rightBarButtonItem = camButton
         
         captureView = storyboard?.instantiateViewControllerWithIdentifier("CaptureView") as? CaptureWordSelectController
     }

@@ -2,15 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "LineheightReference_squared.png",
+      "filename" : "button_ink_tapped.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "button_ink_tapped@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "button_ink_tapped@3x.png",
       "scale" : "3x"
     }
   ],
