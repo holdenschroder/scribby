@@ -16,6 +16,7 @@
 		537D0AE71C17934F00BFAA94 /* Replace_Atlas in Resources */ = {isa = PBXBuildFile; fileRef = 537D0AE61C17934F00BFAA94 /* Replace_Atlas */; };
 		53A2CDD11BFAB21800569105 /* LibraryItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CDD01BFAB21800569105 /* LibraryItemController.swift */; };
 		53BCA3CC1C0E1BF4004D1900 /* Release_Process in Resources */ = {isa = PBXBuildFile; fileRef = 53BCA3CB1C0E1BF4004D1900 /* Release_Process */; };
+		53C8AD7B1C18DE5E006A98E1 /* EarOne_Handwriting.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53C8AD7A1C18DE5E006A98E1 /* EarOne_Handwriting.ttf */; };
 		53D757931BFE6C9500C39E7C /* KeyboardInstallPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D757921BFE6C9500C39E7C /* KeyboardInstallPageController.swift */; };
 		53D757951BFE6DE700C39E7C /* PageItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D757941BFE6DE700C39E7C /* PageItemController.swift */; };
 		53DBD30A1C079B2D00E8EAB5 /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53DBD3091C079B2C00E8EAB5 /* Tutorial.storyboard */; };
@@ -150,6 +151,7 @@
 		537D0AE61C17934F00BFAA94 /* Replace_Atlas */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Replace_Atlas; sourceTree = "<group>"; };
 		53A2CDD01BFAB21800569105 /* LibraryItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryItemController.swift; sourceTree = "<group>"; };
 		53BCA3CB1C0E1BF4004D1900 /* Release_Process */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Release_Process; sourceTree = "<group>"; };
+		53C8AD7A1C18DE5E006A98E1 /* EarOne_Handwriting.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = EarOne_Handwriting.ttf; path = Assets/EarOne_Handwriting.ttf; sourceTree = "<group>"; };
 		53D757921BFE6C9500C39E7C /* KeyboardInstallPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardInstallPageController.swift; sourceTree = "<group>"; };
 		53D757941BFE6DE700C39E7C /* PageItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PageItemController.swift; path = Code/PageItemController.swift; sourceTree = "<group>"; };
 		53DBD3091C079B2C00E8EAB5 /* Tutorial.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tutorial.storyboard; sourceTree = "<group>"; };
@@ -454,6 +456,23 @@
 			name = "Helpers+Misc";
 			sourceTree = "<group>";
 		};
+		53C8AD791C18DE4F006A98E1 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				53C8AD7A1C18DE5E006A98E1 /* EarOne_Handwriting.ttf */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		53C8AD7C1C18E1C6006A98E1 /* Notes */ = {
+			isa = PBXGroup;
+			children = (
+				53BCA3CB1C0E1BF4004D1900 /* Release_Process */,
+				537D0AE61C17934F00BFAA94 /* Replace_Atlas */,
+			);
+			name = Notes;
+			sourceTree = "<group>";
+		};
 		53DBD30B1C07B23500E8EAB5 /* Tutorial */ = {
 			isa = PBXGroup;
 			children = (
@@ -542,14 +561,14 @@
 		58DF906C1B4F1C9600E36BB1 /* MyInk */ = {
 			isa = PBXGroup;
 			children = (
+				53C8AD791C18DE4F006A98E1 /* Assets */,
 				535C82191BFA6DAF00030D25 /* Code */,
 				535C821A1BFA6DBF00030D25 /* UI */,
 				58DF90921B4F1CFA00E36BB1 /* Data */,
 				582D3FA61B50433300D08255 /* Filters */,
 				585277881B797DD000C1B90B /* Resources */,
 				58DF906D1B4F1C9600E36BB1 /* Supporting Files */,
-				53BCA3CB1C0E1BF4004D1900 /* Release_Process */,
-				537D0AE61C17934F00BFAA94 /* Replace_Atlas */,
+				53C8AD7C1C18E1C6006A98E1 /* Notes */,
 			);
 			path = MyInk;
 			sourceTree = "<group>";
@@ -746,6 +765,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				533CB3DA1C065F4000EA7438 /* Onboarding.storyboard in Resources */,
+				53C8AD7B1C18DE5E006A98E1 /* EarOne_Handwriting.ttf in Resources */,
 				585277921B7A679200C1B90B /* Embedded_data.sqlite-wal in Resources */,
 				58DF90781B4F1C9600E36BB1 /* Main.storyboard in Resources */,
 				537D0AE71C17934F00BFAA94 /* Replace_Atlas in Resources */,
