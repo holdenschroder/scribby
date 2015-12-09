@@ -73,10 +73,10 @@ class UIDrawView: UIView {
     func clear() {
         let imageRect = CGRect(x: 0, y: 0, width: mainImageView.bounds.width, height: mainImageView.bounds.height)
         UIGraphicsBeginImageContext(mainImageView.bounds.size)
-        let context = UIGraphicsGetCurrentContext()
-        CGContextSetRGBFillColor(context, 0,0,0,0)
-        CGContextFillRect(context, imageRect)
-        mainImageView.image = UIGraphicsGetImageFromCurrentImageContext()
+            let context = UIGraphicsGetCurrentContext()
+            CGContextSetRGBFillColor(context, 0,0,0,0)
+            CGContextFillRect(context, imageRect)
+            mainImageView.image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         lastBrushWidth = brushWidthMin
         _isEmpty = true

@@ -58,7 +58,6 @@ class LibraryCollectionController:UICollectionViewController {
     //MARK: Collection View Delegate
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        print(indexPath.row)
         _mAtlasGlyphToPass = _atlasGlyphs![indexPath.row]
         self.performSegueWithIdentifier("captureSingleItemFromLibrary", sender: self)
     }

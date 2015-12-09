@@ -11,6 +11,10 @@ import UIKit
 class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIGestureRecognizerDelegate {
     private let phrase:String! = "QUICK BROWN FOX JUMPS\n OVER THE LAZY DOG"
     private var words:[String]!
+
+    private let mPhrase:String! = "QUICKBROWNFOXJUMPSOVERTHELAZYDOG"
+    private var mCharacters:[String]!
+    
     private var unwrittenCharacters = Set<Character>()
     private var _messageRenderer:FontMessageRenderer?
     private var _tutorialState:TutorialState?
@@ -28,6 +32,7 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
         super.awakeFromNib()
         self.collectionView?.panGestureRecognizer.addTarget(self, action: "handlePanGesture:")
         words = phrase.componentsSeparatedByString(" ")
+        mCharacters = mPhrase.characters.map { String($0) }
         
         let currentAtlas = (UIApplication.sharedApplication().delegate as! AppDelegate).currentAtlas
         let fallbackAtlas = (UIApplication.sharedApplication().delegate as! AppDelegate).embeddedAtlas
@@ -43,7 +48,6 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        //self.navigationController?.navigationBarHidden = false
         self.navigationController?.setNavigationBarHidden(false, animated: true)
 
         let layout = collectionView?.collectionViewLayout as! UICollectionViewFlowLayout
@@ -62,7 +66,7 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
         }
         if _tutorialState != nil {
             wordIndex = Int(_tutorialState!.wordIndex)
-            if wordIndex >= words.count {
+            if wordIndex >= mCharacters.count {
                 wordIndex = 0
             }
         }
@@ -75,17 +79,17 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
     //MARK: Collection View Methods
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return words[wordIndex].characters.count
+        return mCharacters[wordIndex].characters.count
     }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return words.count
+        return mCharacters.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CharacterCapture", forIndexPath: indexPath) as! TutorialCharacterCell
-        let characterIndex = words[wordIndex].characters.startIndex.advancedBy(indexPath.item)
-        let character = words[wordIndex].characters[characterIndex]
+        let characterIndex = mCharacters[wordIndex].characters.startIndex.advancedBy(indexPath.item)
+        let character = mCharacters[wordIndex].characters[characterIndex]
         cell.populate(character)
         cell.addEventSubscriber(self, handler: HandleCellEvent)
         return cell
@@ -133,16 +137,18 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
         else if(state == .Cleared && cell.character != nil) {
             unwrittenCharacters.insert(cell.character!)
         }
-        finishButton?.enabled = unwrittenCharacters.count == 0
+        if(wordIndex < mCharacters.count) {
+            finishButton?.enabled = false
+        }
+        else {
+            finishButton?.enabled = true
+        }
     }
     
     private func updateItemHeight(viewSize:CGSize) {
         let layout = self.collectionView?.collectionViewLayout as! UICollectionViewFlowLayout
-        //var itemHeight = (viewSize.width - (layout.minimumLineSpacing * (words[wordIndex].characters.count - 1))) / words[wordIndex].characters.count
-        //itemHeight = min(itemHeight, viewSize.height)
         let itemHeight = viewSize.height
         layout.itemSize = CGSize(width: itemHeight, height: itemHeight)
-    
         let cells = self.collectionView?.visibleCells()
         if(cells != nil) {
             for cell in cells! as! [TutorialCharacterCell] {
@@ -157,9 +163,7 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
         UpdateSizes()
     }
-    
-    /** The message and item height depend on screen size but when the screen is first shown these sizes are incorrect so we wait a brief period before actually
-    updating the sizes of the elements. This function can be called multiple times in the same frame without consequence*/
+
     private func UpdateSizes() {
         //Don't re-trigger the timer, we set it to nil after it fires
         if _updateSizesTimer == nil || !_updateSizesTimer!.valid {
@@ -175,10 +179,6 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
         UpdateMessages()
         updateItemHeight(collectionView!.bounds.size)
     }
-    
-    /*override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return UIInterfaceOrientationMask.Landscape
-    }*/
     
     //MARK: Rendering
     
@@ -204,10 +204,10 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
     //MARK: Button Handlers
     
     @IBAction func HandleNextBtn(sender:AnyObject) {
-        LogWordForAnalytics(words[wordIndex], isStarting:false)
+        LogWordForAnalytics(mCharacters[wordIndex], isStarting:false)
         ++wordIndex
-        if wordIndex < words.count {
-            LogWordForAnalytics(words[wordIndex], isStarting:true)
+        if wordIndex < mCharacters.count {
+            LogWordForAnalytics(mCharacters[wordIndex], isStarting:true)
             updateItemHeight(collectionView!.bounds.size)
             collectionView.reloadData()
             unwrittenCharacters.removeAll()
@@ -313,7 +313,7 @@ class TutorialCharacterCell: UICollectionViewCell {
         drawCaptureView?.clear()
         label?.alpha = _initialLabelAlpha
         _character = value
-        
+        /*
         let atlas = (UIApplication.sharedApplication().delegate as! AppDelegate).currentAtlas
         let characterString = String(value)
         if atlas!.hasGlyphMapping(characterString) {
@@ -324,13 +324,14 @@ class TutorialCharacterCell: UICollectionViewCell {
             clearButton?.hidden = false
             saveButton?.hidden = false
         }
+        */
     }
     
     func handleDrawEvent(drawView:UIDrawView, eventType:UIDrawView.DrawEventType) {
         switch(eventType) {
         case .Began:
             UIView.animateWithDuration(0.25, animations: {
-                self.label?.alpha = 0.0
+                self.label?.alpha = 0.05
             })
             broadcastToSubscribers(CellEventType.StartedDrawing)
         case .Ended:

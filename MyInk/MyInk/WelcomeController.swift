@@ -34,6 +34,9 @@ class WelcomeController: UIViewController, UITextFieldDelegate {
         UIView.animateWithDuration(1.5, animations: {
             self.mButton.alpha = 1.0
         })
+        UIView.animateWithDuration(3.0, animations: {
+            //self.textfield?.becomeFirstResponder()
+        })
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -42,7 +45,7 @@ class WelcomeController: UIViewController, UITextFieldDelegate {
             let message = textfield?.text
             if(message != nil && (message)!.characters.count > 0 && _fontMessageRenderer != nil) {
                 let calculatedLineHeight = 18.0 * SharedMyInkValues.FontPointSizeToPixelRatio
-                let imageMessage = _fontMessageRenderer!.renderMessage(message!, imageSize: CGSize(width: 1024, height: 4096), lineHeight:calculatedLineHeight, backgroundColor: UIColor.whiteColor())
+                let imageMessage = _fontMessageRenderer!.renderMessage(message!, imageSize: CGSize(width: 1024, height: 4096), lineHeight:calculatedLineHeight, backgroundColor: UIColor.clearColor())
                 if imageMessage != nil {
                     vc.loadImage(imageMessage!)
                 }
@@ -71,7 +74,14 @@ class WelcomeController: UIViewController, UITextFieldDelegate {
     // MARK: - Actions
     
     @IBAction func HandleInkButton(sender: AnyObject) {
-        performSegueWithIdentifier("segueWelcomeToExample", sender: self)
+        if(textfield?.text?.characters.count > 0) {
+            performSegueWithIdentifier("segueWelcomeToExample", sender: self)
+        }
+        else {
+            let alert = UIAlertController(title: "Wait!", message: "Please type a message", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
     }
  
 

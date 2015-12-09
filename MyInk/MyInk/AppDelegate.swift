@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Atlas Data
     
     lazy var currentAtlas:FontAtlas? = {
-        var atlas = FontAtlas(name: SharedMyInkValues.DefaultUserAtlas, atlasDirectory: SharedMyInkValues.DefaultAtlasDirectory, managedObjectContext: self.coreData.managedObjectContext!)
+        var atlas = FontAtlas(name: SharedMyInkValues.DefaultUserAtlas, atlasDirectory: SharedMyInkValues.EmbeddedAtlasDirectory, managedObjectContext: self.coreData.managedObjectContext!)
         atlas.onSaveEvents.append(self.handleAtlasSave)
         return atlas
     }()

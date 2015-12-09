@@ -46,15 +46,15 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="glyph_guidelines" translatesAutoresizingMaskIntoConstraints="NO" id="G3k-lm-Q2b">
+                                                            <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                                        </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="24" translatesAutoresizingMaskIntoConstraints="NO" id="6dF-WI-EbK" userLabel="Character Label">
                                                             <rect key="frame" x="0.0" y="12" width="200" height="175"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="300"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LineheightReference_squared" translatesAutoresizingMaskIntoConstraints="NO" id="G3k-lm-Q2b">
-                                                            <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
-                                                        </imageView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CUk-xM-zLA" customClass="UIDrawCaptureView" customModule="MyInk" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                                             <userDefinedRuntimeAttributes>
@@ -72,7 +72,7 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
-                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstItem="G3k-lm-Q2b" firstAttribute="top" secondItem="UHX-3N-xf9" secondAttribute="topMargin" constant="-8" id="1Lc-2s-oc0"/>
                                                     <constraint firstAttribute="trailingMargin" secondItem="CUk-xM-zLA" secondAttribute="trailing" constant="-8" id="2aJ-AN-mS8"/>
@@ -109,7 +109,7 @@
                                     <constraint firstItem="MNm-Va-bKP" firstAttribute="top" secondItem="YnH-fm-1lr" secondAttribute="top" id="nGB-UW-woV"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="draw your characters into the boxes." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="oSm-jv-tos" userLabel="Instructions Label">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="draw your characters into the box" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="oSm-jv-tos" userLabel="Instructions Label">
                                 <rect key="frame" x="20" y="518" width="560" height="28"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
                                 <color key="textColor" red="0.80392156859999997" green="0.090196078430000007" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -317,8 +317,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="LineheightReference_squared" width="256" height="270"/>
         <image name="button_no" width="44" height="44"/>
         <image name="button_yes" width="44" height="44"/>
+        <image name="glyph_guidelines" width="194" height="238"/>
     </resources>
 </document>

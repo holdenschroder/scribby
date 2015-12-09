@@ -19,8 +19,9 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var fontSizeLabel: UILabel!
     @IBOutlet weak var bottomConstraint:NSLayoutConstraint!
     @IBOutlet weak var propertiesBar: UIView!
+    @IBOutlet weak var mActivityIndicator: UIActivityIndicatorView!
     
-    private let _pointSizeOptions:[Float] = [12, 24, 36]
+    private let _pointSizeOptions:[Float] = [18, 24, 36]
     private let _pointSizeStrings:[String] = ["Small", "Medium", "Large"]
     private var _fontMessageRenderer:FontMessageRenderer?
     private var _selectedPointSize = 0
@@ -32,6 +33,7 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
         
         textView?.delegate = self
         textView?.text = "Type your message here"
+        textView?.textColor = UIColor.lightGrayColor()
         
         propertiesBar.layer.cornerRadius = 3.0
         pointSizeStepper.autorepeat = false
@@ -51,20 +53,27 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-
-        if isMovingToParentViewController() {
-            //textView?.text = ""
-        }
+        mActivityIndicator.hidden = true
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         if textView != nil {
             generateButton?.enabled = textView!.hasText()
             textView!.font = textView!.font!.fontWithSize(CGFloat(_pointSizeOptions[_selectedPointSize]))
             fontSizeLabel.text = String(_pointSizeStrings[_selectedPointSize])
+            UIView.animateWithDuration(0.5, animations: {
+                self.textView?.becomeFirstResponder()
+            })
         }
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         unregisterKeyboardNotifications()
+        UIView.animateWithDuration(0.5, animations: {
+            self.textView?.resignFirstResponder()
+        })
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -87,6 +96,9 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
                     if imageMessage != nil {
                         shareImageController.loadImage(imageMessage!)
                     }
+                    if(mActivityIndicator.isAnimating()) {
+                        mActivityIndicator.startAnimating()
+                    }
                 }
             }
         }
@@ -94,8 +106,34 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
     
     // MARK: - ACTIONS
     
+    
+    @IBAction func HandleInkAction(sender: AnyObject) {
+        if(textView?.text?.characters.count > 0) {
+            mActivityIndicator.hidden = false
+            mActivityIndicator.startAnimating()
+            performSegueWithIdentifier("composeToShare", sender: self)
+        }
+        else {
+            let alert = UIAlertController(title: "Wait!", message: "Please type a message", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func pulseButton() {
+        let pulseAnimation:CABasicAnimation = CABasicAnimation(keyPath: "transform.scale");
+        pulseAnimation.duration = 0.66;
+        pulseAnimation.toValue = NSNumber(float: 1.03);
+        pulseAnimation.fromValue = NSNumber(float: 0.97)
+        pulseAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut);
+        pulseAnimation.autoreverses = true;
+        pulseAnimation.repeatCount = FLT_MAX;
+        self.generateButton!.layer.addAnimation(pulseAnimation, forKey: nil)
+    }
+    
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
+        pulseButton()
     }
     
     @IBAction func stepperValueChanged(sender: UIStepper) {
@@ -110,9 +148,9 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
     }
     
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
-        if text == "\n"{
-            //textView.resignFirstResponder()
-            //return false
+        if(textView.text == "Type your message here") {
+            textView.text = ""
+            textView.textColor = SharedMyInkValues.MyInkLightColor
         }
         return true
     }
@@ -131,18 +169,11 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
     
     func handleKeyboardDidShow(notification:NSNotification) {
         let info = notification.userInfo as? [String:AnyObject]
-        if(textView?.text == "Type your message here") {
-            textView?.text = ""
-        }
         if info != nil && textView != nil {
             let kbRect = (info![UIKeyboardFrameBeginUserInfoKey] as! NSValue).CGRectValue()
             bottomConstraint.constant = kbRect.height + 20
             textView?.layoutIfNeeded()
             textView!.scrollRangeToVisible(textView!.selectedRange)
-            
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(0.1 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) {
-                //self.generateButton?.frame.origin.y -= kbRect.height
-            }
         }
     }
     

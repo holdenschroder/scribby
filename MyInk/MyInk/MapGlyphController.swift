@@ -24,7 +24,6 @@ class MapGlyphController:UIViewController, UITextFieldDelegate {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        //self.navigationController?.navigationBarHidden = false
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.navigationController?.navigationItem.leftBarButtonItem?.title = ""
 
@@ -39,16 +38,39 @@ class MapGlyphController:UIViewController, UITextFieldDelegate {
         MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventScreenLoadedCaptureMapGlyph)
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if textfield != nil {
+            UIView.animateWithDuration(0.5, animations: {
+                self.textfield?.becomeFirstResponder()
+            })
+        }
+    }
+    
     func setCallback(callback:InputCallback) {
         _callback = callback
     }
     
+    func popVC() {
+        let alert = UIAlertController(title: "Saved", message: "There is a glyph already mapped to that character, would you like to replace it with this one?", preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { action in
+            let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(0.25 * Double(NSEC_PER_SEC)))
+            dispatch_after(dispatch_time(dispatchTime, Int64(NSEC_PER_SEC)), dispatch_get_main_queue(), { () -> Void in
+                let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController];
+                self.navigationController!.popToViewController(viewControllers[0], animated: true);
+            })
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC)), dispatch_get_main_queue(), { () -> Void in
+            self.presentViewController(alert, animated: true, completion: nil)
+        })
+    }
+    
     @IBAction func Handle_SaveButton(sender: AnyObject) {
-        let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController];
-        self.navigationController!.popToViewController(viewControllers[0], animated: true);
         if(_callback != nil) {
             let string:String? = textfield!.text
             _callback!(value: string)
+            //popVC()
         }
     }
     

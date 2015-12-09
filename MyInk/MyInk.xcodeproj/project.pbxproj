@@ -13,6 +13,7 @@
 		533CB3E01C0688AD00EA7438 /* ExampleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533CB3DF1C0688AD00EA7438 /* ExampleController.swift */; };
 		535C33261C0F8D190075DDD6 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535C33251C0F8D190075DDD6 /* SettingsController.swift */; };
 		535C82251BFA9C0000030D25 /* libstdc++.6.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 535C82241BFA9C0000030D25 /* libstdc++.6.tbd */; };
+		537D0AE71C17934F00BFAA94 /* Replace_Atlas in Resources */ = {isa = PBXBuildFile; fileRef = 537D0AE61C17934F00BFAA94 /* Replace_Atlas */; };
 		53A2CDD11BFAB21800569105 /* LibraryItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CDD01BFAB21800569105 /* LibraryItemController.swift */; };
 		53BCA3CC1C0E1BF4004D1900 /* Release_Process in Resources */ = {isa = PBXBuildFile; fileRef = 53BCA3CB1C0E1BF4004D1900 /* Release_Process */; };
 		53D757931BFE6C9500C39E7C /* KeyboardInstallPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D757921BFE6C9500C39E7C /* KeyboardInstallPageController.swift */; };
@@ -146,6 +147,7 @@
 		533CB3DF1C0688AD00EA7438 /* ExampleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleController.swift; sourceTree = "<group>"; };
 		535C33251C0F8D190075DDD6 /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		535C82241BFA9C0000030D25 /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
+		537D0AE61C17934F00BFAA94 /* Replace_Atlas */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Replace_Atlas; sourceTree = "<group>"; };
 		53A2CDD01BFAB21800569105 /* LibraryItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryItemController.swift; sourceTree = "<group>"; };
 		53BCA3CB1C0E1BF4004D1900 /* Release_Process */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Release_Process; sourceTree = "<group>"; };
 		53D757921BFE6C9500C39E7C /* KeyboardInstallPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardInstallPageController.swift; sourceTree = "<group>"; };
@@ -547,6 +549,7 @@
 				585277881B797DD000C1B90B /* Resources */,
 				58DF906D1B4F1C9600E36BB1 /* Supporting Files */,
 				53BCA3CB1C0E1BF4004D1900 /* Release_Process */,
+				537D0AE61C17934F00BFAA94 /* Replace_Atlas */,
 			);
 			path = MyInk;
 			sourceTree = "<group>";
@@ -745,6 +748,7 @@
 				533CB3DA1C065F4000EA7438 /* Onboarding.storyboard in Resources */,
 				585277921B7A679200C1B90B /* Embedded_data.sqlite-wal in Resources */,
 				58DF90781B4F1C9600E36BB1 /* Main.storyboard in Resources */,
+				537D0AE71C17934F00BFAA94 /* Replace_Atlas in Resources */,
 				58DF907D1B4F1C9600E36BB1 /* LaunchScreen.xib in Resources */,
 				585277911B7A679200C1B90B /* Embedded_data.sqlite-shm in Resources */,
 				58DF907A1B4F1C9600E36BB1 /* Images.xcassets in Resources */,
@@ -911,7 +915,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = MyInkKeyboard/MyInkKeyboard.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: E-Link Entertainment Ltd. (V3F4MJ33H5)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -925,7 +929,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.elink.cursive.keyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "275155b7-d6d8-4280-a642-4cd555e7cf0c";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -935,7 +939,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = MyInkKeyboard/MyInkKeyboard.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: E-Link Entertainment Ltd. (V3F4MJ33H5)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -945,7 +949,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.elink.cursive.keyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "275155b7-d6d8-4280-a642-4cd555e7cf0c";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -967,8 +971,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: E-Link Entertainment Ltd. (V3F4MJ33H5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: E-Link Entertainment Ltd. (V3F4MJ33H5)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1015,8 +1019,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: E-Link Entertainment Ltd. (V3F4MJ33H5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: E-Link Entertainment Ltd. (V3F4MJ33H5)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1058,7 +1062,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.elink.cursive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "9dcab5a5-8098-47a3-989b-9b2e0b482f76";
 				SWIFT_OBJC_BRIDGING_HEADER = MyInk/bridging_header.h;
 			};
 			name = Debug;
@@ -1083,7 +1087,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.elink.cursive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "9dcab5a5-8098-47a3-989b-9b2e0b482f76";
 				SWIFT_OBJC_BRIDGING_HEADER = MyInk/bridging_header.h;
 			};
 			name = Release;
