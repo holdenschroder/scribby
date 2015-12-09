@@ -65,6 +65,7 @@ class CaptureWordSelectController: UIViewController, UIImagePickerControllerDele
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         let error = NSError?()
+        print(error)
         Flurry.logError(SharedMyInkValues.kEventScreenLoadedCaptureCharacterSelect, message: "Memory Warning", error: error)
     }
     

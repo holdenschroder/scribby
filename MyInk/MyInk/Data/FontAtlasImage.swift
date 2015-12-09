@@ -77,10 +77,10 @@ class FontAtlasImage: NSManagedObject {
     var fullFilePath:NSURL {
         get {
             var url:NSURL!
-            if filepath.hasPrefix(SharedMyInkValues.EmbeddedAtlasDirectory) {
-                url = NSBundle.mainBundle().URLForResource(SharedMyInkValues.EmbeddedAtlasURL, withExtension: "png")
-            }
-            else {
+//            if filepath.hasPrefix(SharedMyInkValues.EmbeddedAtlasDirectory) {
+//                url = NSBundle.mainBundle().URLForResource(SharedMyInkValues.EmbeddedAtlasURL, withExtension: "png")
+//            }
+//            else {
                 let path = CoreDataHelper.saveDirectory
                 var modifiedFilePath:String = ""
                 let pathComponents = filepath.componentsSeparatedByString("/")
@@ -88,7 +88,7 @@ class FontAtlasImage: NSManagedObject {
                     modifiedFilePath += pathComponents[partIndex] + "/"
                 }
                 url = path.URLByAppendingPathComponent(modifiedFilePath)
-            }
+            //}
             return url
         }
     }
