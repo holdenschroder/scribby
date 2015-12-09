@@ -100,7 +100,7 @@ Try it out:</string>
                                     </mask>
                                 </variation>
                             </label>
-                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DPP-n6-cKz">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DPP-n6-cKz">
                                 <rect key="frame" x="243" y="466" width="114" height="114"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="DPP-n6-cKz" secondAttribute="height" multiplier="1:1" id="fZj-Gh-E4n"/>
@@ -121,6 +121,9 @@ Try it out:</string>
                                     <outlet property="delegate" destination="bim-qh-NbQ" id="3qn-Lj-DdH"/>
                                 </connections>
                             </textField>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="0Mx-6G-PaY">
+                                <rect key="frame" x="282" y="504" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.81568627449999997" green="0.078431372550000003" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -128,7 +131,9 @@ Try it out:</string>
                             <constraint firstItem="isJ-3U-irS" firstAttribute="top" secondItem="DPP-n6-cKz" secondAttribute="bottom" constant="20" id="HqQ-1O-lex"/>
                             <constraint firstItem="CLY-jL-YGR" firstAttribute="top" secondItem="wjC-T9-PLN" secondAttribute="bottom" constant="8" id="Iwy-R4-nnM"/>
                             <constraint firstItem="VOi-Sc-Mto" firstAttribute="top" secondItem="CLY-jL-YGR" secondAttribute="bottom" constant="33" id="OH2-3L-ltr"/>
+                            <constraint firstItem="0Mx-6G-PaY" firstAttribute="centerX" secondItem="DPP-n6-cKz" secondAttribute="centerX" id="eh1-rA-TnI"/>
                             <constraint firstItem="VOi-Sc-Mto" firstAttribute="centerX" secondItem="CLY-jL-YGR" secondAttribute="centerX" id="gJK-KJ-zbo"/>
+                            <constraint firstItem="0Mx-6G-PaY" firstAttribute="centerY" secondItem="DPP-n6-cKz" secondAttribute="centerY" id="gbL-Ud-p6f"/>
                             <constraint firstItem="Z7Y-dS-Isd" firstAttribute="centerX" secondItem="OVt-1W-xZ2" secondAttribute="centerX" id="jxm-L6-br4"/>
                             <constraint firstAttribute="bottomMargin" secondItem="Z7Y-dS-Isd" secondAttribute="bottom" id="nBQ-GX-KXY"/>
                             <constraint firstItem="Z7Y-dS-Isd" firstAttribute="top" secondItem="OVt-1W-xZ2" secondAttribute="top" id="tY1-QM-DFv"/>
@@ -138,6 +143,7 @@ Try it out:</string>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="mActivityIndicator" destination="0Mx-6G-PaY" id="c5k-lp-AJp"/>
                         <outlet property="mButton" destination="DPP-n6-cKz" id="41j-1P-uYk"/>
                         <outlet property="textfield" destination="VOi-Sc-Mto" id="Rkv-tP-C1L"/>
                         <segue destination="Uo0-Y4-CuX" kind="presentation" identifier="segueWelcomeToExample" id="4j2-sX-3bN"/>
@@ -191,10 +197,11 @@ Try it out:</string>
                                     <action selector="closeAction:" destination="Uo0-Y4-CuX" eventType="touchUpInside" id="OH6-Yr-2g0"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Now do something with it:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lle-Qb-gqy">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Now do something with it:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lle-Qb-gqy">
                                 <rect key="frame" x="150" y="285" width="300" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="XSA-X5-af1"/>
+                                    <constraint firstAttribute="height" constant="30" id="56g-73-FuP"/>
+                                    <constraint firstAttribute="width" constant="300" id="fTL-ng-a0x"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -265,25 +272,25 @@ Try it out:</string>
                         </subviews>
                         <color key="backgroundColor" red="0.81568627449999997" green="0.078431372550000003" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="lle-Qb-gqy" firstAttribute="centerY" secondItem="R4L-fO-VZZ" secondAttribute="centerY" id="1na-ls-tgp"/>
                             <constraint firstItem="1JJ-9H-Uf5" firstAttribute="leading" secondItem="ozj-ND-kbC" secondAttribute="leading" id="7oW-i5-qh5"/>
                             <constraint firstItem="ZOi-Fc-BAJ" firstAttribute="centerX" secondItem="OSo-uY-cWx" secondAttribute="centerX" id="9p1-sR-XQf"/>
                             <constraint firstItem="R4L-fO-VZZ" firstAttribute="centerX" secondItem="OSo-uY-cWx" secondAttribute="centerX" id="CHA-dA-fII"/>
                             <constraint firstItem="ozj-ND-kbC" firstAttribute="top" secondItem="S11-lS-SSY" secondAttribute="bottom" constant="8" id="CsZ-wA-JJj"/>
-                            <constraint firstItem="1JJ-9H-Uf5" firstAttribute="centerX" secondItem="lle-Qb-gqy" secondAttribute="centerX" id="Dtn-Nd-nn3"/>
                             <constraint firstItem="ENt-xJ-70P" firstAttribute="top" secondItem="C85-mN-7on" secondAttribute="bottom" constant="8" id="FKY-u7-fHQ"/>
+                            <constraint firstItem="lle-Qb-gqy" firstAttribute="top" secondItem="1JJ-9H-Uf5" secondAttribute="bottom" constant="55" id="GcM-1N-Ev9"/>
+                            <constraint firstItem="ZOi-Fc-BAJ" firstAttribute="top" secondItem="lle-Qb-gqy" secondAttribute="bottom" constant="20" id="HIk-HX-VzD"/>
                             <constraint firstItem="1JJ-9H-Uf5" firstAttribute="centerX" secondItem="G79-Ji-qBJ" secondAttribute="centerX" id="IRQ-uH-hKP"/>
                             <constraint firstItem="C85-mN-7on" firstAttribute="centerX" secondItem="OSo-uY-cWx" secondAttribute="centerX" id="Ivc-KB-Izn"/>
                             <constraint firstItem="ozj-ND-kbC" firstAttribute="leading" secondItem="OSo-uY-cWx" secondAttribute="leadingMargin" id="ba8-Gj-85B"/>
                             <constraint firstItem="1JJ-9H-Uf5" firstAttribute="top" secondItem="ozj-ND-kbC" secondAttribute="bottom" constant="18" id="d6Z-dR-15B"/>
                             <constraint firstItem="C85-mN-7on" firstAttribute="top" secondItem="ZOi-Fc-BAJ" secondAttribute="bottom" constant="7" id="e4X-cz-9aO"/>
-                            <constraint firstItem="lle-Qb-gqy" firstAttribute="top" secondItem="1JJ-9H-Uf5" secondAttribute="bottom" constant="55" id="eAM-f8-aC6"/>
                             <constraint firstItem="ENt-xJ-70P" firstAttribute="top" secondItem="C85-mN-7on" secondAttribute="bottom" constant="8" id="f6I-3z-rxK"/>
-                            <constraint firstItem="ZOi-Fc-BAJ" firstAttribute="top" secondItem="lle-Qb-gqy" secondAttribute="bottom" constant="20" id="gFs-jT-qCR"/>
+                            <constraint firstItem="lle-Qb-gqy" firstAttribute="centerX" secondItem="ZOi-Fc-BAJ" secondAttribute="centerX" id="hwb-Xd-k25"/>
                             <constraint firstAttribute="bottomMargin" secondItem="R4L-fO-VZZ" secondAttribute="bottom" id="k8b-8F-ArK"/>
                             <constraint firstItem="G79-Ji-qBJ" firstAttribute="centerY" secondItem="ozj-ND-kbC" secondAttribute="centerY" id="mI8-Cm-ED3"/>
                             <constraint firstItem="R4L-fO-VZZ" firstAttribute="top" secondItem="OSo-uY-cWx" secondAttribute="topMargin" id="njG-H2-ZsM"/>
                             <constraint firstItem="1JJ-9H-Uf5" firstAttribute="centerX" secondItem="R4L-fO-VZZ" secondAttribute="centerX" id="rxe-uw-ELy"/>
-                            <constraint firstItem="lle-Qb-gqy" firstAttribute="centerY" secondItem="OSo-uY-cWx" secondAttribute="centerY" id="wou-sY-2Do"/>
                             <constraint firstItem="ENt-xJ-70P" firstAttribute="centerX" secondItem="OSo-uY-cWx" secondAttribute="centerX" id="ygI-fH-Mh7"/>
                         </constraints>
                     </view>

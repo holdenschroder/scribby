@@ -25,6 +25,7 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
     @IBOutlet weak var collectionView:UICollectionView!
     @IBOutlet weak var finishButton: UIBarButtonItem!
     @IBOutlet weak var messageImageView:UIImageView!
+    @IBOutlet weak var mActivityIndicator: UIActivityIndicatorView!
     
     //MARK: Initialization and Setup
     
@@ -73,6 +74,11 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
         finishButton?.enabled = unwrittenCharacters.count == 0
         unwrittenCharacters.removeAll()
         
+        //mActivityIndicator.hidden = true
+        if(mActivityIndicator.isAnimating()) {
+            mActivityIndicator.stopAnimating()
+        }
+        
         UpdateSizes()
     }
     
@@ -92,6 +98,10 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
         let character = mCharacters[wordIndex].characters[characterIndex]
         cell.populate(character)
         cell.addEventSubscriber(self, handler: HandleCellEvent)
+        //mActivityIndicator.hidden = true
+        if(mActivityIndicator.isAnimating()) {
+            mActivityIndicator.stopAnimating()
+        }
         return cell
     }
     
@@ -204,6 +214,8 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
     //MARK: Button Handlers
     
     @IBAction func HandleNextBtn(sender:AnyObject) {
+        mActivityIndicator.hidden = false
+        mActivityIndicator.startAnimating()
         LogWordForAnalytics(mCharacters[wordIndex], isStarting:false)
         ++wordIndex
         if wordIndex < mCharacters.count {

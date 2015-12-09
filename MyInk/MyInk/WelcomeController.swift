@@ -13,6 +13,7 @@ class WelcomeController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var textfield: UITextField?
     @IBOutlet weak var mButton: UIButton!
+    @IBOutlet weak var mActivityIndicator: UIActivityIndicatorView!
     
     private var _fontMessageRenderer:FontMessageRenderer?
     
@@ -50,6 +51,9 @@ class WelcomeController: UIViewController, UITextFieldDelegate {
                     vc.loadImage(imageMessage!)
                 }
             }
+            if(mActivityIndicator.isAnimating()) {
+                mActivityIndicator.stopAnimating()
+            }
         }
     }
 
@@ -75,6 +79,8 @@ class WelcomeController: UIViewController, UITextFieldDelegate {
     
     @IBAction func HandleInkButton(sender: AnyObject) {
         if(textfield?.text?.characters.count > 0) {
+            mActivityIndicator.hidden = false
+            mActivityIndicator.startAnimating()
             performSegueWithIdentifier("segueWelcomeToExample", sender: self)
         }
         else {

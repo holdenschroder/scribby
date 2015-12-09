@@ -66,6 +66,9 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
                 self.textView?.becomeFirstResponder()
             })
         }
+        if(mActivityIndicator.isAnimating()) {
+            mActivityIndicator.stopAnimating()
+        }
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -97,7 +100,7 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
                         shareImageController.loadImage(imageMessage!)
                     }
                     if(mActivityIndicator.isAnimating()) {
-                        mActivityIndicator.startAnimating()
+                        mActivityIndicator.stopAnimating()
                     }
                 }
             }

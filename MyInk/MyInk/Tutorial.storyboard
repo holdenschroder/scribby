@@ -152,14 +152,19 @@
                                             <action selector="HandleNextBtn:" destination="Xpz-K4-Xpf" eventType="touchUpInside" id="STN-4P-daa"/>
                                         </connections>
                                     </button>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="xkR-RA-Jhd">
+                                        <rect key="frame" x="32" y="3" width="37" height="37"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="cOr-H6-zX4" firstAttribute="centerY" secondItem="E5I-r7-hsH" secondAttribute="centerY" constant="-3" id="63m-FS-55P"/>
                                     <constraint firstItem="cOr-H6-zX4" firstAttribute="leading" secondItem="E5I-r7-hsH" secondAttribute="leading" id="ALK-Kd-wNb"/>
+                                    <constraint firstItem="xkR-RA-Jhd" firstAttribute="centerY" secondItem="c1b-u6-8CE" secondAttribute="centerY" id="O6a-iK-kOv"/>
                                     <constraint firstAttribute="width" constant="100" id="OZ4-90-t6l"/>
                                     <constraint firstAttribute="trailing" secondItem="c1b-u6-8CE" secondAttribute="trailing" id="OfU-ex-yfe"/>
                                     <constraint firstItem="c1b-u6-8CE" firstAttribute="centerY" secondItem="E5I-r7-hsH" secondAttribute="centerY" constant="-3" id="uNh-6n-Pcw"/>
+                                    <constraint firstItem="xkR-RA-Jhd" firstAttribute="centerX" secondItem="E5I-r7-hsH" secondAttribute="centerX" id="xZx-qE-f2k"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -195,6 +200,7 @@
                     <connections>
                         <outlet property="collectionView" destination="MNm-Va-bKP" id="TyV-1p-c3x"/>
                         <outlet property="finishButton" destination="Xhz-uB-Z0O" id="dCr-IE-ppY"/>
+                        <outlet property="mActivityIndicator" destination="xkR-RA-Jhd" id="QaG-u8-DoA"/>
                         <outlet property="messageImageView" destination="xzt-pt-WSD" id="i90-wx-lEE"/>
                     </connections>
                 </viewController>

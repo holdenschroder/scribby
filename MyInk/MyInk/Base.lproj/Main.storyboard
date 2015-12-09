@@ -478,8 +478,8 @@
                                     <outlet property="delegate" destination="PAC-fV-XAW" id="OhB-sx-tlV"/>
                                 </connections>
                             </textView>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="wLq-Eb-yAS">
-                                <rect key="frame" x="290" y="513" width="20" height="20"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="wLq-Eb-yAS">
+                                <rect key="frame" x="282" y="504" width="37" height="37"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
