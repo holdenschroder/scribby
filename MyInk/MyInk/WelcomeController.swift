@@ -22,6 +22,8 @@ class WelcomeController: UIViewController, UITextFieldDelegate {
         
         self.textfield!.delegate = self
         
+        mActivityIndicator.hidden = true
+        
         let currentAtlas = (UIApplication.sharedApplication().delegate as! AppDelegate).currentAtlas
         let fallbackAtlas = (UIApplication.sharedApplication().delegate as! AppDelegate).embeddedAtlas
         if(currentAtlas != nil) {

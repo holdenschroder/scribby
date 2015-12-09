@@ -461,6 +461,7 @@
                                     <constraint firstAttribute="width" constant="114" id="dov-MS-3cS"/>
                                 </constraints>
                                 <state key="normal" image="button_ink"/>
+                                <state key="disabled" image="button_ink_disabled"/>
                                 <connections>
                                     <action selector="HandleInkAction:" destination="PAC-fV-XAW" eventType="touchUpInside" id="9Mb-Xk-aUG"/>
                                 </connections>
@@ -1243,6 +1244,7 @@ this be mapped to?</string>
     <resources>
         <image name="Crosshair" width="32" height="32"/>
         <image name="button_ink" width="114" height="114"/>
+        <image name="button_ink_disabled" width="114" height="114"/>
         <image name="button_settings" width="44" height="44"/>
         <image name="glyph_guidelines" width="194" height="238"/>
         <image name="icon_camera_default" width="114" height="114"/>

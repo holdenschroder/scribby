@@ -34,7 +34,9 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
         textView?.delegate = self
         textView?.text = "Type your message here"
         textView?.textColor = UIColor.lightGrayColor()
-        
+        generateButton?.enabled = false
+        self.generateButton!.layer.removeAllAnimations()
+
         propertiesBar.layer.cornerRadius = 3.0
         pointSizeStepper.autorepeat = false
         pointSizeStepper.minimumValue = 0.0
@@ -59,7 +61,10 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         if textView != nil {
-            generateButton?.enabled = textView!.hasText()
+            textView?.text = "Type your message here"
+            textView?.textColor = UIColor.lightGrayColor()
+            generateButton?.enabled = false
+            self.generateButton!.layer.removeAllAnimations()
             textView!.font = textView!.font!.fontWithSize(CGFloat(_pointSizeOptions[_selectedPointSize]))
             fontSizeLabel.text = String(_pointSizeStrings[_selectedPointSize])
             UIView.animateWithDuration(0.5, animations: {
@@ -92,7 +97,6 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
                 else {
                     message = (textView?.text)!
                 }
-                print(message)
                 if(_fontMessageRenderer != nil) {
                     let calculatedLineHeight = CGFloat(_pointSizeOptions[_selectedPointSize]) * SharedMyInkValues.FontPointSizeToPixelRatio
                     let imageMessage = _fontMessageRenderer!.renderMessage(message, imageSize: CGSize(width: 1024, height: 4096), lineHeight:calculatedLineHeight, backgroundColor: UIColor.whiteColor())
@@ -136,7 +140,9 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
-        pulseButton()
+        if(textView?.text != "Type your message here") {
+            pulseButton()
+        }
     }
     
     @IBAction func stepperValueChanged(sender: UIStepper) {
