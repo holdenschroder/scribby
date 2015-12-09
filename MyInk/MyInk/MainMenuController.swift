@@ -8,18 +8,32 @@
 
 import Foundation
 
+
+
+
 class MainMenuController:UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var captureView:CaptureWordSelectController!
+    
+    @IBOutlet weak var writeBtn: UIButton!
+    @IBOutlet weak var createBtn: UIButton!
+    @IBOutlet weak var libraryBtn: UIButton!
+    @IBOutlet weak var tutorialBtn: UIButton!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         captureView = storyboard?.instantiateViewControllerWithIdentifier("CaptureView") as? CaptureWordSelectController
+        
+        writeBtn.setImage(UIImage(named: "icon_compose_tapped"), forState: .Selected)
+        //writeBtn.selected = true
+        
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        //self.navigationController?.navigationBarHidden = true
+
         self.navigationController?.setNavigationBarHidden(true, animated: true)
 
         MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventScreenLoadedMainMenu)

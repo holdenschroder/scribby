@@ -675,6 +675,12 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fyP-cg-b1J" userLabel="Tutorial View">
                                 <rect key="frame" x="310" y="460" width="85" height="120"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tutorial" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tpE-Kr-XZE">
+                                        <rect key="frame" x="0.0" y="85" width="85" height="30"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j5k-KR-iRZ" userLabel="Tutorial Button">
                                         <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
                                         <state key="normal" image="icon_tutorial_default">
@@ -685,12 +691,6 @@
                                             <segue destination="xSs-A3-lAK" kind="show" id="Hlt-1l-vB8"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tutorial" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tpE-Kr-XZE">
-                                        <rect key="frame" x="0.0" y="85" width="85" height="30"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="85" id="oy6-d9-Db3"/>
@@ -767,6 +767,12 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="VZS-hj-dhB"/>
                     </navigationItem>
                     <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="createBtn" destination="9M8-B9-mKx" id="vrd-oV-u2j"/>
+                        <outlet property="libraryBtn" destination="ZQd-gU-a8y" id="kg7-BS-Vcl"/>
+                        <outlet property="tutorialBtn" destination="j5k-KR-iRZ" id="1Li-70-UjE"/>
+                        <outlet property="writeBtn" destination="QvV-gN-P5n" id="qLt-0n-odT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UYz-Nk-hfW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
