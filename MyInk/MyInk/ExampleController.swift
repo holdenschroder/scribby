@@ -93,6 +93,7 @@ class ExampleController: UIViewController, UIAlertViewDelegate, MFMessageCompose
         case MessageComposeResultSent.rawValue:
             print("Message Sent")
             self.dismissViewControllerAnimated(true, completion: {
+                self.audioHelper.playSentSound()
                 self.closeScreen()
             })
         default:
@@ -111,6 +112,7 @@ class ExampleController: UIViewController, UIAlertViewDelegate, MFMessageCompose
         case MFMailComposeResultSent.rawValue:
             print("Email Sent")
             self.dismissViewControllerAnimated(true, completion: {
+                self.audioHelper.playSentSound()
                 self.closeScreen()
             })
         case MFMailComposeResultFailed.rawValue:
@@ -125,7 +127,6 @@ class ExampleController: UIViewController, UIAlertViewDelegate, MFMessageCompose
     // MARK: - Actions
     
     func closeScreen() {
-        audioHelper.playAwesomeSound()
         let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(0.5 * Double(NSEC_PER_SEC)))
         dispatch_after(dispatchTime, dispatch_get_main_queue(), {
             NSUserDefaults.standardUserDefaults().setBool(true, forKey: SharedMyInkValues.kDefaultsUserHasBoarded)
@@ -167,6 +168,7 @@ class ExampleController: UIViewController, UIAlertViewDelegate, MFMessageCompose
     }
     
     @IBAction func closeAction(sender: AnyObject) {
+        audioHelper.playAwesomeSound()
         closeScreen()
     }
     
