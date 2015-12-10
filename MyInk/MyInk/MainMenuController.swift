@@ -11,30 +11,76 @@ import Foundation
 class MainMenuController:UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var captureView:CaptureWordSelectController!
     
+    @IBOutlet weak var writeBtn: UIButton!
+    @IBOutlet weak var createBtn: UIButton!
+    @IBOutlet weak var libraryBtn: UIButton!
+    @IBOutlet weak var tutorialBtn: UIButton!
+    
+    var audioHelper = AudioHelper()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         captureView = storyboard?.instantiateViewControllerWithIdentifier("CaptureView") as? CaptureWordSelectController
-    
-//        let tutorialState = (UIApplication.sharedApplication().delegate as! AppDelegate).tutorialState
-//        if tutorialState != nil && tutorialState!.isTutorialFlagSet(TutorialState.TutorialFlags.StartingPhrase) == false {
-//            MyInkAnalytics.StartTimedEvent(SharedMyInkValues.kEventTutorialFirstPhrase, parameters: ["Resuming":String(Int(tutorialState!.wordIndex) > 0)])
-//            let welcomeScreen = storyboard?.instantiateViewControllerWithIdentifier("WelcomeScreen")
-//            if welcomeScreen != nil {
-//                self.presentViewController(welcomeScreen!, animated: true, completion: nil)
-//            }
-//        }
+        
+        writeBtn.setImage(UIImage(named: "icon_compose_tapped"), forState: .Selected)
+        createBtn.setImage(UIImage(named: "icon_touch_tapped"), forState: .Selected)
+        libraryBtn.setImage(UIImage(named: "icon_library_tapped"), forState: .Selected)
+        tutorialBtn.setImage(UIImage(named: "icon_tutorial_tapped"), forState: .Selected)
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        //self.navigationController?.navigationBarHidden = true
+
         self.navigationController?.setNavigationBarHidden(true, animated: true)
+        
+        writeBtn.selected = false
+        createBtn.selected = false
+        libraryBtn.selected = false
+        tutorialBtn.selected = false
 
         MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventScreenLoadedMainMenu)
     }
     
     //MARK: Button Handlers
+    
+    
+    @IBAction func HandleWriteButtonAction(sender: AnyObject) {
+        audioHelper.playClickSound()
+        writeBtn.selected = true
+        let vc = storyboard?.instantiateViewControllerWithIdentifier("Compose") as? ComposeMessageController
+        if vc != nil {
+            self.navigationController?.pushViewController(vc!, animated: true)
+        }
+    }
+    
+    @IBAction func HandleCreateButtonAction(sender: AnyObject) {
+        audioHelper.playClickSound()
+        createBtn.selected = true
+        let vc = storyboard?.instantiateViewControllerWithIdentifier("Capture") as? CaptureTouchController
+        if vc != nil {
+            self.navigationController?.pushViewController(vc!, animated: true)
+        }
+    }
+    
+    @IBAction func HandleLibraryButtonAction(sender: AnyObject) {
+        audioHelper.playClickSound()
+        libraryBtn.selected = true
+        let vc = storyboard?.instantiateViewControllerWithIdentifier("Library") as? LibraryCollectionController
+        if vc != nil {
+            self.navigationController?.pushViewController(vc!, animated: true)
+        }
+    }
+    
+    @IBAction func HandleTutorialButtonAction(sender: AnyObject) {
+        audioHelper.playClickSound()
+        tutorialBtn.selected = true
+        let vc = storyboard?.instantiateViewControllerWithIdentifier("Instructions") as? KeyboardInstallationInstructions
+        if vc != nil {
+            self.navigationController?.pushViewController(vc!, animated: true)
+        }
+    }
+    
     
     @IBAction func openCamera(sender: UIButton) {
         if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)) {
@@ -53,18 +99,10 @@ class MainMenuController:UIViewController, UIImagePickerControllerDelegate, UINa
     }
     
     @IBAction func openPhraseCapture(sender:AnyObject) {
-        //TODO: Redesign the phrase view so that it can be better used for non-tutorial capture flows
-        
-        //If the user can trigger this we can assume they are not in the initial tutorial and thus we should reset the word to give a consistent flow
         let tutorialState = (UIApplication.sharedApplication().delegate as! AppDelegate).tutorialState
         tutorialState?.wordIndex = 0
         MyInkAnalytics.StartTimedEvent(SharedMyInkValues.kEventTutorialFirstPhrase, parameters: ["Resuming":String(Int(tutorialState!.wordIndex) > 0)])
         presentViewController(UIStoryboard(name: "Tutorial", bundle: nil).instantiateViewControllerWithIdentifier("TutorialIntro") as UIViewController, animated: true, completion: nil)
-
-//        let phraseScreen = storyboard?.instantiateViewControllerWithIdentifier("TutorialPhrase")
-//        if phraseScreen != nil {
-//            self.presentViewController(phraseScreen!, animated: true, completion: nil)
-//        }
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {

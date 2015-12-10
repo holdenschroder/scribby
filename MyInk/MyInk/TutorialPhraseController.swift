@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import AVFoundation
 
 class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIGestureRecognizerDelegate {
+    
     private let phrase:String! = "QUICK BROWN FOX JUMPS\n OVER THE LAZY DOG"
     private var words:[String]!
-
     private let mPhrase:String! = "QUICKBROWNFOXJUMPSOVERTHELAZYDOG"
     private var mCharacters:[String]!
     
@@ -21,10 +22,13 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
     private var _updateSizesTimer:NSTimer?
     private var _sections:NSIndexSet!
     private var wordIndex = 0
-
+    
+    var audioHelper = AudioHelper()
+    
     @IBOutlet weak var collectionView:UICollectionView!
     @IBOutlet weak var finishButton: UIBarButtonItem!
     @IBOutlet weak var messageImageView:UIImageView!
+    @IBOutlet weak var mActivityIndicator: UIActivityIndicatorView!
     
     //MARK: Initialization and Setup
     
@@ -73,6 +77,11 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
         finishButton?.enabled = unwrittenCharacters.count == 0
         unwrittenCharacters.removeAll()
         
+        //mActivityIndicator.hidden = true
+        if(mActivityIndicator.isAnimating()) {
+            mActivityIndicator.stopAnimating()
+        }
+        
         UpdateSizes()
     }
     
@@ -92,6 +101,10 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
         let character = mCharacters[wordIndex].characters[characterIndex]
         cell.populate(character)
         cell.addEventSubscriber(self, handler: HandleCellEvent)
+        //mActivityIndicator.hidden = true
+        if(mActivityIndicator.isAnimating()) {
+            mActivityIndicator.stopAnimating()
+        }
         return cell
     }
     
@@ -204,6 +217,9 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
     //MARK: Button Handlers
     
     @IBAction func HandleNextBtn(sender:AnyObject) {
+        audioHelper.playFinSound()
+        mActivityIndicator.hidden = false
+        mActivityIndicator.startAnimating()
         LogWordForAnalytics(mCharacters[wordIndex], isStarting:false)
         ++wordIndex
         if wordIndex < mCharacters.count {
@@ -267,6 +283,7 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
         }
         alert.addAction(SkipAction)
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC)), dispatch_get_main_queue(), { () -> Void in
+            self.audioHelper.playSkipSound()
             self.presentViewController(alert, animated: true, completion: nil)
         })
     }
