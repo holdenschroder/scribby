@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="qIR-pm-Fn9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="qIR-pm-Fn9">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -121,9 +121,6 @@ Try it out:</string>
                                     <outlet property="delegate" destination="bim-qh-NbQ" id="3qn-Lj-DdH"/>
                                 </connections>
                             </textField>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="0Mx-6G-PaY">
-                                <rect key="frame" x="282" y="504" width="37" height="37"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.81568627449999997" green="0.078431372550000003" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -131,9 +128,7 @@ Try it out:</string>
                             <constraint firstItem="isJ-3U-irS" firstAttribute="top" secondItem="DPP-n6-cKz" secondAttribute="bottom" constant="20" id="HqQ-1O-lex"/>
                             <constraint firstItem="CLY-jL-YGR" firstAttribute="top" secondItem="wjC-T9-PLN" secondAttribute="bottom" constant="8" id="Iwy-R4-nnM"/>
                             <constraint firstItem="VOi-Sc-Mto" firstAttribute="top" secondItem="CLY-jL-YGR" secondAttribute="bottom" constant="33" id="OH2-3L-ltr"/>
-                            <constraint firstItem="0Mx-6G-PaY" firstAttribute="centerX" secondItem="DPP-n6-cKz" secondAttribute="centerX" id="eh1-rA-TnI"/>
                             <constraint firstItem="VOi-Sc-Mto" firstAttribute="centerX" secondItem="CLY-jL-YGR" secondAttribute="centerX" id="gJK-KJ-zbo"/>
-                            <constraint firstItem="0Mx-6G-PaY" firstAttribute="centerY" secondItem="DPP-n6-cKz" secondAttribute="centerY" id="gbL-Ud-p6f"/>
                             <constraint firstItem="Z7Y-dS-Isd" firstAttribute="centerX" secondItem="OVt-1W-xZ2" secondAttribute="centerX" id="jxm-L6-br4"/>
                             <constraint firstAttribute="bottomMargin" secondItem="Z7Y-dS-Isd" secondAttribute="bottom" id="nBQ-GX-KXY"/>
                             <constraint firstItem="Z7Y-dS-Isd" firstAttribute="top" secondItem="OVt-1W-xZ2" secondAttribute="top" id="tY1-QM-DFv"/>
@@ -143,7 +138,6 @@ Try it out:</string>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="mActivityIndicator" destination="0Mx-6G-PaY" id="c5k-lp-AJp"/>
                         <outlet property="mButton" destination="DPP-n6-cKz" id="41j-1P-uYk"/>
                         <outlet property="textfield" destination="VOi-Sc-Mto" id="Rkv-tP-C1L"/>
                         <segue destination="Uo0-Y4-CuX" kind="presentation" identifier="segueWelcomeToExample" id="4j2-sX-3bN"/>
