@@ -26,7 +26,7 @@ class AudioHelper {
     {
         let sound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("click", ofType: "wav")!)
         do {
-            print("Playing: \(sound)")
+            //print("Playing: \(sound)")
             click = try AVAudioPlayer(contentsOfURL: sound)
         } catch {
             print("No sound found by URL: \(sound)")
@@ -38,7 +38,7 @@ class AudioHelper {
     {
         let sound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("skip", ofType: "wav")!)
         do {
-            print("Playing: \(sound)")
+            //print("Playing: \(sound)")
             skip = try AVAudioPlayer(contentsOfURL: sound)
         } catch {
             print("No sound found by URL: \(sound)")
@@ -50,7 +50,7 @@ class AudioHelper {
     {
         let sound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("welcome", ofType: "wav")!)
         do {
-            print("Playing: \(sound)")
+            //print("Playing: \(sound)")
             welcome = try AVAudioPlayer(contentsOfURL: sound)
         } catch {
             print("No sound found by URL: \(sound)")
@@ -62,7 +62,7 @@ class AudioHelper {
     {
         let sound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("fin", ofType: "wav")!)
         do {
-            print("Playing: \(sound)")
+            //print("Playing: \(sound)")
             fin = try AVAudioPlayer(contentsOfURL: sound)
         } catch {
             print("No sound found by URL: \(sound)")
@@ -75,7 +75,7 @@ class AudioHelper {
     {
         let sound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("sent", ofType: "wav")!)
         do {
-            print("Playing: \(sound)")
+            //print("Playing: \(sound)")
             sent = try AVAudioPlayer(contentsOfURL: sound)
         } catch {
             print("No sound found by URL: \(sound)")
@@ -88,7 +88,7 @@ class AudioHelper {
     {
         let sound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("awesome", ofType: "wav")!)
         do {
-            print("Playing: \(sound)")
+            //print("Playing: \(sound)")
             awesome = try AVAudioPlayer(contentsOfURL: sound)
         } catch {
             print("No sound found by URL: \(sound)")

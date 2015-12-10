@@ -1,5 +1,5 @@
 //
-//  KeyboardInstallInstructions.swift
+//  InstallInstructions.swift
 //  MyInk
 //
 //  Created by Galen Ryder on 2015-08-17.
@@ -9,7 +9,7 @@
 import UIKit
 import QuartzCore   
 
-class KeyboardInstallationInstructions:UIViewController {
+class InstallationInstructions:UIViewController {
     
     var audioHelper = AudioHelper()
     

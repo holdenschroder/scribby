@@ -31,9 +31,7 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.title = "Write"
-        
+                
         textView?.delegate = self
         textView?.text = "Type your message here"
         textView?.textColor = UIColor.lightGrayColor()

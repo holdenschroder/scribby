@@ -75,7 +75,7 @@ class MainMenuController:UIViewController, UIImagePickerControllerDelegate, UINa
     @IBAction func HandleTutorialButtonAction(sender: AnyObject) {
         audioHelper.playClickSound()
         tutorialBtn.selected = true
-        let vc = storyboard?.instantiateViewControllerWithIdentifier("Instructions") as? KeyboardInstallationInstructions
+        let vc = storyboard?.instantiateViewControllerWithIdentifier("Instructions") as? InstallationInstructions
         if vc != nil {
             self.navigationController?.pushViewController(vc!, animated: true)
         }

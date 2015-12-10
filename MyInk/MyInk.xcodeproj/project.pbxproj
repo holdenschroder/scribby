@@ -37,7 +37,7 @@
 		580DFBBA1B59A0A500A3A223 /* FontMessageRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580DFBB91B59A0A500A3A223 /* FontMessageRenderer.swift */; };
 		581602001B87E49700F9F704 /* TextProxyConsumer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581601FF1B87E49700F9F704 /* TextProxyConsumer.swift */; };
 		58203A771B60132A00CFA42C /* ComposeMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58203A761B60132A00CFA42C /* ComposeMessageController.swift */; };
-		582054281B82D235002C95BE /* KeyboardInstallInstructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582054271B82D235002C95BE /* KeyboardInstallInstructions.swift */; };
+		582054281B82D235002C95BE /* InstallInstructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582054271B82D235002C95BE /* InstallInstructions.swift */; };
 		582A4E8E1BB21EC600D7543B /* UIDrawCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582A4E8D1BB21EC600D7543B /* UIDrawCaptureView.swift */; };
 		582A4E901BB346AE00D7543B /* TutorialPhraseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582A4E8F1BB346AE00D7543B /* TutorialPhraseController.swift */; };
 		582D3FB61B50433300D08255 /* CGPointExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582D3FA41B50433300D08255 /* CGPointExtensions.swift */; };
@@ -180,7 +180,7 @@
 		580DFBB91B59A0A500A3A223 /* FontMessageRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontMessageRenderer.swift; sourceTree = "<group>"; };
 		581601FF1B87E49700F9F704 /* TextProxyConsumer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextProxyConsumer.swift; sourceTree = "<group>"; };
 		58203A761B60132A00CFA42C /* ComposeMessageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeMessageController.swift; sourceTree = "<group>"; };
-		582054271B82D235002C95BE /* KeyboardInstallInstructions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardInstallInstructions.swift; sourceTree = "<group>"; };
+		582054271B82D235002C95BE /* InstallInstructions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstallInstructions.swift; sourceTree = "<group>"; };
 		582A4E8D1BB21EC600D7543B /* UIDrawCaptureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDrawCaptureView.swift; sourceTree = "<group>"; };
 		582A4E8F1BB346AE00D7543B /* TutorialPhraseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialPhraseController.swift; sourceTree = "<group>"; };
 		582D3FA41B50433300D08255 /* CGPointExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGPointExtensions.swift; sourceTree = "<group>"; };
@@ -353,7 +353,7 @@
 		530F34051C03C52400B16F88 /* Instructions */ = {
 			isa = PBXGroup;
 			children = (
-				582054271B82D235002C95BE /* KeyboardInstallInstructions.swift */,
+				582054271B82D235002C95BE /* InstallInstructions.swift */,
 				53D757921BFE6C9500C39E7C /* KeyboardInstallPageController.swift */,
 				53D757941BFE6DE700C39E7C /* PageItemController.swift */,
 			);
@@ -911,7 +911,7 @@
 				5806CD7A1BFAA56B00B19716 /* UICustomScrollBar.swift in Sources */,
 				582D3FBA1B50433300D08255 /* ImageCropUtility.swift in Sources */,
 				585D1FC11BF58A760093CA8A /* FlurryWrapper.swift in Sources */,
-				582054281B82D235002C95BE /* KeyboardInstallInstructions.swift in Sources */,
+				582054281B82D235002C95BE /* InstallInstructions.swift in Sources */,
 				582D3FC71B50779000D08255 /* FontAtlasImage.swift in Sources */,
 				5802FEA01B5476200013BCEA /* MapGlyphController.swift in Sources */,
 				580A6B341B606F9F006AEF44 /* ShareImageController.swift in Sources */,

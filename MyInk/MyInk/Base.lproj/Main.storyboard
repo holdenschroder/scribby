@@ -508,13 +508,13 @@
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" text="Type your message here" translatesAutoresizingMaskIntoConstraints="NO" id="JMB-nW-yz1">
                                 <rect key="frame" x="8" y="83" width="584" height="150"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="4Sx-65-cfI"/>
                                 </constraints>
                                 <color key="textColor" red="0.80392156859999997" green="0.090196078430000007" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no"/>
                                 <connections>
                                     <outlet property="delegate" destination="PAC-fV-XAW" id="OhB-sx-tlV"/>
                                 </connections>
@@ -548,7 +548,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Compose" id="gDw-oS-go8">
+                    <navigationItem key="navigationItem" title="Write" id="gDw-oS-go8">
                         <barButtonItem key="backBarButtonItem" title=" " id="ukR-Bs-2QS">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
@@ -568,10 +568,10 @@
             </objects>
             <point key="canvasLocation" x="908" y="-1732"/>
         </scene>
-        <!--Share Message-->
+        <!--Share-->
         <scene sceneID="mGh-ws-2ec">
             <objects>
-                <viewController storyboardIdentifier="ShareImage" id="Cqx-HG-Dfg" customClass="ShareImageController" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ShareImage" title="Share" id="Cqx-HG-Dfg" customClass="ShareImageController" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KcB-5d-UGK"/>
                         <viewControllerLayoutGuide type="bottom" id="iXq-NT-6hm"/>
@@ -623,7 +623,7 @@
                             <constraint firstItem="kqf-yw-xho" firstAttribute="top" secondItem="KcB-5d-UGK" secondAttribute="bottom" id="u3k-FQ-UKa"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Share Message" id="Qpe-cf-SHX">
+                    <navigationItem key="navigationItem" title="Share" id="Qpe-cf-SHX">
                         <barButtonItem key="backBarButtonItem" title=" " id="r68-6F-Ukw">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
@@ -821,7 +821,7 @@
         <!--Tutorial-->
         <scene sceneID="Xhy-ZO-nqd">
             <objects>
-                <viewController storyboardIdentifier="Instructions" title="Tutorial" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xSs-A3-lAK" customClass="KeyboardInstallationInstructions" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Instructions" title="Tutorial" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xSs-A3-lAK" customClass="InstallationInstructions" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LFd-Ca-Zxy"/>
                         <viewControllerLayoutGuide type="bottom" id="bE1-I7-lB7"/>
