@@ -22,8 +22,6 @@ class WelcomeController: UIViewController, UITextFieldDelegate {
         
         self.textfield!.delegate = self
         
-        mActivityIndicator.hidden = true
-        
         let currentAtlas = (UIApplication.sharedApplication().delegate as! AppDelegate).currentAtlas
         let fallbackAtlas = (UIApplication.sharedApplication().delegate as! AppDelegate).embeddedAtlas
         if(currentAtlas != nil) {
@@ -33,6 +31,8 @@ class WelcomeController: UIViewController, UITextFieldDelegate {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
+        self.textfield?.text = ""
         
         UIView.animateWithDuration(1.5, animations: {
             self.mButton.alpha = 1.0
