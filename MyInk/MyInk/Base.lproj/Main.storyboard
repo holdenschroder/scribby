@@ -115,7 +115,7 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="uvk-hb-qjO"/>
-                                    <barButtonItem title="Map" id="wus-8L-42z">
+                                    <barButtonItem title="Assign" id="wus-8L-42z">
                                         <connections>
                                             <segue destination="myQ-Qx-1Nc" kind="show" id="H3w-qn-b1v"/>
                                         </connections>
@@ -272,7 +272,7 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="lKa-az-lCb"/>
-                                    <barButtonItem title="Map" id="hoy-hX-mcB">
+                                    <barButtonItem title="Assign" id="hoy-hX-mcB">
                                         <connections>
                                             <action selector="mapAction:" destination="H9w-3a-nZ2" id="wtC-ze-40A"/>
                                         </connections>
@@ -1129,7 +1129,7 @@
                                 <rect key="frame" x="4" y="556" width="592" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="1yK-1d-qjS"/>
-                                    <barButtonItem title="Map" width="50" id="NyT-Jj-lCg">
+                                    <barButtonItem title="Assign" width="50" id="NyT-Jj-lCg">
                                         <color key="tintColor" red="0.80392156859999997" green="0.090196078430000007" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <segue destination="myQ-Qx-1Nc" kind="show" identifier="setupToMapGlyph" id="7AQ-SJ-TqA"/>
@@ -1195,7 +1195,8 @@
                                 <rect key="frame" x="4" y="556" width="592" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="ZZI-CQ-xUA"/>
-                                    <barButtonItem enabled="NO" systemItem="save" id="L5P-oa-ZLA">
+                                    <barButtonItem enabled="NO" title="Assign" id="L5P-oa-ZLA">
+                                        <color key="tintColor" red="0.81568627449999997" green="0.078431372550000003" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="Handle_SaveButton:" destination="myQ-Qx-1Nc" id="Djx-W7-RaA"/>
                                         </connections>
@@ -1315,7 +1316,7 @@ this be mapped to?</string>
         <image name="my_ink_logo" width="342" height="172"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="H3w-qn-b1v"/>
+        <segue reference="7AQ-SJ-TqA"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.92549019607843142" green="0.0" blue="0.44705882352941179" alpha="1" colorSpace="calibratedRGB"/>
 </document>
