@@ -47,6 +47,12 @@ class ExampleController: UIViewController, UIAlertViewDelegate, MFMessageCompose
         createBtn.layer.borderColor = UIColor.whiteColor().CGColor
         createBtn.layer.masksToBounds = true
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        audioHelper.playYeahSound()
+    }
 
     
     // MARK: - Misc Methods
@@ -168,7 +174,6 @@ class ExampleController: UIViewController, UIAlertViewDelegate, MFMessageCompose
     }
     
     @IBAction func closeAction(sender: AnyObject) {
-        audioHelper.playAwesomeSound()
         closeScreen()
     }
     

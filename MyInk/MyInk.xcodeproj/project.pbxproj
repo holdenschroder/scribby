@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		53213E651C1A2ACE0063342C /* yeah.wav in Resources */ = {isa = PBXBuildFile; fileRef = 53213E641C1A2ACE0063342C /* yeah.wav */; };
 		533CB3DA1C065F4000EA7438 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 533CB3D91C065F4000EA7438 /* Onboarding.storyboard */; };
 		533CB3DC1C06628700EA7438 /* SplashController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533CB3DB1C06628700EA7438 /* SplashController.swift */; };
 		533CB3DE1C066EB300EA7438 /* WelcomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533CB3DD1C066EB300EA7438 /* WelcomeController.swift */; };
@@ -150,6 +151,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		53213E641C1A2ACE0063342C /* yeah.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = yeah.wav; path = Assets/sounds/yeah.wav; sourceTree = "<group>"; };
 		533CB3D91C065F4000EA7438 /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		533CB3DB1C06628700EA7438 /* SplashController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashController.swift; sourceTree = "<group>"; };
 		533CB3DD1C066EB300EA7438 /* WelcomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeController.swift; sourceTree = "<group>"; };
@@ -503,6 +505,7 @@
 			isa = PBXGroup;
 			children = (
 				53C8AD8B1C191425006A98E1 /* welcome.wav */,
+				53213E641C1A2ACE0063342C /* yeah.wav */,
 				53C8AD951C191B3F006A98E1 /* awesome.wav */,
 				53C8AD8D1C191430006A98E1 /* click.wav */,
 				53C8AD831C19041C006A98E1 /* skip.wav */,
@@ -822,6 +825,7 @@
 				5852778B1B797DD000C1B90B /* Embedded_data.sqlite in Resources */,
 				53C8AD8A1C190C19006A98E1 /* fin.wav in Resources */,
 				53C8AD841C19041C006A98E1 /* skip.wav in Resources */,
+				53213E651C1A2ACE0063342C /* yeah.wav in Resources */,
 				53DBD30A1C079B2D00E8EAB5 /* Tutorial.storyboard in Resources */,
 				582D3FB81B50433300D08255 /* isolationfilter.cikernel in Resources */,
 				53C8AD8C1C191425006A98E1 /* welcome.wav in Resources */,

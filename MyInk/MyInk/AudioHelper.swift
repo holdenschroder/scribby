@@ -20,7 +20,7 @@ class AudioHelper {
     private var fin = AVAudioPlayer()
     private var sent = AVAudioPlayer()
     private var awesome = AVAudioPlayer()
-    
+    private var yeah = AVAudioPlayer()
     
     func playClickSound()
     {
@@ -94,6 +94,19 @@ class AudioHelper {
             print("No sound found by URL: \(sound)")
         }
         awesome.play()
+    }
+   
+    func playYeahSound()
+    {
+        let sound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("yeah", ofType: "wav")!)
+        do {
+            //print("Playing: \(sound)")
+            yeah = try AVAudioPlayer(contentsOfURL: sound)
+        } catch {
+            print("No sound found by URL: \(sound)")
+        }
+        yeah.volume = 0.05
+        yeah.play()
     }
     
     
