@@ -16,11 +16,11 @@ class ShareImageController: UIViewController, UIAlertViewDelegate {
     @IBOutlet var imageView:UIImageView?
     private var _image:UIImage?
     private var _documentController:UIDocumentInteractionController!
+    var audioHelper = AudioHelper()
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        //self.navigationController?.navigationBarHidden = false
         self.navigationController?.setNavigationBarHidden(false, animated: true)
 
         imageView?.image = _image
@@ -92,6 +92,7 @@ class ShareImageController: UIViewController, UIAlertViewDelegate {
                 alert.show()
             }
             else {
+                audioHelper.playSentSound()
                 MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventShareMessage, parameters: [SharedMyInkValues.kEventShareMessageParameterActivity:"button.instagram"])
             }
         }
@@ -106,12 +107,17 @@ class ShareImageController: UIViewController, UIAlertViewDelegate {
     @IBAction func ShareToTwitter(sender:UIBarButtonItem) {
         let composer = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
         composer.addImage(_image)
-        self.presentViewController(composer, animated: true, completion: nil)
+        self.presentViewController(composer, animated: true, completion: completionHandler)
         MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventShareMessage, parameters: [SharedMyInkValues.kEventShareMessageParameterActivity:"button.twitter"])
+    }
+    
+    func completionHandler() {
+        audioHelper.playSentSound()
     }
     
     func HandleActivityViewCompleted(activityType:String?, completed:Bool, items:[AnyObject]?, error:NSError?) {
         if completed {
+            audioHelper.playSentSound()
             MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventShareMessage, parameters: [SharedMyInkValues.kEventShareMessageParameterActivity:activityType ?? "UnknownActivity"])
         }
         else if error != nil

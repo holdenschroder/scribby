@@ -10,9 +10,10 @@ import UIKit
 
 class TutorialIntroController: UIViewController {
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-
+    var audioHelper = AudioHelper()
+    
+    @IBAction func playSound(sender:AnyObject) {
+        audioHelper.playClickSound()
     }
     
     

@@ -11,17 +11,17 @@ import QuartzCore
 
 class KeyboardInstallationInstructions:UIViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
+    var audioHelper = AudioHelper()
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-
+        
         MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventScreenLoadedKeyboardInstructions)
+    }
+    
+    @IBAction func playSound(sender:AnyObject) {
+        audioHelper.playClickSound()
     }
     
     @IBAction func openPhraseCapture(sender:AnyObject) {

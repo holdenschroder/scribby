@@ -12,12 +12,13 @@ class TutorialPhaseOutroController: UIViewController {
     @IBOutlet weak var messageImageView:UIImageView!
     private var messageImage:UIImage?
     
+    var audioHelper = AudioHelper()
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
 
         messageImageView?.image = messageImage
-        
         MyInkAnalytics.EndTimedEvent(SharedMyInkValues.kEventTutorialFirstPhrase, parameters: nil)
     }
     
@@ -29,6 +30,7 @@ class TutorialPhaseOutroController: UIViewController {
     }
     
     @IBAction func HandleOkBtn(sender: AnyObject) {
+        audioHelper.playClickSound()
         NSUserDefaults.standardUserDefaults().setBool(true, forKey: SharedMyInkValues.kDefaultsUserHasBoarded)
         presentViewController(UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("NavigationRoot") as UIViewController, animated: true, completion: nil)
     }

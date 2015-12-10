@@ -12,6 +12,7 @@ class SplashController: UIViewController {
     
     @IBOutlet weak var logo: UIImageView!
     var shouldShowOnboarding : Bool!
+    var audioHelper = AudioHelper()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,12 +23,14 @@ class SplashController: UIViewController {
         if(defaults.boolForKey(SharedMyInkValues.kDefaultsUserHasBoarded) ) {
             shouldShowOnboarding = false
         }
+        
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
         UIView.animateWithDuration(1.5, animations: {
+            self.audioHelper.playWelcomeSound()
             self.logo.alpha = 1.0
         })
         let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(2.5 * Double(NSEC_PER_SEC)))

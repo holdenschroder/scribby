@@ -8,9 +8,6 @@
 
 import Foundation
 
-
-
-
 class MainMenuController:UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var captureView:CaptureWordSelectController!
     
@@ -19,7 +16,7 @@ class MainMenuController:UIViewController, UIImagePickerControllerDelegate, UINa
     @IBOutlet weak var libraryBtn: UIButton!
     @IBOutlet weak var tutorialBtn: UIButton!
     
-    
+    var audioHelper = AudioHelper()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,19 +24,63 @@ class MainMenuController:UIViewController, UIImagePickerControllerDelegate, UINa
         captureView = storyboard?.instantiateViewControllerWithIdentifier("CaptureView") as? CaptureWordSelectController
         
         writeBtn.setImage(UIImage(named: "icon_compose_tapped"), forState: .Selected)
-        //writeBtn.selected = true
-        
+        createBtn.setImage(UIImage(named: "icon_touch_tapped"), forState: .Selected)
+        libraryBtn.setImage(UIImage(named: "icon_library_tapped"), forState: .Selected)
+        tutorialBtn.setImage(UIImage(named: "icon_tutorial_tapped"), forState: .Selected)
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
 
         self.navigationController?.setNavigationBarHidden(true, animated: true)
+        
+        writeBtn.selected = false
+        createBtn.selected = false
+        libraryBtn.selected = false
+        tutorialBtn.selected = false
 
         MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventScreenLoadedMainMenu)
     }
     
     //MARK: Button Handlers
+    
+    
+    @IBAction func HandleWriteButtonAction(sender: AnyObject) {
+        audioHelper.playClickSound()
+        writeBtn.selected = true
+        let vc = storyboard?.instantiateViewControllerWithIdentifier("Compose") as? ComposeMessageController
+        if vc != nil {
+            self.navigationController?.pushViewController(vc!, animated: true)
+        }
+    }
+    
+    @IBAction func HandleCreateButtonAction(sender: AnyObject) {
+        audioHelper.playClickSound()
+        createBtn.selected = true
+        let vc = storyboard?.instantiateViewControllerWithIdentifier("Capture") as? CaptureTouchController
+        if vc != nil {
+            self.navigationController?.pushViewController(vc!, animated: true)
+        }
+    }
+    
+    @IBAction func HandleLibraryButtonAction(sender: AnyObject) {
+        audioHelper.playClickSound()
+        libraryBtn.selected = true
+        let vc = storyboard?.instantiateViewControllerWithIdentifier("Library") as? LibraryCollectionController
+        if vc != nil {
+            self.navigationController?.pushViewController(vc!, animated: true)
+        }
+    }
+    
+    @IBAction func HandleTutorialButtonAction(sender: AnyObject) {
+        audioHelper.playClickSound()
+        tutorialBtn.selected = true
+        let vc = storyboard?.instantiateViewControllerWithIdentifier("Instructions") as? KeyboardInstallationInstructions
+        if vc != nil {
+            self.navigationController?.pushViewController(vc!, animated: true)
+        }
+    }
+    
     
     @IBAction func openCamera(sender: UIButton) {
         if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)) {

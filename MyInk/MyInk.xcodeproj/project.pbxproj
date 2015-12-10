@@ -16,7 +16,15 @@
 		537D0AE71C17934F00BFAA94 /* Replace_Atlas in Resources */ = {isa = PBXBuildFile; fileRef = 537D0AE61C17934F00BFAA94 /* Replace_Atlas */; };
 		53A2CDD11BFAB21800569105 /* LibraryItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CDD01BFAB21800569105 /* LibraryItemController.swift */; };
 		53BCA3CC1C0E1BF4004D1900 /* Release_Process in Resources */ = {isa = PBXBuildFile; fileRef = 53BCA3CB1C0E1BF4004D1900 /* Release_Process */; };
-		53C8AD7B1C18DE5E006A98E1 /* EarOne_Handwriting.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53C8AD7A1C18DE5E006A98E1 /* EarOne_Handwriting.ttf */; };
+		53C8AD841C19041C006A98E1 /* skip.wav in Resources */ = {isa = PBXBuildFile; fileRef = 53C8AD831C19041C006A98E1 /* skip.wav */; };
+		53C8AD881C190908006A98E1 /* AudioHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C8AD871C190908006A98E1 /* AudioHelper.swift */; };
+		53C8AD8A1C190C19006A98E1 /* fin.wav in Resources */ = {isa = PBXBuildFile; fileRef = 53C8AD891C190C19006A98E1 /* fin.wav */; };
+		53C8AD8C1C191425006A98E1 /* welcome.wav in Resources */ = {isa = PBXBuildFile; fileRef = 53C8AD8B1C191425006A98E1 /* welcome.wav */; };
+		53C8AD8E1C191430006A98E1 /* click.wav in Resources */ = {isa = PBXBuildFile; fileRef = 53C8AD8D1C191430006A98E1 /* click.wav */; };
+		53C8AD901C191710006A98E1 /* sent.wav in Resources */ = {isa = PBXBuildFile; fileRef = 53C8AD8F1C191710006A98E1 /* sent.wav */; };
+		53C8AD921C19192C006A98E1 /* EarOne_Handwriting.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53C8AD911C1918A3006A98E1 /* EarOne_Handwriting.ttf */; };
+		53C8AD941C191A6F006A98E1 /* erasing.wav in Resources */ = {isa = PBXBuildFile; fileRef = 53C8AD931C191A6F006A98E1 /* erasing.wav */; };
+		53C8AD961C191B3F006A98E1 /* awesome.wav in Resources */ = {isa = PBXBuildFile; fileRef = 53C8AD951C191B3F006A98E1 /* awesome.wav */; };
 		53D757931BFE6C9500C39E7C /* KeyboardInstallPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D757921BFE6C9500C39E7C /* KeyboardInstallPageController.swift */; };
 		53D757951BFE6DE700C39E7C /* PageItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D757941BFE6DE700C39E7C /* PageItemController.swift */; };
 		53DBD30A1C079B2D00E8EAB5 /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53DBD3091C079B2C00E8EAB5 /* Tutorial.storyboard */; };
@@ -151,7 +159,15 @@
 		537D0AE61C17934F00BFAA94 /* Replace_Atlas */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Replace_Atlas; sourceTree = "<group>"; };
 		53A2CDD01BFAB21800569105 /* LibraryItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryItemController.swift; sourceTree = "<group>"; };
 		53BCA3CB1C0E1BF4004D1900 /* Release_Process */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Release_Process; sourceTree = "<group>"; };
-		53C8AD7A1C18DE5E006A98E1 /* EarOne_Handwriting.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = EarOne_Handwriting.ttf; path = Assets/EarOne_Handwriting.ttf; sourceTree = "<group>"; };
+		53C8AD831C19041C006A98E1 /* skip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = skip.wav; path = Assets/sounds/skip.wav; sourceTree = "<group>"; };
+		53C8AD871C190908006A98E1 /* AudioHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioHelper.swift; sourceTree = "<group>"; };
+		53C8AD891C190C19006A98E1 /* fin.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = fin.wav; path = Assets/sounds/fin.wav; sourceTree = "<group>"; };
+		53C8AD8B1C191425006A98E1 /* welcome.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = welcome.wav; path = Assets/sounds/welcome.wav; sourceTree = "<group>"; };
+		53C8AD8D1C191430006A98E1 /* click.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = click.wav; path = Assets/sounds/click.wav; sourceTree = "<group>"; };
+		53C8AD8F1C191710006A98E1 /* sent.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = sent.wav; path = Assets/sounds/sent.wav; sourceTree = "<group>"; };
+		53C8AD911C1918A3006A98E1 /* EarOne_Handwriting.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = EarOne_Handwriting.ttf; path = Assets/fonts/EarOne_Handwriting.ttf; sourceTree = "<group>"; };
+		53C8AD931C191A6F006A98E1 /* erasing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = erasing.wav; path = Assets/sounds/erasing.wav; sourceTree = "<group>"; };
+		53C8AD951C191B3F006A98E1 /* awesome.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = awesome.wav; path = Assets/sounds/awesome.wav; sourceTree = "<group>"; };
 		53D757921BFE6C9500C39E7C /* KeyboardInstallPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardInstallPageController.swift; sourceTree = "<group>"; };
 		53D757941BFE6DE700C39E7C /* PageItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PageItemController.swift; path = Code/PageItemController.swift; sourceTree = "<group>"; };
 		53DBD3091C079B2C00E8EAB5 /* Tutorial.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tutorial.storyboard; sourceTree = "<group>"; };
@@ -444,6 +460,7 @@
 			children = (
 				58FBA5281B853FC4009CF809 /* SharedMyInkValues.swift */,
 				583EB9E71B72DCC200357957 /* CoreDataHelper.swift */,
+				53C8AD871C190908006A98E1 /* AudioHelper.swift */,
 				5870238C1BFD1BCB00D9779F /* CGFloatExtensions.swift */,
 				582D3FA41B50433300D08255 /* CGPointExtensions.swift */,
 				587023901BFD222800D9779F /* CGRectExtensions.swift */,
@@ -459,7 +476,8 @@
 		53C8AD791C18DE4F006A98E1 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				53C8AD7A1C18DE5E006A98E1 /* EarOne_Handwriting.ttf */,
+				53C8AD7E1C18FC00006A98E1 /* sounds */,
+				53C8AD7D1C18FBF9006A98E1 /* fonts */,
 			);
 			name = Assets;
 			sourceTree = "<group>";
@@ -471,6 +489,28 @@
 				537D0AE61C17934F00BFAA94 /* Replace_Atlas */,
 			);
 			name = Notes;
+			sourceTree = "<group>";
+		};
+		53C8AD7D1C18FBF9006A98E1 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				53C8AD911C1918A3006A98E1 /* EarOne_Handwriting.ttf */,
+			);
+			name = fonts;
+			sourceTree = "<group>";
+		};
+		53C8AD7E1C18FC00006A98E1 /* sounds */ = {
+			isa = PBXGroup;
+			children = (
+				53C8AD8B1C191425006A98E1 /* welcome.wav */,
+				53C8AD951C191B3F006A98E1 /* awesome.wav */,
+				53C8AD8D1C191430006A98E1 /* click.wav */,
+				53C8AD831C19041C006A98E1 /* skip.wav */,
+				53C8AD931C191A6F006A98E1 /* erasing.wav */,
+				53C8AD891C190C19006A98E1 /* fin.wav */,
+				53C8AD8F1C191710006A98E1 /* sent.wav */,
+			);
+			name = sounds;
 			sourceTree = "<group>";
 		};
 		53DBD30B1C07B23500E8EAB5 /* Tutorial */ = {
@@ -561,11 +601,11 @@
 		58DF906C1B4F1C9600E36BB1 /* MyInk */ = {
 			isa = PBXGroup;
 			children = (
-				53C8AD791C18DE4F006A98E1 /* Assets */,
 				535C82191BFA6DAF00030D25 /* Code */,
 				535C821A1BFA6DBF00030D25 /* UI */,
 				58DF90921B4F1CFA00E36BB1 /* Data */,
 				582D3FA61B50433300D08255 /* Filters */,
+				53C8AD791C18DE4F006A98E1 /* Assets */,
 				585277881B797DD000C1B90B /* Resources */,
 				58DF906D1B4F1C9600E36BB1 /* Supporting Files */,
 				53C8AD7C1C18E1C6006A98E1 /* Notes */,
@@ -765,20 +805,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				533CB3DA1C065F4000EA7438 /* Onboarding.storyboard in Resources */,
-				53C8AD7B1C18DE5E006A98E1 /* EarOne_Handwriting.ttf in Resources */,
 				585277921B7A679200C1B90B /* Embedded_data.sqlite-wal in Resources */,
 				58DF90781B4F1C9600E36BB1 /* Main.storyboard in Resources */,
 				537D0AE71C17934F00BFAA94 /* Replace_Atlas in Resources */,
 				58DF907D1B4F1C9600E36BB1 /* LaunchScreen.xib in Resources */,
+				53C8AD901C191710006A98E1 /* sent.wav in Resources */,
 				585277911B7A679200C1B90B /* Embedded_data.sqlite-shm in Resources */,
+				53C8AD8E1C191430006A98E1 /* click.wav in Resources */,
+				53C8AD961C191B3F006A98E1 /* awesome.wav in Resources */,
 				58DF907A1B4F1C9600E36BB1 /* Images.xcassets in Resources */,
 				53BCA3CC1C0E1BF4004D1900 /* Release_Process in Resources */,
 				5852778C1B797DD000C1B90B /* Embedded_atlas.png in Resources */,
+				53C8AD941C191A6F006A98E1 /* erasing.wav in Resources */,
 				582D3FB91B50433300D08255 /* maskfilter.cikernel in Resources */,
 				582D3FC51B5043D000D08255 /* Testing.xcassets in Resources */,
 				5852778B1B797DD000C1B90B /* Embedded_data.sqlite in Resources */,
+				53C8AD8A1C190C19006A98E1 /* fin.wav in Resources */,
+				53C8AD841C19041C006A98E1 /* skip.wav in Resources */,
 				53DBD30A1C079B2D00E8EAB5 /* Tutorial.storyboard in Resources */,
 				582D3FB81B50433300D08255 /* isolationfilter.cikernel in Resources */,
+				53C8AD8C1C191425006A98E1 /* welcome.wav in Resources */,
+				53C8AD921C19192C006A98E1 /* EarOne_Handwriting.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -869,6 +916,7 @@
 				5802FEA01B5476200013BCEA /* MapGlyphController.swift in Sources */,
 				580A6B341B606F9F006AEF44 /* ShareImageController.swift in Sources */,
 				582A4E901BB346AE00D7543B /* TutorialPhraseController.swift in Sources */,
+				53C8AD881C190908006A98E1 /* AudioHelper.swift in Sources */,
 				582D3FBB1B50433300D08255 /* CaptureCharacterSelectController.swift in Sources */,
 				58DF90A11B4F1D2C00E36BB1 /* FontAtlasData.swift in Sources */,
 				5870238B1BFD1B4300D9779F /* CGSizeExtensions.swift in Sources */,

@@ -25,6 +25,7 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
     private let _pointSizeStrings:[String] = ["Small", "Medium", "Large"]
     private var _fontMessageRenderer:FontMessageRenderer?
     private var _selectedPointSize = 0
+    var audioHelper = AudioHelper()
     
     // MARK: - LIFECYCLE
     
@@ -118,6 +119,7 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
         if(textView?.text?.characters.count > 0) {
             mActivityIndicator.hidden = false
             mActivityIndicator.startAnimating()
+            audioHelper.playClickSound()
             performSegueWithIdentifier("composeToShare", sender: self)
         }
         else {

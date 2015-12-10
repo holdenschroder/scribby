@@ -94,7 +94,7 @@
         <!--Capture-->
         <scene sceneID="5SY-ol-aNZ">
             <objects>
-                <viewController title="Capture" id="nW4-cg-VOY" customClass="CaptureTouchController" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Capture" title="Capture" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nW4-cg-VOY" customClass="CaptureTouchController" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Rrs-1X-qkn"/>
                         <viewControllerLayoutGuide type="bottom" id="rMq-e8-Gl5"/>
@@ -174,7 +174,7 @@
         <!--Library-->
         <scene sceneID="PQF-8w-vWD">
             <objects>
-                <collectionViewController title="Library" id="2js-4w-9Tp" customClass="LibraryCollectionController" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="Library" title="Library" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2js-4w-9Tp" customClass="LibraryCollectionController" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" dataMode="prototypes" id="1lZ-7o-rTX">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -404,7 +404,7 @@
         <!--Compose-->
         <scene sceneID="OGP-EE-o2u">
             <objects>
-                <viewController id="PAC-fV-XAW" customClass="ComposeMessageController" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Compose" title="Compose" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PAC-fV-XAW" customClass="ComposeMessageController" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="txf-hp-MKd"/>
                         <viewControllerLayoutGuide type="bottom" id="uIR-ZB-RIu"/>
@@ -657,7 +657,7 @@
                                         </state>
                                         <state key="selected" image="icon_compose_tapped"/>
                                         <connections>
-                                            <segue destination="PAC-fV-XAW" kind="show" id="gqw-Dn-Mea"/>
+                                            <action selector="HandleWriteButtonAction:" destination="jGl-vX-Atg" eventType="touchUpInside" id="h1c-Zd-1eJ"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -679,7 +679,7 @@
                                         <state key="selected" image="icon_touch_tapped"/>
                                         <state key="highlighted" image="icon_touch_tapped"/>
                                         <connections>
-                                            <segue destination="nW4-cg-VOY" kind="show" id="HMX-t8-q7n"/>
+                                            <action selector="HandleCreateButtonAction:" destination="jGl-vX-Atg" eventType="touchUpInside" id="6T5-nj-E6I"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -704,7 +704,7 @@
                                         </state>
                                         <state key="selected" image="icon_tutorial_tapped"/>
                                         <connections>
-                                            <segue destination="xSs-A3-lAK" kind="show" id="Hlt-1l-vB8"/>
+                                            <action selector="HandleTutorialButtonAction:" destination="jGl-vX-Atg" eventType="touchUpInside" id="SQc-sb-QM8"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -723,7 +723,7 @@
                                         </state>
                                         <state key="selected" image="icon_library_tapped"/>
                                         <connections>
-                                            <segue destination="2js-4w-9Tp" kind="show" id="A3L-qE-uRe"/>
+                                            <action selector="HandleLibraryButtonAction:" destination="jGl-vX-Atg" eventType="touchUpInside" id="kai-Xf-4k9"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Library" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iup-fm-B9K">
@@ -794,10 +794,10 @@
             </objects>
             <point key="canvasLocation" x="-709" y="-129"/>
         </scene>
-        <!--How-To-->
+        <!--Instructions-->
         <scene sceneID="Xhy-ZO-nqd">
             <objects>
-                <viewController storyboardIdentifier="Install" title="How-To" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xSs-A3-lAK" customClass="KeyboardInstallationInstructions" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Instructions" title="Instructions" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xSs-A3-lAK" customClass="KeyboardInstallationInstructions" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LFd-Ca-Zxy"/>
                         <viewControllerLayoutGuide type="bottom" id="bE1-I7-lB7"/>
@@ -848,6 +848,7 @@
                                 </variation>
                                 <connections>
                                     <action selector="openPhraseCapture:" destination="xSs-A3-lAK" eventType="touchUpInside" id="L5z-ve-jXZ"/>
+                                    <action selector="playSound:" destination="xSs-A3-lAK" eventType="touchUpInside" id="lMc-pP-TNN"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HtK-fU-CR9">
@@ -871,6 +872,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
+                                    <action selector="playSound:" destination="xSs-A3-lAK" eventType="touchUpInside" id="Wft-Qy-ePr"/>
                                     <segue destination="mg3-f4-AMg" kind="show" id="Peq-qy-fLT"/>
                                 </connections>
                             </button>

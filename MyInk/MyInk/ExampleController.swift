@@ -17,6 +17,7 @@ class ExampleController: UIViewController, UIAlertViewDelegate, MFMessageCompose
     private var _image:UIImage?
     private var messageVC:MFMessageComposeViewController!
     private var mailVC:MFMailComposeViewController!
+    var audioHelper = AudioHelper()
     
     @IBOutlet var imageView:UIImageView?
     @IBOutlet weak var redoBtn: UIButton!
@@ -124,6 +125,7 @@ class ExampleController: UIViewController, UIAlertViewDelegate, MFMessageCompose
     // MARK: - Actions
     
     func closeScreen() {
+        audioHelper.playAwesomeSound()
         let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(0.5 * Double(NSEC_PER_SEC)))
         dispatch_after(dispatchTime, dispatch_get_main_queue(), {
             NSUserDefaults.standardUserDefaults().setBool(true, forKey: SharedMyInkValues.kDefaultsUserHasBoarded)
@@ -160,6 +162,7 @@ class ExampleController: UIViewController, UIAlertViewDelegate, MFMessageCompose
     }
 
     @IBAction func createAction(sender: AnyObject) {
+        audioHelper.playAwesomeSound()
         presentViewController(UIStoryboard(name: "Tutorial", bundle: nil).instantiateViewControllerWithIdentifier("TutorialIntro") as UIViewController, animated: true, completion: nil)
     }
     
