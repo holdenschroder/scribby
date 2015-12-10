@@ -100,12 +100,13 @@ Try it out:</string>
                                     </mask>
                                 </variation>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DPP-n6-cKz">
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DPP-n6-cKz">
                                 <rect key="frame" x="243" y="466" width="114" height="114"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="DPP-n6-cKz" secondAttribute="height" multiplier="1:1" id="fZj-Gh-E4n"/>
                                 </constraints>
                                 <state key="normal" image="button_ink_outline"/>
+                                <state key="disabled" image="button_ink_disabled"/>
                                 <connections>
                                     <action selector="HandleInkButton:" destination="bim-qh-NbQ" eventType="touchUpInside" id="uhK-JW-0G0"/>
                                 </connections>
@@ -116,7 +117,7 @@ Try it out:</string>
                                     <constraint firstAttribute="width" constant="200" id="m1Q-og-O6T"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
                                 <connections>
                                     <outlet property="delegate" destination="bim-qh-NbQ" id="3qn-Lj-DdH"/>
                                 </connections>
@@ -168,15 +169,6 @@ Try it out:</string>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1JJ-9H-Uf5" userLabel="render">
                                 <rect key="frame" x="20" y="90" width="560" height="140"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Awesome!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G79-Ji-qBJ">
-                                <rect key="frame" x="203" y="35" width="194" height="29"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="194" id="1Aa-AJ-WdL"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ozj-ND-kbC">
                                 <rect key="frame" x="20" y="28" width="44" height="44"/>
                                 <constraints>
@@ -263,18 +255,28 @@ Try it out:</string>
                                     <action selector="redoAction:" destination="Uo0-Y4-CuX" eventType="touchUpInside" id="XUu-ON-FzV"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Awesome!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G79-Ji-qBJ">
+                                <rect key="frame" x="203" y="248" width="194" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="194" id="UfM-As-Rd2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.81568627449999997" green="0.078431372550000003" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="lle-Qb-gqy" firstAttribute="top" secondItem="G79-Ji-qBJ" secondAttribute="bottom" constant="8" symbolic="YES" id="0rK-Eo-CpV"/>
                             <constraint firstItem="lle-Qb-gqy" firstAttribute="centerY" secondItem="R4L-fO-VZZ" secondAttribute="centerY" id="1na-ls-tgp"/>
                             <constraint firstItem="1JJ-9H-Uf5" firstAttribute="leading" secondItem="ozj-ND-kbC" secondAttribute="leading" id="7oW-i5-qh5"/>
                             <constraint firstItem="ZOi-Fc-BAJ" firstAttribute="centerX" secondItem="OSo-uY-cWx" secondAttribute="centerX" id="9p1-sR-XQf"/>
+                            <constraint firstItem="G79-Ji-qBJ" firstAttribute="centerX" secondItem="lle-Qb-gqy" secondAttribute="centerX" id="BLR-fJ-DBB"/>
                             <constraint firstItem="R4L-fO-VZZ" firstAttribute="centerX" secondItem="OSo-uY-cWx" secondAttribute="centerX" id="CHA-dA-fII"/>
                             <constraint firstItem="ozj-ND-kbC" firstAttribute="top" secondItem="S11-lS-SSY" secondAttribute="bottom" constant="8" id="CsZ-wA-JJj"/>
                             <constraint firstItem="ENt-xJ-70P" firstAttribute="top" secondItem="C85-mN-7on" secondAttribute="bottom" constant="8" id="FKY-u7-fHQ"/>
                             <constraint firstItem="lle-Qb-gqy" firstAttribute="top" secondItem="1JJ-9H-Uf5" secondAttribute="bottom" constant="55" id="GcM-1N-Ev9"/>
                             <constraint firstItem="ZOi-Fc-BAJ" firstAttribute="top" secondItem="lle-Qb-gqy" secondAttribute="bottom" constant="20" id="HIk-HX-VzD"/>
-                            <constraint firstItem="1JJ-9H-Uf5" firstAttribute="centerX" secondItem="G79-Ji-qBJ" secondAttribute="centerX" id="IRQ-uH-hKP"/>
                             <constraint firstItem="C85-mN-7on" firstAttribute="centerX" secondItem="OSo-uY-cWx" secondAttribute="centerX" id="Ivc-KB-Izn"/>
                             <constraint firstItem="ozj-ND-kbC" firstAttribute="leading" secondItem="OSo-uY-cWx" secondAttribute="leadingMargin" id="ba8-Gj-85B"/>
                             <constraint firstItem="1JJ-9H-Uf5" firstAttribute="top" secondItem="ozj-ND-kbC" secondAttribute="bottom" constant="18" id="d6Z-dR-15B"/>
@@ -282,9 +284,9 @@ Try it out:</string>
                             <constraint firstItem="ENt-xJ-70P" firstAttribute="top" secondItem="C85-mN-7on" secondAttribute="bottom" constant="8" id="f6I-3z-rxK"/>
                             <constraint firstItem="lle-Qb-gqy" firstAttribute="centerX" secondItem="ZOi-Fc-BAJ" secondAttribute="centerX" id="hwb-Xd-k25"/>
                             <constraint firstAttribute="bottomMargin" secondItem="R4L-fO-VZZ" secondAttribute="bottom" id="k8b-8F-ArK"/>
-                            <constraint firstItem="G79-Ji-qBJ" firstAttribute="centerY" secondItem="ozj-ND-kbC" secondAttribute="centerY" id="mI8-Cm-ED3"/>
                             <constraint firstItem="R4L-fO-VZZ" firstAttribute="top" secondItem="OSo-uY-cWx" secondAttribute="topMargin" id="njG-H2-ZsM"/>
                             <constraint firstItem="1JJ-9H-Uf5" firstAttribute="centerX" secondItem="R4L-fO-VZZ" secondAttribute="centerX" id="rxe-uw-ELy"/>
+                            <constraint firstItem="G79-Ji-qBJ" firstAttribute="centerX" secondItem="OSo-uY-cWx" secondAttribute="centerX" id="wQe-LO-xeY"/>
                             <constraint firstItem="ENt-xJ-70P" firstAttribute="centerX" secondItem="OSo-uY-cWx" secondAttribute="centerX" id="ygI-fH-Mh7"/>
                         </constraints>
                     </view>
@@ -301,6 +303,7 @@ Try it out:</string>
         </scene>
     </scenes>
     <resources>
+        <image name="button_ink_disabled" width="114" height="114"/>
         <image name="button_ink_outline" width="114" height="114"/>
         <image name="button_x" width="44" height="44"/>
         <image name="main_menu_bg" width="360" height="640"/>

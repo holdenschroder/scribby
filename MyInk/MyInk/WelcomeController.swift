@@ -29,16 +29,25 @@ class WelcomeController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        textfield?.text = ""
+        mButton.enabled = false
+        mButton.hidden = true
+        self.mButton!.layer.removeAllAnimations()
+    }
+    
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.textfield?.text = ""
-        
-        UIView.animateWithDuration(1.5, animations: {
-            self.mButton.alpha = 1.0
+        UIView.animateWithDuration(1.0, animations: {
+            self.textfield?.becomeFirstResponder()
         })
-        UIView.animateWithDuration(3.0, animations: {
-            //self.textfield?.becomeFirstResponder()
+        UIView.animateWithDuration(2.0, animations: {
+            self.mButton.alpha = 1.0
+            self.mButton.hidden = false
         })
     }
     
@@ -56,13 +65,29 @@ class WelcomeController: UIViewController, UITextFieldDelegate {
         }
     }
 
+    func pulseButton() {
+        let pulseAnimation:CABasicAnimation = CABasicAnimation(keyPath: "transform.scale");
+        pulseAnimation.duration = 0.66;
+        pulseAnimation.toValue = NSNumber(float: 1.03);
+        pulseAnimation.fromValue = NSNumber(float: 0.97)
+        pulseAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut);
+        pulseAnimation.autoreverses = true;
+        pulseAnimation.repeatCount = FLT_MAX;
+        self.mButton!.layer.addAnimation(pulseAnimation, forKey: nil)
+    }
+    
     
     // MARK: - Delegate Methods
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        print("touchesBegan")
-        self.view.endEditing(true)
         super.touchesBegan(touches, withEvent: event)
+        
+        let empty = (textfield?.text == "")
+        if(!empty) {
+            mButton?.enabled = true
+            pulseButton()
+        }
+        self.view.endEditing(true)
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {
@@ -70,6 +95,11 @@ class WelcomeController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
+        let empty = (textfield?.text == "")
+        if(!empty) {
+            mButton?.enabled = true
+            pulseButton()
+        }
         textField.resignFirstResponder()
         return true
     }
