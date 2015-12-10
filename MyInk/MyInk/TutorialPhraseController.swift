@@ -73,7 +73,7 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
                 wordIndex = 0
             }
         }
-        finishButton?.enabled = unwrittenCharacters.count == 0
+        //finishButton?.enabled = unwrittenCharacters.count == 0
         unwrittenCharacters.removeAll()
         
         UpdateSizes()
@@ -140,12 +140,12 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
         else if(state == .Cleared && cell.character != nil) {
             unwrittenCharacters.insert(cell.character!)
         }
-        if(wordIndex < mCharacters.count) {
-            finishButton?.enabled = false
-        }
-        else {
-            finishButton?.enabled = true
-        }
+//        if(wordIndex < mCharacters.count) {
+//            finishButton?.enabled = false
+//        }
+//        else {
+//            finishButton?.enabled = true
+//        }
     }
     
     private func updateItemHeight(viewSize:CGSize) {

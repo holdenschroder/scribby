@@ -67,7 +67,7 @@ class AudioHelper {
         } catch {
             print("No sound found by URL: \(sound)")
         }
-        fin.volume = 0.05
+        fin.volume = 0.025
         fin.play()
     }
     
