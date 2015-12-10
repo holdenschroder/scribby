@@ -28,7 +28,6 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
     @IBOutlet weak var collectionView:UICollectionView!
     @IBOutlet weak var finishButton: UIBarButtonItem!
     @IBOutlet weak var messageImageView:UIImageView!
-    @IBOutlet weak var mActivityIndicator: UIActivityIndicatorView!
     
     //MARK: Initialization and Setup
     
@@ -77,11 +76,6 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
         finishButton?.enabled = unwrittenCharacters.count == 0
         unwrittenCharacters.removeAll()
         
-        //mActivityIndicator.hidden = true
-        if(mActivityIndicator.isAnimating()) {
-            mActivityIndicator.stopAnimating()
-        }
-        
         UpdateSizes()
     }
     
@@ -101,10 +95,6 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
         let character = mCharacters[wordIndex].characters[characterIndex]
         cell.populate(character)
         cell.addEventSubscriber(self, handler: HandleCellEvent)
-        //mActivityIndicator.hidden = true
-        if(mActivityIndicator.isAnimating()) {
-            mActivityIndicator.stopAnimating()
-        }
         return cell
     }
     
@@ -218,8 +208,6 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
     
     @IBAction func HandleNextBtn(sender:AnyObject) {
         audioHelper.playFinSound()
-        mActivityIndicator.hidden = false
-        mActivityIndicator.startAnimating()
         LogWordForAnalytics(mCharacters[wordIndex], isStarting:false)
         ++wordIndex
         if wordIndex < mCharacters.count {
@@ -301,6 +289,7 @@ class TutorialCharacterCell: UICollectionViewCell {
     @IBOutlet var drawCaptureView:UIDrawCaptureView?
     @IBOutlet var clearButton:UIButton?
     @IBOutlet var saveButton:UIButton?
+    
     private var _initialLabelAlpha:CGFloat!
     private var _character:Character?
     
@@ -316,7 +305,7 @@ class TutorialCharacterCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         drawCaptureView?.addDrawEventSubscriber(self, handler: handleDrawEvent)
-        _initialLabelAlpha = label != nil ? label!.alpha : 0.5
+        _initialLabelAlpha = label != nil ? label!.alpha : 0.1
         clearButton?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "handleClearBtn:"))
         clearButton?.userInteractionEnabled = true
         clearButton?.hidden = true
@@ -330,6 +319,7 @@ class TutorialCharacterCell: UICollectionViewCell {
         drawCaptureView?.clear()
         label?.alpha = _initialLabelAlpha
         _character = value
+
         /*
         let atlas = (UIApplication.sharedApplication().delegate as! AppDelegate).currentAtlas
         let characterString = String(value)
