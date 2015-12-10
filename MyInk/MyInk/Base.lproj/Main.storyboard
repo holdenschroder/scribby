@@ -282,7 +282,7 @@
                                 <rect key="frame" x="20" y="63" width="560" height="475"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C7o-mw-dWA" userLabel="Character Label">
-                                <rect key="frame" x="20" y="63" width="560" height="475"/>
+                                <rect key="frame" x="20" y="33" width="560" height="505"/>
                                 <fontDescription key="fontDescription" name="MyHandwriting" family="My Handwriting" pointSize="300"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -322,7 +322,7 @@
                         <constraints>
                             <constraint firstItem="xam-hZ-0jj" firstAttribute="top" secondItem="JQh-QO-tKO" secondAttribute="top" constant="12" id="BFT-Gd-fzO"/>
                             <constraint firstItem="JQh-QO-tKO" firstAttribute="leading" secondItem="xam-hZ-0jj" secondAttribute="leading" id="FGZ-ru-dyg"/>
-                            <constraint firstItem="C7o-mw-dWA" firstAttribute="top" secondItem="JQh-QO-tKO" secondAttribute="top" id="Fd6-ym-qzR"/>
+                            <constraint firstItem="C7o-mw-dWA" firstAttribute="top" secondItem="JQh-QO-tKO" secondAttribute="top" constant="-30" id="Fd6-ym-qzR"/>
                             <constraint firstItem="tMS-bo-i7h" firstAttribute="bottom" secondItem="ur7-4V-PqV" secondAttribute="top" id="H2S-a4-a9p"/>
                             <constraint firstItem="tMS-bo-i7h" firstAttribute="trailing" secondItem="JQh-QO-tKO" secondAttribute="trailing" id="Hd4-UI-Zdb"/>
                             <constraint firstItem="C7o-mw-dWA" firstAttribute="trailing" secondItem="JQh-QO-tKO" secondAttribute="trailing" id="Mwv-88-ikm"/>
