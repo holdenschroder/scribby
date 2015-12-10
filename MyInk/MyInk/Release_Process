@@ -57,6 +57,6 @@
         group.myInk / com.elink.cursive
 
 
-7. Switch Scheme Build OCnfiguration to 'Release'
+7. Switch Scheme Build Configuration to 'Release'
 
 -- BUILD --
