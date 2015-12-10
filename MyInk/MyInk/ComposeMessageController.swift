@@ -24,13 +24,15 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
     private let _pointSizeOptions:[Float] = [18, 24, 36]
     private let _pointSizeStrings:[String] = ["Small", "Medium", "Large"]
     private var _fontMessageRenderer:FontMessageRenderer?
-    private var _selectedPointSize = 0
+    private var _selectedPointSize = 1
     var audioHelper = AudioHelper()
     
     // MARK: - LIFECYCLE
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = "Write"
         
         textView?.delegate = self
         textView?.text = "Type your message here"

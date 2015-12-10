@@ -91,10 +91,10 @@
             </objects>
             <point key="canvasLocation" x="897" y="-829"/>
         </scene>
-        <!--Capture-->
+        <!--Create-->
         <scene sceneID="5SY-ol-aNZ">
             <objects>
-                <viewController storyboardIdentifier="Capture" title="Capture" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nW4-cg-VOY" customClass="CaptureTouchController" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Capture" title="Create" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nW4-cg-VOY" customClass="CaptureTouchController" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Rrs-1X-qkn"/>
                         <viewControllerLayoutGuide type="bottom" id="rMq-e8-Gl5"/>
@@ -401,10 +401,10 @@
             </objects>
             <point key="canvasLocation" x="908" y="-2432"/>
         </scene>
-        <!--Compose-->
+        <!--Write-->
         <scene sceneID="OGP-EE-o2u">
             <objects>
-                <viewController storyboardIdentifier="Compose" title="Compose" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PAC-fV-XAW" customClass="ComposeMessageController" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Compose" title="Write" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PAC-fV-XAW" customClass="ComposeMessageController" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="txf-hp-MKd"/>
                         <viewControllerLayoutGuide type="bottom" id="uIR-ZB-RIu"/>
@@ -794,10 +794,10 @@
             </objects>
             <point key="canvasLocation" x="-709" y="-129"/>
         </scene>
-        <!--Instructions-->
+        <!--Tutorial-->
         <scene sceneID="Xhy-ZO-nqd">
             <objects>
-                <viewController storyboardIdentifier="Instructions" title="Instructions" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xSs-A3-lAK" customClass="KeyboardInstallationInstructions" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Instructions" title="Tutorial" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xSs-A3-lAK" customClass="KeyboardInstallationInstructions" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LFd-Ca-Zxy"/>
                         <viewControllerLayoutGuide type="bottom" id="bE1-I7-lB7"/>
