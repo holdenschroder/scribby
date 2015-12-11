@@ -507,10 +507,10 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" keyboardDismissMode="onDrag" text="Type your message here" translatesAutoresizingMaskIntoConstraints="NO" id="JMB-nW-yz1">
-                                <rect key="frame" x="8" y="83" width="584" height="150"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <rect key="frame" x="8" y="83" width="584" height="120"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="4Sx-65-cfI"/>
+                                    <constraint firstAttribute="height" constant="120" id="4Sx-65-cfI"/>
                                 </constraints>
                                 <color key="textColor" red="0.80392156859999997" green="0.090196078430000007" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -767,7 +767,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SHR-df-IcO" userLabel="Settings Button">
-                                <rect key="frame" x="20" y="28" width="44" height="44"/>
+                                <rect key="frame" x="8" y="28" width="44" height="44"/>
                                 <inset key="contentEdgeInsets" minX="4" minY="4" maxX="4" maxY="4"/>
                                 <state key="normal" image="button_settings">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
