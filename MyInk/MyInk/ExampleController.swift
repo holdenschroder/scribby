@@ -70,10 +70,10 @@ class ExampleController: UIViewController, UIAlertViewDelegate, MFMessageCompose
     }
     
     func shareMessage() {
-        messageVC.body = "You're So Pretty";
-        messageVC.addAttachmentData(UIImageJPEGRepresentation(_image!, 1)!, typeIdentifier: "image/jpg", filename: "image.jpg")
-        messageVC.messageComposeDelegate = self;
         if(MFMessageComposeViewController.canSendText()) {
+            messageVC.body = "You're So Pretty";
+            messageVC.addAttachmentData(UIImageJPEGRepresentation(_image!, 1)!, typeIdentifier: "image/jpg", filename: "image.jpg")
+            messageVC.messageComposeDelegate = self;
             self.presentViewController(messageVC, animated: true, completion: nil)
         }
         else {
