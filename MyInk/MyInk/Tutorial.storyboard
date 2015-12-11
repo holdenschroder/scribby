@@ -133,6 +133,13 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="jQu-Wn-kvY"/>
+                                    <barButtonItem title=" Clear" id="sqc-AW-je8">
+                                        <color key="tintColor" red="0.80392156859999997" green="0.090196078430000007" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="HandleClearBtn:" destination="Xpz-K4-Xpf" id="ZZp-mf-R4D"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="c1e-J5-0WO"/>
                                     <barButtonItem title="Assign" width="60" id="Xhz-uB-Z0O">
                                         <color key="tintColor" red="0.80392156859999997" green="0.090196078430000007" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
