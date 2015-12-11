@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		53213E651C1A2ACE0063342C /* yeah.wav in Resources */ = {isa = PBXBuildFile; fileRef = 53213E641C1A2ACE0063342C /* yeah.wav */; };
 		53213E6D1C1B2EE70063342C /* KeyboardPageItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53213E6C1C1B2EE70063342C /* KeyboardPageItemController.swift */; };
+		53213E6F1C1B304A0063342C /* GuidelinesPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53213E6E1C1B304A0063342C /* GuidelinesPageController.swift */; };
+		53213E711C1B309C0063342C /* GuidelinesPageItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53213E701C1B309C0063342C /* GuidelinesPageItemController.swift */; };
 		533CB3DA1C065F4000EA7438 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 533CB3D91C065F4000EA7438 /* Onboarding.storyboard */; };
 		533CB3DC1C06628700EA7438 /* SplashController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533CB3DB1C06628700EA7438 /* SplashController.swift */; };
 		533CB3DE1C066EB300EA7438 /* WelcomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533CB3DD1C066EB300EA7438 /* WelcomeController.swift */; };
@@ -153,6 +155,8 @@
 /* Begin PBXFileReference section */
 		53213E641C1A2ACE0063342C /* yeah.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = yeah.wav; path = Assets/sounds/yeah.wav; sourceTree = "<group>"; };
 		53213E6C1C1B2EE70063342C /* KeyboardPageItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyboardPageItemController.swift; path = Code/KeyboardPageItemController.swift; sourceTree = "<group>"; };
+		53213E6E1C1B304A0063342C /* GuidelinesPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GuidelinesPageController.swift; path = Code/GuidelinesPageController.swift; sourceTree = "<group>"; };
+		53213E701C1B309C0063342C /* GuidelinesPageItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuidelinesPageItemController.swift; sourceTree = "<group>"; };
 		533CB3D91C065F4000EA7438 /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		533CB3DB1C06628700EA7438 /* SplashController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashController.swift; sourceTree = "<group>"; };
 		533CB3DD1C066EB300EA7438 /* WelcomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeController.swift; sourceTree = "<group>"; };
@@ -358,6 +362,8 @@
 				582054271B82D235002C95BE /* InstallInstructions.swift */,
 				53D757921BFE6C9500C39E7C /* KeyboardInstallPageController.swift */,
 				53213E6C1C1B2EE70063342C /* KeyboardPageItemController.swift */,
+				53213E6E1C1B304A0063342C /* GuidelinesPageController.swift */,
+				53213E701C1B309C0063342C /* GuidelinesPageItemController.swift */,
 			);
 			name = Instructions;
 			sourceTree = "<group>";
@@ -889,6 +895,7 @@
 				585D1FBE1BF56FD20093CA8A /* MyInkAnalytics.swift in Sources */,
 				58DF90A01B4F1D2C00E36BB1 /* FontAtlasGlyph.swift in Sources */,
 				5870238D1BFD1BCB00D9779F /* CGFloatExtensions.swift in Sources */,
+				53213E6F1C1B304A0063342C /* GuidelinesPageController.swift in Sources */,
 				535C33261C0F8D190075DDD6 /* SettingsController.swift in Sources */,
 				582A4E8E1BB21EC600D7543B /* UIDrawCaptureView.swift in Sources */,
 				58F02CDE1BFA671A00BA6334 /* UIDrawView.swift in Sources */,
@@ -931,6 +938,7 @@
 				58CE61E91B7AB8A900730D32 /* MyInk.xcdatamodeld in Sources */,
 				587023911BFD222800D9779F /* CGRectExtensions.swift in Sources */,
 				58CE61F21B7ACF6400730D32 /* MainMenuController.swift in Sources */,
+				53213E711C1B309C0063342C /* GuidelinesPageItemController.swift in Sources */,
 				582D3FBD1B50433300D08255 /* UIDrawSelectionView.swift in Sources */,
 				53DBD30D1C07B3AC00E8EAB5 /* TutorialIntroController.swift in Sources */,
 				58B056D01BAA16C400FA4A26 /* CaptureTouchController.swift in Sources */,

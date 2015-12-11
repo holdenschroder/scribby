@@ -942,6 +942,29 @@
                                     </mask>
                                 </variation>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Asj-Hg-Cll">
+                                <rect key="frame" x="150" y="540" width="300" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="IIq-yJ-Xsq"/>
+                                    <constraint firstAttribute="height" constant="40" id="YCM-j9-NE5"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="ode-9n-MZk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
+                                <state key="normal" title="Show me how">
+                                    <color key="titleColor" red="0.80392156859999997" green="0.090196078430000007" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="ode-9n-MZk"/>
+                                        <exclude reference="YCM-j9-NE5"/>
+                                        <exclude reference="IIq-yJ-Xsq"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="playSound:" destination="xSs-A3-lAK" eventType="touchUpInside" id="KfP-ul-14j"/>
+                                    <segue destination="HIB-67-tcW" kind="show" id="5Ws-we-6w2"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -954,8 +977,11 @@
                             <constraint firstItem="fQK-rY-JFc" firstAttribute="top" secondItem="3Be-vZ-TQb" secondAttribute="bottom" constant="8" id="FK6-UU-zyk"/>
                             <constraint firstItem="HtK-fU-CR9" firstAttribute="top" secondItem="VQ4-Cd-K9c" secondAttribute="bottom" constant="8" id="G7T-sx-Rhm"/>
                             <constraint firstItem="3Be-vZ-TQb" firstAttribute="top" secondItem="HtK-fU-CR9" secondAttribute="bottom" constant="20" id="IJC-6J-OuY"/>
+                            <constraint firstItem="Asj-Hg-Cll" firstAttribute="leading" secondItem="1P0-V0-x0y" secondAttribute="leading" id="Jrt-1z-xoX"/>
                             <constraint firstItem="3Be-vZ-TQb" firstAttribute="leading" secondItem="hmD-jJ-ZJQ" secondAttribute="leadingMargin" id="Lo6-Iw-YFB"/>
                             <constraint firstItem="HtK-fU-CR9" firstAttribute="centerX" secondItem="hmD-jJ-ZJQ" secondAttribute="centerX" id="MAe-lY-DsC"/>
+                            <constraint firstAttribute="bottom" secondItem="Asj-Hg-Cll" secondAttribute="bottom" constant="20" symbolic="YES" id="P75-Nh-WzR"/>
+                            <constraint firstItem="Asj-Hg-Cll" firstAttribute="trailing" secondItem="1P0-V0-x0y" secondAttribute="trailing" id="QJY-dx-7dA"/>
                             <constraint firstItem="1P0-V0-x0y" firstAttribute="top" secondItem="HtK-fU-CR9" secondAttribute="bottom" constant="100" id="Sig-aV-uQy"/>
                             <constraint firstItem="fQK-rY-JFc" firstAttribute="leading" secondItem="1P0-V0-x0y" secondAttribute="leading" id="XNx-sv-sVn"/>
                             <constraint firstItem="fQK-rY-JFc" firstAttribute="trailing" secondItem="1P0-V0-x0y" secondAttribute="trailing" id="bfj-IG-57i"/>
@@ -1334,10 +1360,10 @@ this be mapped to?</string>
             </objects>
             <point key="canvasLocation" x="-1432" y="-129"/>
         </scene>
-        <!--View Controller-->
+        <!--Guidelines Page Controller-->
         <scene sceneID="e9k-sB-gDZ">
             <objects>
-                <viewController id="HIB-67-tcW" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GuidelinesPageController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="HIB-67-tcW" customClass="GuidelinesPageController" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6pD-Dz-Epe"/>
                         <viewControllerLayoutGuide type="bottom" id="Xia-ae-Vnx"/>
@@ -1350,12 +1376,12 @@ this be mapped to?</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1EZ-Hq-ZH3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2300" y="3580"/>
+            <point key="canvasLocation" x="2300" y="3619"/>
         </scene>
-        <!--Page Item Controller-->
+        <!--Guidelines Page Item Controller-->
         <scene sceneID="JaZ-ZP-ULs">
             <objects>
-                <viewController id="w50-nG-nt2" customClass="PageItemController" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GuidelinesPageItemController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="w50-nG-nt2" customClass="GuidelinesPageItemController" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Fqf-9R-d57"/>
                         <viewControllerLayoutGuide type="bottom" id="8iD-ze-02B"/>
@@ -1382,7 +1408,7 @@ this be mapped to?</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4pB-5s-NZx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3011" y="3580"/>
+            <point key="canvasLocation" x="3011" y="3619"/>
         </scene>
     </scenes>
     <resources>

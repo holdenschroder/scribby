@@ -1,11 +1,15 @@
 //
-//  KeyboardPageItemController.swift
+//  GuidelinesPageItemController.swift
+//  MyInk
+//
+//  Created by Jesse Scott on 2015-12-11.
+//  Copyright © 2015 E-Link. All rights reserved.
 //
 
 import UIKit
 import QuartzCore
 
-class KeyboardPageItemController: UIViewController {
+class GuidelinesPageItemController: UIViewController {
     
     // MARK: - Vars
     
@@ -29,7 +33,6 @@ class KeyboardPageItemController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         
         let xBtn = UIButton()
@@ -47,17 +50,15 @@ class KeyboardPageItemController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-
-        if(itemIndex == 8) {
+        
+        if(itemIndex == 4) {
             MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventScreenLoadedKeyboardAllPages)
         }
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
@@ -70,3 +71,4 @@ class KeyboardPageItemController: UIViewController {
     }
     
 }
+
