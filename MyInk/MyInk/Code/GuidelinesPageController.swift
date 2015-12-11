@@ -1,30 +1,33 @@
 //
-//  KeyboardInstallPageController.swift
+//  GuidelinesPageController.swift
 //  MyInk
 //
-//  Created by Jesse Scott on 2015-11-19.
+//  Created by Jesse Scott on 2015-12-11.
 //  Copyright © 2015 E-Link. All rights reserved.
 //
+
 
 import UIKit
 
 
-class KeyboardInstallPageController: UIViewController, UIPageViewControllerDataSource {
+class GuidelinesPageController: UIViewController, UIPageViewControllerDataSource {
     
     // MARK: - Vars
     
     private var pageViewController: UIPageViewController?
-    private let contentImages = [
-        "keyboard_install_1.png",
-        "keyboard_install_2.png",
-        "keyboard_install_3.png",
-        "keyboard_install_4.png",
-        "keyboard_install_5.png",
-        "keyboard_install_6.png",
-        "keyboard_install_7.png",
-        "keyboard_install_8.png",
-        "keyboard_install_9.png"
+        private let contentImages = [
+        "glyph_guidelines.png",
+        "glyph_guidelines_ascender.png",
+        "glyph_guidelines_baseline.png",
+        "glyph_guidelines_descender.png"
     ];
+    private let contentStrings = [
+        "The blue guidelines help us to register where our character will sit as we creating our letters.",
+        "The ascender is the highest limit where the upward tail on letters like h, l, t, b, d, and k can draw.",
+        "The baseline is the line upon which most letters 'sit' and below which descenders extend.",
+        "The  descender line is the lowest limit for letters like g, q, and y."
+    ];
+
     
     // MARK: - Lifecycle
     
@@ -69,7 +72,7 @@ class KeyboardInstallPageController: UIViewController, UIPageViewControllerDataS
     // MARK: - UIPageViewControllerDataSource
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-        let itemController = viewController as! KeyboardPageItemController
+        let itemController = viewController as! GuidelinesPageItemController
         if itemController.itemIndex > 0 {
             return getItemController(itemController.itemIndex-1)
         }
@@ -77,18 +80,19 @@ class KeyboardInstallPageController: UIViewController, UIPageViewControllerDataS
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-        let itemController = viewController as! KeyboardPageItemController
+        let itemController = viewController as! GuidelinesPageItemController
         if itemController.itemIndex+1 < contentImages.count {
             return getItemController(itemController.itemIndex+1)
         }
         return nil
     }
     
-    private func getItemController(itemIndex: Int) -> KeyboardPageItemController? {
+    private func getItemController(itemIndex: Int) -> GuidelinesPageItemController? {
         if itemIndex < contentImages.count {
-            let pageItemController = self.storyboard!.instantiateViewControllerWithIdentifier("KeyboardPageItemController") as! KeyboardPageItemController
+            let pageItemController = self.storyboard!.instantiateViewControllerWithIdentifier("GuidelinesPageItemController") as! GuidelinesPageItemController
             pageItemController.itemIndex = itemIndex
             pageItemController.imageName = contentImages[itemIndex]
+            pageItemController.stringName = contentStrings[itemIndex]
             return pageItemController
         }
         return nil
@@ -105,4 +109,5 @@ class KeyboardInstallPageController: UIViewController, UIPageViewControllerDataS
     }
     
 }
+
 

@@ -22,6 +22,7 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
     private var _updateSizesTimer:NSTimer?
     private var _sections:NSIndexSet!
     private var wordIndex = 0
+    private var _lastInteractedCell:TutorialCharacterCell?
     
     var audioHelper = AudioHelper()
     
@@ -140,6 +141,8 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
         else if(state == .Cleared && cell.character != nil) {
             unwrittenCharacters.insert(cell.character!)
         }
+        
+        _lastInteractedCell = cell
 //        if(wordIndex < mCharacters.count) {
 //            finishButton?.enabled = false
 //        }
@@ -275,6 +278,12 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
             self.presentViewController(alert, animated: true, completion: nil)
         })
     }
+    
+    @IBAction func HandleClearBtn(sender: AnyObject) {
+        if(_lastInteractedCell != nil) {
+            _lastInteractedCell?.clear()
+        }
+    }
 }
 
 class TutorialCharacterCell: UICollectionViewCell {
@@ -360,6 +369,10 @@ class TutorialCharacterCell: UICollectionViewCell {
             drawCaptureView?.save(string, captureType: "Tutorial", saveAtlas: false)
             drawCaptureView?.save(string.lowercaseString, captureType: "Tutorial", saveAtlas: false)
         }
+    }
+    
+    func clear() {
+        drawCaptureView?.clear()
     }
     
     var isEmpty:Bool {

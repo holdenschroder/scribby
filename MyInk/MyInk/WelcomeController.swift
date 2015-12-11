@@ -54,14 +54,34 @@ class WelcomeController: UIViewController, UITextFieldDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.destinationViewController is ExampleController {
             let vc = segue.destinationViewController as! ExampleController
-            let message = textfield?.text
-            if(message != nil && (message)!.characters.count > 0 && _fontMessageRenderer != nil) {
-                let calculatedLineHeight = 18.0 * SharedMyInkValues.FontPointSizeToPixelRatio
-                let imageMessage = _fontMessageRenderer!.renderMessage(message!, imageSize: CGSize(width: 1024, height: 4096), lineHeight:calculatedLineHeight, backgroundColor: UIColor.clearColor())
-                if imageMessage != nil {
-                    vc.loadImage(imageMessage!)
+            //let message = textfield?.text
+            
+            if(textfield?.text!.characters.count > 0) {
+                var message = ""
+                if(textfield?.text!.characters.count < 30) {
+                    message += "          "
+                    message += (textfield?.text!)!
+                    message += "          "
+                }
+                else {
+                    message = (textfield?.text)!
+                }
+                if(_fontMessageRenderer != nil) {
+                    let calculatedLineHeight = 18.0 * SharedMyInkValues.FontPointSizeToPixelRatio
+                    let imageMessage = _fontMessageRenderer!.renderMessage(message, imageSize: CGSize(width: 1024, height: 4096), lineHeight:calculatedLineHeight, backgroundColor: UIColor.clearColor())
+                    if imageMessage != nil {
+                        vc.loadImage(imageMessage!)
+                    }
                 }
             }
+            
+//            if(message != nil && (message)!.characters.count > 0 && _fontMessageRenderer != nil) {
+//                let calculatedLineHeight = 18.0 * SharedMyInkValues.FontPointSizeToPixelRatio
+//                let imageMessage = _fontMessageRenderer!.renderMessage(message!, imageSize: CGSize(width: 1024, height: 4096), lineHeight:calculatedLineHeight, backgroundColor: UIColor.clearColor())
+//                if imageMessage != nil {
+//                    vc.loadImage(imageMessage!)
+//                }
+//            }
         }
     }
 
