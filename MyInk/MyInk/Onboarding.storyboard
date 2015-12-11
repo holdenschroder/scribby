@@ -106,7 +106,6 @@ Try it out:</string>
                                     <constraint firstAttribute="width" secondItem="DPP-n6-cKz" secondAttribute="height" multiplier="1:1" id="fZj-Gh-E4n"/>
                                 </constraints>
                                 <state key="normal" image="button_ink_outline"/>
-                                <state key="disabled" image="button_ink_disabled"/>
                                 <connections>
                                     <action selector="HandleInkButton:" destination="bim-qh-NbQ" eventType="touchUpInside" id="uhK-JW-0G0"/>
                                 </connections>
@@ -303,7 +302,6 @@ Try it out:</string>
         </scene>
     </scenes>
     <resources>
-        <image name="button_ink_disabled" width="114" height="114"/>
         <image name="button_ink_outline" width="114" height="114"/>
         <image name="button_x" width="44" height="44"/>
         <image name="main_menu_bg" width="360" height="640"/>
