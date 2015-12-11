@@ -77,7 +77,7 @@ class KeyboardInstallPageController: UIViewController, UIPageViewControllerDataS
     // MARK: - UIPageViewControllerDataSource
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-        let itemController = viewController as! PageItemController
+        let itemController = viewController as! KeyboardPageItemController
         if itemController.itemIndex > 0 {
             return getItemController(itemController.itemIndex-1)
         }
@@ -85,16 +85,16 @@ class KeyboardInstallPageController: UIViewController, UIPageViewControllerDataS
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-        let itemController = viewController as! PageItemController
+        let itemController = viewController as! KeyboardPageItemController
         if itemController.itemIndex+1 < contentImages.count {
             return getItemController(itemController.itemIndex+1)
         }
         return nil
     }
     
-    private func getItemController(itemIndex: Int) -> PageItemController? {
+    private func getItemController(itemIndex: Int) -> KeyboardPageItemController? {
         if itemIndex < contentImages.count {
-            let pageItemController = self.storyboard!.instantiateViewControllerWithIdentifier("InstallItemController") as! PageItemController
+            let pageItemController = self.storyboard!.instantiateViewControllerWithIdentifier("KeyboardPageItemController") as! KeyboardPageItemController
             pageItemController.itemIndex = itemIndex
             pageItemController.imageName = contentImages[itemIndex]
             return pageItemController

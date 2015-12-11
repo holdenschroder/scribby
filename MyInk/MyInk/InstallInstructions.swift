@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import QuartzCore   
 
 class InstallationInstructions:UIViewController {
     

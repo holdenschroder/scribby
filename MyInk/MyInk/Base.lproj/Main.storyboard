@@ -1004,7 +1004,7 @@
         <!--Page View Controller-->
         <scene sceneID="ufe-qn-qak">
             <objects>
-                <pageViewController storyboardIdentifier="InstallPageController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="raG-uz-TNa" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="InstallPageController" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="raG-uz-TNa" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Po-sz-ffG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2300" y="2182"/>
@@ -1012,7 +1012,7 @@
         <!--Keyboard Install Page Controller-->
         <scene sceneID="RT1-Tm-e3A">
             <objects>
-                <viewController id="mg3-f4-AMg" customClass="KeyboardInstallPageController" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="KeyboardInstallPageController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mg3-f4-AMg" customClass="KeyboardInstallPageController" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Sxc-AM-Ken"/>
                         <viewControllerLayoutGuide type="bottom" id="bSk-5M-so4"/>
@@ -1027,10 +1027,10 @@
             </objects>
             <point key="canvasLocation" x="2300" y="2882"/>
         </scene>
-        <!--Page Item Controller-->
+        <!--Keyboard Page Item Controller-->
         <scene sceneID="fnI-r3-rgv">
             <objects>
-                <viewController storyboardIdentifier="InstallItemController" id="WmO-gf-cC3" customClass="PageItemController" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="KeyboardPageItemController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WmO-gf-cC3" customClass="KeyboardPageItemController" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Wj5-O0-U3p"/>
                         <viewControllerLayoutGuide type="bottom" id="UKG-S3-w7C"/>
@@ -1333,6 +1333,56 @@ this be mapped to?</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="40g-zp-q9L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1432" y="-129"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="e9k-sB-gDZ">
+            <objects>
+                <viewController id="HIB-67-tcW" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6pD-Dz-Epe"/>
+                        <viewControllerLayoutGuide type="bottom" id="Xia-ae-Vnx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GIt-Z8-ROf">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1EZ-Hq-ZH3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2300" y="3580"/>
+        </scene>
+        <!--Page Item Controller-->
+        <scene sceneID="JaZ-ZP-ULs">
+            <objects>
+                <viewController id="w50-nG-nt2" customClass="PageItemController" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Fqf-9R-d57"/>
+                        <viewControllerLayoutGuide type="bottom" id="8iD-ze-02B"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bjD-nf-5az">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="u4z-GO-ecT" userLabel="Content Image View">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="u4z-GO-ecT" firstAttribute="bottom" secondItem="8iD-ze-02B" secondAttribute="top" id="8YI-t4-6Er"/>
+                            <constraint firstItem="u4z-GO-ecT" firstAttribute="leading" secondItem="bjD-nf-5az" secondAttribute="leading" id="cp5-ik-ZEJ"/>
+                            <constraint firstItem="u4z-GO-ecT" firstAttribute="centerX" secondItem="bjD-nf-5az" secondAttribute="centerX" id="jEL-W9-Sox"/>
+                            <constraint firstItem="u4z-GO-ecT" firstAttribute="centerY" secondItem="bjD-nf-5az" secondAttribute="centerY" id="r36-eC-VJE"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="contentImageView" destination="u4z-GO-ecT" id="CFq-fD-OiB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4pB-5s-NZx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3011" y="3580"/>
         </scene>
     </scenes>
     <resources>

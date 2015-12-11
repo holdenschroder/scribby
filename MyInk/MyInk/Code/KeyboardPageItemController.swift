@@ -1,11 +1,11 @@
 //
-//  PageItemController.swift
+//  KeyboardPageItemController.swift
 //
 
 import UIKit
 import QuartzCore
 
-class PageItemController: UIViewController {
+class KeyboardPageItemController: UIViewController {
     
     // MARK: - Vars
     

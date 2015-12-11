@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		53213E651C1A2ACE0063342C /* yeah.wav in Resources */ = {isa = PBXBuildFile; fileRef = 53213E641C1A2ACE0063342C /* yeah.wav */; };
+		53213E6D1C1B2EE70063342C /* KeyboardPageItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53213E6C1C1B2EE70063342C /* KeyboardPageItemController.swift */; };
 		533CB3DA1C065F4000EA7438 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 533CB3D91C065F4000EA7438 /* Onboarding.storyboard */; };
 		533CB3DC1C06628700EA7438 /* SplashController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533CB3DB1C06628700EA7438 /* SplashController.swift */; };
 		533CB3DE1C066EB300EA7438 /* WelcomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533CB3DD1C066EB300EA7438 /* WelcomeController.swift */; };
@@ -27,7 +28,6 @@
 		53C8AD941C191A6F006A98E1 /* erasing.wav in Resources */ = {isa = PBXBuildFile; fileRef = 53C8AD931C191A6F006A98E1 /* erasing.wav */; };
 		53C8AD961C191B3F006A98E1 /* awesome.wav in Resources */ = {isa = PBXBuildFile; fileRef = 53C8AD951C191B3F006A98E1 /* awesome.wav */; };
 		53D757931BFE6C9500C39E7C /* KeyboardInstallPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D757921BFE6C9500C39E7C /* KeyboardInstallPageController.swift */; };
-		53D757951BFE6DE700C39E7C /* PageItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D757941BFE6DE700C39E7C /* PageItemController.swift */; };
 		53DBD30A1C079B2D00E8EAB5 /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53DBD3091C079B2C00E8EAB5 /* Tutorial.storyboard */; };
 		53DBD30D1C07B3AC00E8EAB5 /* TutorialIntroController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DBD30C1C07B3AC00E8EAB5 /* TutorialIntroController.swift */; };
 		5802FEA01B5476200013BCEA /* MapGlyphController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5802FE9F1B5476200013BCEA /* MapGlyphController.swift */; };
@@ -152,6 +152,7 @@
 
 /* Begin PBXFileReference section */
 		53213E641C1A2ACE0063342C /* yeah.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = yeah.wav; path = Assets/sounds/yeah.wav; sourceTree = "<group>"; };
+		53213E6C1C1B2EE70063342C /* KeyboardPageItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyboardPageItemController.swift; path = Code/KeyboardPageItemController.swift; sourceTree = "<group>"; };
 		533CB3D91C065F4000EA7438 /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		533CB3DB1C06628700EA7438 /* SplashController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashController.swift; sourceTree = "<group>"; };
 		533CB3DD1C066EB300EA7438 /* WelcomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeController.swift; sourceTree = "<group>"; };
@@ -171,7 +172,6 @@
 		53C8AD931C191A6F006A98E1 /* erasing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = erasing.wav; path = Assets/sounds/erasing.wav; sourceTree = "<group>"; };
 		53C8AD951C191B3F006A98E1 /* awesome.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = awesome.wav; path = Assets/sounds/awesome.wav; sourceTree = "<group>"; };
 		53D757921BFE6C9500C39E7C /* KeyboardInstallPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardInstallPageController.swift; sourceTree = "<group>"; };
-		53D757941BFE6DE700C39E7C /* PageItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PageItemController.swift; path = Code/PageItemController.swift; sourceTree = "<group>"; };
 		53DBD3091C079B2C00E8EAB5 /* Tutorial.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tutorial.storyboard; sourceTree = "<group>"; };
 		53DBD30C1C07B3AC00E8EAB5 /* TutorialIntroController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialIntroController.swift; sourceTree = "<group>"; };
 		5802FE9F1B5476200013BCEA /* MapGlyphController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapGlyphController.swift; sourceTree = "<group>"; };
@@ -357,7 +357,7 @@
 			children = (
 				582054271B82D235002C95BE /* InstallInstructions.swift */,
 				53D757921BFE6C9500C39E7C /* KeyboardInstallPageController.swift */,
-				53D757941BFE6DE700C39E7C /* PageItemController.swift */,
+				53213E6C1C1B2EE70063342C /* KeyboardPageItemController.swift */,
 			);
 			name = Instructions;
 			sourceTree = "<group>";
@@ -896,13 +896,13 @@
 				58FBA5291B853FC4009CF809 /* SharedMyInkValues.swift in Sources */,
 				58DF90751B4F1C9600E36BB1 /* CaptureWordSelectController.swift in Sources */,
 				533CB3DE1C066EB300EA7438 /* WelcomeController.swift in Sources */,
+				53213E6D1C1B2EE70063342C /* KeyboardPageItemController.swift in Sources */,
 				582D3FC11B50433300D08255 /* UIImageView+GeometryConversion.m in Sources */,
 				58A696471BB0DEFE00B068AA /* UINavigationControllerOrientation.swift in Sources */,
 				583EB9E81B72DCC200357957 /* CoreDataHelper.swift in Sources */,
 				584E31BD1B56F95D002E6703 /* LibraryTableController.swift in Sources */,
 				582D3FB71B50433300D08255 /* FontAtlas.swift in Sources */,
 				582D3FBE1B50433300D08255 /* UIImageExtensions.swift in Sources */,
-				53D757951BFE6DE700C39E7C /* PageItemController.swift in Sources */,
 				58DF90701B4F1C9600E36BB1 /* AppDelegate.swift in Sources */,
 				53A2CDD11BFAB21800569105 /* LibraryItemController.swift in Sources */,
 				533CB3E01C0688AD00EA7438 /* ExampleController.swift in Sources */,
