@@ -63,7 +63,7 @@ class KeyboardInstallPageController: UIViewController, UIPageViewControllerDataS
         let appearance = UIPageControl.appearance()
         appearance.pageIndicatorTintColor = UIColor.grayColor()
         appearance.currentPageIndicatorTintColor = UIColor.whiteColor()
-        appearance.backgroundColor = UIColor.darkGrayColor()
+        appearance.backgroundColor = SharedMyInkValues.MyInkDarkColor //UIColor.darkGrayColor()
     }
     
     // MARK: - UIPageViewControllerDataSource
