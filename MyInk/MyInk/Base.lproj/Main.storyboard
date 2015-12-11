@@ -1332,16 +1332,16 @@ this be mapped to?</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="u4z-GO-ecT" userLabel="Content Image View">
-                                <rect key="frame" x="150" y="48" width="300" height="368"/>
+                                <rect key="frame" x="150" y="60" width="300" height="368"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="u4z-GO-ecT" secondAttribute="height" multiplier="97:119" id="OVR-ai-68t"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ytl-6j-Com">
-                                <rect key="frame" x="150" y="480" width="300" height="100"/>
+                                <rect key="frame" x="150" y="500" width="300" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="Jb0-kP-dPs"/>
-                                    <constraint firstAttribute="height" constant="100" id="QyS-76-AuI"/>
+                                    <constraint firstAttribute="height" constant="80" id="QyS-76-AuI"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                 <color key="textColor" red="0.80392156859999997" green="0.090196078430000007" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -1354,7 +1354,7 @@ this be mapped to?</string>
                             <constraint firstItem="Ytl-6j-Com" firstAttribute="centerX" secondItem="bjD-nf-5az" secondAttribute="centerX" id="9Uq-AI-6b9"/>
                             <constraint firstItem="u4z-GO-ecT" firstAttribute="leading" secondItem="Ytl-6j-Com" secondAttribute="leading" id="FaH-i8-Ncg"/>
                             <constraint firstItem="8iD-ze-02B" firstAttribute="top" secondItem="Ytl-6j-Com" secondAttribute="bottom" constant="20" id="JGw-i0-vGc"/>
-                            <constraint firstItem="u4z-GO-ecT" firstAttribute="top" secondItem="Fqf-9R-d57" secondAttribute="bottom" constant="28" id="Qhg-Nv-NZy"/>
+                            <constraint firstItem="u4z-GO-ecT" firstAttribute="top" secondItem="Fqf-9R-d57" secondAttribute="bottom" constant="40" id="Qhg-Nv-NZy"/>
                         </constraints>
                     </view>
                     <connections>
