@@ -1144,6 +1144,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "9eed46e1-6bd6-420f-a274-eed86ee55c73";
 				SWIFT_OBJC_BRIDGING_HEADER = MyInk/bridging_header.h;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1169,6 +1170,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "9eed46e1-6bd6-420f-a274-eed86ee55c73";
 				SWIFT_OBJC_BRIDGING_HEADER = MyInk/bridging_header.h;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
