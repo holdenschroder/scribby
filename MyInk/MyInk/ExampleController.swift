@@ -30,6 +30,8 @@ class ExampleController: UIViewController, UIAlertViewDelegate, MFMessageCompose
         messageVC = MFMessageComposeViewController()
         mailVC = MFMailComposeViewController()
         
+        audioHelper.playYeahSound()
+        
         imageView?.image = _image
         
         redoBtn.layer.cornerRadius = 6.0
@@ -47,12 +49,7 @@ class ExampleController: UIViewController, UIAlertViewDelegate, MFMessageCompose
         createBtn.layer.borderColor = UIColor.whiteColor().CGColor
         createBtn.layer.masksToBounds = true
     }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        audioHelper.playYeahSound()
-    }
+
 
     
     // MARK: - Misc Methods
@@ -146,6 +143,7 @@ class ExampleController: UIViewController, UIAlertViewDelegate, MFMessageCompose
     }
     
     @IBAction func redoAction(sender: AnyObject) {
+        //self.navigationController?.popViewControllerAnimated(true)
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
