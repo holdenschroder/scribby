@@ -210,11 +210,11 @@
                                             </variation>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ojd-1G-r6Y" userLabel="line">
-                                            <rect key="frame" x="5" y="36" width="90" height="2"/>
+                                            <rect key="frame" x="5" y="36" width="90" height="1"/>
                                             <color key="backgroundColor" red="0.92549019610000005" green="0.0" blue="0.44705882349999998" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="2" id="Kar-IE-YDn"/>
-                                                <constraint firstAttribute="height" constant="2" id="yZ5-95-H7K"/>
+                                                <constraint firstAttribute="height" constant="1" id="yZ5-95-H7K"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">

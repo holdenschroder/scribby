@@ -19,7 +19,6 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var fontSizeLabel: UILabel!
     @IBOutlet weak var bottomConstraint:NSLayoutConstraint!
     @IBOutlet weak var propertiesBar: UIView!
-    @IBOutlet weak var mActivityIndicator: UIActivityIndicatorView!
     
     private let _pointSizeOptions:[Float] = [18, 24, 36]
     private let _pointSizeStrings:[String] = ["Small", "Medium", "Large"]
@@ -56,7 +55,6 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-        mActivityIndicator.hidden = true
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -71,9 +69,6 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
             UIView.animateWithDuration(0.5, animations: {
                 self.textView?.becomeFirstResponder()
             })
-        }
-        if(mActivityIndicator.isAnimating()) {
-            mActivityIndicator.stopAnimating()
         }
     }
     
@@ -104,9 +99,6 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
                     if imageMessage != nil {
                         shareImageController.loadImage(imageMessage!)
                     }
-                    if(mActivityIndicator.isAnimating()) {
-                        mActivityIndicator.stopAnimating()
-                    }
                 }
             }
         }
@@ -117,8 +109,6 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
     
     @IBAction func HandleInkAction(sender: AnyObject) {
         if(textView?.text?.characters.count > 0) {
-            mActivityIndicator.hidden = false
-            mActivityIndicator.startAnimating()
             audioHelper.playClickSound()
             performSegueWithIdentifier("composeToShare", sender: self)
         }
