@@ -123,10 +123,10 @@
                                 </items>
                             </toolbar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="glyph_guidelines" translatesAutoresizingMaskIntoConstraints="NO" id="R9R-uh-Vfc">
-                                <rect key="frame" x="20" y="28" width="560" height="519"/>
+                                <rect key="frame" x="20" y="28" width="560" height="528"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nbS-CT-B7S" customClass="UIDrawCaptureView" customModule="MyInk" customModuleProvider="target">
-                                <rect key="frame" x="20" y="28" width="560" height="519"/>
+                                <rect key="frame" x="20" y="28" width="560" height="528"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="topLinePercent">
                                         <real key="value" value="-0.16600000000000001"/>
@@ -144,7 +144,7 @@
                         <constraints>
                             <constraint firstItem="R9R-uh-Vfc" firstAttribute="centerY" secondItem="nbS-CT-B7S" secondAttribute="centerY" id="7H9-Z7-EsD"/>
                             <constraint firstItem="Ydu-Jp-hW3" firstAttribute="leading" secondItem="ngT-GB-8Tf" secondAttribute="leadingMargin" id="8Yj-Ty-Zra"/>
-                            <constraint firstItem="Ydu-Jp-hW3" firstAttribute="top" secondItem="nbS-CT-B7S" secondAttribute="bottom" constant="9" id="HGH-gs-Y8j"/>
+                            <constraint firstItem="Ydu-Jp-hW3" firstAttribute="top" secondItem="nbS-CT-B7S" secondAttribute="bottom" id="HGH-gs-Y8j"/>
                             <constraint firstItem="Ydu-Jp-hW3" firstAttribute="leading" secondItem="ngT-GB-8Tf" secondAttribute="leadingMargin" id="HTJ-ld-5zc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Ydu-Jp-hW3" secondAttribute="trailing" id="Sx3-2U-LSe"/>
                             <constraint firstAttribute="trailingMargin" secondItem="nbS-CT-B7S" secondAttribute="trailing" id="Tmd-X2-Yyq"/>
@@ -152,6 +152,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="Ydu-Jp-hW3" secondAttribute="trailing" id="aJL-Rn-cka"/>
                             <constraint firstItem="R9R-uh-Vfc" firstAttribute="height" secondItem="nbS-CT-B7S" secondAttribute="height" id="gkc-88-lo9"/>
                             <constraint firstItem="R9R-uh-Vfc" firstAttribute="centerX" secondItem="nbS-CT-B7S" secondAttribute="centerX" id="jTu-9J-Qer"/>
+                            <constraint firstItem="Ydu-Jp-hW3" firstAttribute="top" secondItem="nbS-CT-B7S" secondAttribute="bottom" id="lpj-gC-gfV"/>
                             <constraint firstItem="nbS-CT-B7S" firstAttribute="top" secondItem="Rrs-1X-qkn" secondAttribute="bottom" constant="8" id="m3Y-a9-kmJ"/>
                             <constraint firstItem="R9R-uh-Vfc" firstAttribute="width" secondItem="nbS-CT-B7S" secondAttribute="width" id="qSf-gh-M5o"/>
                             <constraint firstItem="rMq-e8-Gl5" firstAttribute="top" secondItem="Ydu-Jp-hW3" secondAttribute="bottom" id="qao-I8-0lW"/>
@@ -160,6 +161,7 @@
                             <mask key="constraints">
                                 <exclude reference="8Yj-Ty-Zra"/>
                                 <exclude reference="aJL-Rn-cka"/>
+                                <exclude reference="lpj-gC-gfV"/>
                             </mask>
                         </variation>
                     </view>
@@ -304,7 +306,7 @@
                                 </items>
                             </toolbar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xam-hZ-0jj" customClass="UIDrawCaptureView" customModule="MyInk" customModuleProvider="target">
-                                <rect key="frame" x="20" y="75" width="560" height="449"/>
+                                <rect key="frame" x="20" y="75" width="560" height="437"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="topLinePercent">
                                         <real key="value" value="-0.16600000000000001"/>
@@ -325,6 +327,7 @@
                             <constraint firstItem="C7o-mw-dWA" firstAttribute="top" secondItem="JQh-QO-tKO" secondAttribute="top" constant="-30" id="Fd6-ym-qzR"/>
                             <constraint firstItem="tMS-bo-i7h" firstAttribute="bottom" secondItem="ur7-4V-PqV" secondAttribute="top" id="H2S-a4-a9p"/>
                             <constraint firstItem="tMS-bo-i7h" firstAttribute="trailing" secondItem="JQh-QO-tKO" secondAttribute="trailing" id="Hd4-UI-Zdb"/>
+                            <constraint firstItem="tMS-bo-i7h" firstAttribute="top" secondItem="xam-hZ-0jj" secondAttribute="bottom" id="IZu-vP-XgF"/>
                             <constraint firstItem="C7o-mw-dWA" firstAttribute="trailing" secondItem="JQh-QO-tKO" secondAttribute="trailing" id="Mwv-88-ikm"/>
                             <constraint firstItem="tMS-bo-i7h" firstAttribute="leading" secondItem="xam-hZ-0jj" secondAttribute="leading" id="Ovi-kc-YT2"/>
                             <constraint firstItem="xam-hZ-0jj" firstAttribute="trailing" secondItem="JQh-QO-tKO" secondAttribute="trailing" id="Tea-lq-vTG"/>
@@ -332,9 +335,9 @@
                             <constraint firstItem="C7o-mw-dWA" firstAttribute="leading" secondItem="JQh-QO-tKO" secondAttribute="leading" id="ZMy-fR-4s0"/>
                             <constraint firstItem="C7o-mw-dWA" firstAttribute="bottom" secondItem="JQh-QO-tKO" secondAttribute="bottom" constant="-26" id="amd-ei-OMs"/>
                             <constraint firstItem="C7o-mw-dWA" firstAttribute="centerX" secondItem="tMS-bo-i7h" secondAttribute="centerX" id="fgv-ja-Iav"/>
-                            <constraint firstItem="ur7-4V-PqV" firstAttribute="top" secondItem="xam-hZ-0jj" secondAttribute="bottom" constant="32" id="k1y-Bk-IIk"/>
+                            <constraint firstItem="ur7-4V-PqV" firstAttribute="top" secondItem="xam-hZ-0jj" secondAttribute="bottom" constant="44" id="k1y-Bk-IIk"/>
                             <constraint firstItem="JQh-QO-tKO" firstAttribute="trailing" secondItem="K76-ux-THm" secondAttribute="trailingMargin" id="ojc-g7-ow6"/>
-                            <constraint firstItem="xam-hZ-0jj" firstAttribute="bottom" secondItem="JQh-QO-tKO" secondAttribute="bottom" constant="-14" id="wxy-24-jFk"/>
+                            <constraint firstItem="xam-hZ-0jj" firstAttribute="bottom" secondItem="JQh-QO-tKO" secondAttribute="bottom" constant="-26" id="wxy-24-jFk"/>
                             <constraint firstItem="JQh-QO-tKO" firstAttribute="centerY" secondItem="K76-ux-THm" secondAttribute="centerY" id="xMj-cB-Ydw"/>
                         </constraints>
                     </view>
@@ -1326,7 +1329,7 @@ this be mapped to?</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="u4z-GO-ecT" userLabel="Content Image View">
-                                <rect key="frame" x="150" y="60" width="300" height="368"/>
+                                <rect key="frame" x="124" y="60" width="352" height="432"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="u4z-GO-ecT" secondAttribute="height" multiplier="97:119" id="OVR-ai-68t"/>
                                 </constraints>
@@ -1349,7 +1352,13 @@ this be mapped to?</string>
                             <constraint firstItem="u4z-GO-ecT" firstAttribute="leading" secondItem="Ytl-6j-Com" secondAttribute="leading" id="FaH-i8-Ncg"/>
                             <constraint firstItem="8iD-ze-02B" firstAttribute="top" secondItem="Ytl-6j-Com" secondAttribute="bottom" constant="20" id="JGw-i0-vGc"/>
                             <constraint firstItem="u4z-GO-ecT" firstAttribute="top" secondItem="Fqf-9R-d57" secondAttribute="bottom" constant="40" id="Qhg-Nv-NZy"/>
+                            <constraint firstItem="Ytl-6j-Com" firstAttribute="top" secondItem="u4z-GO-ecT" secondAttribute="bottom" constant="8" id="bRa-6O-JmS"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="FaH-i8-Ncg"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="contentImageView" destination="u4z-GO-ecT" id="CFq-fD-OiB"/>
