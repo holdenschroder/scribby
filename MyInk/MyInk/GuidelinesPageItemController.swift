@@ -21,14 +21,24 @@ class GuidelinesPageItemController: UIViewController {
             }
         }
     }
+    var stringName: String = "" {
+        didSet {
+            if let labelView = contentLabel {
+                labelView.text = stringName
+            }
+        }
+    }
+
     
     @IBOutlet var contentImageView: UIImageView?
+    @IBOutlet weak var contentLabel: UILabel!
     
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         contentImageView!.image = UIImage(named: imageName)
+        contentLabel.text = stringName
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -37,12 +47,12 @@ class GuidelinesPageItemController: UIViewController {
         
         let xBtn = UIButton()
         xBtn.setTitle("X", forState: .Normal)
-        xBtn.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        xBtn.setTitleColor(UIColor.blackColor(), forState: .Normal)
         xBtn.frame = CGRectMake(22, 22, 33, 33)
         xBtn.layer.cornerRadius = 3.0
         xBtn.layer.borderWidth = 1.5
-        xBtn.layer.borderColor = UIColor.whiteColor().CGColor
-        xBtn.layer.backgroundColor = UIColor.blackColor().CGColor
+        xBtn.layer.borderColor = UIColor.blackColor().CGColor
+        xBtn.layer.backgroundColor = UIColor.whiteColor().CGColor
         xBtn.layer.masksToBounds = true
         xBtn.addTarget(self, action: "HandleXBtn", forControlEvents: .TouchUpInside)
         self.view.addSubview(xBtn)

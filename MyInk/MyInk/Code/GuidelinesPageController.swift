@@ -19,8 +19,15 @@ class GuidelinesPageController: UIViewController, UIPageViewControllerDataSource
         "glyph_guidelines.png",
         "glyph_guidelines_ascender.png",
         "glyph_guidelines_baseline.png",
-        "glyph_guidelines_desscender.png"
+        "glyph_guidelines_descender.png"
     ];
+    private let contentStrings = [
+        "The blue guidelines help us to register where our character will sit as we creating our letters.",
+        "The ascender is the highest limit where the upward tail on letters like h, l, t, b, d, and k can draw.",
+        "The baseline is the line upon which most letters 'sit' and below which descenders extend.",
+        "The  descender line is the lowest limit for letters like g, q, and y."
+    ];
+
     
     // MARK: - Lifecycle
     
@@ -85,6 +92,7 @@ class GuidelinesPageController: UIViewController, UIPageViewControllerDataSource
             let pageItemController = self.storyboard!.instantiateViewControllerWithIdentifier("GuidelinesPageItemController") as! GuidelinesPageItemController
             pageItemController.itemIndex = itemIndex
             pageItemController.imageName = contentImages[itemIndex]
+            pageItemController.stringName = contentStrings[itemIndex]
             return pageItemController
         }
         return nil
