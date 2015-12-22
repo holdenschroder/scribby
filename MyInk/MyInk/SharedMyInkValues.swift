@@ -25,7 +25,6 @@ class SharedMyInkValues {
     static let kEventScreenLoadedLibraryPhotoTaken =        "SCREEN_LIBRARY_PHOTO-TAKEN"
     static let kEventScreenLoadedKeyboardInstructions =     "SCREEN_KEYBOARD_INSTRUCTIONS"
     static let kEventScreenLoadedKeyboardAllPages =         "SCREEN_KEYBOARD_INSTRUCTIONS-ALL-PAGES"
-
     
     static let kEventScreenLoadedMainMenu =                 "SCREEN_MENU"
     static let kEventScreenLoadedShareImage =               "SCREEN_SHARE-IMAGE"
@@ -35,7 +34,6 @@ class SharedMyInkValues {
     static let kEventTutorialFirstPhrase =                  "TUTORIAL_FIRST-PHRASE"
     static let kEventTutorialSkipped =                      "TUTORIAL_SKIPPED"
     static let kEventTutorialFinished =                     "TUTORIAL_FINISHED"
-
     
     static let kEventKeyboardAppeared =                     "KEYBOARD-APPEARED"
     static let kEventKeyboardDisappeared =                  "KEYBOARD-DISAPPEARED"
@@ -50,6 +48,8 @@ class SharedMyInkValues {
     static let kEventMappedCharacterArgMapped =             "MAPPED"
     static let kEventMappedCharacterArgNumAtlasChars =      "NUM-ATLAS-CHARS"
     static let kEventMappedCharacterArgCaptureType =        "CAPTURE-TYPE"
+    
+    static let kDefaultsUserHasBoarded = "kDefaultsUserHasBoarded"
     
     static let DefaultUserAtlas = "MyFont1"
     static let DefaultAtlasDirectory = "UserFonts"
@@ -74,6 +74,4 @@ class SharedMyInkValues {
     static let AppGroup = "group.myinkapp" //"group.myInk" //
     static let AppParent = "com.myinkapp.myink" //"com.elink.cursive" //
     
-    static let kDefaultsUserHasBoarded                      = "kDefaultsUserHasBoarded"
-
 }
