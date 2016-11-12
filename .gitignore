@@ -23,3 +23,5 @@ xcuserdata
 *.xcuserstate
 *.xcscheme
 xcuserdata/
+
+.DS_Store
