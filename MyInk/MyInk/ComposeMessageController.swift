@@ -160,8 +160,8 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
     // MARK: - KEYBOARD
 
     func registerForKeyboardNotifications() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleKeyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleKeyboardDidHide:", name: UIKeyboardDidHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ComposeMessageController.handleKeyboardDidShow(_:)), name: UIKeyboardDidShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ComposeMessageController.handleKeyboardDidHide(_:)), name: UIKeyboardDidHideNotification, object: nil)
     }
     
     func unregisterKeyboardNotifications() {

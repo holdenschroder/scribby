@@ -54,7 +54,7 @@ class GuidelinesPageItemController: UIViewController {
         xBtn.layer.borderColor = UIColor.blackColor().CGColor
         xBtn.layer.backgroundColor = UIColor.whiteColor().CGColor
         xBtn.layer.masksToBounds = true
-        xBtn.addTarget(self, action: "HandleXBtn", forControlEvents: .TouchUpInside)
+        xBtn.addTarget(self, action: #selector(GuidelinesPageItemController.HandleXBtn), forControlEvents: .TouchUpInside)
         self.view.addSubview(xBtn)
     }
     

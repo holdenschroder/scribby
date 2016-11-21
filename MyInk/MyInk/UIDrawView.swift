@@ -74,8 +74,8 @@ class UIDrawView: UIView {
         let imageRect = CGRect(x: 0, y: 0, width: mainImageView.bounds.width, height: mainImageView.bounds.height)
         UIGraphicsBeginImageContext(mainImageView.bounds.size)
             let context = UIGraphicsGetCurrentContext()
-            CGContextSetRGBFillColor(context, 0,0,0,0)
-            CGContextFillRect(context, imageRect)
+            CGContextSetRGBFillColor(context!, 0,0,0,0)
+            CGContextFillRect(context!, imageRect)
             mainImageView.image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         lastBrushWidth = brushWidthMin
@@ -94,8 +94,8 @@ class UIDrawView: UIView {
         let context = UIGraphicsGetCurrentContext()
         tempImageView.image?.drawInRect(CGRect(x: 0, y: 0, width: imageSize.width, height: imageSize.height))
         
-        CGContextMoveToPoint(context, fromPoint.x, fromPoint.y)
-        CGContextAddLineToPoint(context, toPoint.x, toPoint.y)
+        CGContextMoveToPoint(context!, fromPoint.x, fromPoint.y)
+        CGContextAddLineToPoint(context!, toPoint.x, toPoint.y)
         
         let pointDelta = toPoint - fromPoint;
         let scalar = min(pointDelta.magnitude() / 20, 1)
@@ -106,13 +106,13 @@ class UIDrawView: UIView {
         
         //println("Brush Width \(lastBrushWidth)");
         
-        CGContextSetLineCap(context, CGLineCap.Round)
-        CGContextSetLineJoin(context, CGLineJoin.Round)
-        CGContextSetLineWidth(context, brushWidthFinal)
-        CGContextSetRGBStrokeColor(context, red, green, blue, 1.0)
-        CGContextSetBlendMode(context, CGBlendMode.Normal)
+        CGContextSetLineCap(context!, CGLineCap.Round)
+        CGContextSetLineJoin(context!, CGLineJoin.Round)
+        CGContextSetLineWidth(context!, brushWidthFinal)
+        CGContextSetRGBStrokeColor(context!, red, green, blue, 1.0)
+        CGContextSetBlendMode(context!, CGBlendMode.Normal)
         
-        CGContextStrokePath(context)
+        CGContextStrokePath(context!)
         
         tempImageView.image = UIGraphicsGetImageFromCurrentImageContext()
         tempImageView.alpha = opacity

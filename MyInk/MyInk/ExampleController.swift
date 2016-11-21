@@ -87,13 +87,13 @@ class ExampleController: UIViewController, UIAlertViewDelegate, MFMessageCompose
     
     func messageComposeViewController(controller: MFMessageComposeViewController, didFinishWithResult result: MessageComposeResult) {
         switch (result.rawValue) {
-        case MessageComposeResultCancelled.rawValue:
+        case MessageComposeResult.Cancelled.rawValue:
             print("Message Cancelled")
             self.dismissViewControllerAnimated(true, completion: nil)
-        case MessageComposeResultFailed.rawValue:
+        case MessageComposeResult.Failed.rawValue:
             print("Message Failed")
             self.dismissViewControllerAnimated(true, completion: nil)
-        case MessageComposeResultSent.rawValue:
+        case MessageComposeResult.Sent.rawValue:
             print("Message Sent")
             self.dismissViewControllerAnimated(true, completion: {
                 self.audioHelper.playSentSound()
@@ -106,19 +106,19 @@ class ExampleController: UIViewController, UIAlertViewDelegate, MFMessageCompose
     
     func mailComposeController(controller:MFMailComposeViewController, didFinishWithResult result:MFMailComposeResult, error:NSError?) {
         switch result.rawValue {
-        case MFMailComposeResultCancelled.rawValue:
+        case MFMailComposeResult.Cancelled.rawValue:
             print("Email Cancelled")
             self.dismissViewControllerAnimated(true, completion: nil)
-        case MFMailComposeResultSaved.rawValue:
+        case MFMailComposeResult.Saved.rawValue:
             print("Email Saved")
             self.dismissViewControllerAnimated(true, completion: nil)
-        case MFMailComposeResultSent.rawValue:
+        case MFMailComposeResult.Sent.rawValue:
             print("Email Sent")
             self.dismissViewControllerAnimated(true, completion: {
                 self.audioHelper.playSentSound()
                 self.closeScreen()
             })
-        case MFMailComposeResultFailed.rawValue:
+        case MFMailComposeResult.Failed.rawValue:
             print("Email Failed")
             self.dismissViewControllerAnimated(true, completion: nil)
         default:

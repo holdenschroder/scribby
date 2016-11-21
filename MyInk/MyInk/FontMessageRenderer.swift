@@ -27,7 +27,7 @@ class FontMessageRenderer
         UIGraphicsBeginImageContext(imageSize)
         let graphicsContext = UIGraphicsGetCurrentContext()
         backgroundColor.setFill()
-        CGContextFillRect(graphicsContext, CGRect(origin: CGPointZero, size: imageSize))
+        CGContextFillRect(graphicsContext!, CGRect(origin: CGPointZero, size: imageSize))
         
         let lineComponents = message.componentsSeparatedByString("\n")
         //Lineheight is doubled because characters are stored at a 1:2 ratio
@@ -38,7 +38,7 @@ class FontMessageRenderer
         var numRenderedCharacters = 0
         for line in lineComponents {
             let wordComponents = line.componentsSeparatedByString(" ")
-            ++numRenderedLines
+            numRenderedLines += 1
             for word in wordComponents {
                 var glyphs = [FontAtlasGlyph]()
                 var wordWidth:CGFloat = 0
@@ -65,12 +65,12 @@ class FontMessageRenderer
                 //Do we have space left on this line?
                 if caretPosition.origin.x + wordWidth > imageSize.width - (_margins.x * 2) {
                     caretPosition.origin = CGPoint(x: _margins.x, y: caretPosition.origin.y + lineHeight)
-                    ++numRenderedLines
+                    numRenderedLines += 1
                 }
             
                 for glyphData in glyphs {
                     let imageData = glyphData.image as! FontAtlasImage
-                    let subImage = UIImage(CGImage: CGImageCreateWithImageInRect(imageData.loadedImage!.CGImage, glyphData.imageCoord * imageData.loadedImage!.size)!);
+                    let subImage = UIImage(CGImage: CGImageCreateWithImageInRect(imageData.loadedImage!.CGImage!, glyphData.imageCoord * imageData.loadedImage!.size)!);
                 
                     UIColor.whiteColor().setFill()
                     var characterRect = glyphData.glyphBounds
@@ -80,13 +80,13 @@ class FontMessageRenderer
                     if showDebugInfo {
                         var debugRect = characterRect
                         debugRect.origin += CGPoint(x: renderPosition.origin.x, y: renderPosition.origin.y)
-                        CGContextFillRect(graphicsContext, debugRect)
+                        CGContextFillRect(graphicsContext!, debugRect)
                     }
                 
                     renderBounds.unionInPlace(renderPosition)
                     subImage.drawInRect(renderPosition)
                     caretPosition.offsetInPlace(dx: (_characterSpacing * lineHeight) + characterRect.width, dy: 0)
-                    ++numRenderedCharacters
+                    numRenderedCharacters += 1
                 }
             
                 caretPosition.offsetInPlace(dx: _wordSpacing * lineHeight, dy: 0)
@@ -121,7 +121,7 @@ class FontMessageRenderer
             UIGraphicsEndImageContext()
         
             let cropRect = CGRectMake(renderBounds.origin.x, renderBounds.origin.y, renderBounds.width,     renderBounds.height)
-            let croppedImage = CGImageCreateWithImageInRect(renderedImage.CGImage!, cropRect)
+            let croppedImage = CGImageCreateWithImageInRect(renderedImage!.CGImage!, cropRect)
         
             return UIImage(CGImage: croppedImage!)
         }

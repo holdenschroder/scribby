@@ -34,7 +34,7 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.collectionView?.panGestureRecognizer.addTarget(self, action: "handlePanGesture:")
+        self.collectionView?.panGestureRecognizer.addTarget(self, action: #selector(TutorialPhraseController.handlePanGesture(_:)))
         words = phrase.componentsSeparatedByString(" ")
         mCharacters = mPhrase.characters.map { String($0) }
         
@@ -173,7 +173,7 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
     private func UpdateSizes() {
         //Don't re-trigger the timer, we set it to nil after it fires
         if _updateSizesTimer == nil || !_updateSizesTimer!.valid {
-            _updateSizesTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "HandleDelayUpdateSize:", userInfo: nil, repeats: true)
+            _updateSizesTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(TutorialPhraseController.HandleDelayUpdateSize(_:)), userInfo: nil, repeats: true)
         }
     }
     
@@ -212,7 +212,7 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
     @IBAction func HandleNextBtn(sender:AnyObject) {
         audioHelper.playFinSound()
         LogWordForAnalytics(mCharacters[wordIndex], isStarting:false)
-        ++wordIndex
+        wordIndex += 1
         if wordIndex < mCharacters.count {
             LogWordForAnalytics(mCharacters[wordIndex], isStarting:true)
             updateItemHeight(collectionView!.bounds.size)
@@ -315,7 +315,7 @@ class TutorialCharacterCell: UICollectionViewCell {
         super.awakeFromNib()
         drawCaptureView?.addDrawEventSubscriber(self, handler: handleDrawEvent)
         _initialLabelAlpha = label != nil ? label!.alpha : 0.1
-        clearButton?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "handleClearBtn:"))
+        clearButton?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(TutorialCharacterCell.handleClearBtn(_:))))
         clearButton?.userInteractionEnabled = true
         clearButton?.hidden = true
         saveButton?.userInteractionEnabled = true

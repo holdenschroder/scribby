@@ -128,8 +128,8 @@ class KeyboardViewController: UIInputViewController {
         var buttonTitles1, buttonTitles2, buttonTitles3, buttonTitles4:[AnyObject]!
         
         let deleteKey = UIMyInkKey(title: "⌫", relativeWidth: 0.15)
-        deleteKey.addTarget(self, action: "handleDeleteKeyPressed:", forControlEvents: .TouchDown)
-        deleteKey.addTarget(self, action: "handleDeleteKeyReleased:", forControlEvents: .TouchUpInside)
+        deleteKey.addTarget(self, action: #selector(KeyboardViewController.handleDeleteKeyPressed(_:)), forControlEvents: .TouchDown)
+        deleteKey.addTarget(self, action: #selector(KeyboardViewController.handleDeleteKeyReleased(_:)), forControlEvents: .TouchUpInside)
         
         switch layout {
         case .alpha:
@@ -137,7 +137,7 @@ class KeyboardViewController: UIInputViewController {
             if _capitilization == .uppercase {
                 shiftKey.keyData?.controlState = UIControlState.Selected
             }
-            shiftKey.addTarget(self, action: "handleShiftTap:event:", forControlEvents: .TouchUpInside)
+            shiftKey.addTarget(self, action: #selector(KeyboardViewController.handleShiftTap(_:event:)), forControlEvents: .TouchUpInside)
             self._shiftButton = shiftKey
             
             buttonTitles1 = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"]
@@ -211,7 +211,7 @@ class KeyboardViewController: UIInputViewController {
             if let dataString = data as? String {
                 button = UIMyInkKey(title: dataString, relativeWidth: nil)
                 setupButton(button!)
-                button!.addTarget(self, action: "didTapButton:", forControlEvents: .TouchUpInside)
+                button!.addTarget(self, action: #selector(KeyboardViewController.didTapButton(_:)), forControlEvents: .TouchUpInside)
                 button!.setTitle(dataString, forState: .Normal)
             }
             else if let buttonData = data as? UIMyInkKey {
@@ -219,7 +219,7 @@ class KeyboardViewController: UIInputViewController {
                 setupButton(button!)
                 //We should add the default target if nothing is already added to this button
                 if button?.allTargets().count == 0 && button?.gestureRecognizers == nil {
-                    button?.addTarget(self, action: "didTapButton:", forControlEvents: .TouchUpInside)
+                    button?.addTarget(self, action: #selector(KeyboardViewController.didTapButton(_:)), forControlEvents: .TouchUpInside)
                 }
                 if button!.keyData?.relativeWidth != nil {
                     widthConstraint = NSLayoutConstraint(item: button!, attribute: .Width, relatedBy: .Equal, toItem: rowView, attribute: .Width, multiplier: button!.keyData!.relativeWidth!, constant: 0)
@@ -360,7 +360,7 @@ class KeyboardViewController: UIInputViewController {
         let button = UIButton(type: .System)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Okay", forState: UIControlState.Normal)
-        button.addTarget(self, action: "didTapAlertButton:", forControlEvents: UIControlEvents.TouchUpInside)
+        button.addTarget(self, action: #selector(KeyboardViewController.didTapAlertButton(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         button.backgroundColor = UIColor(white: 1.0, alpha: 1.0)
         button.layer.cornerRadius = 10
         rowViews = [label, button]
@@ -572,7 +572,7 @@ class KeyboardViewController: UIInputViewController {
         _lastKeyPressDate = NSDate()
         _lastKeyValue = "⌫"
         
-        self.deleteTimer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "handleDeleteKeyHeld:", userInfo: nil, repeats: false)
+        self.deleteTimer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: #selector(KeyboardViewController.handleDeleteKeyHeld(_:)), userInfo: nil, repeats: false)
     }
     
     func handleDeleteKeyReleased(sender:AnyObject?) {
@@ -589,7 +589,7 @@ class KeyboardViewController: UIInputViewController {
             AudioServicesPlaySystemSound(0x450);
         }
         self.deleteTimer?.invalidate()
-        self.deleteTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "handleDeleteKeyHeldLong:", userInfo: nil, repeats: true)
+        self.deleteTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(KeyboardViewController.handleDeleteKeyHeldLong(_:)), userInfo: nil, repeats: true)
     }
     
     func handleDeleteKeyHeldLong(timer:NSTimer) {

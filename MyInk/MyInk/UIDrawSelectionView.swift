@@ -45,9 +45,9 @@ class UIDrawSelectionView:UIImageView {
         let imageRect = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
         UIGraphicsBeginImageContext(frame.size)
         let context = UIGraphicsGetCurrentContext()
-        CGContextSetFillColorWithColor(context, color.CGColor)
-        CGContextSetBlendMode(context, CGBlendMode.Normal)
-        CGContextFillRect(context, imageRect)
+        CGContextSetFillColorWithColor(context!, color.CGColor)
+        CGContextSetBlendMode(context!, CGBlendMode.Normal)
+        CGContextFillRect(context!, imageRect)
         image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
     }
@@ -68,16 +68,16 @@ class UIDrawSelectionView:UIImageView {
         let context = UIGraphicsGetCurrentContext()
         image?.drawInRect(CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
         
-        CGContextMoveToPoint(context, fromPoint.x, fromPoint.y)
-        CGContextAddLineToPoint(context, toPoint.x, toPoint.y)
+        CGContextMoveToPoint(context!, fromPoint.x, fromPoint.y)
+        CGContextAddLineToPoint(context!, toPoint.x, toPoint.y)
         
-        CGContextSetLineCap(context, CGLineCap.Round)
-        CGContextSetLineJoin(context, CGLineJoin.Round)
-        CGContextSetLineWidth(context, CGFloat(brushWidthRelative) * image!.size.height)
-        CGContextSetRGBStrokeColor(context, 0, 0, 0, 0)
-        CGContextSetBlendMode(context, CGBlendMode.Copy)
+        CGContextSetLineCap(context!, CGLineCap.Round)
+        CGContextSetLineJoin(context!, CGLineJoin.Round)
+        CGContextSetLineWidth(context!, CGFloat(brushWidthRelative) * image!.size.height)
+        CGContextSetRGBStrokeColor(context!, 0, 0, 0, 0)
+        CGContextSetBlendMode(context!, CGBlendMode.Copy)
         
-        CGContextStrokePath(context)
+        CGContextStrokePath(context!)
         
         image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()

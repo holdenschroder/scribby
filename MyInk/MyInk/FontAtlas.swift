@@ -107,10 +107,10 @@ class FontAtlas
 
         var imageRenderRect = relativeCharacterCoord
         imageRenderRect.origin += gridPosition!.origin
-        CGContextSetBlendMode(cgContext, CGBlendMode.Clear)
+        CGContextSetBlendMode(cgContext!, CGBlendMode.Clear)
         UIColor.blackColor().setFill()
-        CGContextFillRect(cgContext, gridPosition!)
-        CGContextSetBlendMode(cgContext, CGBlendMode.Normal)
+        CGContextFillRect(cgContext!, gridPosition!)
+        CGContextSetBlendMode(cgContext!, CGBlendMode.Normal)
         image.drawInRect(imageRenderRect)
         imageData.loadedImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()

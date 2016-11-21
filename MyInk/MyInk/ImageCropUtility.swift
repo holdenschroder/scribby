@@ -73,7 +73,7 @@ class ImageCropUtility
     static func FindInkColor(image:CIImage) -> CIColor {
         let context = CIContext(options: nil)
         let cgImage = context.createCGImage(image, fromRect: image.extent)
-        return FindInkColor(cgImage)
+        return FindInkColor(cgImage!)
     }
     
     static func FindInkColor(cgImage:CoreGraphics.CGImage) -> CIColor {
@@ -84,7 +84,7 @@ class ImageCropUtility
         let height = CGImageGetHeight(cgImage)
         let componentsPerPixel = 4
         
-        let pixelData = CGDataProviderCopyData(CGImageGetDataProvider(cgImage))
+        let pixelData = CGDataProviderCopyData(CGImageGetDataProvider(cgImage)!)
         let rawData:UnsafePointer<UInt8> = CFDataGetBytePtr(pixelData)
         
         let numPixels = width * height

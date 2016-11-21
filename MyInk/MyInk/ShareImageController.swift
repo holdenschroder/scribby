@@ -66,7 +66,7 @@ class ShareImageController: UIViewController, UIAlertViewDelegate {
         UIGraphicsBeginImageContext(instagramSize)
         let graphicsContext = UIGraphicsGetCurrentContext()
         UIColor.whiteColor().setFill()
-        CGContextFillRect(graphicsContext, CGRect(origin: CGPointZero, size: instagramSize))
+        CGContextFillRect(graphicsContext!, CGRect(origin: CGPointZero, size: instagramSize))
         if _image?.size.width > _image?.size.height {
             let ratioAdjustment = _image!.size.height / _image!.size.width
             _image?.drawInRect(CGRectMake(0, instagramSize.height * ((1 - ratioAdjustment) * 0.5), instagramSize.width, instagramSize.width * ratioAdjustment))
@@ -81,8 +81,8 @@ class ShareImageController: UIViewController, UIAlertViewDelegate {
         
         //Save the image
         var filePathURL = NSURL(fileURLWithPath: NSTemporaryDirectory())
-        filePathURL = filePathURL.URLByAppendingPathComponent("instagram.igo")
-        let imageData = UIImageJPEGRepresentation(instagramImage, 100)
+        filePathURL = filePathURL.URLByAppendingPathComponent("instagram.igo")!
+        let imageData = UIImageJPEGRepresentation(instagramImage!, 100)
         if(imageData!.writeToFile(filePathURL.path!, atomically: true)) {
             print("\(filePathURL) Instagram Image Saved Successfully!")
             _documentController = UIDocumentInteractionController(URL: filePathURL)
