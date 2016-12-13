@@ -13,16 +13,13 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
     
     // MARK: - VARS
     
-    @IBOutlet var textView:UITextView?
-    @IBOutlet var generateButton:UIButton?
+    @IBOutlet var textView: UITextView?
+    @IBOutlet var generateButton: UIButton?
     @IBOutlet weak var pointSizeStepper: UIStepper!
     @IBOutlet weak var fontSizeLabel: UILabel!
     @IBOutlet weak var bottomConstraint:NSLayoutConstraint!
     @IBOutlet weak var propertiesBar: UIView!
     
-    private let _pointSizeOptions:[Float] = [18, 24, 36]
-    private let _pointSizeStrings:[String] = ["Small", "Medium", "Large"]
-    private var _fontMessageRenderer:FontMessageRenderer?
     private let _pointSizeOptions: [Float] = [18, 24, 36]
     private let _pointSizeStrings: [String] = ["Small", "Medium", "Large"]
     private var _fontMessageRenderer: FontMessageRenderer?
