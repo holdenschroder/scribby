@@ -436,7 +436,7 @@
                                             </mask>
                                         </variation>
                                     </label>
-                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="sMl-TU-0rv">
+                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="sMl-TU-0rv">
                                         <constraints>
                                             <constraint firstAttribute="height" constant="29" id="HdO-ZO-HBk"/>
                                             <constraint firstAttribute="width" constant="94" id="Wgi-ee-40J"/>
