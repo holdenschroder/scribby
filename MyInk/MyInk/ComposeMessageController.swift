@@ -174,13 +174,19 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
         if info != nil && textView != nil {
             let kbRect = (info![UIKeyboardFrameBeginUserInfoKey] as! NSValue).CGRectValue()
             bottomConstraint.constant = kbRect.height + 20
-            textView?.layoutIfNeeded()
             textView!.scrollRangeToVisible(textView!.selectedRange)
         }
+        animateConstraintChanges()
     }
-    
+
     func handleKeyboardDidHide(notification:NSNotification) {
-        bottomConstraint.constant = 0
-        textView?.layoutIfNeeded()
+        bottomConstraint.constant = 20
+        animateConstraintChanges()
+    }
+
+    private func animateConstraintChanges() {
+        UIView.animateWithDuration(0.5, animations: {
+            self.view.layoutIfNeeded()
+        })
     }
 }

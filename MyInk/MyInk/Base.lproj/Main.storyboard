@@ -483,9 +483,6 @@
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" keyboardDismissMode="onDrag" text="Type your message here" translatesAutoresizingMaskIntoConstraints="NO" id="JMB-nW-yz1">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="4Sx-65-cfI"/>
-                                </constraints>
                                 <color key="textColor" red="0.80392156859999997" green="0.090196078430000007" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no"/>
@@ -497,7 +494,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="JMB-nW-yz1" firstAttribute="leading" secondItem="S2m-QF-bxb" secondAttribute="leadingMargin" constant="-12" id="AB1-KG-ROp"/>
-                            <constraint firstItem="uIR-ZB-RIu" firstAttribute="top" secondItem="rsk-76-yNR" secondAttribute="bottom" constant="20" id="Iot-Zc-NQe"/>
+                            <constraint firstItem="rsk-76-yNR" firstAttribute="top" secondItem="JMB-nW-yz1" secondAttribute="bottom" constant="30" id="DDO-8b-ReC"/>
                             <constraint firstItem="uIR-ZB-RIu" firstAttribute="top" secondItem="rsk-76-yNR" secondAttribute="bottom" constant="20" id="Mne-k8-YUG"/>
                             <constraint firstItem="Ci4-HF-xVh" firstAttribute="leading" secondItem="S2m-QF-bxb" secondAttribute="leadingMargin" constant="-12" id="Rhq-Df-gTN"/>
                             <constraint firstItem="Ci4-HF-xVh" firstAttribute="top" secondItem="txf-hp-MKd" secondAttribute="bottom" constant="8" id="V9g-XX-e7o"/>
@@ -505,7 +502,6 @@
                             <constraint firstAttribute="trailingMargin" secondItem="Ci4-HF-xVh" secondAttribute="trailing" constant="-12" id="br5-tt-Bq4"/>
                             <constraint firstItem="JMB-nW-yz1" firstAttribute="top" secondItem="Ci4-HF-xVh" secondAttribute="bottom" constant="8" id="jUt-e7-bXF"/>
                             <constraint firstItem="JMB-nW-yz1" firstAttribute="top" secondItem="Ci4-HF-xVh" secondAttribute="bottom" constant="8" id="lT9-gX-nPd"/>
-                            <constraint firstItem="uIR-ZB-RIu" firstAttribute="top" secondItem="JMB-nW-yz1" secondAttribute="bottom" constant="367" id="leQ-Rv-WOf"/>
                             <constraint firstItem="rsk-76-yNR" firstAttribute="centerX" secondItem="S2m-QF-bxb" secondAttribute="centerX" id="vKE-01-bqN"/>
                             <constraint firstAttribute="trailingMargin" secondItem="JMB-nW-yz1" secondAttribute="trailing" constant="-12" id="wyy-qm-ydT"/>
                         </constraints>
@@ -513,7 +509,6 @@
                             <mask key="constraints">
                                 <exclude reference="jUt-e7-bXF"/>
                                 <exclude reference="lT9-gX-nPd"/>
-                                <exclude reference="leQ-Rv-WOf"/>
                             </mask>
                         </variation>
                     </view>
@@ -523,7 +518,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="bottomConstraint" destination="leQ-Rv-WOf" id="24l-mZ-wLD"/>
+                        <outlet property="bottomConstraint" destination="Mne-k8-YUG" id="9ey-fU-0ib"/>
                         <outlet property="fontSizeLabel" destination="GjG-hH-VJh" id="Jln-Bq-C6q"/>
                         <outlet property="generateButton" destination="rsk-76-yNR" id="HWs-1K-NZP"/>
                         <outlet property="pointSizeStepper" destination="sMl-TU-0rv" id="mbw-Yu-ats"/>
