@@ -10,20 +10,20 @@ import UIKit
 
 class FontMessageRenderer
 {
-    private var _atlas:FontAtlas
-    private var _fallbackAtlas:FontAtlas
-    private let _characterSpacing:CGFloat = 0.1
-    private let _wordSpacing:CGFloat = 0.4
-    private let _margins:CGPoint = CGPoint(x: 10, y: 10)
-    private let _watermark:UIImage?
+    private var _atlas: FontAtlas
+    private var _fallbackAtlas: FontAtlas
+    private let _characterSpacing: CGFloat = 0.1
+    private let _wordSpacing: CGFloat = 0.4
+    private let _margins: CGPoint = CGPoint(x: 10, y: 10)
+    private let _watermark: UIImage?
 
-    init(atlas:FontAtlas, fallbackAtlas:FontAtlas, watermark:UIImage?) {
+    init(atlas: FontAtlas, fallbackAtlas: FontAtlas, watermark: UIImage?) {
         _atlas = atlas
         _fallbackAtlas = fallbackAtlas
         _watermark = watermark
     }
     
-    func renderMessage(message:String, imageSize:CGSize, lineHeight:CGFloat, backgroundColor:UIColor, showDebugInfo:Bool = false) -> UIImage? {
+    func renderMessage(message: String, imageSize: CGSize, lineHeight: CGFloat, backgroundColor: UIColor, showDebugInfo: Bool = false) -> UIImage? {
         UIGraphicsBeginImageContext(imageSize)
         let graphicsContext = UIGraphicsGetCurrentContext()
         backgroundColor.setFill()
@@ -31,7 +31,7 @@ class FontMessageRenderer
         
         let lineComponents = message.componentsSeparatedByString("\n")
         //Lineheight is doubled because characters are stored at a 1:2 ratio
-        var caretPosition:CGRect = CGRectMake(_margins.x, _margins.y, lineHeight, lineHeight)
+        var caretPosition: CGRect = CGRectMake(_margins.x, _margins.y, lineHeight, lineHeight)
         var renderBounds = CGRectZero
         
         var numRenderedLines = 0
@@ -41,10 +41,10 @@ class FontMessageRenderer
             numRenderedLines += 1
             for word in wordComponents {
                 var glyphs = [FontAtlasGlyph]()
-                var wordWidth:CGFloat = 0
+                var wordWidth: CGFloat = 0
                 for character in word.characters {
                     let characterString = String(character)
-                    var glyphData:FontAtlasGlyph?
+                    var glyphData: FontAtlasGlyph?
                     if _atlas.hasGlyphMapping(characterString) {
                         glyphData = _atlas.getGlyphData(characterString)
                     }
