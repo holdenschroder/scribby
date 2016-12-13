@@ -13,10 +13,11 @@ class ShareImageController: UIViewController, UIAlertViewDelegate {
     
     @IBOutlet weak var instagramBtn: UIBarButtonItem!
     @IBOutlet weak var twitterBtn: UIBarButtonItem!
-    @IBOutlet var imageView:UIImageView?
-    private var _image:UIImage?
+    @IBOutlet var imageView: UIImageView!
+    private var _image: UIImage?
     private var _documentController:UIDocumentInteractionController!
     var audioHelper = AudioHelper()
+    @IBOutlet weak var scrollView: UIScrollView!
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -37,6 +38,8 @@ class ShareImageController: UIViewController, UIAlertViewDelegate {
         twitterBtn.setBackButtonBackgroundImage(UIImage(named:"icon_twitter.png")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), forState: .Normal, barMetrics: .Default)
         
         MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventScreenLoadedShareImage)
+
+        setUpScrollView()
     }
     
     func loadImage(image:UIImage) {
@@ -50,6 +53,13 @@ class ShareImageController: UIViewController, UIAlertViewDelegate {
             activityView.completionWithItemsHandler = HandleActivityViewCompleted
             presentViewController(activityView, animated: true, completion: nil)
         }
+    }
+
+    private func setUpScrollView() {
+        scrollView.minimumZoomScale = 1.0
+        scrollView.maximumZoomScale = 6.0
+        scrollView.contentSize = imageView.bounds.size
+        print(imageView.bounds.size)
     }
     
     @IBAction func ShareToInstagram(sender:UIBarButtonItem) {
@@ -124,5 +134,11 @@ class ShareImageController: UIViewController, UIAlertViewDelegate {
         {
             Flurry.logError(SharedMyInkValues.kEventShareMessage, message: "Error while using UIActivityViewController", error: error)
         }
+    }
+}
+
+extension ShareImageController: UIScrollViewDelegate {
+    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+        return imageView
     }
 }

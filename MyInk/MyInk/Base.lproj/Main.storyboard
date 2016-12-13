@@ -165,7 +165,7 @@
         <scene sceneID="PQF-8w-vWD">
             <objects>
                 <collectionViewController storyboardIdentifier="Library" title="Library" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2js-4w-9Tp" customClass="LibraryCollectionController" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" keyboardDismissMode="onDrag" dataMode="prototypes" id="1lZ-7o-rTX">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" dataMode="prototypes" id="1lZ-7o-rTX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -543,7 +543,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kqf-yw-xho"/>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NoU-bd-xmK">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="5zd-mH-PL2"/>
@@ -571,16 +570,28 @@
                                 </items>
                                 <color key="tintColor" red="0.81568627449999997" green="0.078431372550000003" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </toolbar>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tq6-bN-Wlp">
+                                <frame key="frameInset" minX="16" minY="20" width="343" height="603"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kqf-yw-xho">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="603"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <connections>
+                                    <outlet property="delegate" destination="Cqx-HG-Dfg" id="WVD-7p-MbE"/>
+                                </connections>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="kqf-yw-xho" secondAttribute="trailing" id="7dc-Ie-Wky"/>
-                            <constraint firstItem="kqf-yw-xho" firstAttribute="leading" secondItem="ldU-Kw-k3I" secondAttribute="leadingMargin" id="9R8-t1-SrJ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="NoU-bd-xmK" secondAttribute="trailing" constant="-16" id="Jb6-sE-r8Y"/>
                             <constraint firstItem="iXq-NT-6hm" firstAttribute="top" secondItem="NoU-bd-xmK" secondAttribute="bottom" id="M5Y-C4-PlJ"/>
                             <constraint firstItem="NoU-bd-xmK" firstAttribute="leading" secondItem="ldU-Kw-k3I" secondAttribute="leadingMargin" constant="-16" id="Tzc-Kt-HMR"/>
-                            <constraint firstItem="NoU-bd-xmK" firstAttribute="top" secondItem="kqf-yw-xho" secondAttribute="bottom" id="kf7-5z-Ph8"/>
-                            <constraint firstItem="kqf-yw-xho" firstAttribute="top" secondItem="KcB-5d-UGK" secondAttribute="bottom" id="u3k-FQ-UKa"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="tq6-bN-Wlp" secondAttribute="trailing" id="UBS-8q-jX0"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="tq6-bN-Wlp" secondAttribute="leading" id="Wa4-Q6-JuM"/>
+                            <constraint firstItem="tq6-bN-Wlp" firstAttribute="top" secondItem="KcB-5d-UGK" secondAttribute="bottom" id="cYV-Iv-Z8G"/>
+                            <constraint firstItem="NoU-bd-xmK" firstAttribute="top" secondItem="tq6-bN-Wlp" secondAttribute="bottom" id="zhA-dC-RW7"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Share" id="Qpe-cf-SHX">
@@ -591,12 +602,13 @@
                     <connections>
                         <outlet property="imageView" destination="kqf-yw-xho" id="8kn-tK-qRw"/>
                         <outlet property="instagramBtn" destination="iGl-Lt-YCy" id="GAO-yL-GJa"/>
+                        <outlet property="scrollView" destination="tq6-bN-Wlp" id="He0-Of-sS0"/>
                         <outlet property="twitterBtn" destination="SpW-HW-2vH" id="9f3-3m-IXv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZIU-eO-sPH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1701" y="-1732"/>
+            <point key="canvasLocation" x="1700" y="-1732.0839580209897"/>
         </scene>
         <!--Main Menu Controller-->
         <scene sceneID="sk1-4C-HgW">
@@ -1239,7 +1251,7 @@ this be mapped to?</string>
             <objects>
                 <navigationController storyboardIdentifier="NavigationRoot" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Yh6-1F-Gdw" customClass="UINavigationControllerOrientation" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="53p-Wb-Zba">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="53p-Wb-Zba">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.81568627449999997" green="0.078431372550000003" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
