@@ -95,7 +95,7 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
                 }
                 if(_fontMessageRenderer != nil) {
                     let calculatedLineHeight = CGFloat(_pointSizeOptions[_selectedPointSize]) * SharedMyInkValues.FontPointSizeToPixelRatio
-                    let imageMessage = _fontMessageRenderer!.renderMessage(message, imageSize: CGSize(width: 1024, height: 4096), lineHeight:calculatedLineHeight, backgroundColor: UIColor.whiteColor())
+                    let imageMessage = _fontMessageRenderer!.renderMessage(message, imageSize: CGSize(width: 1024, height: 4096 * 16), lineHeight:calculatedLineHeight, backgroundColor: UIColor.whiteColor())
                     if imageMessage != nil {
                         shareImageController.loadImage(imageMessage!)
                     }
