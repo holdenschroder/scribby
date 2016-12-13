@@ -23,6 +23,9 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
     private let _pointSizeOptions:[Float] = [18, 24, 36]
     private let _pointSizeStrings:[String] = ["Small", "Medium", "Large"]
     private var _fontMessageRenderer:FontMessageRenderer?
+    private let _pointSizeOptions: [Float] = [18, 24, 36]
+    private let _pointSizeStrings: [String] = ["Small", "Medium", "Large"]
+    private var _fontMessageRenderer: FontMessageRenderer?
     private var _selectedPointSize = 1
     var audioHelper = AudioHelper()
     
@@ -95,7 +98,7 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
                 }
                 if(_fontMessageRenderer != nil) {
                     let calculatedLineHeight = CGFloat(_pointSizeOptions[_selectedPointSize]) * SharedMyInkValues.FontPointSizeToPixelRatio
-                    let imageMessage = _fontMessageRenderer!.renderMessage(message, imageSize: CGSize(width: 1024, height: 4096 * 16), lineHeight:calculatedLineHeight, backgroundColor: UIColor.whiteColor())
+                    let imageMessage = _fontMessageRenderer!.renderMessage(message, imageSize: CGSize(width: 1024, height: 4096 * 16), lineHeight: calculatedLineHeight, backgroundColor: UIColor.whiteColor())
                     if imageMessage != nil {
                         shareImageController.loadImage(imageMessage!)
                     }
@@ -138,7 +141,8 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func stepperValueChanged(sender: UIStepper) {
-        fontSizeLabel.text = String(_pointSizeStrings[Int(sender.value)])
+        _selectedPointSize = Int(sender.value)
+        fontSizeLabel.text = String(_pointSizeStrings[_selectedPointSize])
         textView!.font = textView!.font!.fontWithSize(CGFloat(_pointSizeOptions[Int(sender.value)]))
     }
     
