@@ -14,7 +14,7 @@ class FontMessageRenderer
     private var _fallbackAtlas: FontAtlas
     private let _characterSpacing: CGFloat = 0.1
     private let _wordSpacing: CGFloat = 0.4
-    private let _margins: CGPoint = CGPoint(x: 10, y: 10)
+    private let _margins: CGPoint = CGPoint(x: 10, y: 30)
     private let _watermark: UIImage?
 
     init(atlas: FontAtlas, fallbackAtlas: FontAtlas, watermark: UIImage?) {

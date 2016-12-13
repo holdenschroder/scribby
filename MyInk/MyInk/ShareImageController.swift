@@ -59,7 +59,6 @@ class ShareImageController: UIViewController, UIAlertViewDelegate {
         scrollView.minimumZoomScale = 1.0
         scrollView.maximumZoomScale = 6.0
         scrollView.contentSize = imageView.bounds.size
-        print(imageView.bounds.size)
     }
     
     @IBAction func ShareToInstagram(sender:UIBarButtonItem) {
