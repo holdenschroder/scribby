@@ -17,7 +17,7 @@
         <!--Select Word-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="CaptureView" title="Select Word" id="BYZ-38-t0r" customClass="CaptureWordSelectController" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CaptureView" title="Select Word" id="BYZ-38-t0r" customClass="CaptureWordSelectController" customModule="Scribby" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -29,7 +29,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7S3-eU-AZw">
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
-                            <imageView alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hTe-Wb-PVM" userLabel="Selection View" customClass="UIDrawSelectionView" customModule="MyInk" customModuleProvider="target"/>
+                            <imageView alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hTe-Wb-PVM" userLabel="Selection View" customClass="UIDrawSelectionView" customModule="Scribby" customModuleProvider="target"/>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Crosshair" translatesAutoresizingMaskIntoConstraints="NO" id="Ouf-5j-97D" userLabel="CrosshairView">
                                 <frame key="frameInset" width="32" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -86,7 +86,7 @@
         <!--Create-->
         <scene sceneID="5SY-ol-aNZ">
             <objects>
-                <viewController storyboardIdentifier="Capture" title="Create" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nW4-cg-VOY" customClass="CaptureTouchController" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Capture" title="Create" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nW4-cg-VOY" customClass="CaptureTouchController" customModule="Scribby" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Rrs-1X-qkn"/>
                         <viewControllerLayoutGuide type="bottom" id="rMq-e8-Gl5"/>
@@ -114,7 +114,7 @@
                                 </items>
                             </toolbar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="glyph_guidelines" translatesAutoresizingMaskIntoConstraints="NO" id="R9R-uh-Vfc"/>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nbS-CT-B7S" customClass="UIDrawCaptureView" customModule="MyInk" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nbS-CT-B7S" customClass="UIDrawCaptureView" customModule="Scribby" customModuleProvider="target">
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="topLinePercent">
                                         <real key="value" value="-0.16600000000000001"/>
@@ -164,7 +164,7 @@
         <!--Library-->
         <scene sceneID="PQF-8w-vWD">
             <objects>
-                <collectionViewController storyboardIdentifier="Library" title="Library" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2js-4w-9Tp" customClass="LibraryCollectionController" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="Library" title="Library" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2js-4w-9Tp" customClass="LibraryCollectionController" customModule="Scribby" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" dataMode="prototypes" id="1lZ-7o-rTX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -176,7 +176,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="100" contentMode="center" reuseIdentifier="LibraryCell" id="omL-2z-eHh" customClass="LibraryCollectionCell" customModule="MyInk" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="100" contentMode="center" reuseIdentifier="LibraryCell" id="omL-2z-eHh" customClass="LibraryCollectionCell" customModule="Scribby" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="100" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -255,7 +255,7 @@
         <!--Library Item Controller-->
         <scene sceneID="Pqb-sQ-yRe">
             <objects>
-                <viewController id="H9w-3a-nZ2" customClass="LibraryItemController" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="H9w-3a-nZ2" customClass="LibraryItemController" customModule="Scribby" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zLi-fg-eEC"/>
                         <viewControllerLayoutGuide type="bottom" id="ur7-4V-PqV"/>
@@ -285,7 +285,7 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xam-hZ-0jj" customClass="UIDrawCaptureView" customModule="MyInk" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xam-hZ-0jj" customClass="UIDrawCaptureView" customModule="Scribby" customModuleProvider="target">
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="topLinePercent">
                                         <real key="value" value="-0.16600000000000001"/>
@@ -334,7 +334,7 @@
         <!--Settings-->
         <scene sceneID="aYe-Pu-1rN">
             <objects>
-                <viewController storyboardIdentifier="Settings" title="Settings" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zds-5W-Hib" customClass="SettingsController" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Settings" title="Settings" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zds-5W-Hib" customClass="SettingsController" customModule="Scribby" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Mu2-g6-BtI"/>
                         <viewControllerLayoutGuide type="bottom" id="0sg-9n-jIx"/>
@@ -407,7 +407,7 @@
         <!--Write-->
         <scene sceneID="OGP-EE-o2u">
             <objects>
-                <viewController storyboardIdentifier="Compose" title="Write" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PAC-fV-XAW" customClass="ComposeMessageController" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Compose" title="Write" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PAC-fV-XAW" customClass="ComposeMessageController" customModule="Scribby" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="txf-hp-MKd"/>
                         <viewControllerLayoutGuide type="bottom" id="uIR-ZB-RIu"/>
@@ -534,7 +534,7 @@
         <!--Share-->
         <scene sceneID="mGh-ws-2ec">
             <objects>
-                <viewController storyboardIdentifier="ShareImage" title="Share" id="Cqx-HG-Dfg" customClass="ShareImageController" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ShareImage" title="Share" id="Cqx-HG-Dfg" customClass="ShareImageController" customModule="Scribby" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KcB-5d-UGK"/>
                         <viewControllerLayoutGuide type="bottom" id="iXq-NT-6hm"/>
@@ -613,7 +613,7 @@
         <!--Main Menu Controller-->
         <scene sceneID="sk1-4C-HgW">
             <objects>
-                <viewController storyboardIdentifier="MainMenu" id="jGl-vX-Atg" customClass="MainMenuController" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainMenu" id="jGl-vX-Atg" customClass="MainMenuController" customModule="Scribby" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pga-MW-nYr"/>
                         <viewControllerLayoutGuide type="bottom" id="ACZ-4x-c8l"/>
@@ -809,7 +809,7 @@
         <!--Tutorial-->
         <scene sceneID="Xhy-ZO-nqd">
             <objects>
-                <viewController storyboardIdentifier="Instructions" title="Tutorial" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xSs-A3-lAK" customClass="InstallationInstructions" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Instructions" title="Tutorial" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xSs-A3-lAK" customClass="InstallationInstructions" customModule="Scribby" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LFd-Ca-Zxy"/>
                         <viewControllerLayoutGuide type="bottom" id="bE1-I7-lB7"/>
@@ -958,7 +958,7 @@
         <!--Keyboard Install Page Controller-->
         <scene sceneID="RT1-Tm-e3A">
             <objects>
-                <viewController storyboardIdentifier="KeyboardInstallPageController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mg3-f4-AMg" customClass="KeyboardInstallPageController" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="KeyboardInstallPageController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mg3-f4-AMg" customClass="KeyboardInstallPageController" customModule="Scribby" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Sxc-AM-Ken"/>
                         <viewControllerLayoutGuide type="bottom" id="bSk-5M-so4"/>
@@ -976,7 +976,7 @@
         <!--Keyboard Page Item Controller-->
         <scene sceneID="fnI-r3-rgv">
             <objects>
-                <viewController storyboardIdentifier="KeyboardPageItemController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WmO-gf-cC3" customClass="KeyboardPageItemController" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="KeyboardPageItemController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WmO-gf-cC3" customClass="KeyboardPageItemController" customModule="Scribby" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Wj5-O0-U3p"/>
                         <viewControllerLayoutGuide type="bottom" id="UKG-S3-w7C"/>
@@ -1008,7 +1008,7 @@
         <!--Select Character-->
         <scene sceneID="aiz-K7-1nz">
             <objects>
-                <viewController storyboardIdentifier="ProcessView" title="Select " id="9wW-c1-LDC" userLabel="Select Character" customClass="CaptureCharacterSelectController" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProcessView" title="Select " id="9wW-c1-LDC" userLabel="Select Character" customClass="CaptureCharacterSelectController" customModule="Scribby" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="OIw-Yd-tMV"/>
                         <viewControllerLayoutGuide type="bottom" id="QuJ-E3-f3L"/>
@@ -1023,7 +1023,7 @@
                                     <action selector="HandleToleranceSlider:" destination="9wW-c1-LDC" eventType="valueChanged" id="Zhc-mt-Y9w"/>
                                 </connections>
                             </slider>
-                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qL1-50-vAK" userLabel="Selection View" customClass="UIDrawSelectionView" customModule="MyInk" customModuleProvider="target">
+                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qL1-50-vAK" userLabel="Selection View" customClass="UIDrawSelectionView" customModule="Scribby" customModuleProvider="target">
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="brushWidthRelative">
                                         <real key="value" value="0.080000000000000002"/>
@@ -1089,7 +1089,7 @@
         <!--Setup Character-->
         <scene sceneID="XbU-te-XRt">
             <objects>
-                <viewController storyboardIdentifier="SetupCharacterView" title="Setup" id="IJI-WS-2fj" userLabel="Setup Character" customClass="SetupCharacterController" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SetupCharacterView" title="Setup" id="IJI-WS-2fj" userLabel="Setup Character" customClass="SetupCharacterController" customModule="Scribby" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="18m-AT-RMT"/>
                         <viewControllerLayoutGuide type="bottom" id="3zx-z8-hBx"/>
@@ -1115,7 +1115,7 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="Xk1-0U-KH6" customClass="UIPanZoomImageView" customModule="MyInk" customModuleProvider="target">
+                            <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="Xk1-0U-KH6" customClass="UIPanZoomImageView" customModule="Scribby" customModuleProvider="target">
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
@@ -1159,7 +1159,7 @@
         <!--Map Glyph-->
         <scene sceneID="tQl-wh-cG8">
             <objects>
-                <viewController storyboardIdentifier="MapGlyphController" title="Map Glyph" id="myQ-Qx-1Nc" customClass="MapGlyphController" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapGlyphController" title="Map Glyph" id="myQ-Qx-1Nc" customClass="MapGlyphController" customModule="Scribby" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="I8M-2p-spA"/>
                         <viewControllerLayoutGuide type="bottom" id="Fbd-Ep-w4O"/>
@@ -1249,7 +1249,7 @@ this be mapped to?</string>
         <!--Navigation Controller Orientation-->
         <scene sceneID="9AF-4R-z7K">
             <objects>
-                <navigationController storyboardIdentifier="NavigationRoot" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Yh6-1F-Gdw" customClass="UINavigationControllerOrientation" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavigationRoot" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Yh6-1F-Gdw" customClass="UINavigationControllerOrientation" customModule="Scribby" customModuleProvider="target" sceneMemberID="viewController">
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="53p-Wb-Zba">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1272,7 +1272,7 @@ this be mapped to?</string>
         <!--Guidelines Page Controller-->
         <scene sceneID="e9k-sB-gDZ">
             <objects>
-                <viewController storyboardIdentifier="GuidelinesPageController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="HIB-67-tcW" customClass="GuidelinesPageController" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GuidelinesPageController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="HIB-67-tcW" customClass="GuidelinesPageController" customModule="Scribby" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6pD-Dz-Epe"/>
                         <viewControllerLayoutGuide type="bottom" id="Xia-ae-Vnx"/>
@@ -1290,7 +1290,7 @@ this be mapped to?</string>
         <!--Guidelines Page Item Controller-->
         <scene sceneID="JaZ-ZP-ULs">
             <objects>
-                <viewController storyboardIdentifier="GuidelinesPageItemController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="w50-nG-nt2" customClass="GuidelinesPageItemController" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GuidelinesPageItemController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="w50-nG-nt2" customClass="GuidelinesPageItemController" customModule="Scribby" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Fqf-9R-d57"/>
                         <viewControllerLayoutGuide type="bottom" id="8iD-ze-02B"/>
@@ -1358,7 +1358,7 @@ this be mapped to?</string>
         <image name="icon_tutorial_tapped" width="114" height="114"/>
         <image name="icon_twitter" width="40" height="40"/>
         <image name="main_menu_bg" width="360" height="640"/>
-        <image name="my_ink_logo" width="342" height="172"/>
+        <image name="my_ink_logo" width="250" height="118"/>
         <image name="socialmedia_icons" width="360" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
