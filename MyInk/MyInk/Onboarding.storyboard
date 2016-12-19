@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="qIR-pm-Fn9">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -11,7 +10,7 @@
         <!--Splash-->
         <scene sceneID="qOY-xw-ZI6">
             <objects>
-                <viewController storyboardIdentifier="Splash" title="Splash" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qIR-pm-Fn9" customClass="SplashController" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Splash" title="Splash" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qIR-pm-Fn9" customClass="SplashController" customModule="Scribby" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7EM-TJ-Hg5"/>
                         <viewControllerLayoutGuide type="bottom" id="aQb-49-JBc"/>
@@ -54,7 +53,7 @@
         <!--Welcome-->
         <scene sceneID="rbJ-o2-KFb">
             <objects>
-                <viewController storyboardIdentifier="Welcome" title="Welcome" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bim-qh-NbQ" customClass="WelcomeController" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Welcome" title="Welcome" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bim-qh-NbQ" customClass="WelcomeController" customModule="Scribby" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Io6-rL-zMN"/>
                         <viewControllerLayoutGuide type="bottom" id="isJ-3U-irS"/>
@@ -144,7 +143,7 @@ Try it out:</string>
         <!--Example-->
         <scene sceneID="v6K-iJ-iN7">
             <objects>
-                <viewController storyboardIdentifier="Example" title="Example" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Uo0-Y4-CuX" customClass="ExampleController" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Example" title="Example" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Uo0-Y4-CuX" customClass="ExampleController" customModule="Scribby" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="S11-lS-SSY"/>
                         <viewControllerLayoutGuide type="bottom" id="6RG-N7-lTe"/>
@@ -290,6 +289,6 @@ Try it out:</string>
         <image name="button_ink_outline" width="114" height="114"/>
         <image name="button_x" width="44" height="44"/>
         <image name="main_menu_bg" width="360" height="640"/>
-        <image name="my_ink_logo" width="342" height="172"/>
+        <image name="my_ink_logo" width="250" height="118"/>
     </resources>
 </document>
