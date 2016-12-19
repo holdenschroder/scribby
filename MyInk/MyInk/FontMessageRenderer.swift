@@ -99,24 +99,6 @@ class FontMessageRenderer
         if numRenderedCharacters > 0 {
             renderBounds.size.height = renderBounds.size.height + _margins.y
             
-            //We can add the watermark here, which will increase the renderBounds
-            if _watermark != nil {
-                var watermarkSize = _watermark!.size
-                if watermarkSize.width > renderBounds.width {
-                    let aspectRatio = watermarkSize.height / watermarkSize.width
-                    let watermarkRenderWidth = renderBounds.width
-                    watermarkSize = CGSize(width: watermarkRenderWidth, height: watermarkRenderWidth * aspectRatio)
-                }
-                
-                var watermarkRect = CGRect(x: renderBounds.width - watermarkSize.width, y: renderBounds.height, width: watermarkSize.width, height: watermarkSize.height)
-                //If this message is really short we need to shift the watermark over
-                if watermarkRect.origin.x < 0 {
-                    watermarkRect.offsetInPlace(dx: watermarkRect.origin.x * -1, dy: 0)
-                }
-                renderBounds.unionInPlace(watermarkRect)
-                _watermark?.drawInRect(watermarkRect)
-            }
-            
             let renderedImage = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
         
