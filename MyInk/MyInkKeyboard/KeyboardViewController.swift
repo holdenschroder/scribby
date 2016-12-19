@@ -20,24 +20,24 @@ class KeyboardViewController: UIInputViewController {
     }
     
     @IBOutlet var nextKeyboardButton: UIButton!
-    var keyboardView:UIView!
-    var rowViews:[UIView]!
-    var atlas:FontAtlas?
-    var fallbackAtlas:FontAtlas?
-    lazy var coreData:CoreDataHelper = {
+    var keyboardView: UIView!
+    var rowViews: [UIView]!
+    var atlas: FontAtlas?
+    var fallbackAtlas: FontAtlas?
+    lazy var coreData: CoreDataHelper = {
         return CoreDataHelper()
     }()
-    private var _messageRenderer:FontMessageRenderer?
-    private var _lastKeyPressDate:NSDate?
-    private var _lastKeyValue:String?
+    private var _messageRenderer: FontMessageRenderer?
+    private var _lastKeyPressDate: NSDate?
+    private var _lastKeyValue: String?
     private var _baseViewConstraints = [NSLayoutConstraint]()
-    private var _currentKeyboardLayout:KeyboardLayouts = .alpha
-    private var _capitilization:CapitilizationState = .lowercase
-    private var _lastKeyboardBounds:CGRect?
-    private var _hasFirstLayout:Bool = false
-    private var _loadedImages:[String:UIImage] = [:]
-    private var _textProxyConsumer:TextProxyConsumer!
-    private var _shiftButton:UIMyInkKey?
+    private var _currentKeyboardLayout: KeyboardLayouts = .alpha
+    private var _capitilization: CapitilizationState = .lowercase
+    private var _lastKeyboardBounds: CGRect?
+    private var _hasFirstLayout: Bool = false
+    private var _loadedImages: [String:UIImage] = [:]
+    private var _textProxyConsumer: TextProxyConsumer!
+    private var _shiftButton: UIMyInkKey?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -184,7 +184,7 @@ class KeyboardViewController: UIInputViewController {
         _lastKeyboardBounds = bounds
     }
     
-    func setupButton(button:UIMyInkKey) {
+    func setupButton(button: UIMyInkKey) {
         button.frame = CGRectMake(0, 0, 20, 20)
         button.sizeToFit()
         button.titleLabel!.font = UIFont.systemFontOfSize(20)
@@ -194,19 +194,19 @@ class KeyboardViewController: UIInputViewController {
         button.layer.cornerRadius = 5
     }
     
-    func createRow(width:CGFloat) -> UIView {
+    func createRow(width: CGFloat) -> UIView {
         let view = UIView(frame: CGRectMake(0, 0, width, 50))
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }
     
     func populateRowWithButtons(rowView: UIView, buttonData: [AnyObject]) {
-        var buttons:[UIButton] = []
+        var buttons: [UIButton] = []
         
         var firstUnreservedSizeItem:UIButton?
         for data in buttonData {
-            var button:UIMyInkKey?
-            var widthConstraint:NSLayoutConstraint?
+            var button: UIMyInkKey?
+            var widthConstraint: NSLayoutConstraint?
             
             if let dataString = data as? String {
                 button = UIMyInkKey(title: dataString, relativeWidth: nil)
