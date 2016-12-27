@@ -91,9 +91,9 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
             if(textView.text.characters.count > 0) {
                 var message = ""
                 if(textView.text.characters.count < 30) {
-                    message += "          "
+//                    message += "          "
                     message += textView.text
-                    message += "          "
+//                    message += "          "
                 }
                 else {
                     message = (textView.text)!

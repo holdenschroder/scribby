@@ -7,6 +7,7 @@
 //
 
 import UIKit
+let messageBackgroundColor = UIColor(hue: 0.05, saturation: 0.1, brightness: 1, alpha: 1)
 
 class FontMessageRenderer
 {
@@ -14,7 +15,7 @@ class FontMessageRenderer
     private var _fallbackAtlas: FontAtlas
     private let _characterSpacing: CGFloat = 0.1
     private let _wordSpacing: CGFloat = 0.4
-    private let _margins: CGPoint = CGPoint(x: 10, y: 30)
+    private let _margins: CGPoint = CGPoint(x: 20, y: 30)
     private let _watermark: UIImage?
 
     init(atlas: FontAtlas, fallbackAtlas: FontAtlas, watermark: UIImage?) {
@@ -26,7 +27,7 @@ class FontMessageRenderer
     func renderMessage(message: String, imageSize: CGSize, lineHeight: CGFloat, backgroundColor: UIColor, showDebugInfo: Bool = false) -> UIImage? {
         UIGraphicsBeginImageContext(imageSize)
         let graphicsContext = UIGraphicsGetCurrentContext()
-        backgroundColor.setFill()
+        messageBackgroundColor.setFill()
         CGContextFillRect(graphicsContext!, CGRect(origin: CGPointZero, size: imageSize))
         
         let lineComponents = message.componentsSeparatedByString("\n")
@@ -36,6 +37,9 @@ class FontMessageRenderer
         
         var numRenderedLines = 0
         var numRenderedCharacters = 0
+        var numRenderedWords = 0
+
+        // line here is really like a paragraph
         for line in lineComponents {
             let wordComponents = line.componentsSeparatedByString(" ")
             numRenderedLines += 1
@@ -60,6 +64,7 @@ class FontMessageRenderer
             
                 if glyphs.count > 0 {
                     wordWidth += (_characterSpacing * lineHeight) * CGFloat(glyphs.count - 1)
+                    numRenderedWords += 1
                 }
             
                 //Do we have space left on this line?
@@ -97,14 +102,19 @@ class FontMessageRenderer
         
         //We may not have actually rendered anything if we found none of the characters
         if numRenderedCharacters > 0 {
-            renderBounds.size.height = renderBounds.size.height + _margins.y
-            
-            let renderedImage = UIGraphicsGetImageFromCurrentImageContext()
+            var renderedImage = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
-        
-            let cropRect = CGRectMake(renderBounds.origin.x, renderBounds.origin.y, renderBounds.width,     renderBounds.height)
-            let croppedImage = CGImageCreateWithImageInRect(renderedImage!.CGImage!, cropRect)
-        
+
+            let cropRect = CGRectMake(renderBounds.origin.x, renderBounds.origin.y, renderBounds.width, renderBounds.height + _margins.y)
+            var croppedImage: CGImage? = CGImageCreateWithImageInRect(renderedImage!.CGImage!, cropRect)
+
+            let aspectRatio = cropRect.width / cropRect.height
+            if aspectRatio > 1.25 && numRenderedLines < numRenderedWords {
+                croppedImage = nil
+                renderedImage = nil
+                return renderMessage(message, imageSize: CGSize(width: imageSize.width * 0.67, height: 1024), lineHeight: lineHeight, backgroundColor: backgroundColor)
+            }
+
             return UIImage(CGImage: croppedImage!)
         }
         else {
