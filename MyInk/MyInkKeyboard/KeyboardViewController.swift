@@ -624,7 +624,7 @@ class KeyboardViewController: UIInputViewController {
         if(message.characters.count > 0) {
             //Height is expected to be cropped shorter, possibly the width also if the messages are short. If the message is much longer then it cannot
             //be viewed as a preview in the Messages app
-            let messageImage = _messageRenderer!.renderMessage(message, imageSize: CGSize(width: 440, height: 4096), lineHeight: 32, backgroundColor: UIColor.whiteColor(), showDebugInfo: false)
+            let messageImage = _messageRenderer!.renderMessage(message, imageSize: CGSize(width: 440, height: 4096), lineHeight: 32, backgroundColor: beigeMessageBackgroundColor, showDebugInfo: false, enforceAspectRatio: true)
             if messageImage != nil {
                 UIPasteboard.generalPasteboard().image = messageImage
                 

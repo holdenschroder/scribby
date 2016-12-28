@@ -7,7 +7,7 @@
 //
 
 import UIKit
-let messageBackgroundColor = UIColor(hue: 0.05, saturation: 0.1, brightness: 1, alpha: 1)
+let beigeMessageBackgroundColor = UIColor(hue: 0.05, saturation: 0.1, brightness: 1, alpha: 1)
 
 class FontMessageRenderer
 {
@@ -24,10 +24,10 @@ class FontMessageRenderer
         _watermark = watermark
     }
     
-    func renderMessage(message: String, imageSize: CGSize, lineHeight: CGFloat, backgroundColor: UIColor, showDebugInfo: Bool = false) -> UIImage? {
+    func renderMessage(message: String, imageSize: CGSize, lineHeight: CGFloat, backgroundColor: UIColor, showDebugInfo: Bool = false, enforceAspectRatio: Bool = false) -> UIImage? {
         UIGraphicsBeginImageContext(imageSize)
         let graphicsContext = UIGraphicsGetCurrentContext()
-        messageBackgroundColor.setFill()
+        backgroundColor.setFill()
         CGContextFillRect(graphicsContext!, CGRect(origin: CGPointZero, size: imageSize))
         
         let lineComponents = message.componentsSeparatedByString("\n")
@@ -109,10 +109,10 @@ class FontMessageRenderer
             var croppedImage: CGImage? = CGImageCreateWithImageInRect(renderedImage!.CGImage!, cropRect)
 
             let aspectRatio = cropRect.width / cropRect.height
-            if aspectRatio > 1.25 && numRenderedLines < numRenderedWords {
+            if enforceAspectRatio && aspectRatio > 1.25 && numRenderedLines < numRenderedWords {
                 croppedImage = nil
                 renderedImage = nil
-                return renderMessage(message, imageSize: CGSize(width: imageSize.width * 0.67, height: 1024), lineHeight: lineHeight, backgroundColor: backgroundColor)
+                return renderMessage(message, imageSize: CGSize(width: imageSize.width * 0.67, height: 1024), lineHeight: lineHeight, backgroundColor: backgroundColor, showDebugInfo: showDebugInfo, enforceAspectRatio: enforceAspectRatio)
             }
 
             return UIImage(CGImage: croppedImage!)
