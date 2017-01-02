@@ -1206,7 +1206,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.galenryder.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 2.3;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyInk.app/MyInk";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Scribby.app/Scribby";
 			};
 			name = Debug;
 		};
@@ -1220,7 +1220,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.galenryder.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 2.3;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyInk.app/MyInk";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Scribby.app/Scribby";
 			};
 			name = Release;
 		};
