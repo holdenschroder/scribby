@@ -17,11 +17,11 @@ class TapToContinueController: UIViewController {
         view.addGestureRecognizer(gesture)
     }
     
-    func handleTap(sender:AnyObject) {
+    func handleTap(_ sender:AnyObject) {
         if controllerIDToLoad != nil && !controllerIDToLoad!.isEmpty {
-            let controller = storyboard?.instantiateViewControllerWithIdentifier(controllerIDToLoad!)
+            let controller = storyboard?.instantiateViewController(withIdentifier: controllerIDToLoad!)
             if controller != nil {
-                self.presentViewController(controller!, animated: true, completion: nil)
+                self.present(controller!, animated: true, completion: nil)
             }
         }
     }

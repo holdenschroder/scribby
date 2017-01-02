@@ -7,71 +7,95 @@
 //
 
 import UIKit
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func >= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l >= r
+  default:
+    return !(lhs < rhs)
+  }
+}
+
 
 class SetupCharacterController : UIViewController, UIScrollViewDelegate {
     @IBOutlet var imageView:UIPanZoomImageView?
     @IBOutlet var lineReference:UIImageView?
     @IBOutlet var debugView:UIView?
-    private var _baseImage:UIImage?
+    fileprivate var _baseImage:UIImage?
     var _mAtlasGlyph: FontAtlasGlyph?
     
     @IBInspectable var topLinePercent:CGFloat = 0.125
     @IBInspectable var bottomLinePercent:CGFloat = 0.625
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         //self.navigationController?.navigationBarHidden = false
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.navigationController?.navigationItem.leftBarButtonItem?.title = ""
 
-        if(isMovingToParentViewController()) {
+        if(isMovingToParentViewController) {
             imageView?.image = _baseImage
         }
-        debugView?.hidden = true
+        debugView?.isHidden = true
         
         MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventScreenLoadedCaptureSetupCharacter)
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        if self.isMovingFromParentViewController() {
+        if self.isMovingFromParentViewController {
             _baseImage = nil
             imageView?.image = nil
         }
     }
     
-    func LoadCharacter(image:UIImage) {
+    func LoadCharacter(_ image:UIImage) {
         let croppedImage = ImageCropUtility.CropImageToAlpha(image)
         _baseImage = croppedImage
     }
     
-    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return imageView
     }
     
-    func scrollViewDidZoom(scrollView: UIScrollView) {
-        scrollView.scrollEnabled = true
+    func scrollViewDidZoom(_ scrollView: UIScrollView) {
+        scrollView.isScrollEnabled = true
     }
     
-    @IBAction func HandleDebugButton(sender: AnyObject) {
-        debugView?.hidden = false
+    @IBAction func HandleDebugButton(_ sender: AnyObject) {
+        debugView?.isHidden = false
         var spacingBounds = getSpacingBounds()
-        let imageBounds = imageView!.convertRect(imageView!.lastContentArea!, toView: debugView!.superview)
+        let imageBounds = imageView!.convert(imageView!.lastContentArea!, to: debugView!.superview)
         spacingBounds = spacingBounds * imageBounds.size
         spacingBounds.origin += imageBounds.origin
         debugView?.frame = spacingBounds
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        super.prepareForSegue(segue, sender: sender)
-        if segue.destinationViewController is MapGlyphController {
-            let mapGlyph = segue.destinationViewController as! MapGlyphController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        if segue.destination is MapGlyphController {
+            let mapGlyph = segue.destination as! MapGlyphController
             mapGlyph.setCallback(HandleMapGlyphCallback)
         }
     }
     
-    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+    override func shouldPerformSegue(withIdentifier identifier: String?, sender: Any?) -> Bool {
         var should = true
         if identifier == "setupToMapGlyph" {
             if((_mAtlasGlyph) != nil) {
@@ -90,28 +114,28 @@ class SetupCharacterController : UIViewController, UIScrollViewDelegate {
         return should
     }
     
-    private func HandleMapGlyphCallback(value:String?) {
+    fileprivate func HandleMapGlyphCallback(_ value:String?) {
         if value == nil {
             return
         }
         
-        let currentAtlas = (UIApplication.sharedApplication().delegate as! AppDelegate).currentAtlas
+        let currentAtlas = (UIApplication.shared.delegate as! AppDelegate).currentAtlas
         if(currentAtlas!.hasGlyphMapping(value!)) {
-            let alert = UIAlertController(title: "Already Exists", message: "There is a glyph already mapped to that character, would you like to replace it with this one?", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "Replace", style: UIAlertActionStyle.Default, handler: { action in
+            let alert = UIAlertController(title: "Already Exists", message: "There is a glyph already mapped to that character, would you like to replace it with this one?", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Replace", style: UIAlertActionStyle.default, handler: { action in
                 self.SaveGlyph(value!)
             }))
-            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC)), dispatch_get_main_queue(), { () -> Void in
-               self.presentViewController(alert, animated: true, completion: nil)
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(NSEC_PER_SEC)) / Double(NSEC_PER_SEC), execute: { () -> Void in
+               self.present(alert, animated: true, completion: nil)
             })
         }
         else if currentAtlas?.glyphs.count >= currentAtlas?.glyphLimit {
-            let alert = UIAlertController(title: "Atlas Full", message: "Sorry the font atlas can only hold \(currentAtlas!.glyphLimit) characters.", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil))
+            let alert = UIAlertController(title: "Atlas Full", message: "Sorry the font atlas can only hold \(currentAtlas!.glyphLimit) characters.", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
             
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC)), dispatch_get_main_queue(), { () -> Void in
-                self.presentViewController(alert, animated: true, completion: nil)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(NSEC_PER_SEC)) / Double(NSEC_PER_SEC), execute: { () -> Void in
+                self.present(alert, animated: true, completion: nil)
             })
         }
         else {
@@ -119,11 +143,11 @@ class SetupCharacterController : UIViewController, UIScrollViewDelegate {
         }
     }
     
-    private func SaveGlyph(mapping:String) {
+    fileprivate func SaveGlyph(_ mapping:String) {
         let spacingBounds = getSpacingBounds()
-        let atlas = (UIApplication.sharedApplication().delegate as! AppDelegate).currentAtlas
+        let atlas = (UIApplication.shared.delegate as! AppDelegate).currentAtlas
         atlas?.AddGlyph(mapping, image: imageView!.image!, spacingCoords: spacingBounds)
-        navigationController?.popViewControllerAnimated(true)
+        navigationController?.popViewController(animated: true)
         if atlas != nil {
             MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventMappedCharacter, parameters:
                 [
@@ -134,11 +158,11 @@ class SetupCharacterController : UIViewController, UIScrollViewDelegate {
         }
     }
     
-    private func getSpacingBounds() -> CGRect {
+    fileprivate func getSpacingBounds() -> CGRect {
         let imageSize = lineReference!.image!.size
-        var reference_rect = lineReference!.convertRectFromImage(CGRectMake(0, imageSize.height * topLinePercent, imageSize.width, imageSize.height * (bottomLinePercent - topLinePercent)))
-        reference_rect = lineReference!.convertRect(reference_rect, toView: imageView!.superview)
-        let image_rect = imageView!.convertRect(imageView!.lastContentArea!, toView: imageView!.superview)
+        var reference_rect = lineReference!.convertRect(fromImage: CGRect(x: 0, y: imageSize.height * topLinePercent, width: imageSize.width, height: imageSize.height * (bottomLinePercent - topLinePercent)))
+        reference_rect = lineReference!.convert(reference_rect, to: imageView!.superview)
+        let image_rect = imageView!.convert(imageView!.lastContentArea!, to: imageView!.superview)
         
         var examine_topline = reference_rect.origin.y + (reference_rect.height * 0.5)
         if image_rect.origin.y > examine_topline {
@@ -151,10 +175,10 @@ class SetupCharacterController : UIViewController, UIScrollViewDelegate {
         if image_rect.origin.y + image_rect.height < examine_bottomline  {
             examine_bottomline = image_rect.origin.y + image_rect.height
         }
-        var examine_area = CGRectMake(image_rect.origin.x, examine_topline, image_rect.width, examine_bottomline - examine_topline)
+        var examine_area = CGRect(x: image_rect.origin.x, y: examine_topline, width: image_rect.width, height: examine_bottomline - examine_topline)
         examine_area.origin -= image_rect.origin
         examine_area = examine_area / image_rect.size
         let contentBounds = imageView!.image!.FindContentArea(examine_area)
-        return CGRectMake(contentBounds.origin.x, (image_rect.origin.y - reference_rect.origin.y) / reference_rect.height, contentBounds.width, image_rect.height / reference_rect.height)
+        return CGRect(x: contentBounds.origin.x, y: (image_rect.origin.y - reference_rect.origin.y) / reference_rect.height, width: contentBounds.width, height: image_rect.height / reference_rect.height)
     }
 }

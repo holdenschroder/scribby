@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-func Clamp(x:CGFloat, minValue:CGFloat, maxValue:CGFloat) -> CGFloat {
+func Clamp(_ x:CGFloat, minValue:CGFloat, maxValue:CGFloat) -> CGFloat {
     var final = min(x, maxValue)
     final = max(final, minValue)
     return final

@@ -13,19 +13,19 @@ class FlurryWrapper:AnalyticsPackage {
         Flurry.startSession("843TZFS358BTRKCZRZ4R")
     }
     
-    func TrackEvent(eventName:String) {
+    func TrackEvent(_ eventName:String) {
         Flurry.logEvent(eventName)
     }
     
-    func TrackEvent(eventName:String, parameters:[String:String]) {
+    func TrackEvent(_ eventName:String, parameters:[String:String]) {
         Flurry.logEvent(eventName, withParameters: parameters)
     }
     
-    func StartTimedEvent(eventName:String, parameters:[String:String]?) {
+    func StartTimedEvent(_ eventName:String, parameters:[String:String]?) {
         Flurry.logEvent(eventName, withParameters: parameters, timed: true)
     }
     
-    func EndTimedEvent(eventName:String, parameters:[String:String]?) {
+    func EndTimedEvent(_ eventName:String, parameters:[String:String]?) {
         Flurry.endTimedEvent(eventName, withParameters: parameters)
     }
 }

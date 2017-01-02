@@ -9,69 +9,69 @@
 import UIKit
 
 class LibraryCollectionController:UICollectionViewController {
-    private var _atlas:FontAtlas?
-    private var _atlasGlyphs:[FontAtlasGlyph]?
-    private var _mAtlasGlyphToPass: FontAtlasGlyph!
+    fileprivate var _atlas:FontAtlas?
+    fileprivate var _atlasGlyphs:[FontAtlasGlyph]?
+    fileprivate var _mAtlasGlyphToPass: FontAtlasGlyph!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         clearsSelectionOnViewWillAppear = true
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         //self.navigationController?.navigationBarHidden = false
         self.navigationController?.setNavigationBarHidden(false, animated: true)
 
-        _atlas = (UIApplication.sharedApplication().delegate as! AppDelegate).currentAtlas
+        _atlas = (UIApplication.shared.delegate as! AppDelegate).currentAtlas
         _atlasGlyphs = _atlas?.glyphs
         if(_atlasGlyphs!.count > 0) {
-            _atlasGlyphs?.sortInPlace({ $0.mapping <  $1.mapping })
+            _atlasGlyphs?.sort(by: { $0.mapping <  $1.mapping })
         }
         else {
-            let alert = UIAlertController(title: "Empty", message: "There is nothing in your library - go and capture some characters!", preferredStyle: .Alert)
-            let AlrightAction = UIAlertAction(title: "Alright!", style: .Default) { (action) in
-                self.navigationController?.popViewControllerAnimated(true)
+            let alert = UIAlertController(title: "Empty", message: "There is nothing in your library - go and capture some characters!", preferredStyle: .alert)
+            let AlrightAction = UIAlertAction(title: "Alright!", style: .default) { (action) in
+                self.navigationController?.popViewController(animated: true)
             }
             alert.addAction(AlrightAction)
-            self.presentViewController(alert, animated: true, completion: nil)
+            self.present(alert, animated: true, completion: nil)
         }
 
         
         self.collectionView!.reloadData()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventScreenLoadedLibraryList)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        super.prepareForSegue(segue, sender: sender)
-        if segue.destinationViewController is LibraryItemController {
-            let detailVC = segue.destinationViewController as! LibraryItemController;
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        if segue.destination is LibraryItemController {
+            let detailVC = segue.destination as! LibraryItemController;
             detailVC._mAtlasGlyph = _mAtlasGlyphToPass
         }
     }
     
     //MARK: Collection View Delegate
     
-    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         _mAtlasGlyphToPass = _atlasGlyphs![indexPath.row]
-        self.performSegueWithIdentifier("captureSingleItemFromLibrary", sender: self)
+        self.performSegue(withIdentifier: "captureSingleItemFromLibrary", sender: self)
     }
     
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return _atlasGlyphs!.count
     }
     
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("LibraryCell", forIndexPath: indexPath) as! LibraryCollectionCell
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LibraryCell", for: indexPath) as! LibraryCollectionCell
         cell.populate(_atlasGlyphs![indexPath.item])
         return cell
     }
@@ -80,9 +80,9 @@ class LibraryCollectionController:UICollectionViewController {
 class LibraryCollectionCell:UICollectionViewCell {
     @IBOutlet var glyphImageView:UIImageView?
     @IBOutlet var label:UILabel?
-    private var _glyphData:FontAtlasGlyph?
+    fileprivate var _glyphData:FontAtlasGlyph?
     
-    func populate(glyphData:FontAtlasGlyph) {
+    func populate(_ glyphData:FontAtlasGlyph) {
         _glyphData = glyphData
         label?.text = _glyphData?.mapping
         glyphImageView?.image = (_glyphData?.image as! FontAtlasImage).loadedImage

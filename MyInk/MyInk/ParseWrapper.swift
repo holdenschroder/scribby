@@ -10,27 +10,27 @@ import Foundation
 import Parse
 
 class ParseWrapper:AnalyticsPackage {
-    init(launchOptions: [NSObject: AnyObject]?) {
+    init(launchOptions: [AnyHashable: Any]?) {
         //Parse uses the App Group to communicate with the Keyboard Extension
-        Parse.enableDataSharingWithApplicationGroupIdentifier(SharedMyInkValues.AppGroup)
+        Parse.enableDataSharing(withApplicationGroupIdentifier: SharedMyInkValues.AppGroup)
         Parse.setApplicationId("5YZOLO126JD9pt3GKmqu5JsT8UHDCouWqZVOieSE",
             clientKey: "Kf1X4TGQlbtXSF3wS0NDeDwOCAlyA5YlHPSnO8RD")
-        PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
+        PFAnalytics.trackAppOpened(launchOptions: launchOptions)
     }
     
-    func TrackEvent(eventName:String) {
+    func TrackEvent(_ eventName:String) {
         PFAnalytics.trackEvent(eventName)
     }
     
-    func TrackEvent(eventName:String, parameters:[String:String]) {
+    func TrackEvent(_ eventName:String, parameters:[String:String]) {
         PFAnalytics.trackEvent(eventName, dimensions: parameters)
     }
     
-    func StartTimedEvent(eventName:String, parameters:[String:String]?) {
+    func StartTimedEvent(_ eventName:String, parameters:[String:String]?) {
         PFAnalytics.trackEvent("\(eventName)_Started", dimensions: parameters)
     }
     
-    func EndTimedEvent(eventName:String, parameters:[String:String]?) {
+    func EndTimedEvent(_ eventName:String, parameters:[String:String]?) {
         PFAnalytics.trackEvent("\(eventName)_Ended", dimensions: parameters)
     }
 }

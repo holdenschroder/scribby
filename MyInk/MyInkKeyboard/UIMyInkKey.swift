@@ -15,13 +15,13 @@ class UIMyInkKey: UIButton {
     
     convenience init(title:String, relativeWidth:CGFloat?) {
         self.init()
-        self.setTitle(title, forState: .Normal)
+        self.setTitle(title, for: UIControlState())
         self.keyData = KeyData(relativeWidth: relativeWidth)
     }
     
     convenience init(icon:UIImage, relativeWidth:CGFloat?) {
         self.init()
-        self.setImage(icon, forState: .Normal)
+        self.setImage(icon, for: UIControlState())
         self.keyData = KeyData(relativeWidth: relativeWidth)
     }
 }
@@ -30,9 +30,9 @@ class KeyData {
     typealias Event = (UIMyInkKey, KeyData) -> Void
     
     var relativeWidth:CGFloat?
-    var controlState:UIControlState = UIControlState.Normal
-    var normalColorState = KeyColorState(textColor: UIColor.blackColor(), backgroundColor: UIColor.whiteColor())
-    var selectedColorState = KeyColorState(textColor: UIColor.whiteColor(), backgroundColor: UIColor.lightGrayColor())
+    var controlState:UIControlState = UIControlState()
+    var normalColorState = KeyColorState(textColor: UIColor.black, backgroundColor: UIColor.white)
+    var selectedColorState = KeyColorState(textColor: UIColor.white, backgroundColor: UIColor.lightGray)
     
     init(relativeWidth:CGFloat?) {
         self.relativeWidth = relativeWidth
@@ -47,11 +47,11 @@ struct KeyColorState {
     init(tintColor:UIColor, backgroundColor:UIColor) {
         self.tintColor = tintColor
         self.backgroundColor = backgroundColor
-        self.textColor = UIColor.whiteColor()
+        self.textColor = UIColor.white
     }
     
     init(textColor:UIColor, backgroundColor:UIColor) {
-        self.tintColor = UIColor.whiteColor()
+        self.tintColor = UIColor.white
         self.backgroundColor = backgroundColor
         self.textColor = textColor
     }

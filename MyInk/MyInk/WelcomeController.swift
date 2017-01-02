@@ -8,6 +8,30 @@
 
 import Foundation
 import UIKit
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 class WelcomeController: UIViewController, UITextFieldDelegate {
     
@@ -15,45 +39,45 @@ class WelcomeController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var mButton: UIButton!
     var audioHelper = AudioHelper()
     
-    private var _fontMessageRenderer:FontMessageRenderer?
+    fileprivate var _fontMessageRenderer:FontMessageRenderer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.textfield!.delegate = self
         
-        let currentAtlas = (UIApplication.sharedApplication().delegate as! AppDelegate).currentAtlas
-        let fallbackAtlas = (UIApplication.sharedApplication().delegate as! AppDelegate).embeddedAtlas
+        let currentAtlas = (UIApplication.shared.delegate as! AppDelegate).currentAtlas
+        let fallbackAtlas = (UIApplication.shared.delegate as! AppDelegate).embeddedAtlas
         if(currentAtlas != nil) {
             _fontMessageRenderer = FontMessageRenderer(atlas: currentAtlas!, fallbackAtlas:fallbackAtlas!, watermark: SharedMyInkValues.MyInkWatermark)
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         textfield?.text = ""
-        mButton.enabled = false
-        mButton.hidden = true
+        mButton.isEnabled = false
+        mButton.isHidden = true
         self.mButton!.layer.removeAllAnimations()
     }
     
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        UIView.animateWithDuration(1.0, animations: {
+        UIView.animate(withDuration: 1.0, animations: {
             self.textfield?.becomeFirstResponder()
         })
-        UIView.animateWithDuration(2.0, animations: {
+        UIView.animate(withDuration: 2.0, animations: {
             self.mButton.alpha = 1.0
-            self.mButton.hidden = false
+            self.mButton.isHidden = false
         })
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.destinationViewController is ExampleController {
-            let vc = segue.destinationViewController as! ExampleController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is ExampleController {
+            let vc = segue.destination as! ExampleController
             //let message = textfield?.text
             
             if(textfield?.text!.characters.count > 0) {
@@ -68,7 +92,7 @@ class WelcomeController: UIViewController, UITextFieldDelegate {
                 }
                 if(_fontMessageRenderer != nil) {
                     let calculatedLineHeight = 18.0 * SharedMyInkValues.FontPointSizeToPixelRatio
-                    let imageMessage = _fontMessageRenderer!.renderMessage(message, imageSize: CGSize(width: 1024, height: 4096), lineHeight:calculatedLineHeight, backgroundColor: UIColor.clearColor())
+                    let imageMessage = _fontMessageRenderer!.renderMessage(message, imageSize: CGSize(width: 1024, height: 4096), lineHeight:calculatedLineHeight, backgroundColor: UIColor.clear)
                     if imageMessage != nil {
                         vc.loadImage(imageMessage!)
                     }
@@ -88,36 +112,36 @@ class WelcomeController: UIViewController, UITextFieldDelegate {
     func pulseButton() {
         let pulseAnimation:CABasicAnimation = CABasicAnimation(keyPath: "transform.scale");
         pulseAnimation.duration = 0.66;
-        pulseAnimation.toValue = NSNumber(float: 1.03);
-        pulseAnimation.fromValue = NSNumber(float: 0.97)
+        pulseAnimation.toValue = NSNumber(value: 1.03 as Float);
+        pulseAnimation.fromValue = NSNumber(value: 0.97 as Float)
         pulseAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut);
         pulseAnimation.autoreverses = true;
         pulseAnimation.repeatCount = FLT_MAX;
-        self.mButton!.layer.addAnimation(pulseAnimation, forKey: nil)
+        self.mButton!.layer.add(pulseAnimation, forKey: nil)
     }
     
     
     // MARK: - Delegate Methods
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        super.touchesBegan(touches, withEvent: event)
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
         
         let empty = (textfield?.text == "")
         if(!empty) {
-            mButton?.enabled = true
+            mButton?.isEnabled = true
             pulseButton()
         }
         self.view.endEditing(true)
     }
     
-    func textFieldDidBeginEditing(textField: UITextField) {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
         
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         let empty = (textfield?.text == "")
         if(!empty) {
-            mButton?.enabled = true
+            mButton?.isEnabled = true
             pulseButton()
         }
         textField.resignFirstResponder()
@@ -126,15 +150,15 @@ class WelcomeController: UIViewController, UITextFieldDelegate {
     
     // MARK: - Actions
     
-    @IBAction func HandleInkButton(sender: AnyObject) {
+    @IBAction func HandleInkButton(_ sender: AnyObject) {
         if(textfield?.text?.characters.count > 0) {
             audioHelper.playClickSound()
-            performSegueWithIdentifier("segueWelcomeToExample", sender: self)
+            performSegue(withIdentifier: "segueWelcomeToExample", sender: self)
         }
         else {
-            let alert = UIAlertController(title: "Wait!", message: "Please type a message", preferredStyle: .Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
+            let alert = UIAlertController(title: "Wait!", message: "Please type a message", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
     }
  

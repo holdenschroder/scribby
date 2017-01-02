@@ -13,8 +13,8 @@ class KeyboardInstallPageController: UIViewController, UIPageViewControllerDataS
     
     // MARK: - Vars
     
-    private var pageViewController: UIPageViewController?
-    private let contentImages = [
+    fileprivate var pageViewController: UIPageViewController?
+    fileprivate let contentImages = [
         "keyboard_install_1.png",
         "keyboard_install_2.png",
         "keyboard_install_3.png",
@@ -35,40 +35,40 @@ class KeyboardInstallPageController: UIViewController, UIPageViewControllerDataS
         setupPageControl()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
-    private func createPageViewController() {
-        let pageController = self.storyboard!.instantiateViewControllerWithIdentifier("InstallPageController") as! UIPageViewController
+    fileprivate func createPageViewController() {
+        let pageController = self.storyboard!.instantiateViewController(withIdentifier: "InstallPageController") as! UIPageViewController
         pageController.dataSource = self
         if contentImages.count > 0 {
             let firstController = getItemController(0)!
             let startingViewControllers: NSArray = [firstController]
-            pageController.setViewControllers(startingViewControllers as? [UIViewController], direction: UIPageViewControllerNavigationDirection.Forward, animated: false, completion: nil)
+            pageController.setViewControllers(startingViewControllers as? [UIViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: false, completion: nil)
         }
         pageViewController = pageController
         addChildViewController(pageViewController!)
         self.view.addSubview(pageViewController!.view)
-        pageViewController!.didMoveToParentViewController(self)
+        pageViewController!.didMove(toParentViewController: self)
     }
     
-    private func setupPageControl() {
+    fileprivate func setupPageControl() {
         let appearance = UIPageControl.appearance()
-        appearance.pageIndicatorTintColor = UIColor.grayColor()
-        appearance.currentPageIndicatorTintColor = UIColor.whiteColor()
+        appearance.pageIndicatorTintColor = UIColor.gray
+        appearance.currentPageIndicatorTintColor = UIColor.white
         appearance.backgroundColor = SharedMyInkValues.MyInkDarkColor //UIColor.darkGrayColor()
     }
     
     // MARK: - UIPageViewControllerDataSource
     
-    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         let itemController = viewController as! KeyboardPageItemController
         if itemController.itemIndex > 0 {
             return getItemController(itemController.itemIndex-1)
@@ -76,7 +76,7 @@ class KeyboardInstallPageController: UIViewController, UIPageViewControllerDataS
         return nil
     }
     
-    func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         let itemController = viewController as! KeyboardPageItemController
         if itemController.itemIndex+1 < contentImages.count {
             return getItemController(itemController.itemIndex+1)
@@ -84,9 +84,9 @@ class KeyboardInstallPageController: UIViewController, UIPageViewControllerDataS
         return nil
     }
     
-    private func getItemController(itemIndex: Int) -> KeyboardPageItemController? {
+    fileprivate func getItemController(_ itemIndex: Int) -> KeyboardPageItemController? {
         if itemIndex < contentImages.count {
-            let pageItemController = self.storyboard!.instantiateViewControllerWithIdentifier("KeyboardPageItemController") as! KeyboardPageItemController
+            let pageItemController = self.storyboard!.instantiateViewController(withIdentifier: "KeyboardPageItemController") as! KeyboardPageItemController
             pageItemController.itemIndex = itemIndex
             pageItemController.imageName = contentImages[itemIndex]
             return pageItemController
@@ -96,11 +96,11 @@ class KeyboardInstallPageController: UIViewController, UIPageViewControllerDataS
     
     // MARK: - Page Indicator
     
-    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
+    func presentationCount(for pageViewController: UIPageViewController) -> Int {
         return contentImages.count
     }
     
-    func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
+    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
         return 0
     }
     

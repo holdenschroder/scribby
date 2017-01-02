@@ -9,27 +9,27 @@
 import UIKit
 
 extension UIImage {
-    public func Resize(size:CGSize, completionHandler:(outputImage:UIImage, data:NSData)->Void)
+    public func Resize(_ size:CGSize, completionHandler:@escaping (_ outputImage:UIImage, _ data:Data)->Void)
     {
-        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), { () -> Void in
+        DispatchQueue.global(qos: DispatchQoS.QoSClass.userInitiated).async(execute: { () -> Void in
             var imageRect:CGRect?
             if(self.size.width < self.size.height) {
                 let aspectRatio = self.size.width / self.size.height
                 let imageWidth = aspectRatio * size.width
-                imageRect = CGRectMake((size.width - imageWidth) * 0.5, 0, imageWidth, size.height)
+                imageRect = CGRect(x: (size.width - imageWidth) * 0.5, y: 0, width: imageWidth, height: size.height)
             }
             else
             {
                 let aspectRatio = self.size.height / self.size.width
                 let imageHeight = aspectRatio * size.height
-                imageRect = CGRectMake(0, (size.height - imageHeight) * 0.5, size.width, imageHeight)
+                imageRect = CGRect(x: 0, y: (size.height - imageHeight) * 0.5, width: size.width, height: imageHeight)
             }
             UIGraphicsBeginImageContextWithOptions(size, false, 1.0)
-            self.drawInRect(imageRect!)
+            self.draw(in: imageRect!)
             let newImage = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
             let imageData = UIImagePNGRepresentation(newImage!)
-            completionHandler(outputImage: newImage!, data: imageData!)
+            completionHandler(newImage!, imageData!)
         })
     }
     
@@ -37,13 +37,13 @@ extension UIImage {
         Return a rect representing an area of the image with high enough alpha values
         @param withinCoords a CGRect representing the area that should be searched
     */
-    public func FindContentArea(withinCoords:CGRect) -> CGRect {
+    public func FindContentArea(_ withinCoords:CGRect) -> CGRect {
         var image_ci:UIKit.CIImage!
-        if self.CIImage != nil {
-            image_ci = self.CIImage!
+        if self.ciImage != nil {
+            image_ci = self.ciImage!
         }
         else {
-            image_ci = UIKit.CIImage(CGImage: self.CGImage!)
+            image_ci = UIKit.CIImage(cgImage: self.cgImage!)
         }
         let rect = image_ci.extent
         let pixelBounds = withinCoords * rect.size
@@ -54,13 +54,13 @@ extension UIImage {
         
         let componentsPerPixel = 4
         let allocationSize = componentsPerPixel * Int(rect.width * rect.height)
-        let rawData: UnsafeMutablePointer<Int8> = UnsafeMutablePointer<Int8>.alloc(allocationSize)
+        let rawData: UnsafeMutablePointer<Int8> = UnsafeMutablePointer<Int8>.allocate(capacity: allocationSize)
         let context = CIContext(options: nil)
         context.render(image_ci, toBitmap: rawData, rowBytes: componentsPerPixel * width, bounds: rect, format: kCIFormatRGBA8, colorSpace: CGColorSpaceCreateDeviceRGB())
         
         
         var topLeft = CGPoint(x: pixelBounds.size.width, y: pixelBounds.size.height)
-        var bottomRight = CGPointZero
+        var bottomRight = CGPoint.zero
         
         for index in firstPixel..<lastPixel {
             let pixelInfo: Int = index * componentsPerPixel
@@ -85,8 +85,8 @@ extension UIImage {
             }
         }
         
-        rawData.destroy()
-        rawData.dealloc(allocationSize)
+        rawData.deinitialize()
+        rawData.deallocate(capacity: allocationSize)
         
         let rectSize = CGSize(width: bottomRight.x - topLeft.x, height: floor(bottomRight.y - topLeft.y))
         var bounds = CGRect(x: topLeft.x, y: topLeft.y, width: rectSize.width, height: rectSize.height)
@@ -95,8 +95,8 @@ extension UIImage {
         return bounds
     }
     
-    public func CropImage(rect:CGRect) -> UIImage {
-        let imageRef = CGImageCreateWithImageInRect(self.CGImage!, rect)
-        return UIImage(CGImage: imageRef!)
+    public func CropImage(_ rect:CGRect) -> UIImage {
+        let imageRef = self.cgImage!.cropping(to: rect)
+        return UIImage(cgImage: imageRef!)
     }
 }

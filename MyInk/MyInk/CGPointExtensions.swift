@@ -22,7 +22,7 @@ func +(left:CGPoint, right:CGSize) -> CGPoint {
     return result
 }
 
-func += (inout left: CGPoint, right: CGPoint) {
+func += (left: inout CGPoint, right: CGPoint) {
     left = left + right
 }
 
@@ -33,7 +33,7 @@ func -(left: CGPoint, right: CGPoint) -> CGPoint {
     return result
 }
 
-func -=(inout left: CGPoint, right: CGPoint) {
+func -=(left: inout CGPoint, right: CGPoint) {
     left = left - right
 }
 
@@ -51,7 +51,7 @@ func /(left:CGPoint, right:CGSize) -> CGPoint {
     return result
 }
 
-func /=(inout left:CGPoint, right:CGSize) {
+func /=(left:inout CGPoint, right:CGSize) {
     left = left / right
 }
 
@@ -69,11 +69,11 @@ func *(left:CGPoint, right:CGSize) -> CGPoint {
     return result
 }
 
-func *=(inout left:CGPoint, right:CGPoint) {
+func *=(left:inout CGPoint, right:CGPoint) {
     left = left * right
 }
 
-func *=(inout left:CGPoint, right:CGSize) {
+func *=(left:inout CGPoint, right:CGSize) {
     left = left * right
 }
 

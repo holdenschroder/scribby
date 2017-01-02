@@ -21,8 +21,8 @@ class FontAtlasGlyph: NSManagedObject {
     @NSManaged var atlas: NSManagedObject
     @NSManaged var image: NSManagedObject
     
-    private var storedImageCoord:CGRect?
-    private var storedGlyphBounds:CGRect?
+    fileprivate var storedImageCoord:CGRect?
+    fileprivate var storedGlyphBounds:CGRect?
     
     var imageCoord:CGRect {
         get {

@@ -13,45 +13,45 @@ import UIKit
 class TextProxyConsumer:NSObject {
     typealias Event = (String) -> Void
     
-    private var proxy:UITextDocumentProxy!
-    private var timer:NSTimer?
-    private var onCompleteEvent:Event!
-    private var consumedLines:[String]!
-    private var lastLine:String?
+    fileprivate var proxy:UITextDocumentProxy!
+    fileprivate var timer:Timer?
+    fileprivate var onCompleteEvent:Event!
+    fileprivate var consumedLines:[String]!
+    fileprivate var lastLine:String?
     
-    func consume(proxy:UITextDocumentProxy, onCompleteEvent:Event) {
+    func consume(_ proxy:UITextDocumentProxy, onCompleteEvent:@escaping Event) {
         self.proxy = proxy
         self.onCompleteEvent = onCompleteEvent
         consumedLines = []
         
         lastLine = (proxy.documentContextBeforeInput ?? "") + (proxy.documentContextAfterInput ?? "")
-        proxy.adjustTextPositionByCharacterOffset((proxy.documentContextAfterInput ?? "").characters.count + 1)
-        timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(TextProxyConsumer.handleForwardTimer(_:)), userInfo: nil, repeats: true)
+        proxy.adjustTextPosition(byCharacterOffset: (proxy.documentContextAfterInput ?? "").characters.count + 1)
+        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(TextProxyConsumer.handleForwardTimer(_:)), userInfo: nil, repeats: true)
     }
     
-    func handleForwardTimer(timer:NSTimer) {
+    func handleForwardTimer(_ timer:Timer) {
         let currentLine = (proxy.documentContextBeforeInput ?? "") + (proxy.documentContextAfterInput ?? "")
         if lastLine == currentLine {
             self.timer!.invalidate()
-            self.timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(TextProxyConsumer.handleBackwardTimer(_:)), userInfo: nil, repeats: true)
+            self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(TextProxyConsumer.handleBackwardTimer(_:)), userInfo: nil, repeats: true)
         }
         else {
             lastLine = currentLine
-            proxy.adjustTextPositionByCharacterOffset((proxy.documentContextAfterInput ?? "").characters.count + 1)
+            proxy.adjustTextPosition(byCharacterOffset: (proxy.documentContextAfterInput ?? "").characters.count + 1)
         }
     }
     
-    func handleBackwardTimer(timer:NSTimer) {
-        if !proxy.hasText() {
+    func handleBackwardTimer(_ timer:Timer) {
+        if !proxy.hasText {
             self.timer!.invalidate()
             //We need to wait a bit longer to confirm
-            self.timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(TextProxyConsumer.handleConfirmTimer(_:)), userInfo: nil, repeats: false)
+            self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(TextProxyConsumer.handleConfirmTimer(_:)), userInfo: nil, repeats: false)
         }
         else
         {
             let currentText = (proxy.documentContextBeforeInput ?? "") + (proxy.documentContextAfterInput ?? "")
-            consumedLines.insert(currentText, atIndex: 0)
-            proxy.adjustTextPositionByCharacterOffset((proxy.documentContextAfterInput ?? "").characters.count)
+            consumedLines.insert(currentText, at: 0)
+            proxy.adjustTextPosition(byCharacterOffset: (proxy.documentContextAfterInput ?? "").characters.count)
             var charactersRemaining = currentText.characters.count
             while charactersRemaining > 0 {
                 proxy.deleteBackward()
@@ -60,19 +60,19 @@ class TextProxyConsumer:NSObject {
         }
     }
     
-    func handleConfirmTimer(timer:NSTimer) {
+    func handleConfirmTimer(_ timer:Timer) {
         self.timer!.invalidate()
         //We still have no new text? Great!
-        if !proxy.hasText() {
+        if !proxy.hasText {
             var message:String = ""
             if consumedLines.count > 0 {
-                message = consumedLines.joinWithSeparator("")
+                message = consumedLines.joined(separator: "")
             }
             onCompleteEvent(message)
         }
         else //Oh, more text, lets get this thing going again
         {
-            self.timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(TextProxyConsumer.handleBackwardTimer(_:)), userInfo: nil, repeats: true)
+            self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(TextProxyConsumer.handleBackwardTimer(_:)), userInfo: nil, repeats: true)
         }
     }
 }

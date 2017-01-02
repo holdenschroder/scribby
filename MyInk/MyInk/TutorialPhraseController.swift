@@ -11,18 +11,18 @@ import AVFoundation
 
 class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIGestureRecognizerDelegate {
     
-    private let phrase:String! = "QUICK BROWN FOX JUMPS\n OVER THE LAZY DOG"
-    private var words:[String]!
-    private let mPhrase:String! = "QUICKBROWNFOXJUMPSOVERTHELAZYDOG"
-    private var mCharacters:[String]!
+    fileprivate let phrase:String! = "QUICK BROWN FOX JUMPS\n OVER THE LAZY DOG"
+    fileprivate var words:[String]!
+    fileprivate let mPhrase:String! = "QUICKBROWNFOXJUMPSOVERTHELAZYDOG"
+    fileprivate var mCharacters:[String]!
     
-    private var unwrittenCharacters = Set<Character>()
-    private var _messageRenderer:FontMessageRenderer?
-    private var _tutorialState:TutorialState?
-    private var _updateSizesTimer:NSTimer?
-    private var _sections:NSIndexSet!
-    private var wordIndex = 0
-    private var _lastInteractedCell:TutorialCharacterCell?
+    fileprivate var unwrittenCharacters = Set<Character>()
+    fileprivate var _messageRenderer:FontMessageRenderer?
+    fileprivate var _tutorialState:TutorialState?
+    fileprivate var _updateSizesTimer:Timer?
+    fileprivate var _sections:IndexSet!
+    fileprivate var wordIndex = 0
+    fileprivate var _lastInteractedCell:TutorialCharacterCell?
     
     var audioHelper = AudioHelper()
     
@@ -35,21 +35,21 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
     override func awakeFromNib() {
         super.awakeFromNib()
         self.collectionView?.panGestureRecognizer.addTarget(self, action: #selector(TutorialPhraseController.handlePanGesture(_:)))
-        words = phrase.componentsSeparatedByString(" ")
+        words = phrase.components(separatedBy: " ")
         mCharacters = mPhrase.characters.map { String($0) }
         
-        let currentAtlas = (UIApplication.sharedApplication().delegate as! AppDelegate).currentAtlas
-        let fallbackAtlas = (UIApplication.sharedApplication().delegate as! AppDelegate).embeddedAtlas
+        let currentAtlas = (UIApplication.shared.delegate as! AppDelegate).currentAtlas
+        let fallbackAtlas = (UIApplication.shared.delegate as! AppDelegate).embeddedAtlas
         if(currentAtlas != nil) {
             _messageRenderer = FontMessageRenderer(atlas: currentAtlas!, fallbackAtlas:fallbackAtlas!, watermark: nil)
         }
         
         if _tutorialState == nil {
-            _tutorialState = (UIApplication.sharedApplication().delegate as! AppDelegate).tutorialState
+            _tutorialState = (UIApplication.shared.delegate as! AppDelegate).tutorialState
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.navigationController?.setNavigationBarHidden(false, animated: true)
@@ -58,7 +58,7 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
         layout.minimumInteritemSpacing = 1000.0
         self.automaticallyAdjustsScrollViewInsets = false
         
-        let currentAtlas = (UIApplication.sharedApplication().delegate as! AppDelegate).currentAtlas
+        let currentAtlas = (UIApplication.shared.delegate as! AppDelegate).currentAtlas
         if currentAtlas != nil {
             for word in words {
                 for character in word.characters {
@@ -82,63 +82,63 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
     
     //MARK: Collection View Methods
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return mCharacters[wordIndex].characters.count
     }
     
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return mCharacters.count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CharacterCapture", forIndexPath: indexPath) as! TutorialCharacterCell
-        let characterIndex = mCharacters[wordIndex].characters.startIndex.advancedBy(indexPath.item)
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CharacterCapture", for: indexPath) as! TutorialCharacterCell
+        let characterIndex = mCharacters[wordIndex].characters.index(mCharacters[wordIndex].characters.startIndex, offsetBy: indexPath.item)
         let character = mCharacters[wordIndex].characters[characterIndex]
         cell.populate(character)
         cell.addEventSubscriber(self, handler: HandleCellEvent)
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         let tutorialWordCell = cell as! TutorialCharacterCell
         tutorialWordCell.save()
         tutorialWordCell.removeEventSubscriber(self)
     }
     
-    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
         case UICollectionElementKindSectionHeader:
-            return collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "SectionHeader", forIndexPath: indexPath)
+            return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SectionHeader", for: indexPath)
         case UICollectionElementKindSectionFooter:
-            return collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "SectionFooter", forIndexPath: indexPath)
+            return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SectionFooter", for: indexPath)
         default:
             fatalError("Unexpected kind for supplementary element")
        }
     }
     
-    func handlePanGesture(recognizer:UIPanGestureRecognizer) {
-        if recognizer.state == UIGestureRecognizerState.Began {
-            let visibleCells = collectionView?.visibleCells()
+    func handlePanGesture(_ recognizer:UIPanGestureRecognizer) {
+        if recognizer.state == UIGestureRecognizerState.began {
+            let visibleCells = collectionView?.visibleCells
             if visibleCells != nil {
                 for cell in visibleCells! {
-                    let pointInCell = recognizer.locationInView(cell)
-                    if cell.pointInside(pointInCell, withEvent: nil) {
-                        collectionView?.scrollEnabled = false
+                    let pointInCell = recognizer.location(in: cell)
+                    if cell.point(inside: pointInCell, with: nil) {
+                        collectionView?.isScrollEnabled = false
                         break
                     }
                 }
             }
         }
         else {
-           collectionView?.scrollEnabled = true
+           collectionView?.isScrollEnabled = true
         }
     }
     
-    private func HandleCellEvent(cell:TutorialCharacterCell, state:TutorialCharacterCell.CellEventType) {
-        if(state == .EndedDrawing && cell.character != nil) {
+    fileprivate func HandleCellEvent(_ cell:TutorialCharacterCell, state:TutorialCharacterCell.CellEventType) {
+        if(state == .endedDrawing && cell.character != nil) {
             unwrittenCharacters.remove(cell.character!)
         }
-        else if(state == .Cleared && cell.character != nil) {
+        else if(state == .cleared && cell.character != nil) {
             unwrittenCharacters.insert(cell.character!)
         }
         
@@ -151,11 +151,11 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
 //        }
     }
     
-    private func updateItemHeight(viewSize:CGSize) {
+    fileprivate func updateItemHeight(_ viewSize:CGSize) {
         let layout = self.collectionView?.collectionViewLayout as! UICollectionViewFlowLayout
         let itemHeight = viewSize.height
         layout.itemSize = CGSize(width: itemHeight, height: itemHeight)
-        let cells = self.collectionView?.visibleCells()
+        let cells = self.collectionView?.visibleCells
         if(cells != nil) {
             for cell in cells! as! [TutorialCharacterCell] {
                 cell.updateSize(itemHeight)
@@ -165,20 +165,20 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
     
     //MARK: Screen Orientation Methods
     
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
         UpdateSizes()
     }
 
-    private func UpdateSizes() {
+    fileprivate func UpdateSizes() {
         //Don't re-trigger the timer, we set it to nil after it fires
-        if _updateSizesTimer == nil || !_updateSizesTimer!.valid {
-            _updateSizesTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(TutorialPhraseController.HandleDelayUpdateSize(_:)), userInfo: nil, repeats: true)
+        if _updateSizesTimer == nil || !_updateSizesTimer!.isValid {
+            _updateSizesTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(TutorialPhraseController.HandleDelayUpdateSize(_:)), userInfo: nil, repeats: true)
         }
     }
     
-    func HandleDelayUpdateSize(timer:NSTimer) {
-        if self.view.frame == CGRectZero {
+    func HandleDelayUpdateSize(_ timer:Timer) {
+        if self.view.frame == CGRect.zero {
             return
         }
         timer.invalidate()
@@ -188,17 +188,17 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
     
     //MARK: Rendering
     
-    private func UpdateMessages() {
+    fileprivate func UpdateMessages() {
         messageImageView.image = RenderMessage()
     }
     
-    private func RenderMessage() -> UIImage? {
-        return _messageRenderer!.renderMessage(phrase, imageSize:  CGSize(width: 2048, height: messageImageView.frame.height), lineHeight: messageImageView.frame.size.height * 0.33, backgroundColor: UIColor.clearColor())
+    fileprivate func RenderMessage() -> UIImage? {
+        return _messageRenderer!.renderMessage(phrase, imageSize:  CGSize(width: 2048, height: messageImageView.frame.height), lineHeight: messageImageView.frame.size.height * 0.33, backgroundColor: UIColor.clear)
     }
     
     //Mark: Analytics
     
-    private func LogWordForAnalytics(word:String, isStarting:Bool) {
+    fileprivate func LogWordForAnalytics(_ word:String, isStarting:Bool) {
         if isStarting {
             MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventTutorialWordStarted, parameters: ["Word":word])
         }
@@ -209,7 +209,7 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
     
     //MARK: Button Handlers
     
-    @IBAction func HandleNextBtn(sender:AnyObject) {
+    @IBAction func HandleNextBtn(_ sender:AnyObject) {
         audioHelper.playFinSound()
         LogWordForAnalytics(mCharacters[wordIndex], isStarting:false)
         wordIndex += 1
@@ -223,8 +223,8 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
         }
         else {
             _tutorialState?.wordIndex = 0
-            _tutorialState?.setTutorialFlag(TutorialState.TutorialFlags.StartingPhrase)
-            let postTutorialScreen = storyboard?.instantiateViewControllerWithIdentifier("PostTutorialScreen")
+            _tutorialState?.setTutorialFlag(TutorialState.TutorialFlags.startingPhrase)
+            let postTutorialScreen = storyboard?.instantiateViewController(withIdentifier: "PostTutorialScreen")
             if postTutorialScreen != nil && _messageRenderer != nil {
                 if postTutorialScreen is TutorialPhaseOutroController {
                     let tutorialPhraseController = postTutorialScreen as! TutorialPhaseOutroController
@@ -233,20 +233,20 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
                         tutorialPhraseController.setMessage(image!)
                     }
                 }
-                self.presentViewController(postTutorialScreen!, animated: true, completion: nil)
+                self.present(postTutorialScreen!, animated: true, completion: nil)
             }
         }
-        let atlas = (UIApplication.sharedApplication().delegate as! AppDelegate).currentAtlas
+        let atlas = (UIApplication.shared.delegate as! AppDelegate).currentAtlas
         atlas?.Save()
     }
     
-    @IBAction func HandleFinishBtn(sender:AnyObject) {
-        let atlas = (UIApplication.sharedApplication().delegate as! AppDelegate).currentAtlas
+    @IBAction func HandleFinishBtn(_ sender:AnyObject) {
+        let atlas = (UIApplication.shared.delegate as! AppDelegate).currentAtlas
         atlas?.Save()
         
         _tutorialState?.wordIndex = 0
-        _tutorialState?.setTutorialFlag(TutorialState.TutorialFlags.StartingPhrase)
-        let postTutorialScreen = storyboard?.instantiateViewControllerWithIdentifier("PostTutorialScreen")
+        _tutorialState?.setTutorialFlag(TutorialState.TutorialFlags.startingPhrase)
+        let postTutorialScreen = storyboard?.instantiateViewController(withIdentifier: "PostTutorialScreen")
         if postTutorialScreen != nil && _messageRenderer != nil {
             if postTutorialScreen is TutorialPhaseOutroController {
                 MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventTutorialFinished)
@@ -256,30 +256,30 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
                     tutorialPhraseController.setMessage(image!)
                 }
             }
-            self.presentViewController(postTutorialScreen!, animated: true, completion: nil)
+            self.present(postTutorialScreen!, animated: true, completion: nil)
         }
     }
     
-    @IBAction func HandleSkipBtn(sender:AnyObject) {
-        let alert = UIAlertController(title: "Skip Tutorial?", message: "Are you sure that you want to skip? Your font will be reset to the default.", preferredStyle: .Alert)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
+    @IBAction func HandleSkipBtn(_ sender:AnyObject) {
+        let alert = UIAlertController(title: "Skip Tutorial?", message: "Are you sure that you want to skip? Your font will be reset to the default.", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
             print("Skip Cancelled")
         }
         alert.addAction(cancelAction)
-        let SkipAction = UIAlertAction(title: "Skip", style: .Default) { (action) in
+        let SkipAction = UIAlertAction(title: "Skip", style: .default) { (action) in
             MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventTutorialSkipped)
             MyInkAnalytics.EndTimedEvent(SharedMyInkValues.kEventTutorialFirstPhrase, parameters: nil)
-            NSUserDefaults.standardUserDefaults().setBool(true, forKey: SharedMyInkValues.kDefaultsUserHasBoarded)
-            self.presentViewController(UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("NavigationRoot") as UIViewController, animated: true, completion: nil)
+            UserDefaults.standard.set(true, forKey: SharedMyInkValues.kDefaultsUserHasBoarded)
+            self.present(UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NavigationRoot") as UIViewController, animated: true, completion: nil)
         }
         alert.addAction(SkipAction)
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC)), dispatch_get_main_queue(), { () -> Void in
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(NSEC_PER_SEC)) / Double(NSEC_PER_SEC), execute: { () -> Void in
             self.audioHelper.playSkipSound()
-            self.presentViewController(alert, animated: true, completion: nil)
+            self.present(alert, animated: true, completion: nil)
         })
     }
     
-    @IBAction func HandleClearBtn(sender: AnyObject) {
+    @IBAction func HandleClearBtn(_ sender: AnyObject) {
         if(_lastInteractedCell != nil) {
             _lastInteractedCell?.clear()
         }
@@ -289,9 +289,9 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
 class TutorialCharacterCell: UICollectionViewCell {
     enum CellEventType
     {
-        case StartedDrawing
-        case EndedDrawing
-        case Cleared
+        case startedDrawing
+        case endedDrawing
+        case cleared
     }
     
     @IBOutlet var label:UILabel?
@@ -299,11 +299,11 @@ class TutorialCharacterCell: UICollectionViewCell {
     @IBOutlet var clearButton:UIButton?
     @IBOutlet var saveButton:UIButton?
     
-    private var _initialLabelAlpha:CGFloat!
-    private var _character:Character?
+    fileprivate var _initialLabelAlpha:CGFloat!
+    fileprivate var _character:Character?
     
-    typealias CellEvent = (cell:TutorialCharacterCell, state:CellEventType) -> Void
-    private var _cellEventSubscribers = [Int:CellEvent]()
+    typealias CellEvent = (_ cell:TutorialCharacterCell, _ state:CellEventType) -> Void
+    fileprivate var _cellEventSubscribers = [Int:CellEvent]()
     
     var character:Character? {
         get {
@@ -316,13 +316,13 @@ class TutorialCharacterCell: UICollectionViewCell {
         drawCaptureView?.addDrawEventSubscriber(self, handler: handleDrawEvent)
         _initialLabelAlpha = label != nil ? label!.alpha : 0.1
         clearButton?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(TutorialCharacterCell.handleClearBtn(_:))))
-        clearButton?.userInteractionEnabled = true
-        clearButton?.hidden = true
-        saveButton?.userInteractionEnabled = true
-        saveButton?.hidden = true
+        clearButton?.isUserInteractionEnabled = true
+        clearButton?.isHidden = true
+        saveButton?.isUserInteractionEnabled = true
+        saveButton?.isHidden = true
     }
     
-    func populate(value:Character) {
+    func populate(_ value:Character) {
         label?.text = String(value)
         updateSize(frame.height)
         drawCaptureView?.clear()
@@ -343,23 +343,23 @@ class TutorialCharacterCell: UICollectionViewCell {
         */
     }
     
-    func handleDrawEvent(drawView:UIDrawView, eventType:UIDrawView.DrawEventType) {
+    func handleDrawEvent(_ drawView:UIDrawView, eventType:UIDrawView.DrawEventType) {
         switch(eventType) {
-        case .Began:
-            UIView.animateWithDuration(0.25, animations: {
+        case .began:
+            UIView.animate(withDuration: 0.25, animations: {
                 self.label?.alpha = 0.05
             })
-            broadcastToSubscribers(CellEventType.StartedDrawing)
-        case .Ended:
+            broadcastToSubscribers(CellEventType.startedDrawing)
+        case .ended:
             save()
-            clearButton?.hidden = false
-            saveButton?.hidden = false
-            broadcastToSubscribers(CellEventType.EndedDrawing)
-        case .Cleared:
-            clearButton?.hidden = true
-            saveButton?.hidden = true
+            clearButton?.isHidden = false
+            saveButton?.isHidden = false
+            broadcastToSubscribers(CellEventType.endedDrawing)
+        case .cleared:
+            clearButton?.isHidden = true
+            saveButton?.isHidden = true
             label?.alpha = _initialLabelAlpha
-            broadcastToSubscribers(CellEventType.Cleared)
+            broadcastToSubscribers(CellEventType.cleared)
         }
     }
     
@@ -367,7 +367,7 @@ class TutorialCharacterCell: UICollectionViewCell {
         if !isEmpty {
             let string = String(_character!)
             drawCaptureView?.save(string, captureType: "Tutorial", saveAtlas: false)
-            drawCaptureView?.save(string.lowercaseString, captureType: "Tutorial", saveAtlas: false)
+            drawCaptureView?.save(string.lowercased(), captureType: "Tutorial", saveAtlas: false)
         }
     }
     
@@ -381,27 +381,27 @@ class TutorialCharacterCell: UICollectionViewCell {
         }
     }
     
-    func updateSize(size:CGFloat) {
-        label?.font = label?.font.fontWithSize(size)
+    func updateSize(_ size:CGFloat) {
+        label?.font = label?.font.withSize(size)
     }
     
-    func addEventSubscriber(target:AnyObject, handler:CellEvent) {
+    func addEventSubscriber(_ target:AnyObject, handler:@escaping CellEvent) {
         if target.hash != nil {
             _cellEventSubscribers[target.hash!] = handler
         }
     }
     
-    func removeEventSubscriber(target:AnyObject) {
-        _cellEventSubscribers.removeValueForKey(target.hash)
+    func removeEventSubscriber(_ target:AnyObject) {
+        _cellEventSubscribers.removeValue(forKey: target.hash)
     }
     
-    func handleClearBtn(sender:AnyObject) {
+    func handleClearBtn(_ sender:AnyObject) {
         drawCaptureView?.clear()
     }
     
-    private func broadcastToSubscribers(eventType:CellEventType) {
+    fileprivate func broadcastToSubscribers(_ eventType:CellEventType) {
         for subscriber in _cellEventSubscribers.values {
-            subscriber(cell: self, state: eventType)
+            subscriber(self, eventType)
         }
     }
 }

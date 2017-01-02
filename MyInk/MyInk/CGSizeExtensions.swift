@@ -29,7 +29,7 @@ func *(left:CGSize, right:CGFloat) -> CGSize {
     return result
 }
 
-func *=(inout left:CGSize, right:CGSize) {
+func *=(left:inout CGSize, right:CGSize) {
     left = left * right
 }
 
@@ -40,6 +40,6 @@ func /(left:CGSize, right:CGSize) -> CGSize {
     return result
 }
 
-func /=(inout left:CGSize, right:CGSize) {
+func /=(left:inout CGSize, right:CGSize) {
     left = left / right
 }

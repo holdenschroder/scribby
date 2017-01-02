@@ -27,24 +27,24 @@ class KeyboardViewController: UIInputViewController {
     lazy var coreData: CoreDataHelper = {
         return CoreDataHelper()
     }()
-    private var _messageRenderer: FontMessageRenderer?
-    private var _lastKeyPressDate: NSDate?
-    private var _lastKeyValue: String?
-    private var _baseViewConstraints = [NSLayoutConstraint]()
-    private var _currentKeyboardLayout: KeyboardLayouts = .alpha
-    private var _capitilization: CapitilizationState = .lowercase
-    private var _lastKeyboardBounds: CGRect?
-    private var _hasFirstLayout: Bool = false
-    private var _loadedImages: [String:UIImage] = [:]
-    private var _textProxyConsumer: TextProxyConsumer!
-    private var _shiftButton: UIMyInkKey?
+    fileprivate var _messageRenderer: FontMessageRenderer?
+    fileprivate var _lastKeyPressDate: Date?
+    fileprivate var _lastKeyValue: String?
+    fileprivate var _baseViewConstraints = [NSLayoutConstraint]()
+    fileprivate var _currentKeyboardLayout: KeyboardLayouts = .alpha
+    fileprivate var _capitilization: CapitilizationState = .lowercase
+    fileprivate var _lastKeyboardBounds: CGRect?
+    fileprivate var _hasFirstLayout: Bool = false
+    fileprivate var _loadedImages: [String:UIImage] = [:]
+    fileprivate var _textProxyConsumer: TextProxyConsumer!
+    fileprivate var _shiftButton: UIMyInkKey?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //self.view.setTranslatesAutoresizingMaskIntoConstraints(false)
         
-        keyboardView = UIView(frame: CGRectZero)
+        keyboardView = UIView(frame: CGRect.zero)
         //keyboardView.setTranslatesAutoresizingMaskIntoConstraints(false)
         inputView?.addSubview(keyboardView)
         rowViews = [UIView]()
@@ -60,12 +60,12 @@ class KeyboardViewController: UIInputViewController {
         KeyboardAnalytics.Initialize()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         let proxy = self.textDocumentProxy 
-        if proxy.autocapitalizationType == UITextAutocapitalizationType.Sentences {
-            if proxy.hasText() {
+        if proxy.autocapitalizationType == UITextAutocapitalizationType.sentences {
+            if proxy.hasText {
                 _capitilization = .lowercase
             }
             else {
@@ -78,19 +78,19 @@ class KeyboardViewController: UIInputViewController {
         KeyboardAnalytics.TrackEvent(SharedMyInkValues.kEventKeyboardAppeared)
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
         KeyboardAnalytics.TrackEvent(SharedMyInkValues.kEventKeyboardDisappeared)
     }
     
     override func viewDidLayoutSubviews() {
-        if inputView?.bounds == CGRectZero {
+        if inputView?.bounds == CGRect.zero {
             return
         }
         
         let bounds = inputView!.bounds
-        keyboardView.frame = CGRect(origin: CGPointZero, size: bounds.size)
+        keyboardView.frame = CGRect(origin: CGPoint.zero, size: bounds.size)
         keyboardView.invalidateIntrinsicContentSize()
         
         if !_hasFirstLayout {
@@ -108,7 +108,7 @@ class KeyboardViewController: UIInputViewController {
     
     //MARK: Setup
     
-    func buildKeyboard(layout:KeyboardLayouts) {
+    func buildKeyboard(_ layout:KeyboardLayouts) {
         for row in rowViews {
             row.removeFromSuperview()
         }
@@ -121,44 +121,44 @@ class KeyboardViewController: UIInputViewController {
         
         _currentKeyboardLayout = layout
         
-        keyboardView.frame = CGRect(origin: CGPointZero, size: bounds.size)
+        keyboardView.frame = CGRect(origin: CGPoint.zero, size: bounds.size)
         keyboardView.invalidateIntrinsicContentSize()
         keyboardView.backgroundColor = nil
         
         var buttonTitles1, buttonTitles2, buttonTitles3, buttonTitles4:[AnyObject]!
         
         let deleteKey = UIMyInkKey(title: "⌫", relativeWidth: 0.15)
-        deleteKey.addTarget(self, action: #selector(KeyboardViewController.handleDeleteKeyPressed(_:)), forControlEvents: .TouchDown)
-        deleteKey.addTarget(self, action: #selector(KeyboardViewController.handleDeleteKeyReleased(_:)), forControlEvents: .TouchUpInside)
+        deleteKey.addTarget(self, action: #selector(KeyboardViewController.handleDeleteKeyPressed(_:)), for: .touchDown)
+        deleteKey.addTarget(self, action: #selector(KeyboardViewController.handleDeleteKeyReleased(_:)), for: .touchUpInside)
         
         switch layout {
         case .alpha:
             let shiftKey = UIMyInkKey(icon: loadImage("KeyboardIcon_Shift"), relativeWidth: 0.15)
             if _capitilization == .uppercase {
-                shiftKey.keyData?.controlState = UIControlState.Selected
+                shiftKey.keyData?.controlState = UIControlState.selected
             }
-            shiftKey.addTarget(self, action: #selector(KeyboardViewController.handleShiftTap(_:event:)), forControlEvents: .TouchUpInside)
+            shiftKey.addTarget(self, action: #selector(KeyboardViewController.handleShiftTap(_:event:)), for: .touchUpInside)
             self._shiftButton = shiftKey
             
-            buttonTitles1 = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"]
-            buttonTitles2 = ["A", "S", "D", "F", "G", "H", "J", "K", "L"]
-            buttonTitles3 = [shiftKey, "Z", "X", "C", "V", "B", "N", "M", deleteKey]
-            buttonTitles4 = ["123"]
+            buttonTitles1 = ["Q" as AnyObject, "W" as AnyObject, "E" as AnyObject, "R" as AnyObject, "T" as AnyObject, "Y" as AnyObject, "U" as AnyObject, "I", "O", "P"]
+            buttonTitles2 = ["A" as AnyObject, "S" as AnyObject, "D" as AnyObject, "F" as AnyObject, "G" as AnyObject, "H" as AnyObject, "J" as AnyObject, "K", "L"]
+            buttonTitles3 = [shiftKey, "Z" as AnyObject, "X" as AnyObject, "C" as AnyObject, "V" as AnyObject, "B" as AnyObject, "N" as AnyObject, "M" as AnyObject, deleteKey]
+            buttonTitles4 = ["123" as AnyObject]
         case .numeric:
-            buttonTitles1 = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
-            buttonTitles2 = ["-", "/", ":", ";", "(", ")", "$", "&", "@", "\""]
-            buttonTitles3 = [".", ",", "?", "!", "'", deleteKey]
-            buttonTitles4 = ["abc"]
+            buttonTitles1 = ["1" as AnyObject, "2" as AnyObject, "3" as AnyObject, "4" as AnyObject, "5" as AnyObject, "6" as AnyObject, "7" as AnyObject, "8", "9", "0"]
+            buttonTitles2 = ["-" as AnyObject, "/" as AnyObject, ":" as AnyObject, ";" as AnyObject, "(" as AnyObject, ")" as AnyObject, "$" as AnyObject, "&", "@", "\""]
+            buttonTitles3 = ["." as AnyObject, "," as AnyObject, "?" as AnyObject, "!" as AnyObject, "'" as AnyObject, deleteKey]
+            buttonTitles4 = ["abc" as AnyObject]
         default:
-            buttonTitles1 = [""]
-            buttonTitles2 = [""]
-            buttonTitles3 = [""]
-            buttonTitles4 = [""]
+            buttonTitles1 = ["" as AnyObject]
+            buttonTitles2 = ["" as AnyObject]
+            buttonTitles3 = ["" as AnyObject]
+            buttonTitles4 = ["" as AnyObject]
         }
         
         let inkKey = UIMyInkKey(title: "Ink", relativeWidth: nil)
-        inkKey.keyData?.normalColorState = KeyColorState(textColor: UIColor.whiteColor(), backgroundColor: SharedMyInkValues.MyInkPinkColor)
-        buttonTitles4.appendContentsOf(["🌐", UIMyInkKey(title: "space", relativeWidth: 0.4), UIMyInkKey(title: "⏎", relativeWidth: 0.15), inkKey])
+        inkKey.keyData?.normalColorState = KeyColorState(textColor: UIColor.white, backgroundColor: SharedMyInkValues.MyInkPinkColor)
+        buttonTitles4.append(["🌐", UIMyInkKey(title: "space", relativeWidth: 0.4), UIMyInkKey(title: "⏎", relativeWidth: 0.15), inkKey])
         
         let row1 = createRow(bounds.width)
         let row2 = createRow(bounds.width)
@@ -184,23 +184,23 @@ class KeyboardViewController: UIInputViewController {
         _lastKeyboardBounds = bounds
     }
     
-    func setupButton(button: UIMyInkKey) {
-        button.frame = CGRectMake(0, 0, 20, 20)
+    func setupButton(_ button: UIMyInkKey) {
+        button.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
         button.sizeToFit()
-        button.titleLabel!.font = UIFont.systemFontOfSize(20)
+        button.titleLabel!.font = UIFont.systemFont(ofSize: 20)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = UIColor(white: 1.0, alpha: 1.0)
-        button.setTitleColor(UIColor.darkGrayColor(), forState: .Normal)
+        button.setTitleColor(UIColor.darkGray, for: UIControlState())
         button.layer.cornerRadius = 5
     }
     
-    func createRow(width: CGFloat) -> UIView {
-        let view = UIView(frame: CGRectMake(0, 0, width, 50))
+    func createRow(_ width: CGFloat) -> UIView {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: width, height: 50))
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }
     
-    func populateRowWithButtons(rowView: UIView, buttonData: [AnyObject]) {
+    func populateRowWithButtons(_ rowView: UIView, buttonData: [AnyObject]) {
         var buttons: [UIButton] = []
         
         var firstUnreservedSizeItem:UIButton?
@@ -211,18 +211,18 @@ class KeyboardViewController: UIInputViewController {
             if let dataString = data as? String {
                 button = UIMyInkKey(title: dataString, relativeWidth: nil)
                 setupButton(button!)
-                button!.addTarget(self, action: #selector(KeyboardViewController.didTapButton(_:)), forControlEvents: .TouchUpInside)
-                button!.setTitle(dataString, forState: .Normal)
+                button!.addTarget(self, action: #selector(KeyboardViewController.didTapButton(_:)), for: .touchUpInside)
+                button!.setTitle(dataString, for: UIControlState())
             }
             else if let buttonData = data as? UIMyInkKey {
                 button = buttonData
                 setupButton(button!)
                 //We should add the default target if nothing is already added to this button
-                if button?.allTargets().count == 0 && button?.gestureRecognizers == nil {
-                    button?.addTarget(self, action: #selector(KeyboardViewController.didTapButton(_:)), forControlEvents: .TouchUpInside)
+                if button?.allTargets.count == 0 && button?.gestureRecognizers == nil {
+                    button?.addTarget(self, action: #selector(KeyboardViewController.didTapButton(_:)), for: .touchUpInside)
                 }
                 if button!.keyData?.relativeWidth != nil {
-                    widthConstraint = NSLayoutConstraint(item: button!, attribute: .Width, relatedBy: .Equal, toItem: rowView, attribute: .Width, multiplier: button!.keyData!.relativeWidth!, constant: 0)
+                    widthConstraint = NSLayoutConstraint(item: button!, attribute: .width, relatedBy: .equal, toItem: rowView, attribute: .width, multiplier: button!.keyData!.relativeWidth!, constant: 0)
                 }
                 
                 if button != nil {
@@ -236,7 +236,7 @@ class KeyboardViewController: UIInputViewController {
                         firstUnreservedSizeItem = button
                     }
                     else {
-                        widthConstraint = NSLayoutConstraint(item: button!, attribute: .Width, relatedBy: .Equal, toItem: firstUnreservedSizeItem!, attribute: .Width, multiplier: 1.0, constant: 0)
+                        widthConstraint = NSLayoutConstraint(item: button!, attribute: .width, relatedBy: .equal, toItem: firstUnreservedSizeItem!, attribute: .width, multiplier: 1.0, constant: 0)
                     }
                 }
                 
@@ -251,25 +251,25 @@ class KeyboardViewController: UIInputViewController {
         addIndividualButtonConstraints(buttons, mainView: rowView)
     }
     
-    func addIndividualButtonConstraints(buttons:[UIButton], mainView: UIView){
+    func addIndividualButtonConstraints(_ buttons:[UIButton], mainView: UIView){
         
-        for (index, button) in buttons.enumerate() {
+        for (index, button) in buttons.enumerated() {
             
-            let topConstraint = NSLayoutConstraint(item: button, attribute: .Top, relatedBy: .Equal, toItem: mainView, attribute: .Top, multiplier: 1.0, constant: 4)
+            let topConstraint = NSLayoutConstraint(item: button, attribute: .top, relatedBy: .equal, toItem: mainView, attribute: .top, multiplier: 1.0, constant: 4)
             
-            let bottomConstraint = NSLayoutConstraint(item: button, attribute: .Bottom, relatedBy: .Equal, toItem: mainView, attribute: .Bottom, multiplier: 1.0, constant: -4)
+            let bottomConstraint = NSLayoutConstraint(item: button, attribute: .bottom, relatedBy: .equal, toItem: mainView, attribute: .bottom, multiplier: 1.0, constant: -4)
             
             var rightConstraint : NSLayoutConstraint!
             
             if index == buttons.count - 1 {
                 
-                rightConstraint = NSLayoutConstraint(item: button, attribute: .Right, relatedBy: .Equal, toItem: mainView, attribute: .Right, multiplier: 1.0, constant: -4)
+                rightConstraint = NSLayoutConstraint(item: button, attribute: .right, relatedBy: .equal, toItem: mainView, attribute: .right, multiplier: 1.0, constant: -4)
                 
             }else{
                 
                 let nextButton = buttons[index+1]
                 
-                rightConstraint = NSLayoutConstraint(item: button, attribute: .Right, relatedBy: .Equal, toItem: nextButton, attribute: .Left, multiplier: 1.0, constant: -4)
+                rightConstraint = NSLayoutConstraint(item: button, attribute: .right, relatedBy: .equal, toItem: nextButton, attribute: .left, multiplier: 1.0, constant: -4)
             }
             
             
@@ -277,12 +277,12 @@ class KeyboardViewController: UIInputViewController {
             
             if index == 0 {
                 
-                leftConstraint = NSLayoutConstraint(item: button, attribute: .Left, relatedBy: .Equal, toItem: mainView, attribute: .Left, multiplier: 1.0, constant: 4)
+                leftConstraint = NSLayoutConstraint(item: button, attribute: .left, relatedBy: .equal, toItem: mainView, attribute: .left, multiplier: 1.0, constant: 4)
                 
             }else{
                 
                 let prevButton = buttons[index-1]
-                leftConstraint = NSLayoutConstraint(item: button, attribute: .Left, relatedBy: .Equal, toItem: prevButton, attribute: .Right, multiplier: 1.0, constant: 4)
+                leftConstraint = NSLayoutConstraint(item: button, attribute: .left, relatedBy: .equal, toItem: prevButton, attribute: .right, multiplier: 1.0, constant: 4)
             }
             
             //var widthConstraint:NSLayoutConstraint = NSLayoutConstraint(item: button, attribute: .Width, relatedBy: .Equal, toItem: mainView, attribute: .Width, multiplier: buttonData.relativeWidth, constant: 0)
@@ -291,29 +291,29 @@ class KeyboardViewController: UIInputViewController {
         }
     }
     
-    func addConstraintsToBaseView(baseView: UIView, rowViews: [UIView]){
+    func addConstraintsToBaseView(_ baseView: UIView, rowViews: [UIView]){
         
         baseView.removeConstraints(_baseViewConstraints)
-        _baseViewConstraints.removeAll(keepCapacity: true)
+        _baseViewConstraints.removeAll(keepingCapacity: true)
         
-        for (index, rowView) in rowViews.enumerate() {
-            let centerXConstraint = NSLayoutConstraint(item: rowView, attribute: .CenterX, relatedBy: .Equal, toItem: baseView, attribute: .CenterX, multiplier: 1.0, constant: 0)
-            let widthConstraint = NSLayoutConstraint(item: rowView, attribute: .Width, relatedBy: .Equal, toItem: baseView, attribute: .Width, multiplier: 1.0, constant: 0)
+        for (index, rowView) in rowViews.enumerated() {
+            let centerXConstraint = NSLayoutConstraint(item: rowView, attribute: .centerX, relatedBy: .equal, toItem: baseView, attribute: .centerX, multiplier: 1.0, constant: 0)
+            let widthConstraint = NSLayoutConstraint(item: rowView, attribute: .width, relatedBy: .equal, toItem: baseView, attribute: .width, multiplier: 1.0, constant: 0)
             _baseViewConstraints.append(centerXConstraint)
             _baseViewConstraints.append(widthConstraint)
             
             var topConstraint: NSLayoutConstraint
             
             if index == 0 {
-                topConstraint = NSLayoutConstraint(item: rowView, attribute: .Top, relatedBy: .Equal, toItem: baseView, attribute: .Top, multiplier: 1.0, constant: 0)
+                topConstraint = NSLayoutConstraint(item: rowView, attribute: .top, relatedBy: .equal, toItem: baseView, attribute: .top, multiplier: 1.0, constant: 0)
                 
             }else{
                 
                 let prevRow = rowViews[index-1]
-                topConstraint = NSLayoutConstraint(item: rowView, attribute: .Top, relatedBy: .Equal, toItem: prevRow, attribute: .Bottom, multiplier: 1.0, constant: 0)
+                topConstraint = NSLayoutConstraint(item: rowView, attribute: .top, relatedBy: .equal, toItem: prevRow, attribute: .bottom, multiplier: 1.0, constant: 0)
                 
                 let firstRow = rowViews[0]
-                let heightConstraint = NSLayoutConstraint(item: firstRow, attribute: .Height, relatedBy: .Equal, toItem: rowView, attribute: .Height, multiplier: 1.0, constant: 0)
+                let heightConstraint = NSLayoutConstraint(item: firstRow, attribute: .height, relatedBy: .equal, toItem: rowView, attribute: .height, multiplier: 1.0, constant: 0)
                 
                 _baseViewConstraints.append(heightConstraint)
             }
@@ -322,12 +322,12 @@ class KeyboardViewController: UIInputViewController {
             var bottomConstraint: NSLayoutConstraint
             
             if index == rowViews.count - 1 {
-                bottomConstraint = NSLayoutConstraint(item: rowView, attribute: .Bottom, relatedBy: .Equal, toItem: baseView, attribute: .Bottom, multiplier: 1.0, constant: 0)
+                bottomConstraint = NSLayoutConstraint(item: rowView, attribute: .bottom, relatedBy: .equal, toItem: baseView, attribute: .bottom, multiplier: 1.0, constant: 0)
                 
             }else{
                 
                 let nextRow = rowViews[index+1]
-                bottomConstraint = NSLayoutConstraint(item: rowView, attribute: .Bottom, relatedBy: .LessThanOrEqual, toItem: nextRow, attribute: .Top, multiplier: 1.0, constant: 0)
+                bottomConstraint = NSLayoutConstraint(item: rowView, attribute: .bottom, relatedBy: .lessThanOrEqual, toItem: nextRow, attribute: .top, multiplier: 1.0, constant: 0)
             }
             
             _baseViewConstraints.append(bottomConstraint)
@@ -338,12 +338,12 @@ class KeyboardViewController: UIInputViewController {
     
     //MARK: View Functions
     
-    func showAlert(message:String) {
+    func showAlert(_ message:String) {
         let bounds = inputView!.bounds
         
         _currentKeyboardLayout = .alert
         
-        keyboardView.frame = CGRect(origin: CGPointZero, size: bounds.size)
+        keyboardView.frame = CGRect(origin: CGPoint.zero, size: bounds.size)
         keyboardView.invalidateIntrinsicContentSize()
         keyboardView.backgroundColor = SharedMyInkValues.MyInkPinkColor
         
@@ -351,16 +351,16 @@ class KeyboardViewController: UIInputViewController {
             row.removeFromSuperview()
         }
         
-        let label = UILabel(frame: CGRectZero)
+        let label = UILabel(frame: CGRect.zero)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.textAlignment = NSTextAlignment.Center
+        label.textAlignment = NSTextAlignment.center
         label.text = message
-        label.textColor = UIColor.whiteColor()
-        let button = UIButton(type: .System)
+        label.textColor = UIColor.white
+        let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Okay", forState: UIControlState.Normal)
-        button.addTarget(self, action: #selector(KeyboardViewController.didTapAlertButton(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        button.setTitle("Okay", for: UIControlState())
+        button.addTarget(self, action: #selector(KeyboardViewController.didTapAlertButton(_:)), for: UIControlEvents.touchUpInside)
         button.backgroundColor = UIColor(white: 1.0, alpha: 1.0)
         button.layer.cornerRadius = 10
         rowViews = [label, button]
@@ -369,29 +369,29 @@ class KeyboardViewController: UIInputViewController {
         keyboardView.addSubview(button)
         
         keyboardView.removeConstraints(_baseViewConstraints)
-        _baseViewConstraints.removeAll(keepCapacity: true)
+        _baseViewConstraints.removeAll(keepingCapacity: true)
         
-        let topLabelConstraint = NSLayoutConstraint(item: label, attribute: .Top, relatedBy: .Equal, toItem: keyboardView, attribute: .Top, multiplier: 1.0, constant: 1)
-        let bottomLabelConstraint = NSLayoutConstraint(item: label, attribute: .Bottom, relatedBy: .Equal, toItem: keyboardView, attribute: .Bottom, multiplier: 1.0, constant: -50)
-        let leftLabelConstraint = NSLayoutConstraint(item: label, attribute: .Left, relatedBy: .Equal, toItem: keyboardView, attribute: .Left, multiplier: 1.0, constant: 1)
-        let rightLabelConstraint = NSLayoutConstraint(item: label, attribute: .Right, relatedBy: .Equal, toItem: keyboardView, attribute: .Right, multiplier: 1.0, constant: 1)
+        let topLabelConstraint = NSLayoutConstraint(item: label, attribute: .top, relatedBy: .equal, toItem: keyboardView, attribute: .top, multiplier: 1.0, constant: 1)
+        let bottomLabelConstraint = NSLayoutConstraint(item: label, attribute: .bottom, relatedBy: .equal, toItem: keyboardView, attribute: .bottom, multiplier: 1.0, constant: -50)
+        let leftLabelConstraint = NSLayoutConstraint(item: label, attribute: .left, relatedBy: .equal, toItem: keyboardView, attribute: .left, multiplier: 1.0, constant: 1)
+        let rightLabelConstraint = NSLayoutConstraint(item: label, attribute: .right, relatedBy: .equal, toItem: keyboardView, attribute: .right, multiplier: 1.0, constant: 1)
         
         //let topButtonConstraint = NSLayoutConstraint(item: button, attribute: .Top, relatedBy: .Equal, toItem: keyboardView, attribute: .Bottom, multiplier: 1.0, constant: -49)
-        let bottomButtonConstraint = NSLayoutConstraint(item: button, attribute: .Bottom, relatedBy: .Equal, toItem: keyboardView, attribute: .Bottom, multiplier: 1, constant: -10)
-        let centerXButtonConstraint = NSLayoutConstraint(item: button, attribute: .CenterX, relatedBy: .Equal, toItem: keyboardView, attribute: .CenterX, multiplier: 1.0, constant: 0)
-        let widthButtonConstraint = NSLayoutConstraint(item: button, attribute: .Width, relatedBy: .Equal, toItem: keyboardView, attribute: .Width, multiplier: 1, constant: -20)
+        let bottomButtonConstraint = NSLayoutConstraint(item: button, attribute: .bottom, relatedBy: .equal, toItem: keyboardView, attribute: .bottom, multiplier: 1, constant: -10)
+        let centerXButtonConstraint = NSLayoutConstraint(item: button, attribute: .centerX, relatedBy: .equal, toItem: keyboardView, attribute: .centerX, multiplier: 1.0, constant: 0)
+        let widthButtonConstraint = NSLayoutConstraint(item: button, attribute: .width, relatedBy: .equal, toItem: keyboardView, attribute: .width, multiplier: 1, constant: -20)
         _baseViewConstraints = [topLabelConstraint, bottomLabelConstraint, leftLabelConstraint, rightLabelConstraint, bottomButtonConstraint, centerXButtonConstraint, widthButtonConstraint]
         keyboardView.addConstraints(_baseViewConstraints)
         keyboardView.layoutIfNeeded()
     }
     
     //ToDo - Show Message and Show Alert should be the same function
-    func showMessage(message:String) {
+    func showMessage(_ message:String) {
         let bounds = inputView!.bounds
         
         _currentKeyboardLayout = .message
         
-        keyboardView.frame = CGRect(origin: CGPointZero, size: bounds.size)
+        keyboardView.frame = CGRect(origin: CGPoint.zero, size: bounds.size)
         keyboardView.invalidateIntrinsicContentSize()
         keyboardView.backgroundColor = SharedMyInkValues.MyInkPinkColor
         
@@ -399,23 +399,23 @@ class KeyboardViewController: UIInputViewController {
             row.removeFromSuperview()
         }
         
-        let label = UILabel(frame: CGRectZero)
+        let label = UILabel(frame: CGRect.zero)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.textAlignment = NSTextAlignment.Center
+        label.textAlignment = NSTextAlignment.center
         label.text = message
-        label.textColor = UIColor.whiteColor()
+        label.textColor = UIColor.white
         rowViews = [label]
         
         keyboardView.addSubview(label)
         
         keyboardView.removeConstraints(_baseViewConstraints)
-        _baseViewConstraints.removeAll(keepCapacity: true)
+        _baseViewConstraints.removeAll(keepingCapacity: true)
         
-        let topLabelConstraint = NSLayoutConstraint(item: label, attribute: .Top, relatedBy: .Equal, toItem: keyboardView, attribute: .Top, multiplier: 1.0, constant: 1)
-        let bottomLabelConstraint = NSLayoutConstraint(item: label, attribute: .Bottom, relatedBy: .Equal, toItem: keyboardView, attribute: .Bottom, multiplier: 1.0, constant: 1)
-        let leftLabelConstraint = NSLayoutConstraint(item: label, attribute: .Left, relatedBy: .Equal, toItem: keyboardView, attribute: .Left, multiplier: 1.0, constant: 1)
-        let rightLabelConstraint = NSLayoutConstraint(item: label, attribute: .Right, relatedBy: .Equal, toItem: keyboardView, attribute: .Right, multiplier: 1.0, constant: 1)
+        let topLabelConstraint = NSLayoutConstraint(item: label, attribute: .top, relatedBy: .equal, toItem: keyboardView, attribute: .top, multiplier: 1.0, constant: 1)
+        let bottomLabelConstraint = NSLayoutConstraint(item: label, attribute: .bottom, relatedBy: .equal, toItem: keyboardView, attribute: .bottom, multiplier: 1.0, constant: 1)
+        let leftLabelConstraint = NSLayoutConstraint(item: label, attribute: .left, relatedBy: .equal, toItem: keyboardView, attribute: .left, multiplier: 1.0, constant: 1)
+        let rightLabelConstraint = NSLayoutConstraint(item: label, attribute: .right, relatedBy: .equal, toItem: keyboardView, attribute: .right, multiplier: 1.0, constant: 1)
         
         _baseViewConstraints = [topLabelConstraint, bottomLabelConstraint, leftLabelConstraint, rightLabelConstraint]
         keyboardView.addConstraints(_baseViewConstraints)
@@ -429,18 +429,18 @@ class KeyboardViewController: UIInputViewController {
     //MARK: Button Handlers
     
     //todo: Buttons that are not inserting text should probably be changed to be handled with their own functions
-    func didTapButton(sender: AnyObject?) {
+    func didTapButton(_ sender: AnyObject?) {
         
         let button = sender as! UIButton
-        let title = button.titleForState(.Normal)!
+        let title = button.title(for: UIControlState())!
         let proxy = textDocumentProxy 
         
-        let dateNow = NSDate()
+        let dateNow = Date()
         
         let autoCapitilization = proxy.autocapitalizationType
         
-        let shouldUppercase = _capitilization != .lowercase && autoCapitilization == UITextAutocapitalizationType.Sentences
-        if _capitilization == .uppercase && autoCapitilization == UITextAutocapitalizationType.Sentences {
+        let shouldUppercase = _capitilization != .lowercase && autoCapitilization == UITextAutocapitalizationType.sentences
+        if _capitilization == .uppercase && autoCapitilization == UITextAutocapitalizationType.sentences {
             _capitilization = .lowercase
         }
         
@@ -453,17 +453,17 @@ class KeyboardViewController: UIInputViewController {
         case "space" :
             if _lastKeyPressDate != nil {
                 if _lastKeyValue == "space" {
-                    let elapsedTime = dateNow.timeIntervalSinceDate(_lastKeyPressDate!)
+                    let elapsedTime = dateNow.timeIntervalSince(_lastKeyPressDate!)
                     if elapsedTime < 1.0 {
                         proxy.deleteBackward()
                         proxy.insertText(".")
-                        if autoCapitilization == UITextAutocapitalizationType.Sentences {
+                        if autoCapitilization == UITextAutocapitalizationType.sentences {
                             _capitilization = .uppercase
                         }
                     }
                 }
                 if _lastKeyValue == "." {
-                    if autoCapitilization == UITextAutocapitalizationType.Sentences {
+                    if autoCapitilization == UITextAutocapitalizationType.sentences {
                         _capitilization = .uppercase
                         buildKeyboard(.alpha)
                     }
@@ -479,7 +479,7 @@ class KeyboardViewController: UIInputViewController {
         case "abc":
             buildKeyboard(.alpha)
         default :
-            proxy.insertText(shouldUppercase ? title.uppercaseString : title.lowercaseString)
+            proxy.insertText(shouldUppercase ? title.uppercased() : title.lowercased())
         }
         
         //keyboardView.playInputClick()
@@ -493,10 +493,10 @@ class KeyboardViewController: UIInputViewController {
         _lastKeyValue = title
     }
     
-    func handleShiftTap(sender: AnyObject, event: UIEvent) {
-        let dateNow = NSDate()
+    func handleShiftTap(_ sender: AnyObject, event: UIEvent) {
+        let dateNow = Date()
         
-        let touch = event.allTouches()?.first
+        let touch = event.allTouches?.first
         
         if(touch?.tapCount == 1) {
             switch _capitilization {
@@ -520,11 +520,11 @@ class KeyboardViewController: UIInputViewController {
         _lastKeyValue = "shift"
     }
     
-    func updateButtonVisualization(button:UIControl) {
+    func updateButtonVisualization(_ button:UIControl) {
         if let key = button as? UIMyInkKey {
             if key.keyData != nil {
                 switch key.keyData!.controlState.rawValue {
-                case UIControlState.Selected.rawValue:
+                case UIControlState.selected.rawValue:
                     key.backgroundColor = key.keyData!.selectedColorState.backgroundColor
                     key.tintColor = key.keyData!.selectedColorState.tintColor
                 default:
@@ -532,28 +532,28 @@ class KeyboardViewController: UIInputViewController {
                     key.tintColor = key.keyData!.normalColorState.tintColor
                 }
                 
-                key.setTitleColor(key.keyData!.normalColorState.textColor, forState: UIControlState.Normal)
-                key.setTitleColor(key.keyData!.selectedColorState.textColor, forState: UIControlState.Selected)
+                key.setTitleColor(key.keyData!.normalColorState.textColor, for: UIControlState())
+                key.setTitleColor(key.keyData!.selectedColorState.textColor, for: UIControlState.selected)
             }
         }
     }
     
     func updateShiftButtonVisualization() {
         if _shiftButton != nil {
-            dispatch_async(dispatch_get_main_queue(), {
+            DispatchQueue.main.async(execute: {
                 
-                    var buttonControlState = UIControlState.Normal
+                    var buttonControlState = UIControlState()
                     
                     switch self._capitilization {
                     case .lowercase:
-                        buttonControlState = UIControlState.Normal
-                        self._shiftButton?.setImage(self.loadImage("KeyboardIcon_Shift"), forState: .Normal)
+                        buttonControlState = UIControlState()
+                        self._shiftButton?.setImage(self.loadImage("KeyboardIcon_Shift"), for: UIControlState())
                     case .uppercase:
-                        buttonControlState = UIControlState.Selected
-                        self._shiftButton?.setImage(self.loadImage("KeyboardIcon_Shift"), forState: .Normal)
+                        buttonControlState = UIControlState.selected
+                        self._shiftButton?.setImage(self.loadImage("KeyboardIcon_Shift"), for: UIControlState())
                     case .capslock:
-                        buttonControlState = UIControlState.Normal
-                        self._shiftButton?.setImage(self.loadImage("KeyboardIcon_CapsLock"), forState: .Normal)
+                        buttonControlState = UIControlState()
+                        self._shiftButton?.setImage(self.loadImage("KeyboardIcon_CapsLock"), for: UIControlState())
                     }
                     self._shiftButton?.keyData?.controlState = buttonControlState
                     self.updateButtonVisualization(self._shiftButton!)
@@ -561,54 +561,54 @@ class KeyboardViewController: UIInputViewController {
         }
     }
     
-    private var deleteTimer:NSTimer?
+    fileprivate var deleteTimer:Timer?
     
-    func handleDeleteKeyPressed(sender:AnyObject?) {
+    func handleDeleteKeyPressed(_ sender:AnyObject?) {
         let proxy = self.textDocumentProxy 
         proxy.deleteBackward()
         if isFullAccessGranted() {
             AudioServicesPlaySystemSound(0x450);
         }
-        _lastKeyPressDate = NSDate()
+        _lastKeyPressDate = Date()
         _lastKeyValue = "⌫"
         
-        self.deleteTimer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: #selector(KeyboardViewController.handleDeleteKeyHeld(_:)), userInfo: nil, repeats: false)
+        self.deleteTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(KeyboardViewController.handleDeleteKeyHeld(_:)), userInfo: nil, repeats: false)
     }
     
-    func handleDeleteKeyReleased(sender:AnyObject?) {
+    func handleDeleteKeyReleased(_ sender:AnyObject?) {
         if self.deleteTimer != nil {
             self.deleteTimer?.invalidate()
             self.deleteTimer = nil
         }
     }
     
-    func handleDeleteKeyHeld(timer:NSTimer) {
+    func handleDeleteKeyHeld(_ timer:Timer) {
         let proxy = self.textDocumentProxy 
         proxy.deleteBackward()
         if isFullAccessGranted() {
             AudioServicesPlaySystemSound(0x450);
         }
         self.deleteTimer?.invalidate()
-        self.deleteTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(KeyboardViewController.handleDeleteKeyHeldLong(_:)), userInfo: nil, repeats: true)
+        self.deleteTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(KeyboardViewController.handleDeleteKeyHeldLong(_:)), userInfo: nil, repeats: true)
     }
     
-    func handleDeleteKeyHeldLong(timer:NSTimer) {
+    func handleDeleteKeyHeldLong(_ timer:Timer) {
         let proxy = self.textDocumentProxy 
         proxy.deleteBackward()
         if isFullAccessGranted() {
             AudioServicesPlaySystemSound(0x450);
         }
-        if proxy.hasText() == false {
+        if proxy.hasText == false {
             timer.invalidate()
             self.deleteTimer = nil
         }
     }
     
-    func didTapAlertButton(sender: AnyObject?) {
+    func didTapAlertButton(_ sender: AnyObject?) {
         buildKeyboard(.alpha)
     }
     
-    func renderMessage(button:UIButton) {
+    func renderMessage(_ button:UIButton) {
         if isFullAccessGranted() == false {
             showAlert("You need to enable the 'Allow Full Access' option under Settings/General/Keyboard/Keyboards/MyInkKeyboard - MyInk.")
             return
@@ -619,27 +619,27 @@ class KeyboardViewController: UIInputViewController {
         _textProxyConsumer.consume(proxy, onCompleteEvent: handleProxyConsumerComplete)
     }
     
-    func handleProxyConsumerComplete(message:String) -> Void {
+    func handleProxyConsumerComplete(_ message:String) -> Void {
         hideMessage()
         if(message.characters.count > 0) {
             //Height is expected to be cropped shorter, possibly the width also if the messages are short. If the message is much longer then it cannot
             //be viewed as a preview in the Messages app
             let messageImage = _messageRenderer!.renderMessage(message, imageSize: CGSize(width: 440, height: 4096), lineHeight: 32, backgroundColor: beigeMessageBackgroundColor, showDebugInfo: false, enforceAspectRatio: true)
             if messageImage != nil {
-                UIPasteboard.generalPasteboard().image = messageImage
+                UIPasteboard.general.image = messageImage
                 
                 //Create message
                 let floatingTextPosition = CGPoint(x: keyboardView.bounds.width * 0.5, y: 0)//button.frame.origin - CGPoint(x: 100, y: 20)
                 let floatingText = UILabel(frame: CGRect(origin: floatingTextPosition, size: CGSize(width: 100, height: 20)))
                 floatingText.backgroundColor = UIColor(white: 0, alpha: 0.8)
                 floatingText.textColor = UIColor(white: 1, alpha: 1)
-                floatingText.textAlignment = NSTextAlignment.Center
+                floatingText.textAlignment = NSTextAlignment.center
                 floatingText.text = "copied to clipboard"
                 floatingText.sizeToFit()
                 floatingText.frame.size = floatingText.frame.size + CGSize(width: 5, height: 5)
                 floatingText.frame.origin.x = floatingText.frame.origin.x - (floatingText.frame.size.width * 0.5)
                 keyboardView.addSubview(floatingText)
-                UIView.animateWithDuration(3.0, delay: 1.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+                UIView.animate(withDuration: 3.0, delay: 1.0, options: UIViewAnimationOptions.curveEaseIn, animations: {
                     floatingText.alpha = 0.0
                     }, completion: { (completed:Bool) in
                         floatingText.removeFromSuperview()
@@ -654,11 +654,11 @@ class KeyboardViewController: UIInputViewController {
     //MARK: Helper Functions
     
     func isFullAccessGranted() -> Bool {
-        let pasteboard:UIPasteboard? = UIPasteboard.generalPasteboard()
+        let pasteboard:UIPasteboard? = UIPasteboard.general
         return pasteboard != nil
     }
     
-    func loadImage(named:String) -> UIImage {
+    func loadImage(_ named:String) -> UIImage {
         var image = _loadedImages[named]
         if image == nil {
             image = UIImage(named: named)

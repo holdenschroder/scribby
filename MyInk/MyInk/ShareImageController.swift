@@ -8,60 +8,84 @@
 
 import UIKit
 import Social
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 class ShareImageController: UIViewController, UIAlertViewDelegate {
     
     @IBOutlet weak var instagramBtn: UIBarButtonItem!
     @IBOutlet weak var twitterBtn: UIBarButtonItem!
     @IBOutlet var imageView: UIImageView!
-    private var _image: UIImage?
-    private var _documentController:UIDocumentInteractionController!
+    fileprivate var _image: UIImage?
+    fileprivate var _documentController:UIDocumentInteractionController!
     var audioHelper = AudioHelper()
     @IBOutlet weak var scrollView: UIScrollView!
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.navigationController?.setNavigationBarHidden(false, animated: true)
 
         imageView?.image = _image
         
-        let igImg : UIImage? = UIImage(named:"icon_instagram.png")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        let igImg : UIImage? = UIImage(named:"icon_instagram.png")!.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
         let igBtn = UIButton()
-        igBtn.setImage(igImg, forState: .Normal)
-        igBtn.frame = CGRectMake(0, 0, 30, 30)
+        igBtn.setImage(igImg, for: UIControlState())
+        igBtn.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         //igBtn.addTarget(self, action: Selector("action"), forControlEvents: .TouchUpInside)
         let _instagramBtn = UIBarButtonItem(customView: igBtn)
         instagramBtn = _instagramBtn
         //instagramBtn.setBackButtonBackgroundImage(UIImage(named:"icon_instagram.png")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), forState: .Normal, barMetrics: .Default)
         //let twImg : UIImage? = UIImage(named:"icon_twitter.png")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-        twitterBtn.setBackButtonBackgroundImage(UIImage(named:"icon_twitter.png")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), forState: .Normal, barMetrics: .Default)
+        twitterBtn.setBackButtonBackgroundImage(UIImage(named:"icon_twitter.png")!.withRenderingMode(UIImageRenderingMode.alwaysOriginal), for: UIControlState(), barMetrics: .default)
         
         MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventScreenLoadedShareImage)
 
         setUpScrollView()
     }
     
-    func loadImage(image:UIImage) {
+    func loadImage(_ image:UIImage) {
         _image = image
         imageView?.image = image
     }
     
-    @IBAction func HandleActionBtn(sender: AnyObject) {
+    @IBAction func HandleActionBtn(_ sender: AnyObject) {
         if _image != nil {
             let activityView = UIActivityViewController(activityItems: [_image!], applicationActivities: nil)
             activityView.completionWithItemsHandler = HandleActivityViewCompleted
-            presentViewController(activityView, animated: true, completion: nil)
+            present(activityView, animated: true, completion: nil)
         }
     }
 
-    private func setUpScrollView() {
+    fileprivate func setUpScrollView() {
         scrollView.minimumZoomScale = 1.0
         scrollView.maximumZoomScale = 6.0
         scrollView.contentSize = imageView.bounds.size
     }
     
-    @IBAction func ShareToInstagram(sender:UIBarButtonItem) {
+    @IBAction func ShareToInstagram(_ sender:UIBarButtonItem) {
         //This should work but does not seem to
         /*let url = NSURL(fileURLWithPath: "instagram://app")
         if(!UIApplication.sharedApplication().canOpenURL(url!)) {
@@ -74,29 +98,29 @@ class ShareImageController: UIViewController, UIAlertViewDelegate {
         let instagramSize = CGSize(width: 640, height: 640)
         UIGraphicsBeginImageContext(instagramSize)
         let graphicsContext = UIGraphicsGetCurrentContext()
-        UIColor.whiteColor().setFill()
-        CGContextFillRect(graphicsContext!, CGRect(origin: CGPointZero, size: instagramSize))
+        UIColor.white.setFill()
+        graphicsContext!.fill(CGRect(origin: CGPoint.zero, size: instagramSize))
         if _image?.size.width > _image?.size.height {
             let ratioAdjustment = _image!.size.height / _image!.size.width
-            _image?.drawInRect(CGRectMake(0, instagramSize.height * ((1 - ratioAdjustment) * 0.5), instagramSize.width, instagramSize.width * ratioAdjustment))
+            _image?.draw(in: CGRect(x: 0, y: instagramSize.height * ((1 - ratioAdjustment) * 0.5), width: instagramSize.width, height: instagramSize.width * ratioAdjustment))
         }
         else {
             let ratioAdjustment = _image!.size.height / _image!.size.width
-            _image?.drawInRect(CGRectMake(instagramSize.width * ((1 - ratioAdjustment) * 0.5), 0, instagramSize.height * ratioAdjustment, instagramSize.height))
+            _image?.draw(in: CGRect(x: instagramSize.width * ((1 - ratioAdjustment) * 0.5), y: 0, width: instagramSize.height * ratioAdjustment, height: instagramSize.height))
         }
         
         let instagramImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
         //Save the image
-        var filePathURL = NSURL(fileURLWithPath: NSTemporaryDirectory())
-        filePathURL = filePathURL.URLByAppendingPathComponent("instagram.igo")!
+        var filePathURL = URL(fileURLWithPath: NSTemporaryDirectory())
+        filePathURL = filePathURL.appendingPathComponent("instagram.igo")
         let imageData = UIImageJPEGRepresentation(instagramImage!, 100)
-        if(imageData!.writeToFile(filePathURL.path!, atomically: true)) {
+        if((try? imageData!.write(to: URL(fileURLWithPath: filePathURL.path), options: [.atomic])) != nil) {
             print("\(filePathURL) Instagram Image Saved Successfully!")
-            _documentController = UIDocumentInteractionController(URL: filePathURL)
-            _documentController.UTI = "com.instagram.exclusivegram"
-            if(_documentController.presentOpenInMenuFromBarButtonItem(sender, animated: true) == false) {
+            _documentController = UIDocumentInteractionController(url: filePathURL)
+            _documentController.uti = "com.instagram.exclusivegram"
+            if(_documentController.presentOpenInMenu(from: sender, animated: true) == false) {
                 let alert = UIAlertView(title: "Instagram Not Installed", message: "The Instagram App must be installed to share with Instagram.", delegate: self, cancelButtonTitle: "Okay")
                 alert.show()
             }
@@ -113,10 +137,10 @@ class ShareImageController: UIViewController, UIAlertViewDelegate {
         }
     }
     
-    @IBAction func ShareToTwitter(sender:UIBarButtonItem) {
+    @IBAction func ShareToTwitter(_ sender:UIBarButtonItem) {
         let composer = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
-        composer.addImage(_image)
-        self.presentViewController(composer, animated: true, completion: completionHandler)
+        composer?.add(_image)
+        self.present(composer!, animated: true, completion: completionHandler)
         MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventShareMessage, parameters: [SharedMyInkValues.kEventShareMessageParameterActivity:"button.twitter"])
     }
     
@@ -124,7 +148,7 @@ class ShareImageController: UIViewController, UIAlertViewDelegate {
         audioHelper.playSentSound()
     }
     
-    func HandleActivityViewCompleted(activityType:String?, completed:Bool, items:[AnyObject]?, error:NSError?) {
+    func HandleActivityViewCompleted(_ activityType:String?, completed:Bool, items:[AnyObject]?, error:NSError?) {
         if completed {
             audioHelper.playSentSound()
             MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventShareMessage, parameters: [SharedMyInkValues.kEventShareMessageParameterActivity:activityType ?? "UnknownActivity"])
@@ -137,7 +161,7 @@ class ShareImageController: UIViewController, UIAlertViewDelegate {
 }
 
 extension ShareImageController: UIScrollViewDelegate {
-    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return imageView
     }
 }

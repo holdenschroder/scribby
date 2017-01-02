@@ -9,47 +9,47 @@
 import CoreData
 
 class CoreDataHelper {
-    static var applicationDocumentsDirectory: NSURL = {
-        let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
+    static var applicationDocumentsDirectory: URL = {
+        let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return urls[urls.count-1] 
     }()
     
-    static var appGroupSharedDirectory:NSURL = {
-        return NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier(SharedMyInkValues.AppGroup) ?? NSURL(string: "")!
+    static var appGroupSharedDirectory:URL = {
+        return FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: SharedMyInkValues.AppGroup) ?? URL(string: "")!
     }()
     
-    static var saveDirectory:NSURL = {
+    static var saveDirectory:URL = {
         return appGroupSharedDirectory
     }()
     
     lazy var managedObjectModel: NSManagedObjectModel = {
         // The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
-        let modelURL = NSBundle.mainBundle().URLForResource("MyInk", withExtension: "momd")!
-        return NSManagedObjectModel(contentsOfURL: modelURL)!
+        let modelURL = Bundle.main.url(forResource: "MyInk", withExtension: "momd")!
+        return NSManagedObjectModel(contentsOf: modelURL)!
         }()
     
-    func managedObjectModelForVersion(version:String) -> NSManagedObjectModel {
-        let modelURL = NSBundle.mainBundle().URLForResource("MyInk.momd/MyInk \(version)", withExtension: "mom")!
-        return NSManagedObjectModel(contentsOfURL: modelURL)!
+    func managedObjectModelForVersion(_ version:String) -> NSManagedObjectModel {
+        let modelURL = Bundle.main.url(forResource: "MyInk.momd/MyInk \(version)", withExtension: "mom")!
+        return NSManagedObjectModel(contentsOf: modelURL)!
     }
     
     lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator? = {
         // The persistent store coordinator for the application. This implementation creates and return a coordinator, having added the store for the application to it. This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
         // Create the coordinator and store
         var coordinator: NSPersistentStoreCoordinator? = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
-        let url = CoreDataHelper.saveDirectory.URLByAppendingPathComponent("MyInk.sqlite")
+        let url = CoreDataHelper.saveDirectory.appendingPathComponent("MyInk.sqlite")
         var error: NSError? = nil
         var failureReason = "There was an error creating or loading the application's saved data."
         var options:[String:Bool] = [NSMigratePersistentStoresAutomaticallyOption: true, NSInferMappingModelAutomaticallyOption: true]
         do {
-            try coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: options)
+            try coordinator!.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: options)
         } catch var error1 as NSError {
             error = error1
             coordinator = nil
             // Report any error we got.
             var dict = [String: AnyObject]()
-            dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
-            dict[NSLocalizedFailureReasonErrorKey] = failureReason
+            dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data" as AnyObject?
+            dict[NSLocalizedFailureReasonErrorKey] = failureReason as AnyObject?
             dict[NSUnderlyingErrorKey] = error
             error = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict)
             // Replace this with code to handle the error appropriately.
@@ -80,19 +80,19 @@ class CoreDataHelper {
         //The embedded version of the Font Data is not always loading the newest version, so we declare which version we are going to use
         let objectModel = self.managedObjectModelForVersion(SharedMyInkValues.EmbeddedFontDataVersion)
         var coordinator: NSPersistentStoreCoordinator? = NSPersistentStoreCoordinator(managedObjectModel: objectModel)
-        let url = NSBundle.mainBundle().URLForResource("Embedded_data", withExtension: "sqlite")
+        let url = Bundle.main.url(forResource: "Embedded_data", withExtension: "sqlite")
         var error: NSError? = nil
         var failureReason = "There was an error creating or loading the application's saved data."
         var options:[String:Bool] = [NSInferMappingModelAutomaticallyOption: true, NSReadOnlyPersistentStoreOption: true]
         do {
-            try coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: options)
+            try coordinator!.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: options)
         } catch var error1 as NSError {
             error = error1
             coordinator = nil
             // Report any error we got.
             var dict = [String: AnyObject]()
-            dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
-            dict[NSLocalizedFailureReasonErrorKey] = failureReason
+            dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data" as AnyObject?
+            dict[NSLocalizedFailureReasonErrorKey] = failureReason as AnyObject?
             dict[NSUnderlyingErrorKey] = error
             error = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict)
             // Replace this with code to handle the error appropriately.

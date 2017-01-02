@@ -18,44 +18,44 @@ class UIDrawSelectionView:UIImageView {
     var brushWidthRelative:Float = 0.1
     
     typealias OnChangeEvent = (UIDrawSelectionView, Bool) -> Void
-    private var _onChangeEvents = [OnChangeEvent]()
-    private var _cleared = true
+    fileprivate var _onChangeEvents = [OnChangeEvent]()
+    fileprivate var _cleared = true
     
     required init?(coder:NSCoder) {
         super.init(coder: coder)
         clearImage()
-        userInteractionEnabled = true
+        isUserInteractionEnabled = true
     }
     
     func clearImage() {
         image = nil //fillImage(UIColor(red: 1, green: 1, blue: 1, alpha: 0))
         isClear = true
-        debugRect?.hidden = true
+        debugRect?.isHidden = true
         _cleared = true
         for event in _onChangeEvents {
             event(self, _cleared)
         }
     }
     
-    @IBAction func handleClearImageBtn(sender:AnyObject) {
+    @IBAction func handleClearImageBtn(_ sender:AnyObject) {
         clearImage()
     }
     
-    private func fillImage(color:UIColor) {
+    fileprivate func fillImage(_ color:UIColor) {
         let imageRect = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
         UIGraphicsBeginImageContext(frame.size)
         let context = UIGraphicsGetCurrentContext()
-        CGContextSetFillColorWithColor(context!, color.CGColor)
-        CGContextSetBlendMode(context!, CGBlendMode.Normal)
-        CGContextFillRect(context!, imageRect)
+        context!.setFillColor(color.cgColor)
+        context!.setBlendMode(CGBlendMode.normal)
+        context!.fill(imageRect)
         image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         swiped = false
         if let touch = touches.first {
-            lastPoint = touch.locationInView(self)
+            lastPoint = touch.location(in: self)
             if(isClear) {
                 fillImage(UIColor(red: 0, green: 0, blue: 0, alpha: 1))
                 isClear = false
@@ -63,37 +63,37 @@ class UIDrawSelectionView:UIImageView {
         }
     }
     
-    func drawLineFrom(fromPoint: CGPoint, toPoint: CGPoint) {
+    func drawLineFrom(_ fromPoint: CGPoint, toPoint: CGPoint) {
         UIGraphicsBeginImageContext(frame.size)
         let context = UIGraphicsGetCurrentContext()
-        image?.drawInRect(CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
+        image?.draw(in: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
         
-        CGContextMoveToPoint(context!, fromPoint.x, fromPoint.y)
-        CGContextAddLineToPoint(context!, toPoint.x, toPoint.y)
+        context!.move(to: CGPoint(x: fromPoint.x, y: fromPoint.y))
+        context!.addLine(to: CGPoint(x: toPoint.x, y: toPoint.y))
         
-        CGContextSetLineCap(context!, CGLineCap.Round)
-        CGContextSetLineJoin(context!, CGLineJoin.Round)
-        CGContextSetLineWidth(context!, CGFloat(brushWidthRelative) * image!.size.height)
-        CGContextSetRGBStrokeColor(context!, 0, 0, 0, 0)
-        CGContextSetBlendMode(context!, CGBlendMode.Copy)
+        context!.setLineCap(CGLineCap.round)
+        context!.setLineJoin(CGLineJoin.round)
+        context!.setLineWidth(CGFloat(brushWidthRelative) * image!.size.height)
+        context!.setStrokeColor(red: 0, green: 0, blue: 0, alpha: 0)
+        context!.setBlendMode(CGBlendMode.copy)
         
-        CGContextStrokePath(context!)
+        context!.strokePath()
         
         image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
     }
     
-    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         swiped = true
         if let touch = touches.first {
-            let currentPoint = touch.locationInView(self)
+            let currentPoint = touch.location(in: self)
             drawLineFrom(lastPoint, toPoint: currentPoint)
             
             lastPoint = currentPoint
         }
     }
     
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if !swiped {
             //draw at point
             drawLineFrom(lastPoint, toPoint: lastPoint)
@@ -104,10 +104,10 @@ class UIDrawSelectionView:UIImageView {
         }
     }
     
-    func GetContentRect(imageSpace:Bool = false) -> CGRect
+    func GetContentRect(_ imageSpace:Bool = false) -> CGRect
     {
         if(image != nil) {
-            let image_ci = image!.CIImage != nil ? image!.CIImage! : CIImage(CGImage: image!.CGImage!)
+            let image_ci = image!.ciImage != nil ? image!.ciImage! : CIImage(cgImage: image!.cgImage!)
             var rect = image_ci.extent
             
             let width = Int(rect.width)
@@ -115,12 +115,12 @@ class UIDrawSelectionView:UIImageView {
             let lastPixel = Int(floor(rect.width * rect.height))
             
             let bytesPerPixel = 4
-            let rawData: UnsafeMutablePointer<Int8> = UnsafeMutablePointer<Int8>.alloc(bytesPerPixel * lastPixel)
+            let rawData: UnsafeMutablePointer<Int8> = UnsafeMutablePointer<Int8>.allocate(capacity: bytesPerPixel * lastPixel)
             let context = CIContext(options: nil)
             context.render(image_ci, toBitmap: rawData, rowBytes: bytesPerPixel * Int(floor(rect.width)), bounds: rect, format: kCIFormatRGBA8, colorSpace: CGColorSpaceCreateDeviceRGB())
             
             var topLeft = CGPoint(x: image!.size.width, y: image!.size.height)
-            var bottomRight = CGPointZero
+            var bottomRight = CGPoint.zero
         
             for index in firstPixel..<lastPixel {
                 let pixelInfo: Int = index * bytesPerPixel
@@ -145,55 +145,55 @@ class UIDrawSelectionView:UIImageView {
                 }
             }
             
-            rawData.destroy()
+            rawData.deinitialize()
             
             let rectSize = CGSize(width: bottomRight.x - topLeft.x, height: floor(bottomRight.y - topLeft.y))
             rect = CGRect(x: floor(topLeft.x), y: floor(topLeft.y), width: rectSize.width, height: rectSize.height)
             
-            return imageSpace ? rect : convertRectFromImage(rect)
+            return imageSpace ? rect : convertRect(fromImage: rect)
         }
         else {
-            return CGRectZero
+            return CGRect.zero
         }
     }
     
-    func CropImageBySelection(imageView:UIImageView) -> CIImage? {
+    func CropImageBySelection(_ imageView:UIImageView) -> CIImage? {
         if(imageView.image == nil) {
             return nil
         }
         
         let image_ui = imageView.image
-        var image_ci = image_ui!.CIImage
+        var image_ci = image_ui!.ciImage
         if(image_ci == nil) {
-            image_ci = CIImage(CGImage: image_ui!.CGImage!)
+            image_ci = CIImage(cgImage: image_ui!.cgImage!)
         }
         var rect = GetContentRect()
         var debugRectDimensions = rect
-        debugRectDimensions = convertRect(debugRectDimensions, toView: debugRect?.superview)
+        debugRectDimensions = convert(debugRectDimensions, to: debugRect?.superview)
         debugRect?.frame = debugRectDimensions
-        debugRect?.hidden = false
+        debugRect?.isHidden = false
         
         let imageRect = image_ci!.extent
-        if(rect == CGRectZero) {
+        if(rect == CGRect.zero) {
             rect = imageRect
         }
         else {
-            rect = convertRect(rect, toView: imageView)
-            rect = imageView.convertRectFromView(rect)
+            rect = convert(rect, to: imageView)
+            rect = imageView.convertRect(fromView: rect)
             //Compensate for mirroring issue
             rect.origin.y = imageRect.height - rect.origin.y - rect.height
         }
         
         rect = rect.integral
         
-        let croppedImage = image_ci!.imageByCroppingToRect(rect)
-        let transform = CGAffineTransformMakeTranslation(-rect.origin.x, -rect.origin.y)
-        let transformedImage = croppedImage.imageByApplyingTransform(transform)
+        let croppedImage = image_ci!.cropping(to: rect)
+        let transform = CGAffineTransform(translationX: -rect.origin.x, y: -rect.origin.y)
+        let transformedImage = croppedImage.applying(transform)
         
         return transformedImage
     }
     
-    func addOnChangeListener(callback:OnChangeEvent) {
+    func addOnChangeListener(_ callback:@escaping OnChangeEvent) {
         _onChangeEvents.append(callback)
     }
 }

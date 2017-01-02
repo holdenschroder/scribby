@@ -13,21 +13,21 @@ import AVFoundation
 
 class AudioHelper {
     
-    private var click = AVAudioPlayer()
-    private var skip = AVAudioPlayer()
-    private var welcome = AVAudioPlayer()
-    private var erase = AVAudioPlayer()
-    private var fin = AVAudioPlayer()
-    private var sent = AVAudioPlayer()
-    private var awesome = AVAudioPlayer()
-    private var yeah = AVAudioPlayer()
+    fileprivate var click = AVAudioPlayer()
+    fileprivate var skip = AVAudioPlayer()
+    fileprivate var welcome = AVAudioPlayer()
+    fileprivate var erase = AVAudioPlayer()
+    fileprivate var fin = AVAudioPlayer()
+    fileprivate var sent = AVAudioPlayer()
+    fileprivate var awesome = AVAudioPlayer()
+    fileprivate var yeah = AVAudioPlayer()
     
     func playClickSound()
     {
-        let sound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("click", ofType: "wav")!)
+        let sound = URL(fileURLWithPath: Bundle.main.path(forResource: "click", ofType: "wav")!)
         do {
             //print("Playing: \(sound)")
-            click = try AVAudioPlayer(contentsOfURL: sound)
+            click = try AVAudioPlayer(contentsOf: sound)
         } catch {
             print("No sound found by URL: \(sound)")
         }
@@ -36,10 +36,10 @@ class AudioHelper {
     
     func playSkipSound()
     {
-        let sound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("skip", ofType: "wav")!)
+        let sound = URL(fileURLWithPath: Bundle.main.path(forResource: "skip", ofType: "wav")!)
         do {
             //print("Playing: \(sound)")
-            skip = try AVAudioPlayer(contentsOfURL: sound)
+            skip = try AVAudioPlayer(contentsOf: sound)
         } catch {
             print("No sound found by URL: \(sound)")
         }
@@ -48,10 +48,10 @@ class AudioHelper {
     
     func playWelcomeSound()
     {
-        let sound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("welcome", ofType: "wav")!)
+        let sound = URL(fileURLWithPath: Bundle.main.path(forResource: "welcome", ofType: "wav")!)
         do {
             //print("Playing: \(sound)")
-            welcome = try AVAudioPlayer(contentsOfURL: sound)
+            welcome = try AVAudioPlayer(contentsOf: sound)
         } catch {
             print("No sound found by URL: \(sound)")
         }
@@ -60,10 +60,10 @@ class AudioHelper {
     
     func playFinSound()
     {
-        let sound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("fin", ofType: "wav")!)
+        let sound = URL(fileURLWithPath: Bundle.main.path(forResource: "fin", ofType: "wav")!)
         do {
             //print("Playing: \(sound)")
-            fin = try AVAudioPlayer(contentsOfURL: sound)
+            fin = try AVAudioPlayer(contentsOf: sound)
         } catch {
             print("No sound found by URL: \(sound)")
         }
@@ -73,10 +73,10 @@ class AudioHelper {
     
     func playSentSound()
     {
-        let sound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("sent", ofType: "wav")!)
+        let sound = URL(fileURLWithPath: Bundle.main.path(forResource: "sent", ofType: "wav")!)
         do {
             //print("Playing: \(sound)")
-            sent = try AVAudioPlayer(contentsOfURL: sound)
+            sent = try AVAudioPlayer(contentsOf: sound)
         } catch {
             print("No sound found by URL: \(sound)")
         }
@@ -86,10 +86,10 @@ class AudioHelper {
     
     func playAwesomeSound()
     {
-        let sound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("awesome", ofType: "wav")!)
+        let sound = URL(fileURLWithPath: Bundle.main.path(forResource: "awesome", ofType: "wav")!)
         do {
             //print("Playing: \(sound)")
-            awesome = try AVAudioPlayer(contentsOfURL: sound)
+            awesome = try AVAudioPlayer(contentsOf: sound)
         } catch {
             print("No sound found by URL: \(sound)")
         }
@@ -98,10 +98,10 @@ class AudioHelper {
    
     func playYeahSound()
     {
-        let sound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("yeah", ofType: "wav")!)
+        let sound = URL(fileURLWithPath: Bundle.main.path(forResource: "yeah", ofType: "wav")!)
         do {
             //print("Playing: \(sound)")
-            yeah = try AVAudioPlayer(contentsOfURL: sound)
+            yeah = try AVAudioPlayer(contentsOf: sound)
         } catch {
             print("No sound found by URL: \(sound)")
         }

@@ -10,52 +10,52 @@ import UIKit
 
 class UIPanZoomImageView: UIView
 {
-    private var startTouchPoint:CGPoint?
-    private var pinchRecognizer:UIPinchGestureRecognizer?
-    private var beginPinchScale:CGFloat = 1.0
-    private var imageOffset:CGRect = CGRectMake(0, 0, 1, 1)
-    private var beginImageOffset:CGRect = CGRectMake(0, 0, 1, 1)
+    fileprivate var startTouchPoint:CGPoint?
+    fileprivate var pinchRecognizer:UIPinchGestureRecognizer?
+    fileprivate var beginPinchScale:CGFloat = 1.0
+    fileprivate var imageOffset:CGRect = CGRect(x: 0, y: 0, width: 1, height: 1)
+    fileprivate var beginImageOffset:CGRect = CGRect(x: 0, y: 0, width: 1, height: 1)
     var image:UIImage? {
         didSet {
-            imageOffset = CGRectMake(0.5, 0.5, 0.5, 0.5)
+            imageOffset = CGRect(x: 0.5, y: 0.5, width: 0.5, height: 0.5)
             setNeedsDisplay()
         }
     }
     /**
     The last area the content was drawn
     */
-    private(set) var lastContentArea:CGRect?
+    fileprivate(set) var lastContentArea:CGRect?
     
     required init?(coder:NSCoder) {
         super.init(coder: coder)
         pinchRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(UIPanZoomImageView.handlePinch(_:)))
         addGestureRecognizer(pinchRecognizer!)
-        userInteractionEnabled = true
-        multipleTouchEnabled = false
+        isUserInteractionEnabled = true
+        isMultipleTouchEnabled = false
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
-            startTouchPoint = touch.locationInView(self)
+            startTouchPoint = touch.location(in: self)
             beginImageOffset = imageOffset
         }
     }
     
-    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
-            let currentPoint = touch.locationInView(self)
+            let currentPoint = touch.location(in: self)
             pan(currentPoint)
         }
     }
     
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         /*if let touch = touches.first as? UITouch {
             let currentPoint = touch.locationInView(self)
             pan(currentPoint)
         }*/
     }
     
-    func pan(currentPoint:CGPoint)
+    func pan(_ currentPoint:CGPoint)
     {
         var offset:CGPoint = currentPoint - startTouchPoint!
         offset = offset / self.frame.size
@@ -65,14 +65,14 @@ class UIPanZoomImageView: UIView
         setNeedsDisplay()
     }
     
-    func handlePinch(gestureRecognizer:UIPinchGestureRecognizer)
+    func handlePinch(_ gestureRecognizer:UIPinchGestureRecognizer)
     {
-        if(gestureRecognizer.state == UIGestureRecognizerState.Began)
+        if(gestureRecognizer.state == UIGestureRecognizerState.began)
         {
             beginImageOffset = imageOffset
             beginPinchScale = gestureRecognizer.scale
         }
-        else if(gestureRecognizer.state == UIGestureRecognizerState.Changed)
+        else if(gestureRecognizer.state == UIGestureRecognizerState.changed)
         {
             let scaleDiff = gestureRecognizer.scale - beginPinchScale
             
@@ -84,28 +84,28 @@ class UIPanZoomImageView: UIView
         }
     }
     
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         if(image != nil) {
             var rectAspect:CGRect?
             if(rect.width < rect.height)
             {
-                rectAspect = CGRectMake(0, 0, rect.width / rect.height, 1)
+                rectAspect = CGRect(x: 0, y: 0, width: rect.width / rect.height, height: 1)
             }
             else
             {
-                rectAspect = CGRectMake(0, 0, 1, rect.height / rect.width)
+                rectAspect = CGRect(x: 0, y: 0, width: 1, height: rect.height / rect.width)
             }
             
             var imageCorrection:CGRect?
             if(image!.size.width < image!.size.height)
             {
                 let aspectRatio = image!.size.width / image!.size.height
-                imageCorrection = CGRectMake(0, 0, aspectRatio, 1)
+                imageCorrection = CGRect(x: 0, y: 0, width: aspectRatio, height: 1)
             }
             else
             {
                 let aspectRatio = image!.size.height / image!.size.width
-                imageCorrection = CGRectMake(0, 0, 1, aspectRatio)
+                imageCorrection = CGRect(x: 0, y: 0, width: 1, height: aspectRatio)
             }
         
             imageCorrection!.size = (imageCorrection!.size / rectAspect!.size) * imageOffset.size
@@ -119,7 +119,7 @@ class UIPanZoomImageView: UIView
             let color = UIColor.redColor()
             color.setFill()
             CGContextFillRect(context, updatedRect)*/
-            image?.drawInRect(updatedRect)
+            image?.draw(in: updatedRect)
             UIGraphicsEndImageContext()
             
             lastContentArea = updatedRect

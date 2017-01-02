@@ -60,7 +60,7 @@ class SharedMyInkValues {
     static let EmbeddedFontDataVersion = "3"
     
     static var FontPointSizeToPixelRatio:CGFloat = {
-       return UIScreen.mainScreen().scale
+       return UIScreen.main.scale
     }()
     
     static let MyInkPinkColor = UIColor(red: 0.93, green: 0, blue: 0.45, alpha: 1.0)

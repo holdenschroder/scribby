@@ -10,11 +10,11 @@ import UIKit
 
 class TutorialPhaseOutroController: UIViewController {
     @IBOutlet weak var messageImageView:UIImageView!
-    private var messageImage:UIImage?
+    fileprivate var messageImage:UIImage?
     
     var audioHelper = AudioHelper()
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
 
@@ -22,17 +22,17 @@ class TutorialPhaseOutroController: UIViewController {
         MyInkAnalytics.EndTimedEvent(SharedMyInkValues.kEventTutorialFirstPhrase, parameters: nil)
     }
     
-    func setMessage(image:UIImage) {
+    func setMessage(_ image:UIImage) {
         if messageImageView != nil {
             messageImageView?.image = image
         }
         messageImage = image
     }
     
-    @IBAction func HandleOkBtn(sender: AnyObject) {
+    @IBAction func HandleOkBtn(_ sender: AnyObject) {
         audioHelper.playClickSound()
-        NSUserDefaults.standardUserDefaults().setBool(true, forKey: SharedMyInkValues.kDefaultsUserHasBoarded)
-        presentViewController(UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("NavigationRoot") as UIViewController, animated: true, completion: nil)
+        UserDefaults.standard.set(true, forKey: SharedMyInkValues.kDefaultsUserHasBoarded)
+        present(UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NavigationRoot") as UIViewController, animated: true, completion: nil)
     }
     
     

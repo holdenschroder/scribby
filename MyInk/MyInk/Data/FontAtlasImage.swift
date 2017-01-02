@@ -8,6 +8,30 @@
 
 import UIKit
 import CoreData
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 @objc(FontAtlasImage)
 class FontAtlasImage: NSManagedObject {
@@ -16,12 +40,12 @@ class FontAtlasImage: NSManagedObject {
     @NSManaged var atlas: FontAtlasData
     @NSManaged var glyphs: NSSet
     
-    private var _loadedImage:UIImage?
+    fileprivate var _loadedImage:UIImage?
     var loadedImage:UIImage? {
         get {
             if(_loadedImage == nil) {
-                let fileManager = NSFileManager.defaultManager()
-                let imageData = fileManager.contentsAtPath(fullFilePath.path!)
+                let fileManager = FileManager.default
+                let imageData = fileManager.contents(atPath: fullFilePath.path)
                 if(imageData != nil)
                 {
                     _loadedImage = UIImage(data: imageData!)!
@@ -40,22 +64,22 @@ class FontAtlasImage: NSManagedObject {
             return
         }
         
-        let fileManager = NSFileManager.defaultManager()
+        let fileManager = FileManager.default
         let fullFilePath = self.fullFilePath
         
-        if(fileManager.fileExistsAtPath(fullFilePath.path!) == false && fullFilePath.pathComponents?.count > 0)
+        if(fileManager.fileExists(atPath: fullFilePath.path) == false && fullFilePath.pathComponents.count > 0)
         {
-            let filepathComponents = fullFilePath.pathComponents!
+            let filepathComponents = fullFilePath.pathComponents
             var directoryPath = ""
             for index in 0...(filepathComponents.count - 2) {
                 directoryPath += "\(filepathComponents[index])/"
             }
             
-            let fileManagerError:NSErrorPointer = NSErrorPointer()
+            let fileManagerError:NSErrorPointer? = nil
             do {
-                try fileManager.createDirectoryAtPath(directoryPath, withIntermediateDirectories: true, attributes: nil)
+                try fileManager.createDirectory(atPath: directoryPath, withIntermediateDirectories: true, attributes: nil)
             } catch let error as NSError {
-                fileManagerError.memory = error
+                fileManagerError??.pointee = error
             }
             
             if(fileManagerError != nil)
@@ -65,7 +89,7 @@ class FontAtlasImage: NSManagedObject {
         }
         
         let atlasData = UIImagePNGRepresentation(_loadedImage!)
-        if(fileManager.createFileAtPath(fullFilePath.path!, contents: atlasData, attributes: nil)) {
+        if(fileManager.createFile(atPath: fullFilePath.path, contents: atlasData, attributes: nil)) {
             print("\(fullFilePath) Atlas Saved Successfully!")
         }
         else
@@ -74,20 +98,20 @@ class FontAtlasImage: NSManagedObject {
         }
     }
     
-    var fullFilePath:NSURL {
+    var fullFilePath:URL {
         get {
-            var url:NSURL!
+            var url:URL!
             if filepath.hasPrefix(SharedMyInkValues.EmbeddedAtlasDirectory) {
-                url = NSBundle.mainBundle().URLForResource(SharedMyInkValues.EmbeddedAtlasURL, withExtension: "png")
+                url = Bundle.main.url(forResource: SharedMyInkValues.EmbeddedAtlasURL, withExtension: "png")
             }
             else {
                 let path = CoreDataHelper.saveDirectory
                 var modifiedFilePath:String = ""
-                let pathComponents = filepath.componentsSeparatedByString("/")
+                let pathComponents = filepath.components(separatedBy: "/")
                 for partIndex in 0..<pathComponents.count {
                     modifiedFilePath += pathComponents[partIndex] + "/"
                 }
-                url = path.URLByAppendingPathComponent(modifiedFilePath)
+                url = path.appendingPathComponent(modifiedFilePath)
             }
             return url
         }

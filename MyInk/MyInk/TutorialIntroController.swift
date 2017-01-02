@@ -12,7 +12,7 @@ class TutorialIntroController: UIViewController {
     
     var audioHelper = AudioHelper()
     
-    @IBAction func playSound(sender:AnyObject) {
+    @IBAction func playSound(_ sender:AnyObject) {
         audioHelper.playClickSound()
     }
     
