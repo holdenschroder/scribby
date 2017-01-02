@@ -110,9 +110,9 @@ class LibraryItemController:UIViewController, UIImagePickerControllerDelegate, U
         }
         
         let ctx:CGContextRef = CGBitmapContextCreate(nil, Int(imageSize.width), Int(imageSize.height),
-            CGImageGetBitsPerComponent(image.CGImage), 0,
-            CGImageGetColorSpace(image.CGImage),
-            CGImageGetBitmapInfo(image.CGImage).rawValue)!;
+            CGImageGetBitsPerComponent(image.CGImage!), 0,
+            CGImageGetColorSpace(image.CGImage!)!,
+            CGImageGetBitmapInfo(image.CGImage!).rawValue)!;
         CGContextConcatCTM(ctx, imageTransform);
         switch (imageOrientation) {
         case .Left:
@@ -122,10 +122,10 @@ class LibraryItemController:UIViewController, UIImagePickerControllerDelegate, U
         case .Right:
             fallthrough
         case .RightMirrored:
-            CGContextDrawImage(ctx, CGRectMake(0,0,imageSize.height,imageSize.width), image.CGImage);
+            CGContextDrawImage(ctx, CGRectMake(0,0,imageSize.height,imageSize.width), image.CGImage!);
             
         default:
-            CGContextDrawImage(ctx, CGRectMake(0,0,imageSize.width,imageSize.height), image.CGImage);
+            CGContextDrawImage(ctx, CGRectMake(0,0,imageSize.width,imageSize.height), image.CGImage!);
         }
         
         let cgimg = CGBitmapContextCreateImage(ctx);

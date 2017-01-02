@@ -239,7 +239,7 @@
 		58CE61E81B7AB8A900730D32 /* MyInk.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyInk.xcdatamodel; sourceTree = "<group>"; };
 		58CE61EA1B7ABBF700730D32 /* MyInk 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "MyInk 2.xcdatamodel"; sourceTree = "<group>"; };
 		58CE61F11B7ACF6400730D32 /* MainMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuController.swift; sourceTree = "<group>"; };
-		58DF906A1B4F1C9600E36BB1 /* MyInk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyInk.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		58DF906A1B4F1C9600E36BB1 /* Scribby.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scribby.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58DF906E1B4F1C9600E36BB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		58DF906F1B4F1C9600E36BB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		58DF90741B4F1C9600E36BB1 /* CaptureWordSelectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureWordSelectController.swift; sourceTree = "<group>"; };
@@ -600,7 +600,7 @@
 		58DF906B1B4F1C9600E36BB1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				58DF906A1B4F1C9600E36BB1 /* MyInk.app */,
+				58DF906A1B4F1C9600E36BB1 /* Scribby.app */,
 				58DF90821B4F1C9700E36BB1 /* MyInkTests.xctest */,
 				58CC72C21B71412100A4AB62 /* MyInkKeyboard.appex */,
 			);
@@ -694,9 +694,9 @@
 			productReference = 58CC72C21B71412100A4AB62 /* MyInkKeyboard.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		58DF90691B4F1C9600E36BB1 /* MyInk */ = {
+		58DF90691B4F1C9600E36BB1 /* Scribby */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 58DF908C1B4F1C9700E36BB1 /* Build configuration list for PBXNativeTarget "MyInk" */;
+			buildConfigurationList = 58DF908C1B4F1C9700E36BB1 /* Build configuration list for PBXNativeTarget "Scribby" */;
 			buildPhases = (
 				58DF90661B4F1C9600E36BB1 /* Sources */,
 				58DF90671B4F1C9600E36BB1 /* Frameworks */,
@@ -709,9 +709,9 @@
 			dependencies = (
 				58CC72E41B71A5E200A4AB62 /* PBXTargetDependency */,
 			);
-			name = MyInk;
+			name = Scribby;
 			productName = MyInk;
-			productReference = 58DF906A1B4F1C9600E36BB1 /* MyInk.app */;
+			productReference = 58DF906A1B4F1C9600E36BB1 /* Scribby.app */;
 			productType = "com.apple.product-type.application";
 		};
 		58DF90811B4F1C9700E36BB1 /* MyInkTests */ = {
@@ -746,6 +746,7 @@
 					58CC72C11B71412100A4AB62 = {
 						CreatedOnToolsVersion = 6.4;
 						DevelopmentTeam = 8YDH8TXREA;
+						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -758,6 +759,7 @@
 					58DF90691B4F1C9600E36BB1 = {
 						CreatedOnToolsVersion = 6.4;
 						DevelopmentTeam = 8YDH8TXREA;
+						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -772,6 +774,8 @@
 					};
 					58DF90811B4F1C9700E36BB1 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = 2GEFGM2S2P;
+						LastSwiftMigration = 0800;
 						TestTargetID = 58DF90691B4F1C9600E36BB1;
 					};
 				};
@@ -789,7 +793,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				58DF90691B4F1C9600E36BB1 /* MyInk */,
+				58DF90691B4F1C9600E36BB1 /* Scribby */,
 				58DF90811B4F1C9700E36BB1 /* MyInkTests */,
 				58CC72C11B71412100A4AB62 /* MyInkKeyboard */,
 			);
@@ -965,7 +969,7 @@
 		};
 		58DF90841B4F1C9700E36BB1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 58DF90691B4F1C9600E36BB1 /* MyInk */;
+			target = 58DF90691B4F1C9600E36BB1 /* Scribby */;
 			targetProxy = 58DF90831B4F1C9700E36BB1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -996,6 +1000,7 @@
 				CODE_SIGN_ENTITLEMENTS = MyInkKeyboard/MyInkKeyboard.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 8YDH8TXREA;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1011,6 +1016,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 2.3;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1020,6 +1027,7 @@
 				CODE_SIGN_ENTITLEMENTS = MyInkKeyboard/MyInkKeyboard.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 8YDH8TXREA;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1031,6 +1039,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 2.3;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -1055,6 +1065,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 2GEFGM2S2P;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1103,6 +1114,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 2GEFGM2S2P;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1129,12 +1141,14 @@
 				CODE_SIGN_ENTITLEMENTS = MyInk/MyInk.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 8YDH8TXREA;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/MyInk",
 				);
 				INFOPLIST_FILE = MyInk/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1144,6 +1158,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = MyInk/bridging_header.h;
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1155,12 +1170,14 @@
 				CODE_SIGN_ENTITLEMENTS = MyInk/MyInk.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 8YDH8TXREA;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/MyInk",
 				);
 				INFOPLIST_FILE = MyInk/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1170,6 +1187,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = MyInk/bridging_header.h;
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -1187,6 +1205,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.galenryder.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyInk.app/MyInk";
 			};
 			name = Debug;
@@ -1200,6 +1219,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.galenryder.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyInk.app/MyInk";
 			};
 			name = Release;
@@ -1225,7 +1245,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		58DF908C1B4F1C9700E36BB1 /* Build configuration list for PBXNativeTarget "MyInk" */ = {
+		58DF908C1B4F1C9700E36BB1 /* Build configuration list for PBXNativeTarget "Scribby" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				58DF908D1B4F1C9700E36BB1 /* Debug */,

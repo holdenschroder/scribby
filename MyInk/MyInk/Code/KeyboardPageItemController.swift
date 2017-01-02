@@ -41,7 +41,7 @@ class KeyboardPageItemController: UIViewController {
         xBtn.layer.borderColor = UIColor.whiteColor().CGColor
         xBtn.layer.backgroundColor = UIColor.blackColor().CGColor
         xBtn.layer.masksToBounds = true
-        xBtn.addTarget(self, action: "HandleXBtn", forControlEvents: .TouchUpInside)
+        xBtn.addTarget(self, action: #selector(KeyboardPageItemController.HandleXBtn), forControlEvents: .TouchUpInside)
         self.view.addSubview(xBtn)
     }
     

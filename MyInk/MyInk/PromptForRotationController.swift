@@ -15,7 +15,7 @@ class PromptForRotationController: UIViewController {
         super.viewDidAppear(animated)
         
         if UIDevice.currentDevice().orientation.isLandscape  {
-            _delayTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "showTutorialScreen:", userInfo: nil, repeats: false)
+            _delayTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(PromptForRotationController.showTutorialScreen(_:)), userInfo: nil, repeats: false)
         }
     }
     
@@ -23,7 +23,7 @@ class PromptForRotationController: UIViewController {
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
         
         if UIDevice.currentDevice().orientation.isLandscape  {
-            _delayTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "showTutorialScreen:", userInfo: nil, repeats: false)
+            _delayTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(PromptForRotationController.showTutorialScreen(_:)), userInfo: nil, repeats: false)
         }
     }
     

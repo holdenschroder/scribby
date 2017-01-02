@@ -192,7 +192,7 @@ class CaptureWordSelectController: UIViewController, UIImagePickerControllerDele
         let newImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         
-        return newImage
+        return newImage!
     }
     
     func GetPixelColor(view:UIImageView, position:CGPoint) -> CIColor {
@@ -232,7 +232,7 @@ class CaptureWordSelectController: UIViewController, UIImagePickerControllerDele
         var b:CGFloat = 0
         var a:CGFloat = 1
         
-        let pixelData = CGDataProviderCopyData(CGImageGetDataProvider(image.CGImage))
+        let pixelData = CGDataProviderCopyData(CGImageGetDataProvider(image.CGImage!)!)
         let data: UnsafePointer<UInt8> = CFDataGetBytePtr(pixelData)
     
         if(imgPos.x > -1 && imgPos.x < imgRect.width && imgPos.y > -1 && imgPos.y < imgRect.height) {

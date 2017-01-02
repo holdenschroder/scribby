@@ -20,24 +20,24 @@ class KeyboardViewController: UIInputViewController {
     }
     
     @IBOutlet var nextKeyboardButton: UIButton!
-    var keyboardView:UIView!
-    var rowViews:[UIView]!
-    var atlas:FontAtlas?
-    var fallbackAtlas:FontAtlas?
-    lazy var coreData:CoreDataHelper = {
+    var keyboardView: UIView!
+    var rowViews: [UIView]!
+    var atlas: FontAtlas?
+    var fallbackAtlas: FontAtlas?
+    lazy var coreData: CoreDataHelper = {
         return CoreDataHelper()
     }()
-    private var _messageRenderer:FontMessageRenderer?
-    private var _lastKeyPressDate:NSDate?
-    private var _lastKeyValue:String?
+    private var _messageRenderer: FontMessageRenderer?
+    private var _lastKeyPressDate: NSDate?
+    private var _lastKeyValue: String?
     private var _baseViewConstraints = [NSLayoutConstraint]()
-    private var _currentKeyboardLayout:KeyboardLayouts = .alpha
-    private var _capitilization:CapitilizationState = .lowercase
-    private var _lastKeyboardBounds:CGRect?
-    private var _hasFirstLayout:Bool = false
-    private var _loadedImages:[String:UIImage] = [:]
-    private var _textProxyConsumer:TextProxyConsumer!
-    private var _shiftButton:UIMyInkKey?
+    private var _currentKeyboardLayout: KeyboardLayouts = .alpha
+    private var _capitilization: CapitilizationState = .lowercase
+    private var _lastKeyboardBounds: CGRect?
+    private var _hasFirstLayout: Bool = false
+    private var _loadedImages: [String:UIImage] = [:]
+    private var _textProxyConsumer: TextProxyConsumer!
+    private var _shiftButton: UIMyInkKey?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -128,8 +128,8 @@ class KeyboardViewController: UIInputViewController {
         var buttonTitles1, buttonTitles2, buttonTitles3, buttonTitles4:[AnyObject]!
         
         let deleteKey = UIMyInkKey(title: "⌫", relativeWidth: 0.15)
-        deleteKey.addTarget(self, action: "handleDeleteKeyPressed:", forControlEvents: .TouchDown)
-        deleteKey.addTarget(self, action: "handleDeleteKeyReleased:", forControlEvents: .TouchUpInside)
+        deleteKey.addTarget(self, action: #selector(KeyboardViewController.handleDeleteKeyPressed(_:)), forControlEvents: .TouchDown)
+        deleteKey.addTarget(self, action: #selector(KeyboardViewController.handleDeleteKeyReleased(_:)), forControlEvents: .TouchUpInside)
         
         switch layout {
         case .alpha:
@@ -137,7 +137,7 @@ class KeyboardViewController: UIInputViewController {
             if _capitilization == .uppercase {
                 shiftKey.keyData?.controlState = UIControlState.Selected
             }
-            shiftKey.addTarget(self, action: "handleShiftTap:event:", forControlEvents: .TouchUpInside)
+            shiftKey.addTarget(self, action: #selector(KeyboardViewController.handleShiftTap(_:event:)), forControlEvents: .TouchUpInside)
             self._shiftButton = shiftKey
             
             buttonTitles1 = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"]
@@ -184,7 +184,7 @@ class KeyboardViewController: UIInputViewController {
         _lastKeyboardBounds = bounds
     }
     
-    func setupButton(button:UIMyInkKey) {
+    func setupButton(button: UIMyInkKey) {
         button.frame = CGRectMake(0, 0, 20, 20)
         button.sizeToFit()
         button.titleLabel!.font = UIFont.systemFontOfSize(20)
@@ -194,24 +194,24 @@ class KeyboardViewController: UIInputViewController {
         button.layer.cornerRadius = 5
     }
     
-    func createRow(width:CGFloat) -> UIView {
+    func createRow(width: CGFloat) -> UIView {
         let view = UIView(frame: CGRectMake(0, 0, width, 50))
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }
     
     func populateRowWithButtons(rowView: UIView, buttonData: [AnyObject]) {
-        var buttons:[UIButton] = []
+        var buttons: [UIButton] = []
         
         var firstUnreservedSizeItem:UIButton?
         for data in buttonData {
-            var button:UIMyInkKey?
-            var widthConstraint:NSLayoutConstraint?
+            var button: UIMyInkKey?
+            var widthConstraint: NSLayoutConstraint?
             
             if let dataString = data as? String {
                 button = UIMyInkKey(title: dataString, relativeWidth: nil)
                 setupButton(button!)
-                button!.addTarget(self, action: "didTapButton:", forControlEvents: .TouchUpInside)
+                button!.addTarget(self, action: #selector(KeyboardViewController.didTapButton(_:)), forControlEvents: .TouchUpInside)
                 button!.setTitle(dataString, forState: .Normal)
             }
             else if let buttonData = data as? UIMyInkKey {
@@ -219,7 +219,7 @@ class KeyboardViewController: UIInputViewController {
                 setupButton(button!)
                 //We should add the default target if nothing is already added to this button
                 if button?.allTargets().count == 0 && button?.gestureRecognizers == nil {
-                    button?.addTarget(self, action: "didTapButton:", forControlEvents: .TouchUpInside)
+                    button?.addTarget(self, action: #selector(KeyboardViewController.didTapButton(_:)), forControlEvents: .TouchUpInside)
                 }
                 if button!.keyData?.relativeWidth != nil {
                     widthConstraint = NSLayoutConstraint(item: button!, attribute: .Width, relatedBy: .Equal, toItem: rowView, attribute: .Width, multiplier: button!.keyData!.relativeWidth!, constant: 0)
@@ -360,7 +360,7 @@ class KeyboardViewController: UIInputViewController {
         let button = UIButton(type: .System)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Okay", forState: UIControlState.Normal)
-        button.addTarget(self, action: "didTapAlertButton:", forControlEvents: UIControlEvents.TouchUpInside)
+        button.addTarget(self, action: #selector(KeyboardViewController.didTapAlertButton(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         button.backgroundColor = UIColor(white: 1.0, alpha: 1.0)
         button.layer.cornerRadius = 10
         rowViews = [label, button]
@@ -572,7 +572,7 @@ class KeyboardViewController: UIInputViewController {
         _lastKeyPressDate = NSDate()
         _lastKeyValue = "⌫"
         
-        self.deleteTimer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "handleDeleteKeyHeld:", userInfo: nil, repeats: false)
+        self.deleteTimer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: #selector(KeyboardViewController.handleDeleteKeyHeld(_:)), userInfo: nil, repeats: false)
     }
     
     func handleDeleteKeyReleased(sender:AnyObject?) {
@@ -589,7 +589,7 @@ class KeyboardViewController: UIInputViewController {
             AudioServicesPlaySystemSound(0x450);
         }
         self.deleteTimer?.invalidate()
-        self.deleteTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "handleDeleteKeyHeldLong:", userInfo: nil, repeats: true)
+        self.deleteTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(KeyboardViewController.handleDeleteKeyHeldLong(_:)), userInfo: nil, repeats: true)
     }
     
     func handleDeleteKeyHeldLong(timer:NSTimer) {
@@ -624,8 +624,7 @@ class KeyboardViewController: UIInputViewController {
         if(message.characters.count > 0) {
             //Height is expected to be cropped shorter, possibly the width also if the messages are short. If the message is much longer then it cannot
             //be viewed as a preview in the Messages app
-            let messageImage = _messageRenderer!.renderMessage(message, imageSize: CGSize(width: 280, height: 4096), lineHeight:18, backgroundColor: UIColor.whiteColor(), showDebugInfo: false)
-            
+            let messageImage = _messageRenderer!.renderMessage(message, imageSize: CGSize(width: 440, height: 4096), lineHeight: 32, backgroundColor: beigeMessageBackgroundColor, showDebugInfo: false, enforceAspectRatio: true)
             if messageImage != nil {
                 UIPasteboard.generalPasteboard().image = messageImage
                 

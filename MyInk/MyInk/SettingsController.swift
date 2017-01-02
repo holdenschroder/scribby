@@ -33,11 +33,7 @@ class SettingsController: UIViewController {
     
     func readWriteVersion() {
         if let version = NSBundle.mainBundle().infoDictionary?["CFBundleShortVersionString"] as? String {
-            if let build = NSBundle.mainBundle().infoDictionary?["CFBundleVersion"] as? String {
-                let info = "Version: \(version) Build: (\(build))"
-                print(info)
-                versionLabel.text = info
-            }
+            versionLabel.text = "Version \(version)"
         }
     }
     

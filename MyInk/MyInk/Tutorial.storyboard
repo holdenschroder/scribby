@@ -1,41 +1,44 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wpD-Sb-GnM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="wpD-Sb-GnM">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="EarOne_Handwriting.ttf">
+        <array key="EarOne_Handwriting.ttf">
             <string>MyHandwriting</string>
-        </mutableArray>
+        </array>
     </customFonts>
     <scenes>
         <!--Phrase-->
         <scene sceneID="44A-LX-vv3">
             <objects>
-                <viewController storyboardIdentifier="TutorialPhrase" title="Phrase" id="Xpz-K4-Xpf" customClass="TutorialPhraseController" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TutorialPhrase" title="Phrase" id="Xpz-K4-Xpf" customClass="TutorialPhraseController" customModule="Scribby" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hKf-ua-a7H"/>
                         <viewControllerLayoutGuide type="bottom" id="9Z5-gF-jXL"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="rZK-JP-L7T">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xzt-pt-WSD" userLabel="Rendered Image View">
-                                <rect key="frame" x="20" y="20" width="560" height="80"/>
+                                <rect key="frame" x="20" y="34" width="374" height="100"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="RmI-bk-Kc2"/>
+                                    <constraint firstAttribute="height" constant="100" id="RmI-bk-Kc2"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YnH-fm-1lr" userLabel="Container View">
-                                <rect key="frame" x="20" y="150" width="560" height="300"/>
+                                <rect key="frame" x="20" y="184" width="374" height="368"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="TopLeft" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="MNm-Va-bKP">
-                                        <rect key="frame" x="0.0" y="0.0" width="560" height="300"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="368"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <edgeInsets key="layoutMargins" top="0.0" left="8" bottom="0.0" right="8"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="5" minimumInteritemSpacing="5" id="8yf-TS-hyI">
                                             <size key="itemSize" width="200" height="200"/>
@@ -44,8 +47,8 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CharacterCapture" id="UHX-3N-xf9" customClass="TutorialCharacterCell" customModule="MyInk" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="50" width="200" height="200"/>
+                                            <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CharacterCapture" id="UHX-3N-xf9" customClass="TutorialCharacterCell" customModule="Scribby" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="84" width="200" height="200"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                     <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
@@ -57,10 +60,10 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="24" translatesAutoresizingMaskIntoConstraints="NO" id="6dF-WI-EbK" userLabel="Character Label">
                                                             <rect key="frame" x="0.0" y="-12" width="200" height="175"/>
                                                             <fontDescription key="fontDescription" name="MyHandwriting" family="My Handwriting" pointSize="300"/>
-                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CUk-xM-zLA" customClass="UIDrawCaptureView" customModule="MyInk" customModuleProvider="target">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CUk-xM-zLA" customClass="UIDrawCaptureView" customModule="Scribby" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="topLinePercent">
@@ -75,9 +78,8 @@
                                                             </connections>
                                                         </view>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="G3k-lm-Q2b" firstAttribute="top" secondItem="UHX-3N-xf9" secondAttribute="topMargin" constant="-8" id="1Lc-2s-oc0"/>
                                                     <constraint firstAttribute="trailingMargin" secondItem="CUk-xM-zLA" secondAttribute="trailing" constant="-8" id="2aJ-AN-mS8"/>
@@ -106,7 +108,7 @@
                                         </connections>
                                     </collectionView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="MNm-Va-bKP" firstAttribute="leading" secondItem="YnH-fm-1lr" secondAttribute="leading" id="Nxs-iR-rKN"/>
                                     <constraint firstAttribute="trailing" secondItem="MNm-Va-bKP" secondAttribute="trailing" id="WnP-Wg-nET"/>
@@ -115,33 +117,33 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Draw your characters within the guidelines" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="oSm-jv-tos" userLabel="Instructions Label">
-                                <rect key="frame" x="20" y="490" width="560" height="56"/>
+                                <rect key="frame" x="20" y="626" width="374" height="56"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
-                                <color key="textColor" red="0.80392156859999997" green="0.090196078430000007" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.80392156859999997" green="0.090196078430000007" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hwo-Mq-uGK">
-                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="692" width="414" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="gmN-we-5kl"/>
                                 </constraints>
                                 <items>
                                     <barButtonItem title="Skip" width="40" id="hbP-sa-RoK">
-                                        <color key="tintColor" red="0.80392156859999997" green="0.090196078430000007" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" red="0.80392156859999997" green="0.090196078430000007" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <action selector="HandleSkipBtn:" destination="Xpz-K4-Xpf" id="xLj-FQ-cYs"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="jQu-Wn-kvY"/>
                                     <barButtonItem title=" Clear" id="sqc-AW-je8">
-                                        <color key="tintColor" red="0.80392156859999997" green="0.090196078430000007" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" red="0.80392156859999997" green="0.090196078430000007" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <action selector="HandleClearBtn:" destination="Xpz-K4-Xpf" id="ZZp-mf-R4D"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="c1e-J5-0WO"/>
                                     <barButtonItem title="Assign" width="60" id="Xhz-uB-Z0O">
-                                        <color key="tintColor" red="0.80392156859999997" green="0.090196078430000007" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" red="0.80392156859999997" green="0.090196078430000007" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <action selector="HandleNextBtn:" destination="Xpz-K4-Xpf" id="Vqw-id-iQY"/>
                                         </connections>
@@ -149,23 +151,23 @@
                                 </items>
                             </toolbar>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E5I-r7-hsH" userLabel="YesNo View">
-                                <rect key="frame" x="250" y="458" width="100" height="50"/>
+                                <rect key="frame" x="157" y="560" width="100" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cOr-H6-zX4" userLabel="No Button">
                                         <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
-                                        <color key="tintColor" red="0.81568627449999997" green="0.078431372550000003" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" red="0.81568627449999997" green="0.078431372550000003" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" image="button_no"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c1b-u6-8CE" userLabel="Yes Button">
                                         <rect key="frame" x="56" y="0.0" width="44" height="44"/>
-                                        <color key="tintColor" red="0.81568627449999997" green="0.078431372550000003" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" red="0.81568627449999997" green="0.078431372550000003" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" image="button_yes"/>
                                         <connections>
                                             <action selector="HandleNextBtn:" destination="Xpz-K4-Xpf" eventType="touchUpInside" id="STN-4P-daa"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="cOr-H6-zX4" firstAttribute="centerY" secondItem="E5I-r7-hsH" secondAttribute="centerY" constant="-3" id="63m-FS-55P"/>
                                     <constraint firstItem="cOr-H6-zX4" firstAttribute="leading" secondItem="E5I-r7-hsH" secondAttribute="leading" id="ALK-Kd-wNb"/>
@@ -176,7 +178,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="E5I-r7-hsH" firstAttribute="centerX" secondItem="rZK-JP-L7T" secondAttribute="centerX" id="0bl-J4-7Bi"/>
                             <constraint firstItem="YnH-fm-1lr" firstAttribute="centerY" secondItem="rZK-JP-L7T" secondAttribute="centerY" id="1Bd-Dw-9CJ"/>
@@ -217,20 +219,20 @@
         <!--Intro-->
         <scene sceneID="dsS-Bi-zMf">
             <objects>
-                <viewController storyboardIdentifier="TutorialIntro" title="Intro" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wpD-Sb-GnM" customClass="TutorialIntroController" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TutorialIntro" title="Intro" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wpD-Sb-GnM" customClass="TutorialIntroController" customModule="Scribby" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Pqv-6S-NgG"/>
                         <viewControllerLayoutGuide type="bottom" id="SHR-Ri-mF5"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="rKF-8F-dNW">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2R5-36-yD9">
-                                <rect key="frame" x="280" y="445" width="41" height="48"/>
+                                <rect key="frame" x="186.66666666666666" y="581" width="41" height="48"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="30"/>
                                 <state key="normal" title="OK">
-                                    <color key="titleColor" red="0.80392156859999997" green="0.090196078430000007" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.80392156859999997" green="0.090196078430000007" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="playSound:" destination="wpD-Sb-GnM" eventType="touchUpInside" id="zUr-nc-pbb"/>
@@ -238,13 +240,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We are going to start you off creating your personal font. To do this we are going to present you with a short phrase." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="VCB-T0-Yoa">
-                                <rect key="frame" x="50" y="175" width="500" height="250"/>
+                                <rect key="frame" x="50" y="175" width="314" height="386"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="24"/>
-                                <color key="textColor" red="0.80392156859999997" green="0.090196078430000007" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.80392156859999997" green="0.090196078430000007" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="2R5-36-yD9" firstAttribute="centerX" secondItem="rKF-8F-dNW" secondAttribute="centerX" id="RQ7-95-4iu"/>
                             <constraint firstItem="VCB-T0-Yoa" firstAttribute="leading" secondItem="rKF-8F-dNW" secondAttribute="leadingMargin" constant="30" id="agQ-bW-Rui"/>
@@ -268,40 +270,40 @@
         <!--Outro-->
         <scene sceneID="9zq-3V-aPC">
             <objects>
-                <viewController storyboardIdentifier="PostTutorialScreen" title="Outro" useStoryboardIdentifierAsRestorationIdentifier="YES" id="962-V9-fvJ" customClass="TutorialPhaseOutroController" customModule="MyInk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PostTutorialScreen" title="Outro" useStoryboardIdentifierAsRestorationIdentifier="YES" id="962-V9-fvJ" customClass="TutorialPhaseOutroController" customModule="Scribby" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mHT-Yr-9AS"/>
                         <viewControllerLayoutGuide type="bottom" id="TPx-bn-mnV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="DXH-Vw-Ql2">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZvX-gf-veQ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZvX-gf-veQ">
                                 <rect key="frame" x="20" y="28" width="560" height="180"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="2Am-e2-zrN">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="2Am-e2-zrN">
                                 <rect key="frame" x="50" y="216" width="500" height="250"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="250" id="sbo-rP-e7w"/>
                                 </constraints>
                                 <string key="text">Congratulations, you have created the basics of your first font. You can now try capturing more characters, composing messages or install the keyboard to bring MyInk into your favorite messaging apps.</string>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="24"/>
-                                <color key="textColor" red="0.80392156859999997" green="0.090196078430000007" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.80392156859999997" green="0.090196078430000007" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4DD-d1-gtb">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4DD-d1-gtb">
                                 <rect key="frame" x="280" y="474" width="41" height="48"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="30"/>
                                 <state key="normal" title="OK">
-                                    <color key="titleColor" red="0.80392156859999997" green="0.090196078430000007" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.80392156859999997" green="0.090196078430000007" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="HandleOkBtn:" destination="962-V9-fvJ" eventType="touchUpInside" id="He3-g8-xQz"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="leadingMargin" secondItem="ZvX-gf-veQ" secondAttribute="leading" id="DPf-3w-Zup"/>
                             <constraint firstItem="2Am-e2-zrN" firstAttribute="top" secondItem="mHT-Yr-9AS" secondAttribute="bottom" constant="8" id="FRA-a0-gWe"/>

@@ -26,14 +26,14 @@ class TextProxyConsumer:NSObject {
         
         lastLine = (proxy.documentContextBeforeInput ?? "") + (proxy.documentContextAfterInput ?? "")
         proxy.adjustTextPositionByCharacterOffset((proxy.documentContextAfterInput ?? "").characters.count + 1)
-        timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "handleForwardTimer:", userInfo: nil, repeats: true)
+        timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(TextProxyConsumer.handleForwardTimer(_:)), userInfo: nil, repeats: true)
     }
     
     func handleForwardTimer(timer:NSTimer) {
         let currentLine = (proxy.documentContextBeforeInput ?? "") + (proxy.documentContextAfterInput ?? "")
         if lastLine == currentLine {
             self.timer!.invalidate()
-            self.timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "handleBackwardTimer:", userInfo: nil, repeats: true)
+            self.timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(TextProxyConsumer.handleBackwardTimer(_:)), userInfo: nil, repeats: true)
         }
         else {
             lastLine = currentLine
@@ -45,7 +45,7 @@ class TextProxyConsumer:NSObject {
         if !proxy.hasText() {
             self.timer!.invalidate()
             //We need to wait a bit longer to confirm
-            self.timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "handleConfirmTimer:", userInfo: nil, repeats: false)
+            self.timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(TextProxyConsumer.handleConfirmTimer(_:)), userInfo: nil, repeats: false)
         }
         else
         {
@@ -55,7 +55,7 @@ class TextProxyConsumer:NSObject {
             var charactersRemaining = currentText.characters.count
             while charactersRemaining > 0 {
                 proxy.deleteBackward()
-                --charactersRemaining
+                charactersRemaining -= 1
             }
         }
     }
@@ -72,7 +72,7 @@ class TextProxyConsumer:NSObject {
         }
         else //Oh, more text, lets get this thing going again
         {
-            self.timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "handleBackwardTimer:", userInfo: nil, repeats: true)
+            self.timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(TextProxyConsumer.handleBackwardTimer(_:)), userInfo: nil, repeats: true)
         }
     }
 }

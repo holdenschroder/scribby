@@ -13,7 +13,7 @@ class TapToContinueController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let gesture = UITapGestureRecognizer(target: self, action: "handleTap:")
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(TapToContinueController.handleTap(_:)))
         view.addGestureRecognizer(gesture)
     }
     

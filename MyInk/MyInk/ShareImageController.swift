@@ -13,10 +13,11 @@ class ShareImageController: UIViewController, UIAlertViewDelegate {
     
     @IBOutlet weak var instagramBtn: UIBarButtonItem!
     @IBOutlet weak var twitterBtn: UIBarButtonItem!
-    @IBOutlet var imageView:UIImageView?
-    private var _image:UIImage?
+    @IBOutlet var imageView: UIImageView!
+    private var _image: UIImage?
     private var _documentController:UIDocumentInteractionController!
     var audioHelper = AudioHelper()
+    @IBOutlet weak var scrollView: UIScrollView!
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -37,6 +38,8 @@ class ShareImageController: UIViewController, UIAlertViewDelegate {
         twitterBtn.setBackButtonBackgroundImage(UIImage(named:"icon_twitter.png")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), forState: .Normal, barMetrics: .Default)
         
         MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventScreenLoadedShareImage)
+
+        setUpScrollView()
     }
     
     func loadImage(image:UIImage) {
@@ -50,6 +53,12 @@ class ShareImageController: UIViewController, UIAlertViewDelegate {
             activityView.completionWithItemsHandler = HandleActivityViewCompleted
             presentViewController(activityView, animated: true, completion: nil)
         }
+    }
+
+    private func setUpScrollView() {
+        scrollView.minimumZoomScale = 1.0
+        scrollView.maximumZoomScale = 6.0
+        scrollView.contentSize = imageView.bounds.size
     }
     
     @IBAction func ShareToInstagram(sender:UIBarButtonItem) {
@@ -66,7 +75,7 @@ class ShareImageController: UIViewController, UIAlertViewDelegate {
         UIGraphicsBeginImageContext(instagramSize)
         let graphicsContext = UIGraphicsGetCurrentContext()
         UIColor.whiteColor().setFill()
-        CGContextFillRect(graphicsContext, CGRect(origin: CGPointZero, size: instagramSize))
+        CGContextFillRect(graphicsContext!, CGRect(origin: CGPointZero, size: instagramSize))
         if _image?.size.width > _image?.size.height {
             let ratioAdjustment = _image!.size.height / _image!.size.width
             _image?.drawInRect(CGRectMake(0, instagramSize.height * ((1 - ratioAdjustment) * 0.5), instagramSize.width, instagramSize.width * ratioAdjustment))
@@ -81,8 +90,8 @@ class ShareImageController: UIViewController, UIAlertViewDelegate {
         
         //Save the image
         var filePathURL = NSURL(fileURLWithPath: NSTemporaryDirectory())
-        filePathURL = filePathURL.URLByAppendingPathComponent("instagram.igo")
-        let imageData = UIImageJPEGRepresentation(instagramImage, 100)
+        filePathURL = filePathURL.URLByAppendingPathComponent("instagram.igo")!
+        let imageData = UIImageJPEGRepresentation(instagramImage!, 100)
         if(imageData!.writeToFile(filePathURL.path!, atomically: true)) {
             print("\(filePathURL) Instagram Image Saved Successfully!")
             _documentController = UIDocumentInteractionController(URL: filePathURL)
@@ -124,5 +133,11 @@ class ShareImageController: UIViewController, UIAlertViewDelegate {
         {
             Flurry.logError(SharedMyInkValues.kEventShareMessage, message: "Error while using UIActivityViewController", error: error)
         }
+    }
+}
+
+extension ShareImageController: UIScrollViewDelegate {
+    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+        return imageView
     }
 }

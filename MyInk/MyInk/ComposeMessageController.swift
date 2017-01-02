@@ -9,20 +9,22 @@
 import UIKit
 import QuartzCore
 
+let composeMessageTextViewPlaceholder = "Type your message here"
+
 class ComposeMessageController: UIViewController, UITextViewDelegate {
     
     // MARK: - VARS
     
-    @IBOutlet var textView:UITextView?
-    @IBOutlet var generateButton:UIButton?
+    @IBOutlet var textView: UITextView!
+    @IBOutlet var generateButton: UIButton?
     @IBOutlet weak var pointSizeStepper: UIStepper!
     @IBOutlet weak var fontSizeLabel: UILabel!
     @IBOutlet weak var bottomConstraint:NSLayoutConstraint!
     @IBOutlet weak var propertiesBar: UIView!
     
-    private let _pointSizeOptions:[Float] = [18, 24, 36]
-    private let _pointSizeStrings:[String] = ["Small", "Medium", "Large"]
-    private var _fontMessageRenderer:FontMessageRenderer?
+    private let _pointSizeOptions: [Float] = [18, 24, 36]
+    private let _pointSizeStrings: [String] = ["Small", "Medium", "Large"]
+    private var _fontMessageRenderer: FontMessageRenderer?
     private var _selectedPointSize = 1
     var audioHelper = AudioHelper()
     
@@ -31,11 +33,8 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
                 
-        textView?.delegate = self
-        textView?.text = "Type your message here"
-        textView?.textColor = UIColor.lightGrayColor()
-        generateButton?.enabled = false
-        self.generateButton!.layer.removeAllAnimations()
+        textView.delegate = self
+        setUpPlaceholderAndButton()
 
         propertiesBar.layer.cornerRadius = 3.0
         pointSizeStepper.autorepeat = false
@@ -48,54 +47,60 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
             _fontMessageRenderer = FontMessageRenderer(atlas: currentAtlas!, fallbackAtlas:fallbackAtlas!, watermark: SharedMyInkValues.MyInkWatermark)
         }
         
-        registerForKeyboardNotifications()
         MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventScreenLoadedComposeMessage)
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
+
+        registerForKeyboardNotifications()
     }
-    
+
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        if textView != nil {
-            textView?.text = "Type your message here"
-            textView?.textColor = UIColor.lightGrayColor()
+
+        setUpPlaceholderAndButton()
+        textView.font = textView!.font!.fontWithSize(CGFloat(_pointSizeOptions[_selectedPointSize]))
+        fontSizeLabel.text = String(_pointSizeStrings[_selectedPointSize])
+        UIView.animateWithDuration(0.25, animations: {
+            self.textView.becomeFirstResponder()
+        })
+    }
+
+    private func setUpPlaceholderAndButton() {
+        if (textView.text.characters.count == 0) {
+            textView.text = composeMessageTextViewPlaceholder
+            textView.textColor = UIColor.lightGrayColor()
             generateButton?.enabled = false
             self.generateButton!.layer.removeAllAnimations()
-            textView!.font = textView!.font!.fontWithSize(CGFloat(_pointSizeOptions[_selectedPointSize]))
-            fontSizeLabel.text = String(_pointSizeStrings[_selectedPointSize])
-            UIView.animateWithDuration(0.5, animations: {
-                self.textView?.becomeFirstResponder()
-            })
         }
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         unregisterKeyboardNotifications()
-        UIView.animateWithDuration(0.5, animations: {
-            self.textView?.resignFirstResponder()
+        UIView.animateWithDuration(0.25, animations: {
+            self.textView.resignFirstResponder()
         })
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.destinationViewController is ShareImageController {
             let shareImageController = segue.destinationViewController as! ShareImageController
-            if(textView?.text.characters.count > 0) {
+            if(textView.text.characters.count > 0) {
                 var message = ""
-                if(textView?.text.characters.count < 30) {
-                    message += "          "
-                    message += (textView?.text!)!
-                    message += "          "
+                if(textView.text.characters.count < 30) {
+//                    message += "          "
+                    message += textView.text
+//                    message += "          "
                 }
                 else {
-                    message = (textView?.text)!
+                    message = (textView.text)!
                 }
                 if(_fontMessageRenderer != nil) {
                     let calculatedLineHeight = CGFloat(_pointSizeOptions[_selectedPointSize]) * SharedMyInkValues.FontPointSizeToPixelRatio
-                    let imageMessage = _fontMessageRenderer!.renderMessage(message, imageSize: CGSize(width: 1024, height: 4096), lineHeight:calculatedLineHeight, backgroundColor: UIColor.whiteColor())
+                    let imageMessage = _fontMessageRenderer!.renderMessage(message, imageSize: CGSize(width: 1024, height: 4096 * 16), lineHeight: calculatedLineHeight, backgroundColor: beigeMessageBackgroundColor, showDebugInfo: false, enforceAspectRatio: true)
                     if imageMessage != nil {
                         shareImageController.loadImage(imageMessage!)
                     }
@@ -108,7 +113,7 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
     
     
     @IBAction func HandleInkAction(sender: AnyObject) {
-        if(textView?.text?.characters.count > 0) {
+        if (textView.text.characters.count > 0) {
             audioHelper.playClickSound()
             performSegueWithIdentifier("composeToShare", sender: self)
         }
@@ -132,13 +137,14 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
-        if(textView?.text != "Type your message here") {
+        if (textView.text != composeMessageTextViewPlaceholder) {
             pulseButton()
         }
     }
     
     @IBAction func stepperValueChanged(sender: UIStepper) {
-        fontSizeLabel.text = String(_pointSizeStrings[Int(sender.value)])
+        _selectedPointSize = Int(sender.value)
+        fontSizeLabel.text = String(_pointSizeStrings[_selectedPointSize])
         textView!.font = textView!.font!.fontWithSize(CGFloat(_pointSizeOptions[Int(sender.value)]))
     }
     
@@ -149,7 +155,7 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
     }
     
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
-        if(textView.text == "Type your message here") {
+        if (textView.text == composeMessageTextViewPlaceholder) {
             textView.text = ""
             textView.textColor = SharedMyInkValues.MyInkLightColor
         }
@@ -159,27 +165,33 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
     
     // MARK: - KEYBOARD
 
-    func registerForKeyboardNotifications() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleKeyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleKeyboardDidHide:", name: UIKeyboardDidHideNotification, object: nil)
+    private func registerForKeyboardNotifications() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ComposeMessageController.handleKeyboardDidShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ComposeMessageController.handleKeyboardDidHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
     }
     
-    func unregisterKeyboardNotifications() {
+    private func unregisterKeyboardNotifications() {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
-    func handleKeyboardDidShow(notification:NSNotification) {
+    func handleKeyboardDidShow(notification: NSNotification) {
         let info = notification.userInfo as? [String:AnyObject]
         if info != nil && textView != nil {
             let kbRect = (info![UIKeyboardFrameBeginUserInfoKey] as! NSValue).CGRectValue()
             bottomConstraint.constant = kbRect.height + 20
-            textView?.layoutIfNeeded()
             textView!.scrollRangeToVisible(textView!.selectedRange)
         }
+        animateConstraintChanges()
     }
-    
-    func handleKeyboardDidHide(notification:NSNotification) {
-        bottomConstraint.constant = 0
-        textView?.layoutIfNeeded()
+
+    func handleKeyboardDidHide(notification: NSNotification) {
+        bottomConstraint.constant = 20
+        animateConstraintChanges()
+    }
+
+    private func animateConstraintChanges() {
+        UIView.animateWithDuration(0.25, animations: {
+            self.view.layoutIfNeeded()
+        })
     }
 }

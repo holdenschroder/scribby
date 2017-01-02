@@ -28,7 +28,7 @@ class UIPanZoomImageView: UIView
     
     required init?(coder:NSCoder) {
         super.init(coder: coder)
-        pinchRecognizer = UIPinchGestureRecognizer(target: self, action: "handlePinch:")
+        pinchRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(UIPanZoomImageView.handlePinch(_:)))
         addGestureRecognizer(pinchRecognizer!)
         userInteractionEnabled = true
         multipleTouchEnabled = false

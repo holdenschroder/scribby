@@ -28,8 +28,8 @@ extension UIImage {
             self.drawInRect(imageRect!)
             let newImage = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
-            let imageData = UIImagePNGRepresentation(newImage)
-            completionHandler(outputImage: newImage, data: imageData!)
+            let imageData = UIImagePNGRepresentation(newImage!)
+            completionHandler(outputImage: newImage!, data: imageData!)
         })
     }
     
@@ -96,7 +96,7 @@ extension UIImage {
     }
     
     public func CropImage(rect:CGRect) -> UIImage {
-        let imageRef = CGImageCreateWithImageInRect(self.CGImage, rect)
+        let imageRef = CGImageCreateWithImageInRect(self.CGImage!, rect)
         return UIImage(CGImage: imageRef!)
     }
 }

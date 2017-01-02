@@ -99,7 +99,7 @@ class CaptureCharacterSelectController:UIViewController {
                 let context = CIContext(options: nil)
                 let mask_cg = context.createCGImage(maskedOutput!, fromRect: maskedOutput!.extent)
             
-                setupCharacterController.LoadCharacter(UIImage(CGImage: mask_cg))
+                setupCharacterController.LoadCharacter(UIImage(CGImage: mask_cg!))
             }
         }
     }
@@ -129,7 +129,7 @@ class CaptureCharacterSelectController:UIViewController {
             let imageRef = context.createCGImage(outputImage!, fromRect: rect)
             //let originalOrientation = imageView!.image!.imageOrientation
             //let originalScale = imageView!.image!.scale
-            return UIImage(CGImage: imageRef)//, scale: originalScale, orientation: originalOrientation)
+            return UIImage(CGImage: imageRef!)//, scale: originalScale, orientation: originalOrientation)
         }
         
         return nil
