@@ -24,7 +24,11 @@ class FontMessageRenderer
         _watermark = watermark
     }
     
-    func renderMessage(_ message: String, imageSize: CGSize, lineHeight: CGFloat, backgroundColor: UIColor, showDebugInfo: Bool = false, enforceAspectRatio: Bool = false) -> UIImage? {
+    func renderMessage(_ message: String, imageSize: CGSize, lineHeight: CGFloat, backgroundColor: UIColor, showDebugInfo: Bool = false, maxLineWidth: CGFloat? = nil) -> UIImage? {
+
+        let maxWidth = maxLineWidth ?? imageSize.width
+        let shouldEnforceAspectRatio = maxLineWidth != nil
+
         UIGraphicsBeginImageContext(imageSize)
         let graphicsContext = UIGraphicsGetCurrentContext()
         backgroundColor.setFill()
@@ -68,12 +72,13 @@ class FontMessageRenderer
                 }
             
                 //Do we have space left on this line?
-                if caretPosition.origin.x + wordWidth > imageSize.width - (_margins.x * 2) {
+                if caretPosition.origin.x + wordWidth > maxWidth - (_margins.x * 2) {
                     caretPosition.origin = CGPoint(x: _margins.x, y: caretPosition.origin.y + lineHeight)
                     numRenderedLines += 1
                 }
             
-                for glyphData in glyphs {
+                for (i, glyphData) in glyphs.enumerated() {
+                    print("Rendering character '\(word[word.index(word.startIndex, offsetBy: i)])'")
                     let imageData = glyphData.image as! FontAtlasImage
                     let subImage = UIImage(cgImage: imageData.loadedImage!.cgImage!.cropping(to: glyphData.imageCoord * imageData.loadedImage!.size)!);
                 
@@ -87,14 +92,15 @@ class FontMessageRenderer
                         debugRect.origin += CGPoint(x: renderPosition.origin.x, y: renderPosition.origin.y)
                         graphicsContext!.fill(debugRect)
                     }
-                
+                    print("Bounds before union: \(renderBounds), New Position: \(renderPosition)")
                     renderBounds = renderBounds.union(renderPosition)
+                    print("Bounds  after union: \(renderBounds)\n")
                     subImage.draw(in: renderPosition)
-                    caretPosition.offsetBy(dx: (_characterSpacing * lineHeight) + characterRect.width, dy: 0)
+                    caretPosition = caretPosition.offsetBy(dx: (_characterSpacing * lineHeight) + characterRect.width, dy: 0)
                     numRenderedCharacters += 1
                 }
             
-                caretPosition.offsetBy(dx: _wordSpacing * lineHeight, dy: 0)
+                caretPosition = caretPosition.offsetBy(dx: _wordSpacing * lineHeight, dy: 0)
             }
             
             caretPosition.origin = CGPoint(x: _margins.x, y: caretPosition.origin.y + lineHeight)
@@ -105,14 +111,18 @@ class FontMessageRenderer
             var renderedImage = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
 
-            let cropRect = CGRect(x: renderBounds.origin.x, y: renderBounds.origin.y, width: renderBounds.width, height: renderBounds.height + _margins.y)
+            let cropRect = CGRect(x: renderBounds.origin.x, y: renderBounds.origin.y, width: renderBounds.width + _margins.x, height: renderBounds.height + _margins.y)
             var croppedImage: CGImage? = renderedImage!.cgImage!.cropping(to: cropRect)
 
             let aspectRatio = cropRect.width / cropRect.height
-            if enforceAspectRatio && aspectRatio > 1.25 && numRenderedLines < numRenderedWords {
+            print("Cropped rect      : \(cropRect)")
+            print("Image width: \(imageSize.width)")
+            print("Aspect Ratio: \(aspectRatio)\n\n**************************\n")
+            // 1.25
+            if shouldEnforceAspectRatio && aspectRatio > 1.25 && numRenderedLines < numRenderedWords {
                 croppedImage = nil
                 renderedImage = nil
-                return renderMessage(message, imageSize: CGSize(width: imageSize.width * 0.67, height: 1024), lineHeight: lineHeight, backgroundColor: backgroundColor, showDebugInfo: showDebugInfo, enforceAspectRatio: enforceAspectRatio)
+                return renderMessage(message, imageSize: CGSize(width: imageSize.width, height: 1024), lineHeight: lineHeight, backgroundColor: backgroundColor, showDebugInfo: showDebugInfo, maxLineWidth: maxWidth * 0.67)
             }
 
             return UIImage(cgImage: croppedImage!)
