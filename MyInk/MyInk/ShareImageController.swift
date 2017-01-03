@@ -74,7 +74,7 @@ class ShareImageController: UIViewController, UIAlertViewDelegate {
     @IBAction func HandleActionBtn(_ sender: AnyObject) {
         if _image != nil {
             let activityView = UIActivityViewController(activityItems: [_image!], applicationActivities: nil)
-            activityView.completionWithItemsHandler = HandleActivityViewCompleted
+            activityView.completionWithItemsHandler = handleActivityViewCompleted()
             present(activityView, animated: true, completion: nil)
         }
     }
@@ -147,15 +147,24 @@ class ShareImageController: UIViewController, UIAlertViewDelegate {
     func completionHandler() {
         audioHelper.playSentSound()
     }
-    
-    func HandleActivityViewCompleted(_ activityType:String?, completed:Bool, items:[AnyObject]?, error:NSError?) {
-        if completed {
-            audioHelper.playSentSound()
-            MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventShareMessage, parameters: [SharedMyInkValues.kEventShareMessageParameterActivity:activityType ?? "UnknownActivity"])
-        }
-        else if error != nil
-        {
-            Flurry.logError(SharedMyInkValues.kEventShareMessage, message: "Error while using UIActivityViewController", error: error)
+
+    func handleActivityViewCompleted() -> ((UIActivityType?, Bool, [Any]?, Error?) -> Void) {
+
+//    func handleActivityViewCompleted() -> ((UIActivityType?, Bool, NSArray?, NSError?) -> ()) {
+        return {
+            activityType, completed, returnedItems, error in
+
+//        }
+//
+//    func HandleActivityViewCompleted(_ activityType:String?, completed:Bool, items:[AnyObject]?, error:NSError?) {
+            if completed {
+                self.audioHelper.playSentSound()
+                MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventShareMessage, parameters: [SharedMyInkValues.kEventShareMessageParameterActivity: activityType?.rawValue ?? "UnknownActivity"])
+            }
+            else if error != nil
+            {
+                Flurry.logError(SharedMyInkValues.kEventShareMessage, message: "Error while using UIActivityViewController", error: error)
+            }
         }
     }
 }

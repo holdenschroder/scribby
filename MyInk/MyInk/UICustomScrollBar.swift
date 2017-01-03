@@ -78,7 +78,7 @@ class UICustomScrollBar: UIView, UIScrollViewDelegate {
         }
         
         switch (keyPath!, context) {
-        case("contentOffset", MyObservationContext):
+        case("contentOffset", .some(&MyObservationContext)):
             offsetRect = CGRect(origin: collectionView.contentOffset / collectionView.contentSize, size: collectionView.bounds.size / collectionView.contentSize)
             //offsetRect = offsetRect.intersect(CGRect(origin: CGPointZero, size: CGSize(width: 1, height: 1)))
             setNeedsDisplay()

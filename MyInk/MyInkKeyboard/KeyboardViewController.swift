@@ -108,7 +108,7 @@ class KeyboardViewController: UIInputViewController {
     
     //MARK: Setup
     
-    func buildKeyboard(_ layout:KeyboardLayouts) {
+    func buildKeyboard(_ layout: KeyboardLayouts) {
         for row in rowViews {
             row.removeFromSuperview()
         }
@@ -116,7 +116,7 @@ class KeyboardViewController: UIInputViewController {
         let bounds = inputView!.bounds
         
         if _currentKeyboardLayout != layout {
-            KeyboardAnalytics.TrackEvent(SharedMyInkValues.kEventKeyboardSwitched, parameters: ["Type":String(layout)])
+            KeyboardAnalytics.TrackEvent(SharedMyInkValues.kEventKeyboardSwitched, parameters: ["Type": String(describing: layout)])
         }
         
         _currentKeyboardLayout = layout
@@ -140,13 +140,13 @@ class KeyboardViewController: UIInputViewController {
             shiftKey.addTarget(self, action: #selector(KeyboardViewController.handleShiftTap(_:event:)), for: .touchUpInside)
             self._shiftButton = shiftKey
             
-            buttonTitles1 = ["Q" as AnyObject, "W" as AnyObject, "E" as AnyObject, "R" as AnyObject, "T" as AnyObject, "Y" as AnyObject, "U" as AnyObject, "I", "O", "P"]
-            buttonTitles2 = ["A" as AnyObject, "S" as AnyObject, "D" as AnyObject, "F" as AnyObject, "G" as AnyObject, "H" as AnyObject, "J" as AnyObject, "K", "L"]
+            buttonTitles1 = ["Q" as AnyObject, "W" as AnyObject, "E" as AnyObject, "R" as AnyObject, "T" as AnyObject, "Y" as AnyObject, "U" as AnyObject, "I" as AnyObject, "O" as AnyObject, "P" as AnyObject]
+            buttonTitles2 = ["A" as AnyObject, "S" as AnyObject, "D" as AnyObject, "F" as AnyObject, "G" as AnyObject, "H" as AnyObject, "J" as AnyObject, "K" as AnyObject, "L" as AnyObject]
             buttonTitles3 = [shiftKey, "Z" as AnyObject, "X" as AnyObject, "C" as AnyObject, "V" as AnyObject, "B" as AnyObject, "N" as AnyObject, "M" as AnyObject, deleteKey]
             buttonTitles4 = ["123" as AnyObject]
         case .numeric:
-            buttonTitles1 = ["1" as AnyObject, "2" as AnyObject, "3" as AnyObject, "4" as AnyObject, "5" as AnyObject, "6" as AnyObject, "7" as AnyObject, "8", "9", "0"]
-            buttonTitles2 = ["-" as AnyObject, "/" as AnyObject, ":" as AnyObject, ";" as AnyObject, "(" as AnyObject, ")" as AnyObject, "$" as AnyObject, "&", "@", "\""]
+            buttonTitles1 = ["1" as AnyObject, "2" as AnyObject, "3" as AnyObject, "4" as AnyObject, "5" as AnyObject, "6" as AnyObject, "7" as AnyObject, "8" as AnyObject, "9" as AnyObject, "0" as AnyObject]
+            buttonTitles2 = ["-" as AnyObject, "/" as AnyObject, ":" as AnyObject, ";" as AnyObject, "(" as AnyObject, ")" as AnyObject, "$" as AnyObject, "&" as AnyObject, "@" as AnyObject, "\"" as AnyObject]
             buttonTitles3 = ["." as AnyObject, "," as AnyObject, "?" as AnyObject, "!" as AnyObject, "'" as AnyObject, deleteKey]
             buttonTitles4 = ["abc" as AnyObject]
         default:
@@ -158,7 +158,7 @@ class KeyboardViewController: UIInputViewController {
         
         let inkKey = UIMyInkKey(title: "Ink", relativeWidth: nil)
         inkKey.keyData?.normalColorState = KeyColorState(textColor: UIColor.white, backgroundColor: SharedMyInkValues.MyInkPinkColor)
-        buttonTitles4.append(["🌐", UIMyInkKey(title: "space", relativeWidth: 0.4), UIMyInkKey(title: "⏎", relativeWidth: 0.15), inkKey])
+        buttonTitles4.append(["🌐", UIMyInkKey(title: "space", relativeWidth: 0.4), UIMyInkKey(title: "⏎", relativeWidth: 0.15), inkKey] as AnyObject)
         
         let row1 = createRow(bounds.width)
         let row2 = createRow(bounds.width)
