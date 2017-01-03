@@ -68,7 +68,7 @@ class CaptureCharacterSelectController:UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        let error = NSError?()
+        let error = NSError(domain: "Memory Warning", code: 0, userInfo: nil)
         Flurry.logError(SharedMyInkValues.kEventScreenLoadedCaptureCharacterSelect, message: "Memory Warning", error: error)
     }
     

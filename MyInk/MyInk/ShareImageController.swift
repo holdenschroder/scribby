@@ -132,7 +132,7 @@ class ShareImageController: UIViewController, UIAlertViewDelegate {
         else
         {
             print("\(filePathURL) Instagram Image FAILED to Save.")
-            let error = NSError?()
+            let error = NSError(domain: "Memory Warning", code: 0, userInfo: nil)
             Flurry.logError(SharedMyInkValues.kEventShareMessage, message: "Error while saving Instagram photo", error: error)
         }
     }
