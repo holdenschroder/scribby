@@ -119,3 +119,9 @@ func +=(lhs: inout CGPoint, rhs: UIOffset) {
     lhs.x += rhs.horizontal
     lhs.y += rhs.vertical
 }
+
+// UIOffset Extensions
+
+func +(lhs: UIOffset, rhs: UIOffset) -> UIOffset {
+    return UIOffset(horizontal: lhs.horizontal + rhs.horizontal, vertical: lhs.vertical + rhs.vertical)
+}
