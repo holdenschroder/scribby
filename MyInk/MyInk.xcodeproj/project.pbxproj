@@ -119,6 +119,7 @@
 		58FBA52A1B853FC4009CF809 /* SharedMyInkValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FBA5281B853FC4009CF809 /* SharedMyInkValues.swift */; };
 		58FD80F71B804E07003D58D1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FD80F61B804E07003D58D1 /* SystemConfiguration.framework */; };
 		58FD80F91B804E10003D58D1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FD80F81B804E10003D58D1 /* Security.framework */; };
+		666ED0341E1EBC49003CF29A /* GlyphTypeSetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666ED0331E1EBC49003CF29A /* GlyphTypeSetter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -259,6 +260,7 @@
 		58FD80F61B804E07003D58D1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		58FD80F81B804E10003D58D1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		58FD80FC1B804F84003D58D1 /* bridging_header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bridging_header.h; sourceTree = "<group>"; };
+		666ED0331E1EBC49003CF29A /* GlyphTypeSetter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlyphTypeSetter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -466,6 +468,7 @@
 		535C821F1BFA6E3500030D25 /* Helpers+Misc */ = {
 			isa = PBXGroup;
 			children = (
+				666ED0321E1EBAAB003CF29A /* Rendering */,
 				58FBA5281B853FC4009CF809 /* SharedMyInkValues.swift */,
 				583EB9E71B72DCC200357957 /* CoreDataHelper.swift */,
 				53C8AD871C190908006A98E1 /* AudioHelper.swift */,
@@ -473,7 +476,6 @@
 				582D3FA41B50433300D08255 /* CGPointExtensions.swift */,
 				587023901BFD222800D9779F /* CGRectExtensions.swift */,
 				5870238A1BFD1B4300D9779F /* CGSizeExtensions.swift */,
-				580DFBB91B59A0A500A3A223 /* FontMessageRenderer.swift */,
 				582D3FA91B50433300D08255 /* ImageCropUtility.swift */,
 				58765AE31BAA46C70022AF80 /* SwiftMath.swift */,
 				582D3FAD1B50433300D08255 /* UIImageExtensions.swift */,
@@ -672,6 +674,15 @@
 				58FD80F51B804DD5003D58D1 /* Flurry.h */,
 			);
 			name = Analytics;
+			sourceTree = "<group>";
+		};
+		666ED0321E1EBAAB003CF29A /* Rendering */ = {
+			isa = PBXGroup;
+			children = (
+				580DFBB91B59A0A500A3A223 /* FontMessageRenderer.swift */,
+				666ED0331E1EBC49003CF29A /* GlyphTypeSetter.swift */,
+			);
+			name = Rendering;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -901,6 +912,7 @@
 				5870238D1BFD1BCB00D9779F /* CGFloatExtensions.swift in Sources */,
 				53213E6F1C1B304A0063342C /* GuidelinesPageController.swift in Sources */,
 				535C33261C0F8D190075DDD6 /* SettingsController.swift in Sources */,
+				666ED0341E1EBC49003CF29A /* GlyphTypeSetter.swift in Sources */,
 				582A4E8E1BB21EC600D7543B /* UIDrawCaptureView.swift in Sources */,
 				58F02CDE1BFA671A00BA6334 /* UIDrawView.swift in Sources */,
 				58F64A911BC356FC00D00BC4 /* TutorialPhraseOutroController.swift in Sources */,
