@@ -4,53 +4,63 @@ class GlyphTypeSetter {
     private let atlas: FontAtlas
     private let fallbackAtlas: FontAtlas
     private let lineHeight: CGFloat
+    private let maxWidth: CGFloat
     private let message: Message
     private let margins: UIOffset
-    private(set) var placedGlyphs = [PlacedGlyph]()
-    private(set) var height: CGFloat = 0
-    var width: CGFloat = 1024
 
-    init(message: String, lineHeight: CGFloat, margins: UIOffset, atlases: [FontAtlas]) {
+    private(set) var placedGlyphs = [PlacedGlyph]()
+    private var height: CGFloat = 0
+    private var width: CGFloat = 0
+
+    init(message: String, lineHeight: CGFloat, maxWidth: CGFloat, margins: UIOffset, atlases: [FontAtlas]) {
         self.message = Message(string: message)
         self.lineHeight = lineHeight
+        self.maxWidth = maxWidth
         self.margins = margins
         self.atlas = atlases.first!
         self.fallbackAtlas = atlases.last!
     }
 
-    func set() {
-        placedGlyphs = [PlacedGlyph]()
-        height = margins.vertical * 2.0
-        var paragraphOffset: UIOffset = margins
+    var size: CGSize {
+        return CGSize(width: width, height: height)
+    }
 
+    func set() {
+        reset()
+        var paragraphOffset: UIOffset = margins
         for messageParagraph in message.paragraphs {
             let glyphWords = glyphWordsForMessageParagraph(paragraph: messageParagraph)
-            let glyphParagraph = GlyphParagraph(glyphWords: glyphWords, lineHeight: lineHeight, width: width, offset: paragraphOffset)
+            let glyphParagraph = GlyphParagraph(glyphWords: glyphWords, lineHeight: lineHeight, maxWidth: maxWidth, offset: paragraphOffset)
             placedGlyphs += glyphParagraph.positionedGlyphs
-            paragraphOffset.vertical += glyphParagraph.height + lineHeight
-            height = paragraphOffset.vertical - lineHeight
+            paragraphOffset.vertical += glyphParagraph.height
+            print("paragraph height: \(glyphParagraph.height)")
+            height = paragraphOffset.vertical
+            width = max(width, glyphParagraph.width)
         }
+        height += margins.vertical
+    }
+
+    private func reset() {
+        placedGlyphs = [PlacedGlyph]()
+        height = 0
+        width = 0
     }
 
     private func glyphWordsForMessageParagraph(paragraph: Paragraph) -> [GlyphWord] {
-        var result = [GlyphWord]()
-        for word in paragraph.words {
-            let glyphs = glyphsForWord(word: word)
-            let gw = GlyphWord(glyphs: glyphs, lineHeight: lineHeight)
-            result.append(gw)
+        return paragraph.words.map {
+            let glyphs = glyphsForWord(word: $0)
+            return GlyphWord(glyphs: glyphs, lineHeight: lineHeight)
         }
-        return result
     }
 
     private func glyphsForWord(word: String) -> [FontAtlasGlyph] {
-        var result = [FontAtlasGlyph]()
-        for character in word.characters {
-            let string = String(character)
-            if let glyph = atlas.getGlyphData(string) ?? fallbackAtlas.getGlyphData(string) {
-                result.append(glyph)
-            }
+        let glyphs: [FontAtlasGlyph?] = word.characters.map {
+            let string = String($0)
+            return atlas.getGlyphData(string) ?? fallbackAtlas.getGlyphData(string)
         }
-        return result
+        return glyphs.filter {
+            return $0 != nil
+        } as! [FontAtlasGlyph]
     }
 }
 
@@ -60,6 +70,18 @@ struct PlacedGlyph {
 
     init(glyph: FontAtlasGlyph) {
         self.glyph = glyph
+    }
+
+    var bounds: CGRect {
+        return glyph.glyphBounds
+    }
+
+    var imageCoord: CGRect {
+        return glyph.imageCoord
+    }
+
+    var image: FontAtlasImage {
+        return glyph.image as! FontAtlasImage
     }
 }
 
@@ -118,35 +140,25 @@ class GlyphWord {
     }
 }
 
-struct GlyphParagraph {
+class GlyphParagraph {
     let glyphWords: [GlyphWord]
     let lineHeight: CGFloat
     let offset: UIOffset
-    let width: CGFloat
+    let maxWidth: CGFloat
+    private(set) var width: CGFloat = 0
+    private(set) var height: CGFloat = 0
 
-    init(glyphWords: [GlyphWord], lineHeight: CGFloat, width: CGFloat, offset: UIOffset) {
+    init(glyphWords: [GlyphWord], lineHeight: CGFloat, maxWidth: CGFloat, offset: UIOffset) {
         self.glyphWords = glyphWords
         self.lineHeight = lineHeight
-        self.width = width
+        self.maxWidth = maxWidth
         self.offset = offset
     }
 
-    var height: CGFloat {
-        if let glyph = positionedGlyphs.last {
-            return glyph.origin.y + lineHeight
-        }
-        return 0
-    }
-
-    var aspectRatio: CGFloat? {
-        guard height > 0 else {
-            return CGFloat.greatestFiniteMagnitude
-        }
-        return width / height
-    }
-
     var positionedGlyphs: [PlacedGlyph] {
-        let messageRightMarginX = width - offset.horizontal
+        width = 0
+        height = 0
+        let messageRightMarginX = maxWidth - offset.horizontal
 
         var result = [PlacedGlyph]()
         var wordOffset = offset
@@ -158,8 +170,12 @@ struct GlyphParagraph {
             for pg in word.placedGlyphsWithOffset(wordOffset) {
                 result.append(pg)
             }
-            wordOffset.horizontal += word.width + word.spacerWidth
+            wordOffset.horizontal += word.width
+            width = max(width, wordOffset.horizontal)
+            wordOffset.horizontal += word.spacerWidth
         }
+        width += offset.horizontal
+        height = wordOffset.vertical + lineHeight - offset.vertical
         return result
     }
 

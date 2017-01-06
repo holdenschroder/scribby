@@ -120,6 +120,7 @@
 		58FD80F71B804E07003D58D1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FD80F61B804E07003D58D1 /* SystemConfiguration.framework */; };
 		58FD80F91B804E10003D58D1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FD80F81B804E10003D58D1 /* Security.framework */; };
 		666ED0341E1EBC49003CF29A /* GlyphTypeSetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666ED0331E1EBC49003CF29A /* GlyphTypeSetter.swift */; };
+		666ED0351E1EDFD1003CF29A /* GlyphTypeSetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666ED0331E1EBC49003CF29A /* GlyphTypeSetter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -679,8 +680,8 @@
 		666ED0321E1EBAAB003CF29A /* Rendering */ = {
 			isa = PBXGroup;
 			children = (
-				580DFBB91B59A0A500A3A223 /* FontMessageRenderer.swift */,
 				666ED0331E1EBC49003CF29A /* GlyphTypeSetter.swift */,
+				580DFBB91B59A0A500A3A223 /* FontMessageRenderer.swift */,
 			);
 			name = Rendering;
 			sourceTree = "<group>";
@@ -897,6 +898,7 @@
 				583EB9E91B72E06100357957 /* CoreDataHelper.swift in Sources */,
 				5870238F1BFD20F500D9779F /* CGSizeExtensions.swift in Sources */,
 				58ECED381B7D76A200988CA0 /* MyInk.xcdatamodeld in Sources */,
+				666ED0351E1EDFD1003CF29A /* GlyphTypeSetter.swift in Sources */,
 				583EB9E31B72C0FB00357957 /* FontAtlasImage.swift in Sources */,
 				58CC72C71B71412100A4AB62 /* KeyboardViewController.swift in Sources */,
 				58FBA52A1B853FC4009CF809 /* SharedMyInkValues.swift in Sources */,

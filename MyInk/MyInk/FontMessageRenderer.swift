@@ -17,7 +17,7 @@ class FontMessageRenderer
     }
 
     func render(message: String, maxWidth: CGFloat, lineHeight: CGFloat, backgroundColor: UIColor, minAspectRatio: CGFloat? = nil) -> UIImage? {
-        let typeSetter = GlyphTypeSetter(message: message, lineHeight: lineHeight, margins: UIOffset(horizontal: 20, vertical: 30), atlases: [_atlas, _fallbackAtlas])
+        let typeSetter = GlyphTypeSetter(message: message, lineHeight: lineHeight, maxWidth: 1024, margins: UIOffset(horizontal: 20, vertical: 30), atlases: [_atlas, _fallbackAtlas])
 //        let lines = message.components(separatedBy: "\n")
 //        let paragraphs = glyphParagraphsFromLines(lines, lineHeight: lineHeight)
 //
@@ -27,10 +27,6 @@ class FontMessageRenderer
 //        paragraph.width = maxWordWidth * 2
 //
 //        let imageSize = CGSize(width: paragraph.width + _margins.x * 2, height: paragraph.height + _margins.y * 2)
-//        UIGraphicsBeginImageContext(imageSize)
-//        let graphicsContext = UIGraphicsGetCurrentContext()
-//        backgroundColor.setFill()
-//        graphicsContext!.fill(CGRect(origin: CGPoint.zero, size: imageSize))
 //
 //        for character in paragraph.positionedGlyphs {
 //            let imageData = character.glyph.image as! FontAtlasImage
@@ -39,6 +35,22 @@ class FontMessageRenderer
 //            let rect = CGRect(origin: character.origin, size: characterSize).offsetBy(dx: _margins.x, dy: _margins.y)
 //            subImage.draw(in: rect)
 //        }
+        typeSetter.set()
+        let size = typeSetter.size
+        UIGraphicsBeginImageContext(size)
+        let graphicsContext = UIGraphicsGetCurrentContext()
+        backgroundColor.setFill()
+        graphicsContext!.fill(CGRect(origin: CGPoint.zero, size: size))
+
+
+        for placedGlyph in typeSetter.placedGlyphs {
+            let imageData = placedGlyph.image
+            let subImage = UIImage(cgImage: imageData.loadedImage!.cgImage!.cropping(to: placedGlyph.imageCoord * imageData.loadedImage!.size)!)
+            let characterSize = CGSize(width: lineHeight, height: lineHeight)
+            let rect = CGRect(origin: placedGlyph.origin, size: characterSize)
+            subImage.draw(in: rect)
+        }
+
         let renderedImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
 
@@ -167,7 +179,7 @@ class FontMessageRenderer
             //            print("Image width: \(imageSize.width)")
             //            print("Aspect Ratio: \(aspectRatio)\n\n**************************\n")
             //            print("Number of lines: \(numRenderedLines)")
-//            return render(message: message, maxWidth: 1024, lineHeight: lineHeight, backgroundColor: backgroundColor)
+            return render(message: message, maxWidth: 1024, lineHeight: lineHeight, backgroundColor: backgroundColor)
 
             // 1.25
             //            if shouldEnforceAspectRatio && aspectRatio > 1.25 && numRenderedLines < numRenderedWords {
