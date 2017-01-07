@@ -121,8 +121,6 @@
 		58FD80F91B804E10003D58D1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FD80F81B804E10003D58D1 /* Security.framework */; };
 		6605AFB71E20E4CE0077C9A5 /* TypeSetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6605AFB61E20E4CE0077C9A5 /* TypeSetter.swift */; };
 		6605AFB81E20E4D30077C9A5 /* TypeSetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6605AFB61E20E4CE0077C9A5 /* TypeSetter.swift */; };
-		666ED0341E1EBC49003CF29A /* GlyphTypeSetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666ED0331E1EBC49003CF29A /* GlyphTypeSetter.swift */; };
-		666ED0351E1EDFD1003CF29A /* GlyphTypeSetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666ED0331E1EBC49003CF29A /* GlyphTypeSetter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -264,7 +262,6 @@
 		58FD80F81B804E10003D58D1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		58FD80FC1B804F84003D58D1 /* bridging_header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bridging_header.h; sourceTree = "<group>"; };
 		6605AFB61E20E4CE0077C9A5 /* TypeSetter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeSetter.swift; sourceTree = "<group>"; };
-		666ED0331E1EBC49003CF29A /* GlyphTypeSetter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlyphTypeSetter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -683,7 +680,6 @@
 		666ED0321E1EBAAB003CF29A /* Rendering */ = {
 			isa = PBXGroup;
 			children = (
-				666ED0331E1EBC49003CF29A /* GlyphTypeSetter.swift */,
 				580DFBB91B59A0A500A3A223 /* FontMessageRenderer.swift */,
 				6605AFB61E20E4CE0077C9A5 /* TypeSetter.swift */,
 			);
@@ -902,7 +898,6 @@
 				583EB9E91B72E06100357957 /* CoreDataHelper.swift in Sources */,
 				5870238F1BFD20F500D9779F /* CGSizeExtensions.swift in Sources */,
 				58ECED381B7D76A200988CA0 /* MyInk.xcdatamodeld in Sources */,
-				666ED0351E1EDFD1003CF29A /* GlyphTypeSetter.swift in Sources */,
 				6605AFB81E20E4D30077C9A5 /* TypeSetter.swift in Sources */,
 				583EB9E31B72C0FB00357957 /* FontAtlasImage.swift in Sources */,
 				58CC72C71B71412100A4AB62 /* KeyboardViewController.swift in Sources */,
@@ -919,7 +914,6 @@
 				5870238D1BFD1BCB00D9779F /* CGFloatExtensions.swift in Sources */,
 				53213E6F1C1B304A0063342C /* GuidelinesPageController.swift in Sources */,
 				535C33261C0F8D190075DDD6 /* SettingsController.swift in Sources */,
-				666ED0341E1EBC49003CF29A /* GlyphTypeSetter.swift in Sources */,
 				582A4E8E1BB21EC600D7543B /* UIDrawCaptureView.swift in Sources */,
 				58F02CDE1BFA671A00BA6334 /* UIDrawView.swift in Sources */,
 				58F64A911BC356FC00D00BC4 /* TutorialPhraseOutroController.swift in Sources */,
