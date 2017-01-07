@@ -22,7 +22,7 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var bottomConstraint:NSLayoutConstraint!
     @IBOutlet weak var propertiesBar: UIView!
     
-    fileprivate let _pointSizeOptions: [Float] = [18, 24, 36]
+    fileprivate let _pointSizeOptions: [Float] = [24, 34, 48]
     fileprivate let _pointSizeStrings: [String] = ["Small", "Medium", "Large"]
     fileprivate var _fontMessageRenderer: FontMessageRenderer?
     fileprivate var _selectedPointSize = 1
