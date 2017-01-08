@@ -91,21 +91,13 @@ class WelcomeController: UIViewController, UITextFieldDelegate {
                     message = (textfield?.text)!
                 }
                 if(_fontMessageRenderer != nil) {
-                    let calculatedLineHeight = 18.0 * SharedMyInkValues.FontPointSizeToPixelRatio
-                    let imageMessage = _fontMessageRenderer!.renderMessage(message, imageSize: CGSize(width: 1024, height: 4096), lineHeight:calculatedLineHeight, backgroundColor: UIColor.clear)
+                    let calculatedLineHeight = 30.0 * SharedMyInkValues.FontPointSizeToPixelRatio
+                    let imageMessage = _fontMessageRenderer!.render(message: message, width: 750, lineHeight: calculatedLineHeight, backgroundColor: UIColor.clear)
                     if imageMessage != nil {
                         vc.loadImage(imageMessage!)
                     }
                 }
             }
-            
-//            if(message != nil && (message)!.characters.count > 0 && _fontMessageRenderer != nil) {
-//                let calculatedLineHeight = 18.0 * SharedMyInkValues.FontPointSizeToPixelRatio
-//                let imageMessage = _fontMessageRenderer!.renderMessage(message!, imageSize: CGSize(width: 1024, height: 4096), lineHeight:calculatedLineHeight, backgroundColor: UIColor.clearColor())
-//                if imageMessage != nil {
-//                    vc.loadImage(imageMessage!)
-//                }
-//            }
         }
     }
 

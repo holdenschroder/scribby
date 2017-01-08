@@ -193,7 +193,7 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
     }
     
     fileprivate func RenderMessage() -> UIImage? {
-        return _messageRenderer!.renderMessage(phrase, imageSize:  CGSize(width: 2048, height: messageImageView.frame.height), lineHeight: messageImageView.frame.size.height * 0.33, backgroundColor: UIColor.clear)
+        return _messageRenderer!.render(message: phrase, width: 750, lineHeight: messageImageView.frame.height / 2.25, backgroundColor: UIColor.clear)
     }
     
     //Mark: Analytics

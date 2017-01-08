@@ -33,8 +33,4 @@ class FontMessageRenderer
 
         return renderedImage
     }
-
-    func renderMessage(_ message: String, imageSize: CGSize, lineHeight: CGFloat, backgroundColor: UIColor, showDebugInfo: Bool = false, maxLineWidth: CGFloat? = nil) -> UIImage? {
-        return render(message: message, width: 750, lineHeight: lineHeight, backgroundColor: backgroundColor, maxAspectRatio: 1.75)
-    }
 }

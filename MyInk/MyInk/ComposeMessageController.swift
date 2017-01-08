@@ -88,22 +88,11 @@ class ComposeMessageController: UIViewController, UITextViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.destination is ShareImageController {
             let shareImageController = segue.destination as! ShareImageController
-            if(textView.text.characters.count > 0) {
-                var message = ""
-                if(textView.text.characters.count < 30) {
-//                    message += "          "
-                    message += textView.text
-//                    message += "          "
-                }
-                else {
-                    message = (textView.text)!
-                }
-                if(_fontMessageRenderer != nil) {
-                    let calculatedLineHeight = CGFloat(_pointSizeOptions[_selectedPointSize]) * SharedMyInkValues.FontPointSizeToPixelRatio
-                    let imageMessage = _fontMessageRenderer!.renderMessage(message, imageSize: CGSize(width: 1024, height: 4096 * 16), lineHeight: calculatedLineHeight, backgroundColor: FontMessageRenderer.beige, showDebugInfo: false, maxLineWidth: 1024)
-                    if imageMessage != nil {
-                        shareImageController.loadImage(imageMessage!)
-                    }
+            let message = textView.text!
+            if(_fontMessageRenderer != nil) {
+                let calculatedLineHeight = CGFloat(_pointSizeOptions[_selectedPointSize]) * SharedMyInkValues.FontPointSizeToPixelRatio
+                if let imageMessage = _fontMessageRenderer!.render(message: message, width: 750, lineHeight: calculatedLineHeight, backgroundColor: FontMessageRenderer.beige, maxAspectRatio: 1.75) {
+                    shareImageController.loadImage(imageMessage)
                 }
             }
         }
