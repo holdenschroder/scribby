@@ -11,7 +11,7 @@ import AVFoundation
 
 class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIGestureRecognizerDelegate {
     
-    fileprivate let phrase:String! = "QUICK BROWN FOX JUMPS\n OVER THE LAZY DOG"
+    fileprivate let phrase:String! = "QUICK BROWN FOX JUMPS\nOVER THE LAZY DOG"
     fileprivate var words:[String]!
     fileprivate let mPhrase:String! = "QUICKBROWNFOXJUMPSOVERTHELAZYDOG"
     fileprivate var mCharacters:[String]!
@@ -143,12 +143,6 @@ class TutorialPhraseController: UIViewController, UICollectionViewDelegate, UICo
         }
         
         _lastInteractedCell = cell
-//        if(wordIndex < mCharacters.count) {
-//            finishButton?.enabled = false
-//        }
-//        else {
-//            finishButton?.enabled = true
-//        }
     }
     
     fileprivate func updateItemHeight(_ viewSize:CGSize) {
