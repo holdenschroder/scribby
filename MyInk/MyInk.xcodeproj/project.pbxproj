@@ -38,7 +38,6 @@
 		580A6B321B606BB4006AEF44 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 580A6B301B606BB4006AEF44 /* Crashlytics.framework */; };
 		580A6B341B606F9F006AEF44 /* ShareImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580A6B331B606F9F006AEF44 /* ShareImageController.swift */; };
 		580DFBBA1B59A0A500A3A223 /* FontMessageRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580DFBB91B59A0A500A3A223 /* FontMessageRenderer.swift */; };
-		581602001B87E49700F9F704 /* TextProxyConsumer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581601FF1B87E49700F9F704 /* TextProxyConsumer.swift */; };
 		58203A771B60132A00CFA42C /* ComposeMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58203A761B60132A00CFA42C /* ComposeMessageController.swift */; };
 		582054281B82D235002C95BE /* InstallInstructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582054271B82D235002C95BE /* InstallInstructions.swift */; };
 		582A4E8E1BB21EC600D7543B /* UIDrawCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582A4E8D1BB21EC600D7543B /* UIDrawCaptureView.swift */; };
@@ -56,15 +55,7 @@
 		582D3FC21B50433300D08255 /* UIPanZoomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582D3FB41B50433300D08255 /* UIPanZoomImageView.swift */; };
 		582D3FC51B5043D000D08255 /* Testing.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 582D3FC41B5043D000D08255 /* Testing.xcassets */; };
 		582D3FC71B50779000D08255 /* FontAtlasImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582D3FC61B50779000D08255 /* FontAtlasImage.swift */; };
-		5838B9331B87ACB100961AFD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5838B9321B87ACB100961AFD /* Images.xcassets */; };
-		583EB9E01B72C0FB00357957 /* FontAtlas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582D3FA51B50433300D08255 /* FontAtlas.swift */; };
-		583EB9E11B72C0FB00357957 /* FontAtlasData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DF909F1B4F1D2C00E36BB1 /* FontAtlasData.swift */; };
-		583EB9E21B72C0FB00357957 /* FontAtlasGlyph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DF909E1B4F1D2C00E36BB1 /* FontAtlasGlyph.swift */; };
-		583EB9E31B72C0FB00357957 /* FontAtlasImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582D3FC61B50779000D08255 /* FontAtlasImage.swift */; };
-		583EB9E41B72C1A100357957 /* CGPointExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582D3FA41B50433300D08255 /* CGPointExtensions.swift */; };
-		583EB9E51B72C2AF00357957 /* FontMessageRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580DFBB91B59A0A500A3A223 /* FontMessageRenderer.swift */; };
 		583EB9E81B72DCC200357957 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583EB9E71B72DCC200357957 /* CoreDataHelper.swift */; };
-		583EB9E91B72E06100357957 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583EB9E71B72DCC200357957 /* CoreDataHelper.swift */; };
 		584336081BC3264200CB25F5 /* TapToContinueController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584336071BC3264200CB25F5 /* TapToContinueController.swift */; };
 		584C902F1BC7523700317BA8 /* libFlurry_7.2.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 584C902E1BC7523700317BA8 /* libFlurry_7.2.1.a */; };
 		584E31BD1B56F95D002E6703 /* LibraryTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584E31BC1B56F95D002E6703 /* LibraryTableController.swift */; };
@@ -73,36 +64,21 @@
 		585277911B7A679200C1B90B /* Embedded_data.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = 5852778F1B7A679200C1B90B /* Embedded_data.sqlite-shm */; };
 		585277921B7A679200C1B90B /* Embedded_data.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = 585277901B7A679200C1B90B /* Embedded_data.sqlite-wal */; };
 		5859CDE71BC221210066A2BD /* PromptForRotationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5859CDE61BC221210066A2BD /* PromptForRotationController.swift */; };
-		585D1FA51BF547940093CA8A /* KeyboardAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585D1FA41BF547940093CA8A /* KeyboardAnalytics.swift */; };
-		585D1FB21BF54AE80093CA8A /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585D1FB01BF54AE80093CA8A /* Parse.framework */; };
 		585D1FB31BF54B100093CA8A /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585D1FB01BF54AE80093CA8A /* Parse.framework */; };
 		585D1FB51BF54CFD0093CA8A /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585D1FB41BF54CFD0093CA8A /* Bolts.framework */; };
-		585D1FB61BF54CFD0093CA8A /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585D1FB41BF54CFD0093CA8A /* Bolts.framework */; };
 		585D1FB71BF54D3F0093CA8A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585D1FA71BF549720093CA8A /* AudioToolbox.framework */; };
 		585D1FB91BF54D5A0093CA8A /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 585D1FB81BF54D5A0093CA8A /* libsqlite3.tbd */; };
-		585D1FBA1BF54EEA0093CA8A /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 585D1FB81BF54D5A0093CA8A /* libsqlite3.tbd */; };
-		585D1FBC1BF54F340093CA8A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FD80F61B804E07003D58D1 /* SystemConfiguration.framework */; };
 		585D1FBE1BF56FD20093CA8A /* MyInkAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585D1FBD1BF56FD20093CA8A /* MyInkAnalytics.swift */; };
 		585D1FC11BF58A760093CA8A /* FlurryWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585D1FC01BF58A760093CA8A /* FlurryWrapper.swift */; };
 		585D1FC31BF58B650093CA8A /* ParseWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585D1FC21BF58B650093CA8A /* ParseWrapper.swift */; };
 		5870238B1BFD1B4300D9779F /* CGSizeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5870238A1BFD1B4300D9779F /* CGSizeExtensions.swift */; };
 		5870238D1BFD1BCB00D9779F /* CGFloatExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5870238C1BFD1BCB00D9779F /* CGFloatExtensions.swift */; };
-		5870238E1BFD20F200D9779F /* CGFloatExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5870238C1BFD1BCB00D9779F /* CGFloatExtensions.swift */; };
-		5870238F1BFD20F500D9779F /* CGSizeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5870238A1BFD1B4300D9779F /* CGSizeExtensions.swift */; };
 		587023911BFD222800D9779F /* CGRectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587023901BFD222800D9779F /* CGRectExtensions.swift */; };
-		587023921BFD223600D9779F /* CGRectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587023901BFD222800D9779F /* CGRectExtensions.swift */; };
 		58765AE41BAA46C70022AF80 /* SwiftMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58765AE31BAA46C70022AF80 /* SwiftMath.swift */; };
-		5893ACE11BC5F1F50099D95C /* UIMyInkKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5893ACE01BC5F1F50099D95C /* UIMyInkKey.swift */; };
 		58A696471BB0DEFE00B068AA /* UINavigationControllerOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A696461BB0DEFE00B068AA /* UINavigationControllerOrientation.swift */; };
 		58B056D01BAA16C400FA4A26 /* CaptureTouchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B056CF1BAA16C400FA4A26 /* CaptureTouchController.swift */; };
 		58B5A4211BC0EC9B002628E9 /* TutorialState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B5A4201BC0EC9B002628E9 /* TutorialState.swift */; };
-		58CC72C71B71412100A4AB62 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CC72C61B71412100A4AB62 /* KeyboardViewController.swift */; };
-		58CC72E21B71A5E200A4AB62 /* MyInkKeyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 58CC72C21B71412100A4AB62 /* MyInkKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		58CE61E91B7AB8A900730D32 /* MyInk.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 58CE61E71B7AB8A900730D32 /* MyInk.xcdatamodeld */; };
-		58CE61ED1B7AC50B00730D32 /* Embedded_data.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = 5852778F1B7A679200C1B90B /* Embedded_data.sqlite-shm */; };
-		58CE61EE1B7AC50B00730D32 /* Embedded_data.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = 585277901B7A679200C1B90B /* Embedded_data.sqlite-wal */; };
-		58CE61EF1B7AC50B00730D32 /* Embedded_data.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 585277891B797DD000C1B90B /* Embedded_data.sqlite */; };
-		58CE61F01B7AC50B00730D32 /* Embedded_atlas.png in Resources */ = {isa = PBXBuildFile; fileRef = 5852778A1B797DD000C1B90B /* Embedded_atlas.png */; };
 		58CE61F21B7ACF6400730D32 /* MainMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CE61F11B7ACF6400730D32 /* MainMenuController.swift */; };
 		58DF90701B4F1C9600E36BB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DF906F1B4F1C9600E36BB1 /* AppDelegate.swift */; };
 		58DF90751B4F1C9600E36BB1 /* CaptureWordSelectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DF90741B4F1C9600E36BB1 /* CaptureWordSelectController.swift */; };
@@ -112,25 +88,15 @@
 		58DF90891B4F1C9700E36BB1 /* MyInkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DF90881B4F1C9700E36BB1 /* MyInkTests.swift */; };
 		58DF90A01B4F1D2C00E36BB1 /* FontAtlasGlyph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DF909E1B4F1D2C00E36BB1 /* FontAtlasGlyph.swift */; };
 		58DF90A11B4F1D2C00E36BB1 /* FontAtlasData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DF909F1B4F1D2C00E36BB1 /* FontAtlasData.swift */; };
-		58ECED381B7D76A200988CA0 /* MyInk.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 58CE61E71B7AB8A900730D32 /* MyInk.xcdatamodeld */; };
 		58F02CDE1BFA671A00BA6334 /* UIDrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F02CDD1BFA671A00BA6334 /* UIDrawView.swift */; };
 		58F64A911BC356FC00D00BC4 /* TutorialPhraseOutroController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F64A901BC356FC00D00BC4 /* TutorialPhraseOutroController.swift */; };
 		58FBA5291B853FC4009CF809 /* SharedMyInkValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FBA5281B853FC4009CF809 /* SharedMyInkValues.swift */; };
-		58FBA52A1B853FC4009CF809 /* SharedMyInkValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FBA5281B853FC4009CF809 /* SharedMyInkValues.swift */; };
 		58FD80F71B804E07003D58D1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FD80F61B804E07003D58D1 /* SystemConfiguration.framework */; };
 		58FD80F91B804E10003D58D1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FD80F81B804E10003D58D1 /* Security.framework */; };
 		6605AFB71E20E4CE0077C9A5 /* TypeSetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6605AFB61E20E4CE0077C9A5 /* TypeSetter.swift */; };
-		6605AFB81E20E4D30077C9A5 /* TypeSetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6605AFB61E20E4CE0077C9A5 /* TypeSetter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		58CC72E31B71A5E200A4AB62 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 58DF90621B4F1C9600E36BB1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 58CC72C11B71412100A4AB62;
-			remoteInfo = MyInkKeyboard;
-		};
 		58DF90831B4F1C9700E36BB1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 58DF90621B4F1C9600E36BB1 /* Project object */;
@@ -147,7 +113,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				58CC72E21B71A5E200A4AB62 /* MyInkKeyboard.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -186,7 +151,6 @@
 		580A6B301B606BB4006AEF44 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
 		580A6B331B606F9F006AEF44 /* ShareImageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareImageController.swift; sourceTree = "<group>"; };
 		580DFBB91B59A0A500A3A223 /* FontMessageRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontMessageRenderer.swift; sourceTree = "<group>"; };
-		581601FF1B87E49700F9F704 /* TextProxyConsumer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextProxyConsumer.swift; sourceTree = "<group>"; };
 		58203A761B60132A00CFA42C /* ComposeMessageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeMessageController.swift; sourceTree = "<group>"; };
 		582054271B82D235002C95BE /* InstallInstructions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstallInstructions.swift; sourceTree = "<group>"; };
 		582A4E8D1BB21EC600D7543B /* UIDrawCaptureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDrawCaptureView.swift; sourceTree = "<group>"; };
@@ -205,10 +169,8 @@
 		582D3FB41B50433300D08255 /* UIPanZoomImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPanZoomImageView.swift; sourceTree = "<group>"; };
 		582D3FC41B5043D000D08255 /* Testing.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Testing.xcassets; sourceTree = "<group>"; };
 		582D3FC61B50779000D08255 /* FontAtlasImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAtlasImage.swift; sourceTree = "<group>"; };
-		5838B9321B87ACB100961AFD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		583EB9E71B72DCC200357957 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		583EB9EA1B72E49100357957 /* MyInk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MyInk.entitlements; sourceTree = "<group>"; };
-		583EB9EB1B72E4CE00357957 /* MyInkKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MyInkKeyboard.entitlements; sourceTree = "<group>"; };
 		584336071BC3264200CB25F5 /* TapToContinueController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TapToContinueController.swift; sourceTree = "<group>"; };
 		584C902E1BC7523700317BA8 /* libFlurry_7.2.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_7.2.1.a; sourceTree = "<group>"; };
 		584E31BC1B56F95D002E6703 /* LibraryTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryTableController.swift; sourceTree = "<group>"; };
@@ -217,7 +179,6 @@
 		5852778F1B7A679200C1B90B /* Embedded_data.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Embedded_data.sqlite-shm"; sourceTree = "<group>"; };
 		585277901B7A679200C1B90B /* Embedded_data.sqlite-wal */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Embedded_data.sqlite-wal"; sourceTree = "<group>"; };
 		5859CDE61BC221210066A2BD /* PromptForRotationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromptForRotationController.swift; sourceTree = "<group>"; };
-		585D1FA41BF547940093CA8A /* KeyboardAnalytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardAnalytics.swift; sourceTree = "<group>"; };
 		585D1FA71BF549720093CA8A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		585D1FAB1BF549900093CA8A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		585D1FB01BF54AE80093CA8A /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = MyInk/Parse.framework; sourceTree = "<group>"; };
@@ -230,14 +191,9 @@
 		5870238C1BFD1BCB00D9779F /* CGFloatExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGFloatExtensions.swift; sourceTree = "<group>"; };
 		587023901BFD222800D9779F /* CGRectExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRectExtensions.swift; sourceTree = "<group>"; };
 		58765AE31BAA46C70022AF80 /* SwiftMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftMath.swift; sourceTree = "<group>"; };
-		5893ACE01BC5F1F50099D95C /* UIMyInkKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIMyInkKey.swift; sourceTree = "<group>"; };
 		58A696461BB0DEFE00B068AA /* UINavigationControllerOrientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationControllerOrientation.swift; sourceTree = "<group>"; };
 		58B056CF1BAA16C400FA4A26 /* CaptureTouchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureTouchController.swift; sourceTree = "<group>"; };
 		58B5A4201BC0EC9B002628E9 /* TutorialState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialState.swift; sourceTree = "<group>"; };
-		58CC72C21B71412100A4AB62 /* MyInkKeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MyInkKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		58CC72C51B71412100A4AB62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		58CC72C61B71412100A4AB62 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
-		58CC72D51B7150E700A4AB62 /* KeyboardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KeyboardView.xib; sourceTree = "<group>"; };
 		58CE61E81B7AB8A900730D32 /* MyInk.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyInk.xcdatamodel; sourceTree = "<group>"; };
 		58CE61EA1B7ABBF700730D32 /* MyInk 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "MyInk 2.xcdatamodel"; sourceTree = "<group>"; };
 		58CE61F11B7ACF6400730D32 /* MainMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuController.swift; sourceTree = "<group>"; };
@@ -265,17 +221,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		58CC72BF1B71412100A4AB62 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				585D1FBC1BF54F340093CA8A /* SystemConfiguration.framework in Frameworks */,
-				585D1FB21BF54AE80093CA8A /* Parse.framework in Frameworks */,
-				585D1FB61BF54CFD0093CA8A /* Bolts.framework in Frameworks */,
-				585D1FBA1BF54EEA0093CA8A /* libsqlite3.tbd in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		58DF90671B4F1C9600E36BB1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -566,35 +511,11 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		58CC72C31B71412100A4AB62 /* MyInkKeyboard */ = {
-			isa = PBXGroup;
-			children = (
-				583EB9EB1B72E4CE00357957 /* MyInkKeyboard.entitlements */,
-				58CC72D51B7150E700A4AB62 /* KeyboardView.xib */,
-				58CC72C61B71412100A4AB62 /* KeyboardViewController.swift */,
-				581601FF1B87E49700F9F704 /* TextProxyConsumer.swift */,
-				5893ACE01BC5F1F50099D95C /* UIMyInkKey.swift */,
-				585D1FA41BF547940093CA8A /* KeyboardAnalytics.swift */,
-				5838B9321B87ACB100961AFD /* Images.xcassets */,
-				58CC72C41B71412100A4AB62 /* Supporting Files */,
-			);
-			path = MyInkKeyboard;
-			sourceTree = "<group>";
-		};
-		58CC72C41B71412100A4AB62 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				58CC72C51B71412100A4AB62 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		58DF90611B4F1C9600E36BB1 = {
 			isa = PBXGroup;
 			children = (
 				58DF906C1B4F1C9600E36BB1 /* MyInk */,
 				58DF90851B4F1C9700E36BB1 /* MyInkTests */,
-				58CC72C31B71412100A4AB62 /* MyInkKeyboard */,
 				535C81D31BFA68D800030D25 /* Frameworks */,
 				58DF906B1B4F1C9600E36BB1 /* Products */,
 			);
@@ -605,7 +526,6 @@
 			children = (
 				58DF906A1B4F1C9600E36BB1 /* Scribby.app */,
 				58DF90821B4F1C9700E36BB1 /* MyInkTests.xctest */,
-				58CC72C21B71412100A4AB62 /* MyInkKeyboard.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -689,23 +609,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		58CC72C11B71412100A4AB62 /* MyInkKeyboard */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 58CC72CB1B71412100A4AB62 /* Build configuration list for PBXNativeTarget "MyInkKeyboard" */;
-			buildPhases = (
-				58CC72BE1B71412100A4AB62 /* Sources */,
-				58CC72BF1B71412100A4AB62 /* Frameworks */,
-				58CC72C01B71412100A4AB62 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = MyInkKeyboard;
-			productName = MyInkKeyboard;
-			productReference = 58CC72C21B71412100A4AB62 /* MyInkKeyboard.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
 		58DF90691B4F1C9600E36BB1 /* Scribby */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 58DF908C1B4F1C9700E36BB1 /* Build configuration list for PBXNativeTarget "Scribby" */;
@@ -719,7 +622,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				58CC72E41B71A5E200A4AB62 /* PBXTargetDependency */,
 			);
 			name = Scribby;
 			productName = MyInk;
@@ -755,19 +657,6 @@
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "E-Link";
 				TargetAttributes = {
-					58CC72C11B71412100A4AB62 = {
-						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = 8YDH8TXREA;
-						LastSwiftMigration = 0820;
-						SystemCapabilities = {
-							com.apple.ApplicationGroups.iOS = {
-								enabled = 1;
-							};
-							com.apple.Keychain = {
-								enabled = 1;
-							};
-						};
-					};
 					58DF90691B4F1C9600E36BB1 = {
 						CreatedOnToolsVersion = 6.4;
 						DevelopmentTeam = 8YDH8TXREA;
@@ -807,24 +696,11 @@
 			targets = (
 				58DF90691B4F1C9600E36BB1 /* Scribby */,
 				58DF90811B4F1C9700E36BB1 /* MyInkTests */,
-				58CC72C11B71412100A4AB62 /* MyInkKeyboard */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		58CC72C01B71412100A4AB62 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				58CE61ED1B7AC50B00730D32 /* Embedded_data.sqlite-shm in Resources */,
-				5838B9331B87ACB100961AFD /* Images.xcassets in Resources */,
-				58CE61EE1B7AC50B00730D32 /* Embedded_data.sqlite-wal in Resources */,
-				58CE61EF1B7AC50B00730D32 /* Embedded_data.sqlite in Resources */,
-				58CE61F01B7AC50B00730D32 /* Embedded_atlas.png in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		58DF90681B4F1C9600E36BB1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -881,30 +757,6 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		58CC72BE1B71412100A4AB62 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				585D1FA51BF547940093CA8A /* KeyboardAnalytics.swift in Sources */,
-				583EB9E51B72C2AF00357957 /* FontMessageRenderer.swift in Sources */,
-				581602001B87E49700F9F704 /* TextProxyConsumer.swift in Sources */,
-				5893ACE11BC5F1F50099D95C /* UIMyInkKey.swift in Sources */,
-				583EB9E41B72C1A100357957 /* CGPointExtensions.swift in Sources */,
-				583EB9E01B72C0FB00357957 /* FontAtlas.swift in Sources */,
-				5870238E1BFD20F200D9779F /* CGFloatExtensions.swift in Sources */,
-				583EB9E11B72C0FB00357957 /* FontAtlasData.swift in Sources */,
-				583EB9E21B72C0FB00357957 /* FontAtlasGlyph.swift in Sources */,
-				587023921BFD223600D9779F /* CGRectExtensions.swift in Sources */,
-				583EB9E91B72E06100357957 /* CoreDataHelper.swift in Sources */,
-				5870238F1BFD20F500D9779F /* CGSizeExtensions.swift in Sources */,
-				58ECED381B7D76A200988CA0 /* MyInk.xcdatamodeld in Sources */,
-				6605AFB81E20E4D30077C9A5 /* TypeSetter.swift in Sources */,
-				583EB9E31B72C0FB00357957 /* FontAtlasImage.swift in Sources */,
-				58CC72C71B71412100A4AB62 /* KeyboardViewController.swift in Sources */,
-				58FBA52A1B853FC4009CF809 /* SharedMyInkValues.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		58DF90661B4F1C9600E36BB1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -976,11 +828,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		58CC72E41B71A5E200A4AB62 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 58CC72C11B71412100A4AB62 /* MyInkKeyboard */;
-			targetProxy = 58CC72E31B71A5E200A4AB62 /* PBXContainerItemProxy */;
-		};
 		58DF90841B4F1C9700E36BB1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 58DF90691B4F1C9600E36BB1 /* Scribby */;
@@ -1008,56 +855,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		58CC72CC1B71412100A4AB62 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = MyInkKeyboard/MyInkKeyboard.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 8YDH8TXREA;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/MyInk",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = MyInkKeyboard/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.myinkapp.myink.keyboard;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Debug;
-		};
-		58CC72CD1B71412100A4AB62 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = MyInkKeyboard/MyInkKeyboard.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 8YDH8TXREA;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/MyInk",
-				);
-				INFOPLIST_FILE = MyInkKeyboard/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.myinkapp.myink.keyboard;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Release;
-		};
 		58DF908A1B4F1C9700E36BB1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1241,15 +1038,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		58CC72CB1B71412100A4AB62 /* Build configuration list for PBXNativeTarget "MyInkKeyboard" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				58CC72CC1B71412100A4AB62 /* Debug */,
-				58CC72CD1B71412100A4AB62 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		58DF90651B4F1C9600E36BB1 /* Build configuration list for PBXProject "MyInk" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
