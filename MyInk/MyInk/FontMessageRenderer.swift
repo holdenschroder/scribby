@@ -11,17 +11,18 @@ class FontMessageRenderer
         _fallbackAtlas = fallbackAtlas
     }
 
-    func render(message: String, width: CGFloat, lineHeight: CGFloat, backgroundColor: UIColor, minAspectRatio: CGFloat? = nil) -> UIImage? {
-        let typeSetter = TypeSetter(message: message, lineHeight: lineHeight, width: width, kerning: 0.1, atlases: [_atlas, _fallbackAtlas])
-        typeSetter.margin = UIOffset(horizontal: 20, vertical: 50)
+    func render(message: String, width: CGFloat, lineHeight: CGFloat, backgroundColor: UIColor, maxAspectRatio: CGFloat = CGFloat.greatestFiniteMagnitude) -> UIImage? {
+        let typeSetter = TypeSetter(message: message, lineHeight: lineHeight, width: width, kerning: 0.1, atlases: [_atlas, _fallbackAtlas], maxAspectRatio: maxAspectRatio)
+        typeSetter.margin = UIOffset(horizontal: 25, vertical: 25)
+        typeSetter.set()
+
         let size = typeSetter.size
         UIGraphicsBeginImageContext(size)
         let graphicsContext = UIGraphicsGetCurrentContext()
         backgroundColor.setFill()
         graphicsContext!.fill(CGRect(origin: CGPoint.zero, size: size))
 
-
-        for placedGlyph in typeSetter.placedGlyphs(alignment: .center) {
+        for placedGlyph in typeSetter.placedGlyphs {
             let imageData = placedGlyph.image
             let subImage = UIImage(cgImage: imageData.loadedImage!.cgImage!.cropping(to: placedGlyph.imageCoord * imageData.loadedImage!.size)!)
             subImage.draw(in: placedGlyph.rect)
@@ -34,6 +35,6 @@ class FontMessageRenderer
     }
 
     func renderMessage(_ message: String, imageSize: CGSize, lineHeight: CGFloat, backgroundColor: UIColor, showDebugInfo: Bool = false, maxLineWidth: CGFloat? = nil) -> UIImage? {
-        return render(message: message, width: 750, lineHeight: lineHeight, backgroundColor: backgroundColor)
+        return render(message: message, width: 750, lineHeight: lineHeight, backgroundColor: backgroundColor, maxAspectRatio: 1.75)
     }
 }

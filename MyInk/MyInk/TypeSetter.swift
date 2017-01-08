@@ -11,26 +11,37 @@ class TypeSetter {
     private let kerning: CGFloat
     private let atlas: FontAtlas
     private let fallbackAtlas: FontAtlas
+    private let maxAspectRatio: CGFloat
+    private var _glyphLines: [GlyphLine]?
+    private(set) var placedGlyphs = [PlacedGlyph]()
+
+    var glyphLines: [GlyphLine] {
+        if _glyphLines == nil {
+            recalculateGlyphLines()
+        }
+        return _glyphLines!
+    }
+
     var margin = UIOffset.zero {
         didSet {
             if oldValue.horizontal != margin.horizontal {
-                glyphLines = glyphLinesFromAllGlyphParagraphs(maxWidth: width - margin.horizontal * 2)
+                recalculateGlyphLines()
             }
         }
     }
-    private var glyphLines = [GlyphLine]()
 
-    init(message: String, lineHeight: CGFloat, width: CGFloat, kerning: CGFloat, atlases: [FontAtlas]) {
+    init(message: String, lineHeight: CGFloat, width: CGFloat, kerning: CGFloat, atlases: [FontAtlas], maxAspectRatio: CGFloat) {
         self.message = Message(string: message)
         self.lineHeight = lineHeight
         self.width = width
         self.kerning = kerning
         self.atlas = atlases.first!
         self.fallbackAtlas = atlases.last!
+        self.maxAspectRatio = maxAspectRatio > 0 ? maxAspectRatio : CGFloat.greatestFiniteMagnitude
     }
 
     var height: CGFloat {
-        return CGFloat(glyphLines.count) * lineHeight + margin.vertical * 2
+        return CGFloat(glyphLines.count) * lineHeight + margin.vertical * 2 + lineHeight / 3
     }
 
     var size: CGSize {
@@ -41,21 +52,29 @@ class TypeSetter {
         return width / height
     }
 
-    func placedGlyphs(alignment: TypeSetterAlignment = .left) -> [PlacedGlyph] {
-        var result = [PlacedGlyph]()
+    func set(alignment: TypeSetterAlignment = .left, centerSmallMessages: Bool = true) {
+        var alignment = alignment
+
+        while aspectRatio > maxAspectRatio {
+            if centerSmallMessages {
+                alignment = .center
+            }
+            margin.vertical += 10
+        }
+
+        placedGlyphs = [PlacedGlyph]()
         var glyphOffset = UIOffset(horizontal: 0, vertical: margin.vertical)
         for line in glyphLines {
             glyphOffset.horizontal = indentation(lineWidth: line.width, alignment: alignment)
             for word in line.words {
                 for placedGlyph in word.glyphs {
-                    result.append(PlacedGlyph(glyph: placedGlyph.glyph, rect: placedGlyph.rect.offsetBy(dx: glyphOffset.horizontal, dy: glyphOffset.vertical)))
+                    placedGlyphs.append(PlacedGlyph(glyph: placedGlyph.glyph, rect: placedGlyph.rect.offsetBy(dx: glyphOffset.horizontal, dy: glyphOffset.vertical)))
                 }
                 glyphOffset.horizontal += wordSpacing + word.width
             }
             glyphOffset.vertical += lineHeight
         }
 
-        return result
     }
 
     private func indentation(lineWidth: CGFloat, alignment: TypeSetterAlignment) -> CGFloat {
@@ -81,21 +100,22 @@ class TypeSetter {
         return self.kerning * self.lineHeight * 4
     }()
 
-    private func glyphLinesFromAllGlyphParagraphs(maxWidth: CGFloat) -> [GlyphLine] {
-        return glyphParagraphs.map {
+    private func recalculateGlyphLines() {
+        let maxWidth = width - margin.horizontal * 2
+        _glyphLines = glyphParagraphs.map {
             return glyphLinesFromGlyphParagraph($0, maxWidth: maxWidth)
         }.flatMap { $0 }
     }
 
     private func glyphLinesFromGlyphParagraph(_ paragraph: GlyphParagraph, maxWidth: CGFloat) -> [GlyphLine] {
         guard paragraph.words.count > 0 else { return [GlyphLine.zero] }
-        var glyphLines = [GlyphLine]()
+        var result = [GlyphLine]()
         var glyphWords = [GlyphWord]()
         var lineWidth: CGFloat = 0
         for glyphWord in paragraph.words {
             let lineWidthWithNextWord = lineWidth + glyphWord.width
             if lineWidthWithNextWord > maxWidth {
-                glyphLines.append(GlyphLine(glyphWords: glyphWords, wordSpacing: wordSpacing))
+                result.append(GlyphLine(glyphWords: glyphWords, wordSpacing: wordSpacing))
                 lineWidth = 0
                 glyphWords = []
             }
@@ -103,9 +123,9 @@ class TypeSetter {
             lineWidth += glyphWord.width + wordSpacing
         }
         if glyphWords.count > 0 {
-            glyphLines.append(GlyphLine(glyphWords: glyphWords, wordSpacing: wordSpacing))
+            result.append(GlyphLine(glyphWords: glyphWords, wordSpacing: wordSpacing))
         }
-        return glyphLines
+        return result
     }
 
     private func glyphsForString(_ string: String) -> [FontAtlasGlyph] {
