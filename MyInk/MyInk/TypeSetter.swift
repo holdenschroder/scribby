@@ -5,6 +5,7 @@ enum TypeSetterAlignment {
 }
 
 class TypeSetter {
+    static let lineSpacing: CGFloat = 0.2
     private let message: Message
     private let lineHeight: CGFloat
     private let width: CGFloat
@@ -41,7 +42,8 @@ class TypeSetter {
     }
 
     var height: CGFloat {
-        return CGFloat(glyphLines.count) * lineHeight + margin.vertical * 2 + lineHeight / 3
+        let heightOfLines = CGFloat(glyphLines.count) * lineHeight * (1 + TypeSetter.lineSpacing)
+        return heightOfLines + margin.vertical * 2
     }
 
     var size: CGSize {
@@ -62,6 +64,7 @@ class TypeSetter {
             margin.vertical += 10
         }
 
+        let perLineOffset = lineHeight * (1 + TypeSetter.lineSpacing)
         placedGlyphs = [PlacedGlyph]()
         var glyphOffset = UIOffset(horizontal: 0, vertical: margin.vertical)
         for line in glyphLines {
@@ -72,7 +75,7 @@ class TypeSetter {
                 }
                 glyphOffset.horizontal += wordSpacing + word.width
             }
-            glyphOffset.vertical += lineHeight
+            glyphOffset.vertical += perLineOffset
         }
 
     }
