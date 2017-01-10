@@ -29,7 +29,7 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xzt-pt-WSD" userLabel="Rendered Image View">
                                 <rect key="frame" x="20" y="34" width="374" height="100"/>
-                                <color key="backgroundColor" red="0.59094631669999997" green="0.59090662000000005" blue="0.59092980620000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="RmI-bk-Kc2"/>
                                 </constraints>
@@ -282,7 +282,7 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZvX-gf-veQ">
                                 <rect key="frame" x="20" y="27.999999999999986" width="374" height="220.66666666666663"/>
-                                <color key="backgroundColor" red="0.59094631671905518" green="0.59090662002563477" blue="0.59092980623245239" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="2Am-e2-zrN">
                                 <rect key="frame" x="50" y="256.66666666666669" width="314" height="250"/>
