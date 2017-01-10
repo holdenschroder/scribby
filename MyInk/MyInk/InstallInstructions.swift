@@ -8,7 +8,7 @@
 
 import UIKit
 
-class InstallationInstructions:UIViewController {
+class InstallationInstructions: UIViewController {
     
     var audioHelper = AudioHelper()
     
