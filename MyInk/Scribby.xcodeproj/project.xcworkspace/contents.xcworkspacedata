@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:MyInk.xcodeproj">
+      location = "self:/Users/johnnylaw/Documents/Source/Clients/Scribby/MyInk/Scribby.xcodeproj">
    </FileRef>
 </Workspace>

@@ -204,7 +204,7 @@
 		58DF90771B4F1C9600E36BB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		58DF90791B4F1C9600E36BB1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		58DF907C1B4F1C9600E36BB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		58DF90821B4F1C9700E36BB1 /* MyInkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyInkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		58DF90821B4F1C9700E36BB1 /* ScribbyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScribbyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		58DF90871B4F1C9700E36BB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		58DF90881B4F1C9700E36BB1 /* MyInkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInkTests.swift; sourceTree = "<group>"; };
 		58DF909E1B4F1D2C00E36BB1 /* FontAtlasGlyph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAtlasGlyph.swift; sourceTree = "<group>"; };
@@ -525,7 +525,7 @@
 			isa = PBXGroup;
 			children = (
 				58DF906A1B4F1C9600E36BB1 /* Scribby.app */,
-				58DF90821B4F1C9700E36BB1 /* MyInkTests.xctest */,
+				58DF90821B4F1C9700E36BB1 /* ScribbyTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -628,9 +628,9 @@
 			productReference = 58DF906A1B4F1C9600E36BB1 /* Scribby.app */;
 			productType = "com.apple.product-type.application";
 		};
-		58DF90811B4F1C9700E36BB1 /* MyInkTests */ = {
+		58DF90811B4F1C9700E36BB1 /* ScribbyTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 58DF908F1B4F1C9700E36BB1 /* Build configuration list for PBXNativeTarget "MyInkTests" */;
+			buildConfigurationList = 58DF908F1B4F1C9700E36BB1 /* Build configuration list for PBXNativeTarget "ScribbyTests" */;
 			buildPhases = (
 				58DF907E1B4F1C9700E36BB1 /* Sources */,
 				58DF907F1B4F1C9700E36BB1 /* Frameworks */,
@@ -641,9 +641,9 @@
 			dependencies = (
 				58DF90841B4F1C9700E36BB1 /* PBXTargetDependency */,
 			);
-			name = MyInkTests;
+			name = ScribbyTests;
 			productName = MyInkTests;
-			productReference = 58DF90821B4F1C9700E36BB1 /* MyInkTests.xctest */;
+			productReference = 58DF90821B4F1C9700E36BB1 /* ScribbyTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -654,7 +654,7 @@
 			attributes = {
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "E-Link";
 				TargetAttributes = {
 					58DF90691B4F1C9600E36BB1 = {
@@ -681,7 +681,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 58DF90651B4F1C9600E36BB1 /* Build configuration list for PBXProject "MyInk" */;
+			buildConfigurationList = 58DF90651B4F1C9600E36BB1 /* Build configuration list for PBXProject "Scribby" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -695,7 +695,7 @@
 			projectRoot = "";
 			targets = (
 				58DF90691B4F1C9600E36BB1 /* Scribby */,
-				58DF90811B4F1C9700E36BB1 /* MyInkTests */,
+				58DF90811B4F1C9700E36BB1 /* ScribbyTests */,
 			);
 		};
 /* End PBXProject section */
@@ -868,8 +868,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -917,8 +919,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -940,6 +944,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PROVISIONING_PROFILE = "383621bc-9782-43b2-b985-f17d2dd5b4d7";
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -965,7 +970,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/MyInk",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.myinkapp.myink;
+				PRODUCT_BUNDLE_IDENTIFIER = com.scribbyapp.scribby;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = MyInk/bridging_header.h;
@@ -994,7 +999,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/MyInk",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.myinkapp.myink;
+				PRODUCT_BUNDLE_IDENTIFIER = com.scribbyapp.scribby;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = MyInk/bridging_header.h;
@@ -1038,7 +1043,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		58DF90651B4F1C9600E36BB1 /* Build configuration list for PBXProject "MyInk" */ = {
+		58DF90651B4F1C9600E36BB1 /* Build configuration list for PBXProject "Scribby" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				58DF908A1B4F1C9700E36BB1 /* Debug */,
@@ -1056,7 +1061,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		58DF908F1B4F1C9700E36BB1 /* Build configuration list for PBXNativeTarget "MyInkTests" */ = {
+		58DF908F1B4F1C9700E36BB1 /* Build configuration list for PBXNativeTarget "ScribbyTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				58DF90901B4F1C9700E36BB1 /* Debug */,
