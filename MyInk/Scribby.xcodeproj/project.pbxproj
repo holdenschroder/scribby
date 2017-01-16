@@ -94,6 +94,8 @@
 		58FD80F71B804E07003D58D1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FD80F61B804E07003D58D1 /* SystemConfiguration.framework */; };
 		58FD80F91B804E10003D58D1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FD80F81B804E10003D58D1 /* Security.framework */; };
 		6605AFB71E20E4CE0077C9A5 /* TypeSetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6605AFB61E20E4CE0077C9A5 /* TypeSetter.swift */; };
+		66C0A1701E2D785500D6C058 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C0A16F1E2D785500D6C058 /* KeyboardViewController.swift */; };
+		66C0A1741E2D785500D6C058 /* ScribbyKeyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 66C0A16D1E2D785500D6C058 /* ScribbyKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +106,13 @@
 			remoteGlobalIDString = 58DF90691B4F1C9600E36BB1;
 			remoteInfo = MyInk;
 		};
+		66C0A1721E2D785500D6C058 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 58DF90621B4F1C9600E36BB1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 66C0A16C1E2D785500D6C058;
+			remoteInfo = ScribbyKeyboard;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -113,6 +122,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				66C0A1741E2D785500D6C058 /* ScribbyKeyboard.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -218,6 +228,9 @@
 		58FD80F81B804E10003D58D1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		58FD80FC1B804F84003D58D1 /* bridging_header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bridging_header.h; sourceTree = "<group>"; };
 		6605AFB61E20E4CE0077C9A5 /* TypeSetter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeSetter.swift; sourceTree = "<group>"; };
+		66C0A16D1E2D785500D6C058 /* ScribbyKeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ScribbyKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		66C0A16F1E2D785500D6C058 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
+		66C0A1711E2D785500D6C058 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,6 +252,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		58DF907F1B4F1C9700E36BB1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		66C0A16A1E2D785500D6C058 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -516,6 +536,7 @@
 			children = (
 				58DF906C1B4F1C9600E36BB1 /* MyInk */,
 				58DF90851B4F1C9700E36BB1 /* MyInkTests */,
+				66C0A16E1E2D785500D6C058 /* ScribbyKeyboard */,
 				535C81D31BFA68D800030D25 /* Frameworks */,
 				58DF906B1B4F1C9600E36BB1 /* Products */,
 			);
@@ -526,6 +547,7 @@
 			children = (
 				58DF906A1B4F1C9600E36BB1 /* Scribby.app */,
 				58DF90821B4F1C9700E36BB1 /* ScribbyTests.xctest */,
+				66C0A16D1E2D785500D6C058 /* ScribbyKeyboard.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -606,6 +628,15 @@
 			name = Rendering;
 			sourceTree = "<group>";
 		};
+		66C0A16E1E2D785500D6C058 /* ScribbyKeyboard */ = {
+			isa = PBXGroup;
+			children = (
+				66C0A16F1E2D785500D6C058 /* KeyboardViewController.swift */,
+				66C0A1711E2D785500D6C058 /* Info.plist */,
+			);
+			path = ScribbyKeyboard;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -622,6 +653,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				66C0A1731E2D785500D6C058 /* PBXTargetDependency */,
 			);
 			name = Scribby;
 			productName = MyInk;
@@ -646,6 +678,23 @@
 			productReference = 58DF90821B4F1C9700E36BB1 /* ScribbyTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		66C0A16C1E2D785500D6C058 /* ScribbyKeyboard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 66C0A1771E2D785500D6C058 /* Build configuration list for PBXNativeTarget "ScribbyKeyboard" */;
+			buildPhases = (
+				66C0A1691E2D785500D6C058 /* Sources */,
+				66C0A16A1E2D785500D6C058 /* Frameworks */,
+				66C0A16B1E2D785500D6C058 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ScribbyKeyboard;
+			productName = ScribbyKeyboard;
+			productReference = 66C0A16D1E2D785500D6C058 /* ScribbyKeyboard.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -653,7 +702,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftMigration = 0700;
-				LastSwiftUpdateCheck = 0700;
+				LastSwiftUpdateCheck = 0820;
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "E-Link";
 				TargetAttributes = {
@@ -679,6 +728,11 @@
 						LastSwiftMigration = 0820;
 						TestTargetID = 58DF90691B4F1C9600E36BB1;
 					};
+					66C0A16C1E2D785500D6C058 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 8YDH8TXREA;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 58DF90651B4F1C9600E36BB1 /* Build configuration list for PBXProject "Scribby" */;
@@ -696,6 +750,7 @@
 			targets = (
 				58DF90691B4F1C9600E36BB1 /* Scribby */,
 				58DF90811B4F1C9700E36BB1 /* ScribbyTests */,
+				66C0A16C1E2D785500D6C058 /* ScribbyKeyboard */,
 			);
 		};
 /* End PBXProject section */
@@ -732,6 +787,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		58DF90801B4F1C9700E36BB1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		66C0A16B1E2D785500D6C058 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -825,6 +887,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		66C0A1691E2D785500D6C058 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66C0A1701E2D785500D6C058 /* KeyboardViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -832,6 +902,11 @@
 			isa = PBXTargetDependency;
 			target = 58DF90691B4F1C9600E36BB1 /* Scribby */;
 			targetProxy = 58DF90831B4F1C9700E36BB1 /* PBXContainerItemProxy */;
+		};
+		66C0A1731E2D785500D6C058 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 66C0A16C1E2D785500D6C058 /* ScribbyKeyboard */;
+			targetProxy = 66C0A1721E2D785500D6C058 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -953,6 +1028,7 @@
 		58DF908D1B4F1C9700E36BB1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MyInk/MyInk.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -982,6 +1058,7 @@
 		58DF908E1B4F1C9700E36BB1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MyInk/MyInk.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1040,6 +1117,44 @@
 			};
 			name = Release;
 		};
+		66C0A1751E2D785500D6C058 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 8YDH8TXREA;
+				INFOPLIST_FILE = ScribbyKeyboard/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.scribbyapp.scribby.ScribbyKeyboard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		66C0A1761E2D785500D6C058 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 8YDH8TXREA;
+				INFOPLIST_FILE = ScribbyKeyboard/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.scribbyapp.scribby.ScribbyKeyboard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1069,6 +1184,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		66C0A1771E2D785500D6C058 /* Build configuration list for PBXNativeTarget "ScribbyKeyboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				66C0A1751E2D785500D6C058 /* Debug */,
+				66C0A1761E2D785500D6C058 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 
