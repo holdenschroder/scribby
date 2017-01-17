@@ -14,7 +14,7 @@ class KeyboardButton: UIButton {
 }
 
 class KeyboardViewController: UIInputViewController {
-    private static let buttonSpacing: UIOffset = UIOffset(horizontal: 5.0, vertical: 8.0)
+    private static let buttonSpacing: UIOffset = UIOffset(horizontal: 3.5, vertical: 8.0)
     static let MyInkPinkColor = UIColor(red: 0.93, green: 0, blue: 0.45, alpha: 1.0)
     static let MyInkDarkColor = UIColor(red: 208/255, green: 20/255, blue: 68/255, alpha: 1.0)
     static let MyInkLightColor = UIColor(red: 205/255, green: 23/255, blue: 56/255, alpha: 1.0)
@@ -123,11 +123,11 @@ class KeyboardViewController: UIInputViewController {
 
         if let title = button.title(for: .normal) as String? {
             switch title {
-            case "⇐":
+            case "⌫":
                 proxy.deleteBackward()
             case "⏎":
                 proxy.insertText("\n")
-            case "SPACE":
+            case "space":
                 proxy.insertText(" ")
             case "🌐":
                 self.advanceToNextInputMode()
