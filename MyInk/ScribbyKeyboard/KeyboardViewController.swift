@@ -62,15 +62,15 @@ class KeyboardViewController: UIInputViewController {
         print(view.bounds)
     }
 
-    override func textWillChange(_ textInput: UITextInput?) {
-        // The app is about to change the document's contents. Perform any preparation here.
-    }
-
-    override func textDidChange(_ textInput: UITextInput?) {
-        // The app has just changed the document's contents, the document context has been updated.
-        let proxy = self.textDocumentProxy
-        let textColor: UIColor = proxy.keyboardAppearance == .dark ? UIColor.white : UIColor.black
-    }
+//    override func textWillChange(_ textInput: UITextInput?) {
+//        // The app is about to change the document's contents. Perform any preparation here.
+//    }
+//
+//    override func textDidChange(_ textInput: UITextInput?) {
+//        // The app has just changed the document's contents, the document context has been updated.
+//        let proxy = self.textDocumentProxy
+//        let textColor: UIColor = proxy.keyboardAppearance == .dark ? UIColor.white : UIColor.black
+//    }
 
     private func createRowOfButtons(titles: [String]) -> UIView {
         var buttons = [KeyboardButton]()

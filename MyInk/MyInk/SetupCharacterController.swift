@@ -147,7 +147,7 @@ class SetupCharacterController : UIViewController, UIScrollViewDelegate {
         let spacingBounds = getSpacingBounds()
         let atlas = (UIApplication.shared.delegate as! AppDelegate).currentAtlas
         atlas?.AddGlyph(mapping, image: imageView!.image!, spacingCoords: spacingBounds)
-        navigationController?.popViewController(animated: true)
+        _ = navigationController?.popViewController(animated: true)
         if atlas != nil {
             MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventMappedCharacter, parameters:
                 [

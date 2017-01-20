@@ -9,7 +9,7 @@
 import Foundation
 
 class MainMenuController:UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    var captureView:CaptureWordSelectController!
+    var captureView: CaptureWordSelectController!
     
     @IBOutlet weak var writeBtn: UIButton!
     @IBOutlet weak var createBtn: UIButton!

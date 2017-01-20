@@ -360,8 +360,8 @@ class TutorialCharacterCell: UICollectionViewCell {
     func save() {
         if !isEmpty {
             let string = String(_character!)
-            drawCaptureView?.save(string, captureType: "Tutorial", saveAtlas: false)
-            drawCaptureView?.save(string.lowercased(), captureType: "Tutorial", saveAtlas: false)
+            _ = drawCaptureView?.save(string, captureType: "Tutorial", saveAtlas: false)
+            _ = drawCaptureView?.save(string.lowercased(), captureType: "Tutorial", saveAtlas: false)
         }
     }
     

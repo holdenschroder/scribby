@@ -32,7 +32,7 @@ class LibraryCollectionController:UICollectionViewController {
         else {
             let alert = UIAlertController(title: "Empty", message: "There is nothing in your library - go and capture some characters!", preferredStyle: .alert)
             let AlrightAction = UIAlertAction(title: "Alright!", style: .default) { (action) in
-                self.navigationController?.popViewController(animated: true)
+                _ = self.navigationController?.popViewController(animated: true)
             }
             alert.addAction(AlrightAction)
             self.present(alert, animated: true, completion: nil)

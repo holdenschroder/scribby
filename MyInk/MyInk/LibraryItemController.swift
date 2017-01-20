@@ -155,11 +155,11 @@ class LibraryItemController:UIViewController, UIImagePickerControllerDelegate, U
     }
     
     @IBAction func mapAction(_ sender: AnyObject) {
-        self.drawCaptureView?.save((_mAtlasGlyph?.mapping)!, captureType:"Touch")
+        _ = self.drawCaptureView?.save((_mAtlasGlyph?.mapping)!, captureType:"Touch")
         self.drawCaptureView?.clear()
         let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64(0.25 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
         DispatchQueue.main.asyncAfter(deadline: dispatchTime + Double(Int64(NSEC_PER_SEC)) / Double(NSEC_PER_SEC), execute: { () -> Void in
-            self.navigationController?.popViewController(animated: true)
+            _ = self.navigationController?.popViewController(animated: true)
         })
     }
     

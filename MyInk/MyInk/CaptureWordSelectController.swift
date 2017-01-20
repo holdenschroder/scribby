@@ -27,9 +27,9 @@ class CaptureWordSelectController: UIViewController, UIImagePickerControllerDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("handleTap:"))
+//        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("handleTap:"))
         imageView?.isUserInteractionEnabled = true
-        imageView?.addGestureRecognizer(tapGestureRecognizer)
+//        imageView?.addGestureRecognizer(tapGestureRecognizer)
         debugCrosshair?.isHidden = true
         debugRect?.isHidden = true
         selectBtn?.isEnabled = false
@@ -187,7 +187,6 @@ class CaptureWordSelectController: UIViewController, UIImagePickerControllerDele
         
         UIGraphicsBeginImageContextWithOptions(sz, true, 0.0);
         UIRectClip(clipRect);
-        image.resizingMode
         image.draw(in: clipRect);
         let newImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();

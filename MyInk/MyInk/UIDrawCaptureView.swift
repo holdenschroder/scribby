@@ -68,7 +68,7 @@ class UIDrawCaptureView: UIDrawView {
     func loadImage(_ image:UIImage, rect:CGRect) {
         UIGraphicsBeginImageContext(mainImageView.bounds.size)
         let imageSize = mainImageView.bounds.size * (bottomLinePercent - topLinePercent)
-        var imageRect = CGRect(origin: rect.origin * imageSize, size: imageSize)
+        let imageRect = CGRect(origin: rect.origin * imageSize, size: imageSize)
         imageRect.offsetBy(dx: -imageRect.origin.x, dy: topLinePercent * imageSize.height)
         image.draw(in: imageRect, blendMode: .normal, alpha: 1.0)
         mainImageView.image = UIGraphicsGetImageFromCurrentImageContext()
