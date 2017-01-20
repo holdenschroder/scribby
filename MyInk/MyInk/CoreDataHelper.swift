@@ -69,7 +69,7 @@ class CoreDataHelper {
         if coordinator == nil {
             return nil
         }
-        var managedObjectContext = NSManagedObjectContext()
+        var managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
         managedObjectContext.persistentStoreCoordinator = coordinator
         return managedObjectContext
         }()
@@ -112,7 +112,7 @@ class CoreDataHelper {
         if coordinator == nil {
             return nil
         }
-        var objectContext = NSManagedObjectContext()
+        let objectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
         objectContext.persistentStoreCoordinator = coordinator
         return objectContext
         }()

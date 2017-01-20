@@ -121,8 +121,10 @@ class ShareImageController: UIViewController, UIAlertViewDelegate {
             _documentController = UIDocumentInteractionController(url: filePathURL)
             _documentController.uti = "com.instagram.exclusivegram"
             if(_documentController.presentOpenInMenu(from: sender, animated: true) == false) {
-                let alert = UIAlertView(title: "Instagram Not Installed", message: "The Instagram App must be installed to share with Instagram.", delegate: self, cancelButtonTitle: "Okay")
-                alert.show()
+                let alert = UIAlertController(title: "Instagram Not Installed", message: "The Instagram App must be installed to share with Instagram.", preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(action)
+                present(alert, animated: true, completion: nil)
             }
             else {
                 audioHelper.playSentSound()

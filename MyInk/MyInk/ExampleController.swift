@@ -64,8 +64,10 @@ class ExampleController: UIViewController, UIAlertViewDelegate, MFMessageCompose
             self.present(mailVC, animated: true, completion: nil)
         }
         else {
-            let errorAlert = UIAlertView(title: "Cannot Send Email", message: "Your device is not configured to send email.", delegate: self, cancelButtonTitle: "OK")
-            errorAlert.show()
+            let alert = UIAlertController(title: "Cannot Send Email", message: "Your device is not configured to send email.", preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
         }
     }
     
@@ -77,11 +79,12 @@ class ExampleController: UIViewController, UIAlertViewDelegate, MFMessageCompose
             self.present(messageVC, animated: true, completion: nil)
         }
         else {
-            let errorAlert = UIAlertView(title: "Cannot Send Text Message", message: "Your device is not able to send text messages.", delegate: self, cancelButtonTitle: "OK")
-            errorAlert.show()
+            let alert = UIAlertController(title: "Cannot Send Text Message", message: "Your device is not able to send text messages.", preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
         }
     }
-
     
     // MARK: - Delegate Methods
     
