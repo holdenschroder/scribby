@@ -14,11 +14,11 @@ class KeyboardButton: UIButton {
 }
 
 class KeyboardViewController: UIInputViewController {
-    private static let buttonSpacing: UIOffset = UIOffset(horizontal: 3.5, vertical: 8.0)
+    private static let buttonSpacing: UIOffset = UIOffset(horizontal: 3.5, vertical: 6.0)
     static let MyInkPinkColor = UIColor(red: 0.93, green: 0, blue: 0.45, alpha: 1.0)
     static let MyInkDarkColor = UIColor(red: 208/255, green: 20/255, blue: 68/255, alpha: 1.0)
     static let MyInkLightColor = UIColor(red: 205/255, green: 23/255, blue: 56/255, alpha: 1.0)
-
+    var heightConstraint: NSLayoutConstraint!
 
     private lazy var buttonWidthMultiplier: CGFloat = {
         let spacing = KeyboardViewController.buttonSpacing.horizontal * 11
@@ -36,6 +36,11 @@ class KeyboardViewController: UIInputViewController {
 
         layoutButtons()
         view.backgroundColor = KeyboardViewController.MyInkPinkColor
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        heightConstraint.constant = 246
     }
 
     private func layoutButtons() {
@@ -57,11 +62,6 @@ class KeyboardViewController: UIInputViewController {
         addConstraintsToInputView(inputView: self.view, rowViews: [row1, row2, row3, row4])
     }
 
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        print(view.bounds)
-    }
-
 //    override func textWillChange(_ textInput: UITextInput?) {
 //        // The app is about to change the document's contents. Perform any preparation here.
 //    }
@@ -74,8 +74,9 @@ class KeyboardViewController: UIInputViewController {
 
     private func createRowOfButtons(titles: [String]) -> UIView {
         var buttons = [KeyboardButton]()
-        let rect = CGRect(x: 0, y: 0, width: 375, height: 50)
+        let rect = CGRect(x: 0, y: 0, width: 375, height: 40)
         let keyboardRowView = UIView(frame: rect)
+        keyboardRowView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(keyboardRowView)
 
         for buttonTitle in titles {
@@ -91,6 +92,7 @@ class KeyboardViewController: UIInputViewController {
 
     private func createButtonWithTitle(_ title: String) -> KeyboardButton {
         let button = KeyboardButton(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+        button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = UIColor(white: 1.0, alpha: 1.0)
 
         switch title {
@@ -169,13 +171,22 @@ class KeyboardViewController: UIInputViewController {
 
 
     private func addConstraintsToInputView(inputView: UIView, rowViews: [UIView]){
+        let topButtonConstraint = NSLayoutConstraint(item: learnSetUpButton, attribute: .top, relatedBy: .equal, toItem: inputView, attribute: .top, multiplier: 1.0, constant: 0)
+        let buttonHeightConstraint = NSLayoutConstraint(item: learnSetUpButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1.0, constant: 45)
+        let buttonWidthConstraint = NSLayoutConstraint(item: learnSetUpButton, attribute: .width, relatedBy: .equal, toItem: inputView, attribute: .width, multiplier: 1.0, constant: 0)
+        let buttonCenterConstraint = NSLayoutConstraint(item: learnSetUpButton, attribute: .centerX, relatedBy: .equal, toItem: inputView, attribute: .centerX, multiplier: 1.0, constant: 0)
+        inputView.addConstraints([topButtonConstraint, buttonHeightConstraint, buttonWidthConstraint, buttonCenterConstraint])
+
         for (index, rowView) in rowViews.enumerated() {
             let widthConstraint = NSLayoutConstraint(item: rowView, attribute: .width, relatedBy: .lessThanOrEqual, toItem: inputView, attribute: .width, multiplier: 1.0, constant: 0)
             let centerConstraint = NSLayoutConstraint(item: rowView, attribute: .centerX, relatedBy: .equal, toItem: inputView, attribute: .centerX, multiplier: 1.0, constant: 0)
             var topConstraint: NSLayoutConstraint
 
+            heightConstraint = NSLayoutConstraint(item: inputView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: UIScreen.main.bounds.height)
+            inputView.addConstraint(heightConstraint)
+
             if index == 0 {
-                topConstraint = NSLayoutConstraint(item: rowView, attribute: .top, relatedBy: .equal, toItem: inputView, attribute: .top, multiplier: 1.0, constant: 0.0)
+                topConstraint = NSLayoutConstraint(item: rowView, attribute: .top, relatedBy: .equal, toItem: learnSetUpButton, attribute: .bottom, multiplier: 1.0, constant: 3)
             } else {
                 let prevRow = rowViews[index - 1]
                 topConstraint = NSLayoutConstraint(item: rowView, attribute: .top, relatedBy: .equal, toItem: prevRow, attribute: .bottom, multiplier: 1.0, constant: 0.0)
@@ -197,4 +208,30 @@ class KeyboardViewController: UIInputViewController {
         
     }
 
+    private lazy var learnSetUpButton: UIButton = {
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 320, height: 30))
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Scribby setup incomplete. Tap here.", for: .normal)
+        button.setTitleColor(KeyboardViewController.MyInkPinkColor, for: .normal)
+        button.backgroundColor = UIColor(white: 0.2, alpha: 1)
+        button.titleLabel!.font = UIFont.boldSystemFont(ofSize: 17)
+        button.addTarget(self, action: #selector(setUpButtonTapped(_:)), for: .touchUpInside)
+        self.inputView?.addSubview(button)
+        return button
+    }()
+
+    func setUpButtonTapped(_ button: UIButton) {
+        let storyboard = UIStoryboard(name: "KeyboardStoryboard", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "KeyboardSetupTutorialViewController")
+        vc.modalPresentationStyle = .custom
+        vc.modalTransitionStyle = .crossDissolve
+//        heightConstraint.constant = heightConstraint.constant < 300 ? UIScreen.main.bounds.height : 246
+//        view.setNeedsUpdateConstraints()
+//        UIView.animate(withDuration: 0.3, animations: {
+//            self.view.layoutIfNeeded()
+//        })
+        heightConstraint.constant = UIScreen.main.bounds.height
+//        inputView?.setNeedsLayout()
+        present(vc, animated: true, completion: nil)
+    }
 }

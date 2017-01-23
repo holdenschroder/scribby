@@ -94,6 +94,7 @@
 		58FD80F71B804E07003D58D1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FD80F61B804E07003D58D1 /* SystemConfiguration.framework */; };
 		58FD80F91B804E10003D58D1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FD80F81B804E10003D58D1 /* Security.framework */; };
 		6605AFB71E20E4CE0077C9A5 /* TypeSetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6605AFB61E20E4CE0077C9A5 /* TypeSetter.swift */; };
+		6644FEC01E33CE5E0085A918 /* KeyboardStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6644FEBF1E33CE5E0085A918 /* KeyboardStoryboard.storyboard */; };
 		66C0A1701E2D785500D6C058 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C0A16F1E2D785500D6C058 /* KeyboardViewController.swift */; };
 		66C0A1741E2D785500D6C058 /* ScribbyKeyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 66C0A16D1E2D785500D6C058 /* ScribbyKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -228,6 +229,7 @@
 		58FD80F81B804E10003D58D1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		58FD80FC1B804F84003D58D1 /* bridging_header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bridging_header.h; sourceTree = "<group>"; };
 		6605AFB61E20E4CE0077C9A5 /* TypeSetter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeSetter.swift; sourceTree = "<group>"; };
+		6644FEBF1E33CE5E0085A918 /* KeyboardStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = KeyboardStoryboard.storyboard; sourceTree = "<group>"; };
 		66C0A16D1E2D785500D6C058 /* ScribbyKeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ScribbyKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		66C0A16F1E2D785500D6C058 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		66C0A1711E2D785500D6C058 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -633,6 +635,7 @@
 			children = (
 				66C0A16F1E2D785500D6C058 /* KeyboardViewController.swift */,
 				66C0A1711E2D785500D6C058 /* Info.plist */,
+				6644FEBF1E33CE5E0085A918 /* KeyboardStoryboard.storyboard */,
 			);
 			path = ScribbyKeyboard;
 			sourceTree = "<group>";
@@ -797,6 +800,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6644FEC01E33CE5E0085A918 /* KeyboardStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1192,6 +1196,7 @@
 				66C0A1761E2D785500D6C058 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
