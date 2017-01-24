@@ -45,8 +45,16 @@ class FontAtlas
     
     typealias OnSaveEventHander = (FontAtlas) -> ()
     var onSaveEvents = [OnSaveEventHander]()
-    
-    init(name:String, atlasDirectory:String, managedObjectContext:NSManagedObjectContext)
+
+    static var main: FontAtlas {
+        return FontAtlas(name: SharedMyInkValues.DefaultUserAtlas, atlasDirectory: SharedMyInkValues.DefaultAtlasDirectory, managedObjectContext: CoreDataHelper().managedObjectContext!)
+    }
+
+    static var fallback: FontAtlas {
+        return FontAtlas(name: SharedMyInkValues.EmbeddedAtlasName, atlasDirectory: SharedMyInkValues.EmbeddedAtlasDirectory, managedObjectContext: CoreDataHelper().embeddedManagedObjectContext!)
+    }
+
+    init(name: String, atlasDirectory: String, managedObjectContext: NSManagedObjectContext)
     {
         self.managedObjectContext = managedObjectContext
         
