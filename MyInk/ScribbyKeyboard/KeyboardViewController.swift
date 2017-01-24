@@ -11,6 +11,19 @@ import UIKit
 class KeyboardButton: UIButton {
     var sizeMultiplier: CGFloat = 1
     var horizontalSpacingMultiplier: CGFloat = 1
+    var isCharacter: Bool = false
+
+    func setTitle(_ title: String, withRenderer renderer: FontMessageRenderer?) {
+        setTitle(title, for: .normal)
+
+        let width: CGFloat = title == KeyboardType.spaceString ? 300 : (title.characters.count == 1 ? 55 : 80)
+        if let image = renderer?.render(message: title, width: width, lineHeight: 35, backgroundColor: UIColor.clear) {
+            setBackgroundImage(image, for: .normal)
+            setTitleColor(UIColor.clear, for: .normal)
+        } else {
+            setTitleColor(UIColor.darkGray, for: .normal)
+        }
+    }
 }
 
 enum KeyboardAlphaType {
@@ -183,28 +196,9 @@ class KeyboardViewController: UIInputViewController {
             row.translatesAutoresizingMaskIntoConstraints = false
             return row
         }
-//        let row1 = createRowOfButtons(titles: buttonTitles1, inContainer: buttonRowsContainer)
-//        let row2 = createRowOfButtons(titles: buttonTitles2, inContainer: buttonRowsContainer)
-//        let row3 = createRowOfButtons(titles: buttonTitles3, inContainer: buttonRowsContainer)
-//        let row4 = createRowOfButtons(titles: buttonTitles4, inContainer: buttonRowsContainer)
-
-//        row1.translatesAutoresizingMaskIntoConstraints = false
-//        row2.translatesAutoresizingMaskIntoConstraints = false
-//        row3.translatesAutoresizingMaskIntoConstraints = false
-//        row4.translatesAutoresizingMaskIntoConstraints = false
 
         addRowViewConstraints(rows, toContainer: buttonRowsContainer)
     }
-
-//    override func textWillChange(_ textInput: UITextInput?) {
-//        // The app is about to change the document's contents. Perform any preparation here.
-//    }
-//
-//    override func textDidChange(_ textInput: UITextInput?) {
-//        // The app has just changed the document's contents, the document context has been updated.
-//        let proxy = self.textDocumentProxy
-//        let textColor: UIColor = proxy.keyboardAppearance == .dark ? UIColor.white : UIColor.black
-//    }
 
     private func createRowOfButtons(titles: [String], inContainer container: UIView) -> UIView {
         var buttons = [KeyboardButton]()
@@ -237,7 +231,7 @@ class KeyboardViewController: UIInputViewController {
         case KeyboardType.spaceString:
             button.sizeMultiplier = 5.5
         default:
-            break
+            button.isCharacter = true
         }
         button.layer.borderColor = KeyboardViewController.MyInkDarkColor.cgColor
         button.layer.borderWidth = 1.0
@@ -245,15 +239,8 @@ class KeyboardViewController: UIInputViewController {
         button.layer.masksToBounds = true
         button.imageView?.contentMode = .scaleAspectFit
 
-        button.setTitle(title, for: .normal)
-        let width: CGFloat = title == KeyboardType.spaceString ? 300 : (title.characters.count == 1 ? 55 : 80)
-        if let image = messageRenderer?.render(message: title, width: width, lineHeight: 35, backgroundColor: UIColor.clear) {
-            button.setBackgroundImage(image, for: .normal)
-            button.setTitleColor(UIColor.clear, for: .normal)
-        } else {
-            button.setTitleColor(UIColor.darkGray, for: .normal)
-        }
-        button.sizeToFit()
+        button.setTitle(title, withRenderer: messageRenderer)
+
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         button.translatesAutoresizingMaskIntoConstraints = false
 
@@ -262,10 +249,14 @@ class KeyboardViewController: UIInputViewController {
         return button
     }
 
-    @objc func didTapButton(button: UIButton) {
+    @objc func didTapButton(button: KeyboardButton) {
         let proxy = textDocumentProxy as UITextDocumentProxy
 
-        if let title = button.title(for: .normal) as String? {
+        let title = button.title(for: .normal)!
+
+        if button.isCharacter {
+            proxy.insertText(title)
+        } else {
             switch title {
             case "⌫":
                 proxy.deleteBackward()
@@ -278,7 +269,7 @@ class KeyboardViewController: UIInputViewController {
             case "⇧", "⬆", "⇪":
                 break
             default:
-                proxy.insertText(title)
+                break
             }
         }
     }
