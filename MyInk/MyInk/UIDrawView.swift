@@ -21,7 +21,7 @@ class UIDrawView: UIView {
     var green: CGFloat = 0.0
     var blue: CGFloat = 0.0
     var opacity: CGFloat = 1.0
-    let brushWidthMin: CGFloat = 5.0
+    let brushWidthMin: CGFloat = 12.0
     let brushWidthMax: CGFloat = 20.0
     fileprivate var lastBrushWidth: CGFloat = 0.0
     internal var mainImageView:UIImageView!
@@ -32,11 +32,11 @@ class UIDrawView: UIView {
         case ended
         case cleared
     }
-    typealias DrawEvent = (_ drawView:UIDrawView, _ eventType:DrawEventType) -> Void
-    fileprivate var drawEventSubscribers = [Int:DrawEvent]()
+    typealias DrawEvent = (_ drawView: UIDrawView, _ eventType: DrawEventType) -> Void
+    fileprivate var drawEventSubscribers = [Int: DrawEvent]()
     
     fileprivate var _isEmpty = true
-    var isEmpty:Bool {
+    var isEmpty: Bool {
         get {
             return _isEmpty
         }
@@ -97,14 +97,12 @@ class UIDrawView: UIView {
         context!.move(to: CGPoint(x: fromPoint.x, y: fromPoint.y))
         context!.addLine(to: CGPoint(x: toPoint.x, y: toPoint.y))
         
-        let pointDelta = toPoint - fromPoint;
+        let pointDelta = toPoint - fromPoint
         let scalar = min(pointDelta.magnitude() / 20, 1)
         var brushWidthFinal =  brushWidthMin + ((brushWidthMax - brushWidthMin) * scalar)
         let deltaFromLast = brushWidthFinal - lastBrushWidth
         brushWidthFinal = lastBrushWidth + Clamp(deltaFromLast, minValue: -1, maxValue: 1)
         lastBrushWidth = brushWidthFinal
-        
-        //println("Brush Width \(lastBrushWidth)");
         
         context!.setLineCap(CGLineCap.round)
         context!.setLineJoin(CGLineJoin.round)

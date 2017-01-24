@@ -15,12 +15,12 @@ import UIKit
 */
 class UIDrawCaptureView: UIDrawView {
     /** This image view is used as a reference when determining the positioning of the drawn character. It determines line spacing */
-    @IBOutlet var referenceImage:UIImageView?
+    @IBOutlet var referenceImage: UIImageView?
     
-    @IBInspectable var topLinePercent:CGFloat =  0.166 //-0.166
-    @IBInspectable var bottomLinePercent:CGFloat = 0.834 //0.66
+    @IBInspectable var topLinePercent: CGFloat =  0.166 //-0.166
+    @IBInspectable var bottomLinePercent: CGFloat = 0.834 //0.66
     
-    func save(_ mapping:String, captureType:String, saveAtlas:Bool = true) -> Bool {
+    func save(_ mapping: String, captureType: String, saveAtlas: Bool = true) -> Bool {
         let imageSize = referenceImage!.image!.size
         var reference_rect = CGRect(x: 0, y: imageSize.height * topLinePercent, width: imageSize.width, height: imageSize.height * (bottomLinePercent - topLinePercent))
         reference_rect = referenceImage!.convertRect(fromImage: reference_rect);
@@ -65,7 +65,7 @@ class UIDrawCaptureView: UIDrawView {
         return false
     }
     
-    func loadImage(_ image:UIImage, rect:CGRect) {
+    func loadImage(_ image: UIImage, rect: CGRect) {
         UIGraphicsBeginImageContext(mainImageView.bounds.size)
         let imageSize = mainImageView.bounds.size * (bottomLinePercent - topLinePercent)
         let imageRect = CGRect(origin: rect.origin * imageSize, size: imageSize)

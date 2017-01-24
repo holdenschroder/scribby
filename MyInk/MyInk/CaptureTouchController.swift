@@ -32,9 +32,9 @@ fileprivate func >= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 }
 
 
-class CaptureTouchController:UIViewController {
-    @IBOutlet var drawCaptureView:UIDrawCaptureView?
-    fileprivate var lastImage:UIImage?
+class CaptureTouchController: UIViewController {
+    @IBOutlet var drawCaptureView: UIDrawCaptureView?
+    fileprivate var lastImage: UIImage?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
