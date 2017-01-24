@@ -54,6 +54,10 @@ class TypeSetter {
         return width / height
     }
 
+    var isEmpty: Bool {
+        return glyphLines.count == 0 || glyphLines.first!.width == 0
+    }
+
     func set(alignment: TypeSetterAlignment = .left, centerSmallMessages: Bool = true) {
         var alignment = alignment
 

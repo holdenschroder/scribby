@@ -13,12 +13,118 @@ class KeyboardButton: UIButton {
     var horizontalSpacingMultiplier: CGFloat = 1
 }
 
+enum KeyboardAlphaType {
+    case lower
+    case shifted
+    case capsLock
+
+    var shiftKeyString: String {
+        switch self {
+        case .lower:
+            return "⇧"
+        case .shifted:
+            return "⬆"
+        case .capsLock:
+            return "⇪"
+        }
+    }
+
+}
+
+enum KeyboardSpecialType {
+    case numeric
+    case symbols
+
+    var shiftKeyString: String {
+        switch self {
+        case .numeric:
+            return "#+="
+        case .symbols:
+            return "123"
+        }
+    }
+}
+
+enum KeyboardType {
+    case lower
+    case shifted
+    case capsLock
+    case numeric
+    case symbols
+
+    var shiftKeyString: String {
+        switch self {
+        case .lower:
+            return "⇧"
+        case .shifted:
+            return "⬆"
+        case .capsLock:
+            return "⇪"
+        case .numeric:
+            return "#+="
+        case .symbols:
+            return "123"
+        }
+    }
+
+    var switchTypeString: String {
+        switch self {
+        case .numeric, .symbols:
+            return "ABC"
+        default:
+            return "123"
+        }
+    }
+
+    var characters: [[String]] {
+        var result: [[String]]
+        switch self {
+        case .lower:
+            result = KeyboardType.alphaCharacters(shifted: false)
+        case .shifted, .capsLock:
+            result = KeyboardType.alphaCharacters(shifted: true)
+        case .numeric:
+            result = [
+                ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"],
+                ["-", "/", ":", ";", "(", ")", "$", "&", "@", "\""],
+                [".", ",", "?", "!", "'"]
+            ]
+        case .symbols:
+            result = [
+                ["[", "]", "{", "}", "#", "%", "^", "*", "+", "="],
+                ["_", "\\", "|", "~", "<", ">", "€", "£", "¥", "•"],
+                [".", ",", "?", "!", "'"]
+            ]
+        }
+        result[2] = [shiftKeyString] + result[2] + ["⌫"]
+        result.append([switchTypeString, "🌐", KeyboardType.spaceString, "⏎"])
+        return result
+    }
+
+    static let spaceString = "space"
+
+    private static func alphaCharacters(shifted: Bool) -> [[String]] {
+        let letters = [
+            ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"],
+            ["A", "S", "D", "F", "G", "H", "J", "K", "L"],
+            ["Z", "X", "C", "V", "B", "N", "M"]
+        ]
+        if shifted { return letters }
+        return letters.map { row in
+            return row.map { letter in
+                return letter.lowercased()
+            }
+        }
+    }
+}
+
 class KeyboardViewController: UIInputViewController {
     private static let buttonSpacing: UIOffset = UIOffset(horizontal: 3.5, vertical: 6.0)
     private static let buttonHeight: CGFloat = 45.0
     private static let keyboardHeight: CGFloat = 216.0
-
-    private let spaceString = "   space   "
+    private var keyboardType: KeyboardType = .numeric
+//    private static let spaceString = "space"
+//    private let spaceString = "space"
 
     static let MyInkPinkColor = UIColor(red: 0.93, green: 0, blue: 0.45, alpha: 1.0)
     static let MyInkDarkColor = UIColor(red: 208/255, green: 20/255, blue: 68/255, alpha: 1.0)
@@ -31,12 +137,6 @@ class KeyboardViewController: UIInputViewController {
         return (1 - spacing / UIScreen.main.bounds.width) / 10 * 0.98
     }()
 
-    override func updateViewConstraints() {
-        super.updateViewConstraints()
-        
-        // Add custom view sizing constraints here
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -44,7 +144,7 @@ class KeyboardViewController: UIInputViewController {
             let atlas = FontAtlas.main
             let fallbackAtlas = FontAtlas.fallback
             messageRenderer = FontMessageRenderer(atlas: atlas, fallbackAtlas: fallbackAtlas, watermark: SharedMyInkValues.MyInkWatermark)
-            messageRenderer!.margin = UIOffset(horizontal: 0, vertical: 5)
+            messageRenderer!.margin = UIOffset(horizontal: 0, vertical: 2)
             messageRenderer!.alignment = .center
         }
 
@@ -63,7 +163,6 @@ class KeyboardViewController: UIInputViewController {
         view.addSubview(buttonRowsContainer)
         let containerWidthConstraint = NSLayoutConstraint(item: buttonRowsContainer, attribute: .width, relatedBy: .equal, toItem: view, attribute: .width, multiplier: 1.0, constant: 0)
         let containerCenterConstraint = NSLayoutConstraint(item: buttonRowsContainer, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1.0, constant: 0)
-//        let containerBottomConstraint = NSLayoutConstraint(item: buttonRowsContainer, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: 0)
         let containerHeightConstraint = NSLayoutConstraint(item: buttonRowsContainer, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: KeyboardViewController.keyboardHeight)
         view.addConstraints([containerWidthConstraint, containerCenterConstraint, containerHeightConstraint])
 
@@ -71,22 +170,30 @@ class KeyboardViewController: UIInputViewController {
         heightConstraint.priority = 999
         view.addConstraint(heightConstraint)
 
-        let buttonTitles1 = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"]
-        let buttonTitles2 = ["A", "S", "D", "F", "G", "H", "J", "K", "L"]
-        let buttonTitles3 = ["⇧", "Z", "X", "C", "V", "B", "N", "M", "⌫"] // shifted: ⬆, caps lock ⇪
-        let buttonTitles4 = ["🌐", spaceString, "⏎"]
+//        let buttonTitles1 = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"]
+//        let buttonTitles2 = ["A", "S", "D", "F", "G", "H", "J", "K", "L"]
+//        let buttonTitles3 = ["⇧", "Z", "X", "C", "V", "B", "N", "M", "⌫"] // shifted: ⬆, caps lock ⇪
+//        let buttonTitles4 = ["🌐", spaceString, "⏎"]
+        for (i, buttonTitles) in keyboardType.characters.enumerated() {
 
-        let row1 = createRowOfButtons(titles: buttonTitles1, inContainer: buttonRowsContainer)
-        let row2 = createRowOfButtons(titles: buttonTitles2, inContainer: buttonRowsContainer)
-        let row3 = createRowOfButtons(titles: buttonTitles3, inContainer: buttonRowsContainer)
-        let row4 = createRowOfButtons(titles: buttonTitles4, inContainer: buttonRowsContainer)
+        }
 
-        row1.translatesAutoresizingMaskIntoConstraints = false
-        row2.translatesAutoresizingMaskIntoConstraints = false
-        row3.translatesAutoresizingMaskIntoConstraints = false
-        row4.translatesAutoresizingMaskIntoConstraints = false
+        let rows: [UIView] = keyboardType.characters.map {
+            let row = createRowOfButtons(titles: $0, inContainer: buttonRowsContainer)
+            row.translatesAutoresizingMaskIntoConstraints = false
+            return row
+        }
+//        let row1 = createRowOfButtons(titles: buttonTitles1, inContainer: buttonRowsContainer)
+//        let row2 = createRowOfButtons(titles: buttonTitles2, inContainer: buttonRowsContainer)
+//        let row3 = createRowOfButtons(titles: buttonTitles3, inContainer: buttonRowsContainer)
+//        let row4 = createRowOfButtons(titles: buttonTitles4, inContainer: buttonRowsContainer)
 
-        addRowViewConstraints([row1, row2, row3, row4], toContainer: buttonRowsContainer)
+//        row1.translatesAutoresizingMaskIntoConstraints = false
+//        row2.translatesAutoresizingMaskIntoConstraints = false
+//        row3.translatesAutoresizingMaskIntoConstraints = false
+//        row4.translatesAutoresizingMaskIntoConstraints = false
+
+        addRowViewConstraints(rows, toContainer: buttonRowsContainer)
     }
 
 //    override func textWillChange(_ textInput: UITextInput?) {
@@ -123,11 +230,11 @@ class KeyboardViewController: UIInputViewController {
         button.backgroundColor = UIColor(white: 1.0, alpha: 1.0)
 
         switch title {
-        case "⇧", "⬆", "⇪", "⌫", "🌐", "⏎":
+        case "⇧", "⬆", "⇪", "⌫", "🌐", "⏎", "123", "ABC", "#+=":
             button.sizeMultiplier = 1.4
             button.backgroundColor = UIColor(white: 0.8, alpha: 1)
             button.horizontalSpacingMultiplier = 2.5
-        case spaceString:
+        case KeyboardType.spaceString:
             button.sizeMultiplier = 5.5
         default:
             break
@@ -139,7 +246,7 @@ class KeyboardViewController: UIInputViewController {
         button.imageView?.contentMode = .scaleAspectFit
 
         button.setTitle(title, for: .normal)
-        let width: CGFloat? = title == spaceString ? 300 : 45
+        let width: CGFloat = title == KeyboardType.spaceString ? 300 : (title.characters.count == 1 ? 55 : 80)
         if let image = messageRenderer?.render(message: title, width: width, lineHeight: 35, backgroundColor: UIColor.clear) {
             button.setBackgroundImage(image, for: .normal)
             button.setTitleColor(UIColor.clear, for: .normal)
@@ -164,7 +271,7 @@ class KeyboardViewController: UIInputViewController {
                 proxy.deleteBackward()
             case "⏎":
                 proxy.insertText("\n")
-            case spaceString:
+            case KeyboardType.spaceString:
                 proxy.insertText(" ")
             case "🌐":
                 self.advanceToNextInputMode()
