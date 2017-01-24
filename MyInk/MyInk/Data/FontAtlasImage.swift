@@ -40,8 +40,8 @@ class FontAtlasImage: NSManagedObject {
     @NSManaged var atlas: FontAtlasData
     @NSManaged var glyphs: NSSet
     
-    fileprivate var _loadedImage:UIImage?
-    var loadedImage:UIImage? {
+    fileprivate var _loadedImage: UIImage?
+    var loadedImage: UIImage? {
         get {
             if(_loadedImage == nil) {
                 let fileManager = FileManager.default
