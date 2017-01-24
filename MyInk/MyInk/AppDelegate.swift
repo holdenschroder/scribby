@@ -14,24 +14,33 @@ import Parse
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
     var window: UIWindow?
     lazy var coreData:CoreDataHelper = {
         return CoreDataHelper()
     }()
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         Fabric.with([Crashlytics.self()])
         MyInkAnalytics.Initialize([FlurryWrapper(), ParseWrapper(launchOptions: launchOptions)])
         
         UINavigationBar.appearance().barTintColor = SharedMyInkValues.MyInkDarkColor
-        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
+        UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
         
         return true
     }
 
-    func applicationDidEnterBackground(application: UIApplication) {
+    func application(_ application: UIApplication, handleOpen url: URL) -> Bool {
+        var path = url.relativeString.components(separatedBy: "/") as [String]
+        if path.count > 2 {
+            path = Array(path[2..<path.count])
+        }
+        SharedMyInkValues.appOpenTargetURLComponents = path
+
+        return true
+    }
+
+    func applicationDidEnterBackground(_ application: UIApplication) {
         self.coreData.saveContext()
     }
     
@@ -49,10 +58,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }()
     
     lazy var tutorialState:TutorialState? = {
-        let request = NSFetchRequest(entityName: "TutorialState")
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "TutorialState")
         let results:[AnyObject]?
         do {
-            results = try self.coreData.managedObjectContext!.executeFetchRequest(request)
+            results = try self.coreData.managedObjectContext!.fetch(request)
         }
         catch let error as NSError {
             results = nil
@@ -60,7 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         var tutorialState:TutorialState?
         if(results == nil || results?.count == 0) {
-            tutorialState = NSEntityDescription.insertNewObjectForEntityForName("TutorialState", inManagedObjectContext: self.coreData.managedObjectContext!) as? TutorialState
+            tutorialState = NSEntityDescription.insertNewObject(forEntityName: "TutorialState", into: self.coreData.managedObjectContext!) as? TutorialState
             tutorialState?.Initialize()
         }
         else {
@@ -70,7 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return tutorialState;
     }()
     
-    private func handleAtlasSave(atlas:FontAtlas) {
+    fileprivate func handleAtlasSave(_ atlas:FontAtlas) {
         self.coreData.saveContext()
     }
 }

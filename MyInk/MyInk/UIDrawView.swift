@@ -23,19 +23,19 @@ class UIDrawView: UIView {
     var opacity: CGFloat = 1.0
     let brushWidthMin: CGFloat = 5.0
     let brushWidthMax: CGFloat = 20.0
-    private var lastBrushWidth: CGFloat = 0.0
+    fileprivate var lastBrushWidth: CGFloat = 0.0
     internal var mainImageView:UIImageView!
     internal var tempImageView:UIImageView!
     
     enum DrawEventType {
-        case Began
-        case Ended
-        case Cleared
+        case began
+        case ended
+        case cleared
     }
-    typealias DrawEvent = (drawView:UIDrawView, eventType:DrawEventType) -> Void
-    private var drawEventSubscribers = [Int:DrawEvent]()
+    typealias DrawEvent = (_ drawView:UIDrawView, _ eventType:DrawEventType) -> Void
+    fileprivate var drawEventSubscribers = [Int:DrawEvent]()
     
-    private var _isEmpty = true
+    fileprivate var _isEmpty = true
     var isEmpty:Bool {
         get {
             return _isEmpty
@@ -49,23 +49,23 @@ class UIDrawView: UIView {
         self.addSubview(mainImageView)
         constrainView(mainImageView)
         tempImageView = UIImageView(frame: frame)
-        tempImageView.userInteractionEnabled = true
+        tempImageView.isUserInteractionEnabled = true
         self.addSubview(tempImageView)
         constrainView(tempImageView)
         tempImageView.alpha = 0.5
         self.setNeedsUpdateConstraints()
         
         //Setup User Interaction
-        tempImageView.userInteractionEnabled = true
+        tempImageView.isUserInteractionEnabled = true
         
         clear()
     }
     
-    private func constrainView(view:UIView) {
-        let leftConstraint = NSLayoutConstraint(item: view, attribute: .Left, relatedBy: .Equal, toItem: self, attribute: .Left, multiplier: 1.0, constant: 0)
-        let rightConstraint = NSLayoutConstraint(item: view, attribute: .Right, relatedBy: .Equal, toItem: self, attribute: .Right, multiplier: 1.0, constant: 0)
-        let topConstraint = NSLayoutConstraint(item: view, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1.0, constant: 0)
-        let bottomConstraint = NSLayoutConstraint(item: view, attribute: .Bottom, relatedBy: .Equal, toItem: self, attribute: .Bottom, multiplier: 1.0, constant: 0)
+    fileprivate func constrainView(_ view:UIView) {
+        let leftConstraint = NSLayoutConstraint(item: view, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: 0)
+        let rightConstraint = NSLayoutConstraint(item: view, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1.0, constant: 0)
+        let topConstraint = NSLayoutConstraint(item: view, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 0)
+        let bottomConstraint = NSLayoutConstraint(item: view, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: 0)
         self.addConstraints([leftConstraint, rightConstraint, topConstraint, bottomConstraint])
         view.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -74,28 +74,28 @@ class UIDrawView: UIView {
         let imageRect = CGRect(x: 0, y: 0, width: mainImageView.bounds.width, height: mainImageView.bounds.height)
         UIGraphicsBeginImageContext(mainImageView.bounds.size)
             let context = UIGraphicsGetCurrentContext()
-            CGContextSetRGBFillColor(context!, 0,0,0,0)
-            CGContextFillRect(context!, imageRect)
+            context!.setFillColor(red: 0,green: 0,blue: 0,alpha: 0)
+            context!.fill(imageRect)
             mainImageView.image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         lastBrushWidth = brushWidthMin
         _isEmpty = true
-        broadcastDrawEventToSubscribers(.Cleared)
+        broadcastDrawEventToSubscribers(.cleared)
     }
     
-    @IBAction func handleClearBtn(sender:AnyObject) {
+    @IBAction func handleClearBtn(_ sender:AnyObject) {
         clear()
     }
     
-    func drawLineFrom(fromPoint: CGPoint, toPoint: CGPoint) {  
+    func drawLineFrom(_ fromPoint: CGPoint, toPoint: CGPoint) {  
         let imageSize = CGSize(width: floor(tempImageView.bounds.size.width), height: floor(tempImageView.bounds.size.height))
         
         UIGraphicsBeginImageContext(imageSize)
         let context = UIGraphicsGetCurrentContext()
-        tempImageView.image?.drawInRect(CGRect(x: 0, y: 0, width: imageSize.width, height: imageSize.height))
+        tempImageView.image?.draw(in: CGRect(x: 0, y: 0, width: imageSize.width, height: imageSize.height))
         
-        CGContextMoveToPoint(context!, fromPoint.x, fromPoint.y)
-        CGContextAddLineToPoint(context!, toPoint.x, toPoint.y)
+        context!.move(to: CGPoint(x: fromPoint.x, y: fromPoint.y))
+        context!.addLine(to: CGPoint(x: toPoint.x, y: toPoint.y))
         
         let pointDelta = toPoint - fromPoint;
         let scalar = min(pointDelta.magnitude() / 20, 1)
@@ -106,13 +106,13 @@ class UIDrawView: UIView {
         
         //println("Brush Width \(lastBrushWidth)");
         
-        CGContextSetLineCap(context!, CGLineCap.Round)
-        CGContextSetLineJoin(context!, CGLineJoin.Round)
-        CGContextSetLineWidth(context!, brushWidthFinal)
-        CGContextSetRGBStrokeColor(context!, red, green, blue, 1.0)
-        CGContextSetBlendMode(context!, CGBlendMode.Normal)
+        context!.setLineCap(CGLineCap.round)
+        context!.setLineJoin(CGLineJoin.round)
+        context!.setLineWidth(brushWidthFinal)
+        context!.setStrokeColor(red: red, green: green, blue: blue, alpha: 1.0)
+        context!.setBlendMode(CGBlendMode.normal)
         
-        CGContextStrokePath(context!)
+        context!.strokePath()
         
         tempImageView.image = UIGraphicsGetImageFromCurrentImageContext()
         tempImageView.alpha = opacity
@@ -121,26 +121,26 @@ class UIDrawView: UIView {
         _isEmpty = false
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         swiped = false
         lastBrushWidth = brushWidthMin
         if let touch = touches.first {
-            lastPoint = touch.locationInView(tempImageView)
-            broadcastDrawEventToSubscribers(DrawEventType.Began)
+            lastPoint = touch.location(in: tempImageView)
+            broadcastDrawEventToSubscribers(DrawEventType.began)
         }
     }
     
-    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         swiped = true
         if let touch = touches.first {
-            let currentPoint = touch.locationInView(tempImageView)
+            let currentPoint = touch.location(in: tempImageView)
             drawLineFrom(lastPoint, toPoint: currentPoint)
             
             lastPoint = currentPoint
         }
     }
     
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if !swiped {
             //draw at point
             drawLineFrom(lastPoint, toPoint: lastPoint)
@@ -149,30 +149,30 @@ class UIDrawView: UIView {
         let imageRect = CGRect(x: 0, y: 0, width: mainImageView.bounds.width, height: mainImageView.bounds.height)
         
         UIGraphicsBeginImageContext(mainImageView.bounds.size)
-        mainImageView.image?.drawInRect(imageRect, blendMode: CGBlendMode.Normal, alpha: 1.0)
-        tempImageView.image?.drawInRect(imageRect, blendMode: CGBlendMode.Normal, alpha: opacity)
+        mainImageView.image?.draw(in: imageRect, blendMode: CGBlendMode.normal, alpha: 1.0)
+        tempImageView.image?.draw(in: imageRect, blendMode: CGBlendMode.normal, alpha: opacity)
         mainImageView.image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
         tempImageView.image = nil
-        broadcastDrawEventToSubscribers(DrawEventType.Ended)
+        broadcastDrawEventToSubscribers(DrawEventType.ended)
     }
     
     func getImage() -> UIImage {
         return mainImageView.image!
     }
     
-    func addDrawEventSubscriber(target:AnyObject, handler:DrawEvent) {
+    func addDrawEventSubscriber(_ target:AnyObject, handler:@escaping DrawEvent) {
         drawEventSubscribers[target.hash] = handler
     }
     
-    func removeDrawEventSubscriber(target:AnyObject) {
-        drawEventSubscribers.removeValueForKey(target.hash)
+    func removeDrawEventSubscriber(_ target:AnyObject) {
+        drawEventSubscribers.removeValue(forKey: target.hash)
     }
     
-    private func broadcastDrawEventToSubscribers(eventType:DrawEventType) {
+    fileprivate func broadcastDrawEventToSubscribers(_ eventType:DrawEventType) {
         for subscriber in drawEventSubscribers.values {
-            subscriber(drawView: self, eventType: eventType)
+            subscriber(self, eventType)
         }
     }
 }

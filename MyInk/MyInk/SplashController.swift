@@ -17,34 +17,34 @@ class SplashController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let defaults = NSUserDefaults.standardUserDefaults()
+        let defaults = UserDefaults.standard
         //defaults.setBool(false, forKey: SharedMyInkValues.kDefaultsUserHasBoarded) // DEBUG ONLY
         shouldShowOnboarding = true
-        if(defaults.boolForKey(SharedMyInkValues.kDefaultsUserHasBoarded) ) {
+        if(defaults.bool(forKey: SharedMyInkValues.kDefaultsUserHasBoarded) ) {
             shouldShowOnboarding = false
         }
         
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        UIView.animateWithDuration(1.5, animations: {
+        UIView.animate(withDuration: 1.5, animations: {
             self.audioHelper.playWelcomeSound()
             self.logo.alpha = 1.0
         })
-        let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(2.5 * Double(NSEC_PER_SEC)))
-        dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+        let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64(2.5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+        DispatchQueue.main.asyncAfter(deadline: dispatchTime, execute: {
             self.navigate()
         })
     }
     
     func navigate() {
         if(shouldShowOnboarding == true) {
-            performSegueWithIdentifier("segueSplashToWelcome", sender: self)
+            performSegue(withIdentifier: "segueSplashToWelcome", sender: self)
         }
         else {
-            presentViewController(UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("NavigationRoot") as UIViewController, animated: true, completion: nil)
+            present(UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NavigationRoot") as UIViewController, animated: true, completion: nil)
         }
     }
 

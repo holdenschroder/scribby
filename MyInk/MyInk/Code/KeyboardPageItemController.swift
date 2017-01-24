@@ -27,25 +27,25 @@ class KeyboardPageItemController: UIViewController {
         contentImageView!.image = UIImage(named: imageName)
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         
         let xBtn = UIButton()
-        xBtn.setTitle("X", forState: .Normal)
-        xBtn.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        xBtn.frame = CGRectMake(22, 22, 33, 33)
+        xBtn.setTitle("X", for: UIControlState())
+        xBtn.setTitleColor(UIColor.white, for: UIControlState())
+        xBtn.frame = CGRect(x: 22, y: 22, width: 33, height: 33)
         xBtn.layer.cornerRadius = 3.0
         xBtn.layer.borderWidth = 1.5
-        xBtn.layer.borderColor = UIColor.whiteColor().CGColor
-        xBtn.layer.backgroundColor = UIColor.blackColor().CGColor
+        xBtn.layer.borderColor = UIColor.white.cgColor
+        xBtn.layer.backgroundColor = UIColor.black.cgColor
         xBtn.layer.masksToBounds = true
-        xBtn.addTarget(self, action: #selector(KeyboardPageItemController.HandleXBtn), forControlEvents: .TouchUpInside)
+        xBtn.addTarget(self, action: #selector(KeyboardPageItemController.HandleXBtn), for: .touchUpInside)
         self.view.addSubview(xBtn)
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         self.navigationController?.setNavigationBarHidden(true, animated: true)
@@ -55,7 +55,7 @@ class KeyboardPageItemController: UIViewController {
         }
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         self.navigationController?.setNavigationBarHidden(false, animated: true)
@@ -65,7 +65,7 @@ class KeyboardPageItemController: UIViewController {
     
     func HandleXBtn() {
         if let navController = self.navigationController {
-            navController.popViewControllerAnimated(true)
+            navController.popViewController(animated: true)
         }
     }
     

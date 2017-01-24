@@ -16,7 +16,7 @@ class LibraryItemController:UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet var drawCaptureView:UIDrawCaptureView?
     @IBOutlet weak var characterLabel: UILabel!
     
-    private var lastImage:UIImage?
+    fileprivate var lastImage:UIImage?
     var _mAtlasGlyph: FontAtlasGlyph?
     var captureView:CaptureWordSelectController!
     
@@ -28,22 +28,22 @@ class LibraryItemController:UIViewController, UIImagePickerControllerDelegate, U
         
         self.title = "\("Edit:") \(_mAtlasGlyph!.mapping)"
         self.characterLabel.text = _mAtlasGlyph!.mapping
-        UIView.animateWithDuration(0.5, animations: {
+        UIView.animate(withDuration: 0.5, animations: {
             self.characterLabel?.alpha = 0.05
         })
         
         //let camButton = UIBarButtonItem(barButtonSystemItem: .Camera, target: self, action: "openCapture")
         //navigationItem.rightBarButtonItem = camButton
         
-        captureView = storyboard?.instantiateViewControllerWithIdentifier("CaptureView") as? CaptureWordSelectController
+        captureView = storyboard?.instantiateViewController(withIdentifier: "CaptureView") as? CaptureWordSelectController
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventScreenLoadedLibraryItem)
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         //self.navigationController?.navigationBarHidden = false
@@ -51,43 +51,43 @@ class LibraryItemController:UIViewController, UIImagePickerControllerDelegate, U
         self.navigationController?.navigationItem.leftBarButtonItem?.title = ""
     }
     
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return UIInterfaceOrientationMask.Portrait
+    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.portrait
     }
     
 
     
     // MARK: CAPTURE
     
-    func showCaptureView(image:UIImage) {
+    func showCaptureView(_ image:UIImage) {
         self.captureView.loadImage(image)
         self.captureView._mAtlasGlyph = _mAtlasGlyph
-        self.showViewController(self.captureView, sender: self)
+        self.show(self.captureView, sender: self)
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [AnyHashable: Any]!) {
         
         let imageSize = image.size
-        var imageTransform:CGAffineTransform = CGAffineTransformIdentity
+        var imageTransform:CGAffineTransform = CGAffineTransform.identity
         //Build a transform to offset and rotate the rect depending on the orientation
         let imageOrientation = image.imageOrientation
         switch(imageOrientation)
         {
-        case UIImageOrientation.DownMirrored:
+        case UIImageOrientation.downMirrored:
             fallthrough
-        case UIImageOrientation.Down:
-            imageTransform = CGAffineTransformTranslate(imageTransform, imageSize.width, imageSize.height)
-            imageTransform = CGAffineTransformRotate(imageTransform, CGFloat(M_PI))
-        case UIImageOrientation.LeftMirrored:
+        case UIImageOrientation.down:
+            imageTransform = imageTransform.translatedBy(x: imageSize.width, y: imageSize.height)
+            imageTransform = imageTransform.rotated(by: CGFloat(M_PI))
+        case UIImageOrientation.leftMirrored:
             fallthrough
-        case UIImageOrientation.Left:
-            imageTransform = CGAffineTransformTranslate(imageTransform, imageSize.width, 0)
-            imageTransform = CGAffineTransformRotate(imageTransform, CGFloat(M_PI_2))
-        case UIImageOrientation.RightMirrored:
+        case UIImageOrientation.left:
+            imageTransform = imageTransform.translatedBy(x: imageSize.width, y: 0)
+            imageTransform = imageTransform.rotated(by: CGFloat(M_PI_2))
+        case UIImageOrientation.rightMirrored:
             fallthrough
-        case UIImageOrientation.Right:
-            imageTransform = CGAffineTransformTranslate(imageTransform, 0, imageSize.height)
-            imageTransform = CGAffineTransformRotate(imageTransform, CGFloat(-M_PI_2))
+        case UIImageOrientation.right:
+            imageTransform = imageTransform.translatedBy(x: 0, y: imageSize.height)
+            imageTransform = imageTransform.rotated(by: CGFloat(-M_PI_2))
         default:
             break
         }
@@ -95,43 +95,43 @@ class LibraryItemController:UIViewController, UIImagePickerControllerDelegate, U
         //Compensate for Mirrored orientations
         switch(imageOrientation)
         {
-        case UIImageOrientation.UpMirrored:
+        case UIImageOrientation.upMirrored:
             fallthrough
-        case UIImageOrientation.DownMirrored:
-            imageTransform = CGAffineTransformTranslate(imageTransform, imageSize.width, 0)
-            imageTransform = CGAffineTransformScale(imageTransform, -1, 1)
-        case UIImageOrientation.LeftMirrored:
+        case UIImageOrientation.downMirrored:
+            imageTransform = imageTransform.translatedBy(x: imageSize.width, y: 0)
+            imageTransform = imageTransform.scaledBy(x: -1, y: 1)
+        case UIImageOrientation.leftMirrored:
             fallthrough
-        case UIImageOrientation.RightMirrored:
-            imageTransform = CGAffineTransformTranslate(imageTransform, imageSize.height, 0)
-            imageTransform = CGAffineTransformScale(imageTransform, -1, 1)
+        case UIImageOrientation.rightMirrored:
+            imageTransform = imageTransform.translatedBy(x: imageSize.height, y: 0)
+            imageTransform = imageTransform.scaledBy(x: -1, y: 1)
         default:
             break
         }
         
-        let ctx:CGContextRef = CGBitmapContextCreate(nil, Int(imageSize.width), Int(imageSize.height),
-            CGImageGetBitsPerComponent(image.CGImage!), 0,
-            CGImageGetColorSpace(image.CGImage!)!,
-            CGImageGetBitmapInfo(image.CGImage!).rawValue)!;
-        CGContextConcatCTM(ctx, imageTransform);
+        let ctx:CGContext = CGContext(data: nil, width: Int(imageSize.width), height: Int(imageSize.height),
+            bitsPerComponent: image.cgImage!.bitsPerComponent, bytesPerRow: 0,
+            space: image.cgImage!.colorSpace!,
+            bitmapInfo: image.cgImage!.bitmapInfo.rawValue)!;
+        ctx.concatenate(imageTransform);
         switch (imageOrientation) {
-        case .Left:
+        case .left:
             fallthrough
-        case .LeftMirrored:
+        case .leftMirrored:
             fallthrough
-        case .Right:
+        case .right:
             fallthrough
-        case .RightMirrored:
-            CGContextDrawImage(ctx, CGRectMake(0,0,imageSize.height,imageSize.width), image.CGImage!);
+        case .rightMirrored:
+            ctx.draw(image.cgImage!, in: CGRect(x: 0,y: 0,width: imageSize.height,height: imageSize.width));
             
         default:
-            CGContextDrawImage(ctx, CGRectMake(0,0,imageSize.width,imageSize.height), image.CGImage!);
+            ctx.draw(image.cgImage!, in: CGRect(x: 0,y: 0,width: imageSize.width,height: imageSize.height));
         }
         
-        let cgimg = CGBitmapContextCreateImage(ctx);
-        let img = UIImage(CGImage: cgimg!)//UIImage imageWithCGImage:cgimg]
+        let cgimg = ctx.makeImage();
+        let img = UIImage(cgImage: cgimg!)//UIImage imageWithCGImage:cgimg]
         
-        picker.dismissViewControllerAnimated(true, completion: nil)
+        picker.dismiss(animated: true, completion: nil)
         showCaptureView(img)
         MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventScreenLoadedLibraryPhotoTaken)
     }
@@ -140,12 +140,12 @@ class LibraryItemController:UIViewController, UIImagePickerControllerDelegate, U
     // MARK: ACTIONS
     
     func openCapture() {
-        if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)) {
-            dispatch_async(dispatch_get_main_queue(), {
+        if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)) {
+            DispatchQueue.main.async(execute: {
                 let imgPicker = UIImagePickerController()
                 imgPicker.delegate = self
-                imgPicker.sourceType = UIImagePickerControllerSourceType.Camera
-                self.presentViewController(imgPicker, animated: true, completion: nil)
+                imgPicker.sourceType = UIImagePickerControllerSourceType.camera
+                self.present(imgPicker, animated: true, completion: nil)
             })
         }
         else //Load Test Image
@@ -154,16 +154,16 @@ class LibraryItemController:UIViewController, UIImagePickerControllerDelegate, U
         }
     }
     
-    @IBAction func mapAction(sender: AnyObject) {
-        self.drawCaptureView?.save((_mAtlasGlyph?.mapping)!, captureType:"Touch")
+    @IBAction func mapAction(_ sender: AnyObject) {
+        _ = self.drawCaptureView?.save((_mAtlasGlyph?.mapping)!, captureType:"Touch")
         self.drawCaptureView?.clear()
-        let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(0.25 * Double(NSEC_PER_SEC)))
-        dispatch_after(dispatch_time(dispatchTime, Int64(NSEC_PER_SEC)), dispatch_get_main_queue(), { () -> Void in
-            self.navigationController?.popViewControllerAnimated(true)
+        let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64(0.25 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+        DispatchQueue.main.asyncAfter(deadline: dispatchTime + Double(Int64(NSEC_PER_SEC)) / Double(NSEC_PER_SEC), execute: { () -> Void in
+            _ = self.navigationController?.popViewController(animated: true)
         })
     }
     
-    @IBAction func clearAction(sender: AnyObject) {
+    @IBAction func clearAction(_ sender: AnyObject) {
         self.drawCaptureView?.clear()
     }
     

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="qIR-pm-Fn9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="qIR-pm-Fn9">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,11 +20,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_menu_bg" translatesAutoresizingMaskIntoConstraints="NO" id="Df7-Y0-Mj0" userLabel="background">
+                                <rect key="frame" x="-146" y="0.0" width="667" height="667"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Df7-Y0-Mj0" secondAttribute="height" multiplier="1:1" id="YTs-Ti-01l"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="my_ink_logo" translatesAutoresizingMaskIntoConstraints="NO" id="Qyx-N6-Ld7">
+                                <rect key="frame" x="66" y="273" width="243" height="122"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Qyx-N6-Ld7" secondAttribute="height" multiplier="171:86" id="AxD-Hg-DMB"/>
                                 </constraints>
@@ -63,11 +65,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_menu_bg" translatesAutoresizingMaskIntoConstraints="NO" id="Z7Y-dS-Isd" userLabel="background">
+                                <rect key="frame" x="-146" y="0.0" width="667" height="667"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Z7Y-dS-Isd" secondAttribute="height" multiplier="1:1" id="mrH-AA-CEr"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to MyInk" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wjC-T9-PLN">
+                                <rect key="frame" x="38" y="80" width="300" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="GQx-W9-qaY"/>
                                     <constraint firstAttribute="width" constant="300" id="Rbc-Yl-zyH"/>
@@ -77,6 +81,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CLY-jL-YGR">
+                                <rect key="frame" x="38" y="128" width="300" height="108"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="hKN-q9-YBF"/>
                                     <constraint firstAttribute="width" constant="300" id="ziA-5c-n6V"/>
@@ -96,6 +101,7 @@ Try it out:</string>
                                 </variation>
                             </label>
                             <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DPP-n6-cKz">
+                                <rect key="frame" x="177" y="625" width="22" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="DPP-n6-cKz" secondAttribute="height" multiplier="1:1" id="fZj-Gh-E4n"/>
                                 </constraints>
@@ -105,11 +111,12 @@ Try it out:</string>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tell me that I'm pretty..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VOi-Sc-Mto">
+                                <rect key="frame" x="88" y="269" width="200" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="m1Q-og-O6T"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                 <connections>
                                     <outlet property="delegate" destination="bim-qh-NbQ" id="3qn-Lj-DdH"/>
                                 </connections>
@@ -153,12 +160,16 @@ Try it out:</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_menu_bg" translatesAutoresizingMaskIntoConstraints="NO" id="R4L-fO-VZZ" userLabel="background">
+                                <rect key="frame" x="-146" y="0.0" width="667" height="667"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="R4L-fO-VZZ" secondAttribute="height" multiplier="1:1" id="AW9-uj-gKl"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1JJ-9H-Uf5" userLabel="render"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1JJ-9H-Uf5" userLabel="render">
+                                <rect key="frame" x="16" y="90" width="343" height="174"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ozj-ND-kbC">
+                                <rect key="frame" x="16" y="28" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ozj-ND-kbC" secondAttribute="height" multiplier="1:1" id="1aF-uG-Mhq"/>
                                     <constraint firstAttribute="width" constant="44" id="WPP-Hp-Wi5"/>
@@ -172,6 +183,7 @@ Try it out:</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Now do something with it:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lle-Qb-gqy">
+                                <rect key="frame" x="38" y="319" width="300" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="56g-73-FuP"/>
                                     <constraint firstAttribute="width" constant="300" id="fTL-ng-a0x"/>
@@ -181,6 +193,7 @@ Try it out:</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C85-mN-7on">
+                                <rect key="frame" x="63" y="436" width="250" height="60"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="Ggd-ag-Qp9"/>
@@ -204,6 +217,7 @@ Try it out:</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ENt-xJ-70P">
+                                <rect key="frame" x="63" y="504" width="250" height="60"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="GWW-qF-NL6"/>
@@ -219,6 +233,7 @@ Try it out:</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZOi-Fc-BAJ">
+                                <rect key="frame" x="63" y="369" width="250" height="60"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="5l1-7W-Zpp"/>
@@ -240,6 +255,7 @@ Try it out:</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Awesome!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G79-Ji-qBJ">
+                                <rect key="frame" x="91" y="282" width="194" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="194" id="UfM-As-Rd2"/>
                                 </constraints>

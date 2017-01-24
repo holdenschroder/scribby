@@ -12,7 +12,7 @@ import CoreData
 @objc(TutorialState)
 class TutorialState:NSManagedObject {
     enum TutorialFlags:Int {
-        case StartingPhrase = 0
+        case startingPhrase = 0
     }
     
     @NSManaged var progress:Int64
@@ -23,17 +23,17 @@ class TutorialState:NSManagedObject {
         wordIndex = 0
     }
     
-    func isTutorialFlagSet(flag:TutorialFlags) -> Bool {
+    func isTutorialFlagSet(_ flag:TutorialFlags) -> Bool {
         let bit = 1 << Int64(flag.rawValue)
         return (progress & bit) != 0
     }
     
-    func setTutorialFlag(flag:TutorialFlags) {
+    func setTutorialFlag(_ flag:TutorialFlags) {
         let bit = 1 << Int64(flag.rawValue)
         progress |= bit
     }
     
-    func unsetTutorialFlag(flag:TutorialFlags) {
+    func unsetTutorialFlag(_ flag:TutorialFlags) {
         let bit = 1 << Int64(flag.rawValue)
         progress &= ~bit
     }

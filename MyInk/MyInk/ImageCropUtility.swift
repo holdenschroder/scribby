@@ -10,8 +10,8 @@ import UIKit
 
 class ImageCropUtility
 {
-    static func CropImageToAlpha(image:UIImage) -> UIImage {
-        let image_ci = image.CIImage != nil ? image.CIImage! : CIImage(CGImage: image.CGImage!)
+    static func CropImageToAlpha(_ image:UIImage) -> UIImage {
+        let image_ci = image.ciImage != nil ? image.ciImage! : CIImage(cgImage: image.cgImage!)
         var rect = image_ci.extent
         
         let width = Int(rect.width)
@@ -19,7 +19,7 @@ class ImageCropUtility
         let lastPixel = Int(floor(rect.width * rect.height))
         
         let bytesPerPixel = 4
-        let rawData: UnsafeMutablePointer<Int8> = UnsafeMutablePointer<Int8>.alloc(bytesPerPixel * lastPixel)
+        let rawData: UnsafeMutablePointer<Int8> = UnsafeMutablePointer<Int8>.allocate(capacity: bytesPerPixel * lastPixel)
         let context = CIContext(options: nil)
         context.render(image_ci, toBitmap: rawData, rowBytes: bytesPerPixel * Int(floor(rect.width)), bounds: rect, format: kCIFormatRGBA8, colorSpace: CGColorSpaceCreateDeviceRGB())
         
@@ -49,42 +49,42 @@ class ImageCropUtility
             }
         }
         
-        rawData.destroy()
+        rawData.deinitialize()
         
         let rectSize = CGSize(width: bottomRight.x - topLeft.x, height: floor(bottomRight.y - topLeft.y))
         rect = CGRect(x: floor(topLeft.x), y: floor(rect.height - topLeft.y - rectSize.height), width: rectSize.width, height: rectSize.height)
         
-        let croppedImage = image_ci.imageByCroppingToRect(rect)
-        let transform = CGAffineTransformMakeTranslation(-rect.origin.x, -rect.origin.y)
-        let transformedImage = croppedImage.imageByApplyingTransform(transform)
+        let croppedImage = image_ci.cropping(to: rect)
+        let transform = CGAffineTransform(translationX: -rect.origin.x, y: -rect.origin.y)
+        let transformedImage = croppedImage.applying(transform)
         
-        return UIImage(CIImage: transformedImage)
+        return UIImage(ciImage: transformedImage)
     }
     
-    static func FindInkColor(image:UIImage) -> CIColor {
-        if image.CGImage != nil {
-            return FindInkColor(image.CGImage!)
+    static func FindInkColor(_ image:UIImage) -> CIColor {
+        if image.cgImage != nil {
+            return FindInkColor(image.cgImage!)
         }
         else {
-            return FindInkColor(image.CIImage!)
+            return FindInkColor(image.ciImage!)
         }
     }
     
-    static func FindInkColor(image:CIImage) -> CIColor {
+    static func FindInkColor(_ image:CIImage) -> CIColor {
         let context = CIContext(options: nil)
-        let cgImage = context.createCGImage(image, fromRect: image.extent)
+        let cgImage = context.createCGImage(image, from: image.extent)
         return FindInkColor(cgImage!)
     }
     
-    static func FindInkColor(cgImage:CoreGraphics.CGImage) -> CIColor {
+    static func FindInkColor(_ cgImage:CoreGraphics.CGImage) -> CIColor {
         var color = CIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
         var lowestLuminance:CGFloat = 1.0
         
-        let width = CGImageGetWidth(cgImage)
-        let height = CGImageGetHeight(cgImage)
+        let width = cgImage.width
+        let height = cgImage.height
         let componentsPerPixel = 4
         
-        let pixelData = CGDataProviderCopyData(CGImageGetDataProvider(cgImage)!)
+        let pixelData = cgImage.dataProvider!.data
         let rawData:UnsafePointer<UInt8> = CFDataGetBytePtr(pixelData)
         
         let numPixels = width * height

@@ -8,14 +8,14 @@
 
 import UIKit
 
-func *(left:CGRect, right:CGSize) -> CGRect {
+func *(left: CGRect, right: CGSize) -> CGRect {
     var result = left
     result.origin *= right
     result.size *= right
     return result
 }
 
-func /(left:CGRect, right:CGSize) -> CGRect {
+func /(left: CGRect, right: CGSize) -> CGRect {
     var result = left
     result.origin /= right
     result.size /= right

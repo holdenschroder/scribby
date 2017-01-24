@@ -9,19 +9,43 @@
 import Foundation
 import UIKit
 import QuartzCore
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 class MapGlyphController:UIViewController, UITextFieldDelegate {
-    typealias InputCallback = (value:String?) -> Void
+    typealias InputCallback = (_ value:String?) -> Void
     
     @IBOutlet var textfield:UITextField?
     @IBOutlet weak var saveBtn: UIBarButtonItem!
-    private var _callback:InputCallback?
+    fileprivate var _callback:InputCallback?
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.navigationController?.setNavigationBarHidden(false, animated: true)
@@ -31,71 +55,71 @@ class MapGlyphController:UIViewController, UITextFieldDelegate {
         textfield?.text = ""
         textfield!.layer.cornerRadius = 3.0
         textfield!.layer.borderWidth = 1.0
-        textfield!.layer.borderColor = UIColor.darkGrayColor().CGColor
+        textfield!.layer.borderColor = UIColor.darkGray.cgColor
         textfield!.layer.masksToBounds = true
         
-        saveBtn.enabled = false
+        saveBtn.isEnabled = false
         MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventScreenLoadedCaptureMapGlyph)
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if textfield != nil {
-            UIView.animateWithDuration(0.5, animations: {
+            UIView.animate(withDuration: 0.5, animations: {
                 self.textfield?.becomeFirstResponder()
             })
         }
     }
     
-    func setCallback(callback:InputCallback) {
+    func setCallback(_ callback:@escaping InputCallback) {
         _callback = callback
     }
     
     func popVC() {
-        let alert = UIAlertController(title: "Saved", message: "There is a glyph already mapped to that character, would you like to replace it with this one?", preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { action in
-            let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(0.25 * Double(NSEC_PER_SEC)))
-            dispatch_after(dispatch_time(dispatchTime, Int64(NSEC_PER_SEC)), dispatch_get_main_queue(), { () -> Void in
+        let alert = UIAlertController(title: "Saved", message: "There is a glyph already mapped to that character, would you like to replace it with this one?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
+            let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64(0.25 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+            DispatchQueue.main.asyncAfter(deadline: dispatchTime + Double(Int64(NSEC_PER_SEC)) / Double(NSEC_PER_SEC), execute: { () -> Void in
                 let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController];
                 self.navigationController!.popToViewController(viewControllers[0], animated: true);
             })
         }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC)), dispatch_get_main_queue(), { () -> Void in
-            self.presentViewController(alert, animated: true, completion: nil)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(NSEC_PER_SEC)) / Double(NSEC_PER_SEC), execute: { () -> Void in
+            self.present(alert, animated: true, completion: nil)
         })
     }
     
-    @IBAction func Handle_SaveButton(sender: AnyObject) {
+    @IBAction func Handle_SaveButton(_ sender: AnyObject) {
         if(_callback != nil) {
             let string:String? = textfield!.text
-            _callback!(value: string)
+            _callback!(string)
             //popVC()
         }
     }
     
-    @IBAction func Handle_TextFieldChanged(sender: UITextField) {
+    @IBAction func Handle_TextFieldChanged(_ sender: UITextField) {
         //Enforce a single character
         if sender.text?.isEmpty == false && sender.text?.characters.count > 1 {
             var text:String = sender.text!
-            text = text.substringFromIndex(text.endIndex.advancedBy(-1))
+            text = text.substring(from: text.characters.index(text.endIndex, offsetBy: -1))
             sender.text = text
         }
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        saveBtn.enabled = textField.text?.isEmpty == false
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        saveBtn.isEnabled = textField.text?.isEmpty == false
         textField.resignFirstResponder()
         return true
     }
     
-    func textFieldShouldClear(textField: UITextField) -> Bool {
-        saveBtn.enabled = false
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        saveBtn.isEnabled = false
         textField.resignFirstResponder()
         return true
     }
     
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return UIInterfaceOrientationMask.Portrait
+    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.portrait
     }
 }

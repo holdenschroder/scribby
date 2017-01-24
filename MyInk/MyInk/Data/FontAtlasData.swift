@@ -17,18 +17,18 @@ class FontAtlasData: NSManagedObject {
     @NSManaged var glyphs:NSSet
     @NSManaged var images:NSSet
 
-    func AddGlyph(glyph:FontAtlasGlyph)
+    func AddGlyph(_ glyph:FontAtlasGlyph)
     {
-        let mutableSet = self.mutableSetValueForKey("glyphs")
-        mutableSet.addObject(glyph)
+        let mutableSet = self.mutableSetValue(forKey: "glyphs")
+        mutableSet.add(glyph)
         AddImage(glyph.image as! FontAtlasImage)
     }
     
-    func AddImage(image:FontAtlasImage)
+    func AddImage(_ image:FontAtlasImage)
     {
-        let mutableSet = self.mutableSetValueForKey("images")
-        if(!mutableSet.containsObject(image)) {
-            mutableSet.addObject(image)
+        let mutableSet = self.mutableSetValue(forKey: "images")
+        if(!mutableSet.contains(image)) {
+            mutableSet.add(image)
         }
     }
 }

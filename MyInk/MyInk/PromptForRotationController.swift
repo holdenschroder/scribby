@@ -9,33 +9,33 @@
 import UIKit
 
 class PromptForRotationController: UIViewController {
-    private var _delayTimer:NSTimer?
+    fileprivate var _delayTimer:Timer?
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if UIDevice.currentDevice().orientation.isLandscape  {
-            _delayTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(PromptForRotationController.showTutorialScreen(_:)), userInfo: nil, repeats: false)
+        if UIDevice.current.orientation.isLandscape  {
+            _delayTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(PromptForRotationController.showTutorialScreen(_:)), userInfo: nil, repeats: false)
         }
     }
     
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
         
-        if UIDevice.currentDevice().orientation.isLandscape  {
-            _delayTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(PromptForRotationController.showTutorialScreen(_:)), userInfo: nil, repeats: false)
+        if UIDevice.current.orientation.isLandscape  {
+            _delayTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(PromptForRotationController.showTutorialScreen(_:)), userInfo: nil, repeats: false)
         }
     }
     
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return UIInterfaceOrientationMask.Landscape
+    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.landscape
     }
     
-    func showTutorialScreen(timer:NSTimer) {
-        let tutorialController = storyboard?.instantiateViewControllerWithIdentifier("TutorialPhrase") as? TutorialPhraseController
+    func showTutorialScreen(_ timer:Timer) {
+        let tutorialController = storyboard?.instantiateViewController(withIdentifier: "TutorialPhrase") as? TutorialPhraseController
         
         if tutorialController != nil {
-            presentViewController(tutorialController!, animated: true, completion: nil)
+            present(tutorialController!, animated: true, completion: nil)
         }
     }
 }

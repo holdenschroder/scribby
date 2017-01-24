@@ -14,9 +14,9 @@ import MessageUI
 
 class ExampleController: UIViewController, UIAlertViewDelegate, MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate {
     
-    private var _image:UIImage?
-    private var messageVC:MFMessageComposeViewController!
-    private var mailVC:MFMailComposeViewController!
+    fileprivate var _image:UIImage?
+    fileprivate var messageVC:MFMessageComposeViewController!
+    fileprivate var mailVC:MFMailComposeViewController!
     var audioHelper = AudioHelper()
     
     @IBOutlet var imageView:UIImageView?
@@ -36,17 +36,17 @@ class ExampleController: UIViewController, UIAlertViewDelegate, MFMessageCompose
         
         redoBtn.layer.cornerRadius = 6.0
         redoBtn.layer.borderWidth = 2.0
-        redoBtn.layer.borderColor = UIColor.whiteColor().CGColor
+        redoBtn.layer.borderColor = UIColor.white.cgColor
         redoBtn.layer.masksToBounds = true
         
         shareBtn.layer.cornerRadius = 6.0
         shareBtn.layer.borderWidth = 2.0
-        shareBtn.layer.borderColor = UIColor.whiteColor().CGColor
+        shareBtn.layer.borderColor = UIColor.white.cgColor
         shareBtn.layer.masksToBounds = true
         
         createBtn.layer.cornerRadius = 6.0
         createBtn.layer.borderWidth = 2.0
-        createBtn.layer.borderColor = UIColor.whiteColor().CGColor
+        createBtn.layer.borderColor = UIColor.white.cgColor
         createBtn.layer.masksToBounds = true
     }
 
@@ -59,13 +59,15 @@ class ExampleController: UIViewController, UIAlertViewDelegate, MFMessageCompose
             mailVC.mailComposeDelegate = self;
             mailVC .setSubject("MyInk")
             mailVC.setMessageBody("You're So Pretty", isHTML: true)
-            let data: NSData = UIImagePNGRepresentation(_image!)!
+            let data: Data = UIImagePNGRepresentation(_image!)!
             mailVC.addAttachmentData(data, mimeType: "image/jpg", fileName: "image.jpg")
-            self.presentViewController(mailVC, animated: true, completion: nil)
+            self.present(mailVC, animated: true, completion: nil)
         }
         else {
-            let errorAlert = UIAlertView(title: "Cannot Send Email", message: "Your device is not configured to send email.", delegate: self, cancelButtonTitle: "OK")
-            errorAlert.show()
+            let alert = UIAlertController(title: "Cannot Send Email", message: "Your device is not configured to send email.", preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
         }
     }
     
@@ -74,28 +76,29 @@ class ExampleController: UIViewController, UIAlertViewDelegate, MFMessageCompose
             messageVC.body = "You're So Pretty";
             messageVC.addAttachmentData(UIImageJPEGRepresentation(_image!, 1)!, typeIdentifier: "image/jpg", filename: "image.jpg")
             messageVC.messageComposeDelegate = self;
-            self.presentViewController(messageVC, animated: true, completion: nil)
+            self.present(messageVC, animated: true, completion: nil)
         }
         else {
-            let errorAlert = UIAlertView(title: "Cannot Send Text Message", message: "Your device is not able to send text messages.", delegate: self, cancelButtonTitle: "OK")
-            errorAlert.show()
+            let alert = UIAlertController(title: "Cannot Send Text Message", message: "Your device is not able to send text messages.", preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
         }
     }
-
     
     // MARK: - Delegate Methods
     
-    func messageComposeViewController(controller: MFMessageComposeViewController, didFinishWithResult result: MessageComposeResult) {
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
         switch (result.rawValue) {
-        case MessageComposeResult.Cancelled.rawValue:
+        case MessageComposeResult.cancelled.rawValue:
             print("Message Cancelled")
-            self.dismissViewControllerAnimated(true, completion: nil)
-        case MessageComposeResult.Failed.rawValue:
+            self.dismiss(animated: true, completion: nil)
+        case MessageComposeResult.failed.rawValue:
             print("Message Failed")
-            self.dismissViewControllerAnimated(true, completion: nil)
-        case MessageComposeResult.Sent.rawValue:
+            self.dismiss(animated: true, completion: nil)
+        case MessageComposeResult.sent.rawValue:
             print("Message Sent")
-            self.dismissViewControllerAnimated(true, completion: {
+            self.dismiss(animated: true, completion: {
                 self.audioHelper.playSentSound()
                 self.closeScreen()
             })
@@ -104,23 +107,23 @@ class ExampleController: UIViewController, UIAlertViewDelegate, MFMessageCompose
         }
     }
     
-    func mailComposeController(controller:MFMailComposeViewController, didFinishWithResult result:MFMailComposeResult, error:NSError?) {
+    func mailComposeController(_ controller:MFMailComposeViewController, didFinishWith result:MFMailComposeResult, error:Error?) {
         switch result.rawValue {
-        case MFMailComposeResult.Cancelled.rawValue:
+        case MFMailComposeResult.cancelled.rawValue:
             print("Email Cancelled")
-            self.dismissViewControllerAnimated(true, completion: nil)
-        case MFMailComposeResult.Saved.rawValue:
+            self.dismiss(animated: true, completion: nil)
+        case MFMailComposeResult.saved.rawValue:
             print("Email Saved")
-            self.dismissViewControllerAnimated(true, completion: nil)
-        case MFMailComposeResult.Sent.rawValue:
+            self.dismiss(animated: true, completion: nil)
+        case MFMailComposeResult.sent.rawValue:
             print("Email Sent")
-            self.dismissViewControllerAnimated(true, completion: {
+            self.dismiss(animated: true, completion: {
                 self.audioHelper.playSentSound()
                 self.closeScreen()
             })
-        case MFMailComposeResult.Failed.rawValue:
+        case MFMailComposeResult.failed.rawValue:
             print("Email Failed")
-            self.dismissViewControllerAnimated(true, completion: nil)
+            self.dismiss(animated: true, completion: nil)
         default:
             break;
         }
@@ -130,48 +133,48 @@ class ExampleController: UIViewController, UIAlertViewDelegate, MFMessageCompose
     // MARK: - Actions
     
     func closeScreen() {
-        let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(0.5 * Double(NSEC_PER_SEC)))
-        dispatch_after(dispatchTime, dispatch_get_main_queue(), {
-            NSUserDefaults.standardUserDefaults().setBool(true, forKey: SharedMyInkValues.kDefaultsUserHasBoarded)
-            self.presentViewController(UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("NavigationRoot") as UIViewController, animated: true, completion: nil)
+        let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64(0.5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+        DispatchQueue.main.asyncAfter(deadline: dispatchTime, execute: {
+            UserDefaults.standard.set(true, forKey: SharedMyInkValues.kDefaultsUserHasBoarded)
+            self.present(UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NavigationRoot") as UIViewController, animated: true, completion: nil)
         })
     }
     
-    func loadImage(image:UIImage) {
+    func loadImage(_ image:UIImage) {
         _image = image
         imageView?.image = image
     }
     
-    @IBAction func redoAction(sender: AnyObject) {
+    @IBAction func redoAction(_ sender: AnyObject) {
         //self.navigationController?.popViewControllerAnimated(true)
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func shareAction(sender: AnyObject) {
-        let options = UIAlertController(title: nil, message: "Choose Option: \nHint: Try sending it to yourself... \nThen you can see what it looks like!", preferredStyle: .ActionSheet)
-        let messageAction = UIAlertAction(title: "iMessage", style: .Default) { (action) in
+    @IBAction func shareAction(_ sender: AnyObject) {
+        let options = UIAlertController(title: nil, message: "Choose Option: \nHint: Try sending it to yourself... \nThen you can see what it looks like!", preferredStyle: .actionSheet)
+        let messageAction = UIAlertAction(title: "iMessage", style: .default) { (action) in
             self.shareMessage()
         }
-        let mailAction = UIAlertAction(title: "Email", style: .Default) { (action) in
+        let mailAction = UIAlertAction(title: "Email", style: .default) { (action) in
             self.shareEmail()
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Default) { (action) in
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default) { (action) in
             print("Share Cancelled")
         }
         options.addAction(messageAction)
         options.addAction(mailAction)
         options.addAction(cancelAction)
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC)), dispatch_get_main_queue(), { () -> Void in
-            self.presentViewController(options, animated: true, completion: nil)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(NSEC_PER_SEC)) / Double(NSEC_PER_SEC), execute: { () -> Void in
+            self.present(options, animated: true, completion: nil)
         })
     }
 
-    @IBAction func createAction(sender: AnyObject) {
+    @IBAction func createAction(_ sender: AnyObject) {
         audioHelper.playAwesomeSound()
-        presentViewController(UIStoryboard(name: "Tutorial", bundle: nil).instantiateViewControllerWithIdentifier("TutorialIntro") as UIViewController, animated: true, completion: nil)
+        present(UIStoryboard(name: "Tutorial", bundle: nil).instantiateViewController(withIdentifier: "TutorialIntro") as UIViewController, animated: true, completion: nil)
     }
     
-    @IBAction func closeAction(sender: AnyObject) {
+    @IBAction func closeAction(_ sender: AnyObject) {
         closeScreen()
     }
     

@@ -15,11 +15,11 @@ class CaptureCharacterSelectController:UIViewController {
     @IBOutlet var debugView:UIView?
     @IBOutlet var continueButton:UIBarItem?
     
-    private var baseImage:CIImage?
-    private var modifiedImage:UIImage?
-    private var isolationFilter:CIKernel?
-    private var maskFilter:CIKernel?
-    private var inkColor:CIColor = CIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
+    fileprivate var baseImage:CIImage?
+    fileprivate var modifiedImage:UIImage?
+    fileprivate var isolationFilter:CIKernel?
+    fileprivate var maskFilter:CIKernel?
+    fileprivate var inkColor:CIColor = CIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
     var toleranceValue:Float = 0.2
     var _mAtlasGlyph: FontAtlasGlyph?
     
@@ -27,19 +27,19 @@ class CaptureCharacterSelectController:UIViewController {
         super.viewDidLoad()
         isolationFilter = LoadFilter("isolationfilter")
         maskFilter = LoadFilter("maskfilter")
-        toleranceSlider?.continuous = false
+        toleranceSlider?.isContinuous = false
         toleranceSlider?.value = toleranceValue
         
         selectionView?.addOnChangeListener(handleSelectionChanged)
     }
     
-    private func LoadFilter(path:String) -> CIColorKernel {
-        let filterPath = NSBundle.mainBundle().pathForResource(path, ofType: "cikernel")
-        let filterCode = try? String(contentsOfFile: filterPath!, encoding: NSUTF8StringEncoding)
+    fileprivate func LoadFilter(_ path:String) -> CIColorKernel {
+        let filterPath = Bundle.main.path(forResource: path, ofType: "cikernel")
+        let filterCode = try? String(contentsOfFile: filterPath!, encoding: String.Encoding.utf8)
         return CIColorKernel(string: filterCode!)!
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.navigationController?.setNavigationBarHidden(false, animated: true)
@@ -49,14 +49,14 @@ class CaptureCharacterSelectController:UIViewController {
         modifiedImage = ProcessImage(baseImage!)
         imageView?.image = modifiedImage
         selectionView?.clearImage()
-        continueButton?.enabled = false
+        continueButton?.isEnabled = false
         
         MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventScreenLoadedCaptureCharacterSelect)
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        if self.isMovingFromParentViewController() {
+        if self.isMovingFromParentViewController {
             baseImage = nil
             modifiedImage = nil
             isolationFilter = nil
@@ -68,15 +68,15 @@ class CaptureCharacterSelectController:UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        let error = NSError?()
+        let error = NSError(domain: "Memory Warning", code: 0, userInfo: nil)
         Flurry.logError(SharedMyInkValues.kEventScreenLoadedCaptureCharacterSelect, message: "Memory Warning", error: error)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        super.prepareForSegue(segue, sender: sender)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
         
-        if segue.destinationViewController is SetupCharacterController {
-            let setupCharacterController = segue.destinationViewController as! SetupCharacterController
+        if segue.destination is SetupCharacterController {
+            let setupCharacterController = segue.destination as! SetupCharacterController
             if((_mAtlasGlyph) != nil) {
                 setupCharacterController._mAtlasGlyph = _mAtlasGlyph
             }
@@ -87,28 +87,28 @@ class CaptureCharacterSelectController:UIViewController {
             let imageRect = croppedImage!.extent
             var maskRect = croppedMask!.extent
             let maskToImageScale = CGSize(width: imageRect.width / maskRect.width, height: imageRect.height / maskRect.height)
-            croppedMask = croppedMask!.imageByApplyingTransform(CGAffineTransformMakeScale(maskToImageScale.width, maskToImageScale.height))
+            croppedMask = croppedMask!.applying(CGAffineTransform(scaleX: maskToImageScale.width, y: maskToImageScale.height))
             maskRect = croppedMask!.extent
-            croppedMask = croppedMask!.imageByApplyingTransform(CGAffineTransformMakeTranslation(-maskRect.origin.x, -maskRect.origin.y))
+            croppedMask = croppedMask!.applying(CGAffineTransform(translationX: -maskRect.origin.x, y: -maskRect.origin.y))
         
-            let maskedOutput = maskFilter!.applyWithExtent(imageRect, roiCallback: ROICallback, arguments: [croppedImage!, croppedMask!])
+            let maskedOutput = maskFilter!.apply(withExtent: imageRect, roiCallback: ROICallback, arguments: [croppedImage!, croppedMask!])
             if(maskedOutput != nil) {
                 maskRect = selectionView!.GetContentRect(true)
             
                 //Compensate for mirroring issue
                 let context = CIContext(options: nil)
-                let mask_cg = context.createCGImage(maskedOutput!, fromRect: maskedOutput!.extent)
+                let mask_cg = context.createCGImage(maskedOutput!, from: maskedOutput!.extent)
             
-                setupCharacterController.LoadCharacter(UIImage(CGImage: mask_cg!))
+                setupCharacterController.LoadCharacter(UIImage(cgImage: mask_cg!))
             }
         }
     }
     
-    func handleSelectionChanged(view:UIDrawSelectionView, cleared:Bool) {
-        continueButton?.enabled = !cleared
+    func handleSelectionChanged(_ view:UIDrawSelectionView, cleared:Bool) {
+        continueButton?.isEnabled = !cleared
     }
     
-    func LoadImage(image:CIImage, inkColor:CIColor? = nil) {
+    func LoadImage(_ image:CIImage, inkColor:CIColor? = nil) {
         baseImage = image;
         //let ci_baseImage = CIImage(CGImage: baseImage!.CGImage)
         if inkColor != nil {
@@ -119,34 +119,34 @@ class CaptureCharacterSelectController:UIViewController {
         }
     }
     
-    func ProcessImage(image:CIImage?) -> UIImage? {
+    func ProcessImage(_ image:CIImage?) -> UIImage? {
         if(image != nil) {
             let context = CIContext(options: nil)
             
             let rect = image!.extent
             
-            let outputImage = isolationFilter!.applyWithExtent(rect, roiCallback: ROICallback, arguments: [image!, inkColor, CIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0), toleranceValue])
-            let imageRef = context.createCGImage(outputImage!, fromRect: rect)
+            let outputImage = isolationFilter!.apply(withExtent: rect, roiCallback: ROICallback, arguments: [image!, inkColor, CIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0), toleranceValue])
+            let imageRef = context.createCGImage(outputImage!, from: rect)
             //let originalOrientation = imageView!.image!.imageOrientation
             //let originalScale = imageView!.image!.scale
-            return UIImage(CGImage: imageRef!)//, scale: originalScale, orientation: originalOrientation)
+            return UIImage(cgImage: imageRef!)//, scale: originalScale, orientation: originalOrientation)
         }
         
         return nil
     }
     
-    private func ROICallback(index:Int32, rect:CGRect) -> CGRect
+    fileprivate func ROICallback(_ index:Int32, rect:CGRect) -> CGRect
     {
         return rect;
     }
     
-    @IBAction func HandleToleranceSlider(sender: UISlider) {
+    @IBAction func HandleToleranceSlider(_ sender: UISlider) {
         toleranceValue = sender.value
         modifiedImage = ProcessImage(baseImage!)
         imageView?.image = modifiedImage
     }
     
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return UIInterfaceOrientationMask.Portrait
+    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.portrait
     }
 }

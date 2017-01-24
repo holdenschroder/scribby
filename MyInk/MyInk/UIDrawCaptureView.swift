@@ -20,11 +20,11 @@ class UIDrawCaptureView: UIDrawView {
     @IBInspectable var topLinePercent:CGFloat =  0.166 //-0.166
     @IBInspectable var bottomLinePercent:CGFloat = 0.834 //0.66
     
-    func save(mapping:String, captureType:String, saveAtlas:Bool = true) -> Bool {
+    func save(_ mapping:String, captureType:String, saveAtlas:Bool = true) -> Bool {
         let imageSize = referenceImage!.image!.size
-        var reference_rect = CGRectMake(0, imageSize.height * topLinePercent, imageSize.width, imageSize.height * (bottomLinePercent - topLinePercent))
-        reference_rect = referenceImage!.convertRectFromImage(reference_rect);
-        reference_rect = referenceImage!.convertRect(reference_rect, toView:self)
+        var reference_rect = CGRect(x: 0, y: imageSize.height * topLinePercent, width: imageSize.width, height: imageSize.height * (bottomLinePercent - topLinePercent))
+        reference_rect = referenceImage!.convertRect(fromImage: reference_rect);
+        reference_rect = referenceImage!.convert(reference_rect, to:self)
         
         let myImage = getImage()
         
@@ -43,13 +43,13 @@ class UIDrawCaptureView: UIDrawView {
         if glyphArea.origin.y + glyphArea.height < examine_bottomline  {
             examine_bottomline = glyphArea.origin.y + glyphArea.height
         }
-        var examine_area = CGRectMake(glyphArea.origin.x, examine_topline, glyphArea.width, examine_bottomline - examine_topline)
+        var examine_area = CGRect(x: glyphArea.origin.x, y: examine_topline, width: glyphArea.width, height: examine_bottomline - examine_topline)
         examine_area.origin -= glyphArea.origin
         examine_area = examine_area / glyphArea.size
         let contentBounds = croppedImage.FindContentArea(examine_area)
-        let spacingBounds = CGRectMake(contentBounds.origin.x, (glyphArea.origin.y - reference_rect.origin.y)/reference_rect.height, contentBounds.width, glyphArea.height / reference_rect.height)
+        let spacingBounds = CGRect(x: contentBounds.origin.x, y: (glyphArea.origin.y - reference_rect.origin.y)/reference_rect.height, width: contentBounds.width, height: glyphArea.height / reference_rect.height)
         
-        let atlas = (UIApplication.sharedApplication().delegate as! AppDelegate).currentAtlas
+        let atlas = (UIApplication.shared.delegate as! AppDelegate).currentAtlas
         atlas?.AddGlyph(mapping, image: croppedImage, spacingCoords: spacingBounds, autoSave: saveAtlas)
         
         if atlas != nil {
@@ -65,12 +65,12 @@ class UIDrawCaptureView: UIDrawView {
         return false
     }
     
-    func loadImage(image:UIImage, rect:CGRect) {
+    func loadImage(_ image:UIImage, rect:CGRect) {
         UIGraphicsBeginImageContext(mainImageView.bounds.size)
         let imageSize = mainImageView.bounds.size * (bottomLinePercent - topLinePercent)
-        var imageRect = CGRect(origin: rect.origin * imageSize, size: imageSize)
-        imageRect.offsetInPlace(dx: -imageRect.origin.x, dy: topLinePercent * imageSize.height)
-        image.drawInRect(imageRect, blendMode: .Normal, alpha: 1.0)
+        let imageRect = CGRect(origin: rect.origin * imageSize, size: imageSize)
+        imageRect.offsetBy(dx: -imageRect.origin.x, dy: topLinePercent * imageSize.height)
+        image.draw(in: imageRect, blendMode: .normal, alpha: 1.0)
         mainImageView.image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
     }

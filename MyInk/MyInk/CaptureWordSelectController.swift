@@ -20,36 +20,36 @@ class CaptureWordSelectController: UIViewController, UIImagePickerControllerDele
     @IBOutlet var debugRect:UIView?
     @IBOutlet var selectBtn:UIBarButtonItem?
     
-    private var cameraImage:UIImage?
-    private var inkColour:CIColor?
+    fileprivate var cameraImage:UIImage?
+    fileprivate var inkColour:CIColor?
     var _mAtlasGlyph: FontAtlasGlyph?
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("handleTap:"))
-        imageView?.userInteractionEnabled = true
-        imageView?.addGestureRecognizer(tapGestureRecognizer)
-        debugCrosshair?.hidden = true
-        debugRect?.hidden = true
-        selectBtn?.enabled = false
+//        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("handleTap:"))
+        imageView?.isUserInteractionEnabled = true
+//        imageView?.addGestureRecognizer(tapGestureRecognizer)
+        debugCrosshair?.isHidden = true
+        debugRect?.isHidden = true
+        selectBtn?.isEnabled = false
         
         imageView?.image = cameraImage
         selectionView!.addOnChangeListener(handleSelectionChange)
         
         if(cameraImage != nil) {
-            dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), {
+            DispatchQueue.global(qos: DispatchQoS.QoSClass.userInitiated).async(execute: {
                 self.inkColour = ImageCropUtility.FindInkColor(self.cameraImage!)
             })
         }
     }
     
-    func loadImage(image:UIImage) {
+    func loadImage(_ image:UIImage) {
         cameraImage = image
         imageView?.image = cameraImage
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         //self.navigationController?.navigationBarHidden = false
@@ -57,32 +57,32 @@ class CaptureWordSelectController: UIViewController, UIImagePickerControllerDele
         self.navigationController?.navigationItem.leftBarButtonItem?.title = ""
 
         selectionView?.clearImage()
-        selectBtn?.enabled = false
+        selectBtn?.isEnabled = false
         
         MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventScreenLoadedCaptureWordSelect)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        let error = NSError?()
+        let error = NSError(domain: "Memory Warning", code: 0, userInfo: nil)
         print(error)
         Flurry.logError(SharedMyInkValues.kEventScreenLoadedCaptureCharacterSelect, message: "Memory Warning", error: error)
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
-        if self.isMovingFromParentViewController() {
+        if self.isMovingFromParentViewController {
             cameraImage = nil
             imageView?.image = nil
             selectionView?.clearImage()
         }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        super.prepareForSegue(segue, sender: sender)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
         
-        if segue.destinationViewController is CaptureCharacterSelectController {
-            let processView = segue.destinationViewController as! CaptureCharacterSelectController
+        if segue.destination is CaptureCharacterSelectController {
+            let processView = segue.destination as! CaptureCharacterSelectController
             if((_mAtlasGlyph) != nil) {
                 processView._mAtlasGlyph = _mAtlasGlyph
             }
@@ -93,46 +93,46 @@ class CaptureWordSelectController: UIViewController, UIImagePickerControllerDele
         }
     }
     
-    @IBAction func openCamera(sender: UIButton) {
-        if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)) {
-            dispatch_async(dispatch_get_main_queue(), {
+    @IBAction func openCamera(_ sender: UIButton) {
+        if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)) {
+            DispatchQueue.main.async(execute: {
                 let imgPicker = UIImagePickerController()
                 imgPicker.delegate = self
-                imgPicker.sourceType = UIImagePickerControllerSourceType.Camera
-                self.presentViewController(imgPicker, animated: true, completion: nil)
+                imgPicker.sourceType = UIImagePickerControllerSourceType.camera
+                self.present(imgPicker, animated: true, completion: nil)
             })
         }
         else //Load Test Image
         {
             imageView?.image = UIImage(named: "YopTest")
-            selectBtn?.enabled = true
+            selectBtn?.isEnabled = true
         }
         
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [AnyHashable: Any]!) {
         
         let imageSize = image.size
-        var imageTransform:CGAffineTransform = CGAffineTransformIdentity
+        var imageTransform:CGAffineTransform = CGAffineTransform.identity
         //Build a transform to offset and rotate the rect depending on the orientation
         let imageOrientation = image.imageOrientation
         switch(imageOrientation)
         {
-        case UIImageOrientation.DownMirrored:
+        case UIImageOrientation.downMirrored:
             fallthrough
-        case UIImageOrientation.Down:
-            imageTransform = CGAffineTransformTranslate(imageTransform, imageSize.width, imageSize.height)
-            imageTransform = CGAffineTransformRotate(imageTransform, CGFloat(M_PI))
-        case UIImageOrientation.LeftMirrored:
+        case UIImageOrientation.down:
+            imageTransform = imageTransform.translatedBy(x: imageSize.width, y: imageSize.height)
+            imageTransform = imageTransform.rotated(by: CGFloat(M_PI))
+        case UIImageOrientation.leftMirrored:
             fallthrough
-        case UIImageOrientation.Left:
-            imageTransform = CGAffineTransformTranslate(imageTransform, imageSize.width, 0)
-            imageTransform = CGAffineTransformRotate(imageTransform, CGFloat(M_PI_2))
-        case UIImageOrientation.RightMirrored:
+        case UIImageOrientation.left:
+            imageTransform = imageTransform.translatedBy(x: imageSize.width, y: 0)
+            imageTransform = imageTransform.rotated(by: CGFloat(M_PI_2))
+        case UIImageOrientation.rightMirrored:
             fallthrough
-        case UIImageOrientation.Right:
-            imageTransform = CGAffineTransformTranslate(imageTransform, 0, imageSize.height)
-            imageTransform = CGAffineTransformRotate(imageTransform, CGFloat(-M_PI_2))
+        case UIImageOrientation.right:
+            imageTransform = imageTransform.translatedBy(x: 0, y: imageSize.height)
+            imageTransform = imageTransform.rotated(by: CGFloat(-M_PI_2))
         default:
             break
         }
@@ -140,99 +140,98 @@ class CaptureWordSelectController: UIViewController, UIImagePickerControllerDele
         //Compensate for Mirrored orientations
         switch(imageOrientation)
         {
-        case UIImageOrientation.UpMirrored:
+        case UIImageOrientation.upMirrored:
             fallthrough
-        case UIImageOrientation.DownMirrored:
-            imageTransform = CGAffineTransformTranslate(imageTransform, imageSize.width, 0)
-            imageTransform = CGAffineTransformScale(imageTransform, -1, 1)
-        case UIImageOrientation.LeftMirrored:
+        case UIImageOrientation.downMirrored:
+            imageTransform = imageTransform.translatedBy(x: imageSize.width, y: 0)
+            imageTransform = imageTransform.scaledBy(x: -1, y: 1)
+        case UIImageOrientation.leftMirrored:
             fallthrough
-        case UIImageOrientation.RightMirrored:
-            imageTransform = CGAffineTransformTranslate(imageTransform, imageSize.height, 0)
-            imageTransform = CGAffineTransformScale(imageTransform, -1, 1)
+        case UIImageOrientation.rightMirrored:
+            imageTransform = imageTransform.translatedBy(x: imageSize.height, y: 0)
+            imageTransform = imageTransform.scaledBy(x: -1, y: 1)
         default:
             break
         }
 
-        var transformedImage = CIImage(CGImage: image.CGImage!)
-        transformedImage = transformedImage.imageByApplyingTransform(imageTransform)
-        imageView?.image = UIImage(CIImage: transformedImage)
-        picker.dismissViewControllerAnimated(true, completion: nil)
-        selectBtn?.enabled = true
+        var transformedImage = CIImage(cgImage: image.cgImage!)
+        transformedImage = transformedImage.applying(imageTransform)
+        imageView?.image = UIImage(ciImage: transformedImage)
+        picker.dismiss(animated: true, completion: nil)
+        selectBtn?.isEnabled = true
         MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventScreenLoadedCapturePhotoTaken)
     }
 
-    func resizeImage(image:UIImage, newSize:CGSize) -> UIImage
+    func resizeImage(_ image:UIImage, newSize:CGSize) -> UIImage
     {
         var ratio:CGFloat = 0.0
         var delta:CGFloat = 0.0
         var offset = CGPoint.zero
 
-        let sz = CGSizeMake(newSize.width, newSize.width);
+        let sz = CGSize(width: newSize.width, height: newSize.width);
         
         if(image.size.width > image.size.height) {
             ratio = newSize.width / image.size.width;
             delta = (ratio*image.size.width - ratio*image.size.height);
-            offset = CGPointMake(delta/2, 0);
+            offset = CGPoint(x: delta/2, y: 0);
         }
         else {
             ratio = newSize.height / image.size.height;
             delta = (ratio*image.size.height - ratio*image.size.width);
-            offset = CGPointMake(0, delta/2);
+            offset = CGPoint(x: 0, y: delta/2);
         }
     
-        let clipRect = CGRectMake(-offset.x, -offset.y,
-                (ratio * image.size.width) + delta,
-                (ratio * image.size.height) + delta);
+        let clipRect = CGRect(x: -offset.x, y: -offset.y,
+                width: (ratio * image.size.width) + delta,
+                height: (ratio * image.size.height) + delta);
         
         UIGraphicsBeginImageContextWithOptions(sz, true, 0.0);
         UIRectClip(clipRect);
-        image.resizingMode
-        image.drawInRect(clipRect);
+        image.draw(in: clipRect);
         let newImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         
         return newImage!
     }
     
-    func GetPixelColor(view:UIImageView, position:CGPoint) -> CIColor {
+    func GetPixelColor(_ view:UIImageView, position:CGPoint) -> CIColor {
         let image = view.image!
-        var imgPos = view.convertPointFromView(position)
-        var imgRect = CGRect(origin: CGPointZero, size: image.size)
+        var imgPos = view.convertPoint(fromView: position)
+        var imgRect = CGRect(origin: CGPoint.zero, size: image.size)
         
-        var imageTransform:CGAffineTransform = CGAffineTransformIdentity
+        var imageTransform:CGAffineTransform = CGAffineTransform.identity
         
         let imageOrientation = image.imageOrientation
         switch(imageOrientation)
         {
-        case UIImageOrientation.DownMirrored:
+        case UIImageOrientation.downMirrored:
             fallthrough
-        case UIImageOrientation.Down:
-            imageTransform = CGAffineTransformRotate(imageTransform, CGFloat(M_PI_4))
-        case UIImageOrientation.LeftMirrored:
+        case UIImageOrientation.down:
+            imageTransform = imageTransform.rotated(by: CGFloat(M_PI_4))
+        case UIImageOrientation.leftMirrored:
             fallthrough
-        case UIImageOrientation.Left:
-            imageTransform = CGAffineTransformScale(imageTransform, -1, 1)
-            imageTransform = CGAffineTransformRotate(imageTransform, CGFloat(-M_PI_2))
-        case UIImageOrientation.RightMirrored:
+        case UIImageOrientation.left:
+            imageTransform = imageTransform.scaledBy(x: -1, y: 1)
+            imageTransform = imageTransform.rotated(by: CGFloat(-M_PI_2))
+        case UIImageOrientation.rightMirrored:
             fallthrough
-        case UIImageOrientation.Right:
-            imageTransform = CGAffineTransformScale(imageTransform, -1, 1)
-            imageTransform = CGAffineTransformRotate(imageTransform, CGFloat(M_PI_2))
+        case UIImageOrientation.right:
+            imageTransform = imageTransform.scaledBy(x: -1, y: 1)
+            imageTransform = imageTransform.rotated(by: CGFloat(M_PI_2))
             imgPos.x = imgRect.width - imgPos.x
         default:
             break
         }
         
-        imgPos = CGPointApplyAffineTransform(imgPos, imageTransform)
-        imgRect = CGRectApplyAffineTransform(imgRect, imageTransform)
+        imgPos = imgPos.applying(imageTransform)
+        imgRect = imgRect.applying(imageTransform)
         
         var r:CGFloat = 0
         var g:CGFloat = 0
         var b:CGFloat = 0
         var a:CGFloat = 1
         
-        let pixelData = CGDataProviderCopyData(CGImageGetDataProvider(image.CGImage!)!)
+        let pixelData = image.cgImage!.dataProvider!.data
         let data: UnsafePointer<UInt8> = CFDataGetBytePtr(pixelData)
     
         if(imgPos.x > -1 && imgPos.x < imgRect.width && imgPos.y > -1 && imgPos.y < imgRect.height) {
@@ -247,7 +246,7 @@ class CaptureWordSelectController: UIViewController, UIImagePickerControllerDele
         return CIColor(red: r, green: g, blue: b, alpha: a)
     }
     
-    func GetImagePos(view:UIImageView, viewPosition:CGPoint) -> CGPoint {
+    func GetImagePos(_ view:UIImageView, viewPosition:CGPoint) -> CGPoint {
         let image = view.image!
         let imgSize = image.size
         let viewSize = view.bounds.size
@@ -266,12 +265,12 @@ class CaptureWordSelectController: UIViewController, UIImagePickerControllerDele
         return finalPos
     }
     
-    func handleSelectionChange(selectionView:UIDrawSelectionView, cleared:Bool) -> Void {
-        selectBtn?.enabled = !cleared
+    func handleSelectionChange(_ selectionView:UIDrawSelectionView, cleared:Bool) -> Void {
+        selectBtn?.isEnabled = !cleared
     }
     
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return UIInterfaceOrientationMask.Portrait
+    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.portrait
     }
 }
 
