@@ -40,6 +40,13 @@ class MainMenuController:UIViewController, UIImagePickerControllerDelegate, UINa
         tutorialBtn.isSelected = false
 
         MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventScreenLoadedMainMenu)
+
+        var pathComponents = SharedMyInkValues.appOpenTargetURLComponents
+        if pathComponents.count > 1 && pathComponents[0] == "tutorials" {
+            pathComponents = Array(pathComponents[1..<pathComponents.count])
+            SharedMyInkValues.appOpenTargetURLComponents = pathComponents
+            HandleTutorialButtonAction(self)
+        }
     }
     
     //MARK: Button Handlers

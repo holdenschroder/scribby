@@ -11,6 +11,7 @@
 import UIKit
 
 class SharedMyInkValues {
+    private static let keyTargetURL = "keyTargetURL"
     
     static let kEventScreenLoadedCapturePhotoTaken =        "SCREEN_CAPTURE_PHOTO-TAKEN"
     static let kEventScreenLoadedCaptureCharacterSelect =   "SCREEN_CAPTURE_CHARACTER-SELECT"
@@ -73,5 +74,13 @@ class SharedMyInkValues {
     
     static let AppGroup = "group.myinkapp" //"group.myInk" //
     static let AppParent = "com.myinkapp.myink" //"com.elink.cursive" //
-    
+
+    static var appOpenTargetURLComponents: [String] {
+        get {
+            return UserDefaults.standard.value(forKey: keyTargetURL) as? [String] ?? []
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: keyTargetURL)
+        }
+    }
 }

@@ -17,6 +17,12 @@ class InstallationInstructions: UIViewController {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         
         MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventScreenLoadedKeyboardInstructions)
+
+        let pathComponents = SharedMyInkValues.appOpenTargetURLComponents
+        if pathComponents.count > 0 && pathComponents[0] == "keyboard" {
+            SharedMyInkValues.appOpenTargetURLComponents = []
+            performSegue(withIdentifier: "segue-instructions-keyboard-install", sender: self)
+        }
     }
     
     @IBAction func playSound(_ sender:AnyObject) {

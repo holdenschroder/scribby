@@ -14,7 +14,6 @@ import Parse
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
     var window: UIWindow?
     lazy var coreData:CoreDataHelper = {
         return CoreDataHelper()
@@ -28,6 +27,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
         
+        return true
+    }
+
+    func application(_ application: UIApplication, handleOpen url: URL) -> Bool {
+        var path = url.relativeString.components(separatedBy: "/") as [String]
+        if path.count > 2 {
+            path = Array(path[2..<path.count])
+        }
+        SharedMyInkValues.appOpenTargetURLComponents = path
+
         return true
     }
 
