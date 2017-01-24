@@ -26,38 +26,6 @@ class KeyboardButton: UIButton {
     }
 }
 
-enum KeyboardAlphaType {
-    case lower
-    case shifted
-    case capsLock
-
-    var shiftKeyString: String {
-        switch self {
-        case .lower:
-            return "⇧"
-        case .shifted:
-            return "⬆"
-        case .capsLock:
-            return "⇪"
-        }
-    }
-
-}
-
-enum KeyboardSpecialType {
-    case numeric
-    case symbols
-
-    var shiftKeyString: String {
-        switch self {
-        case .numeric:
-            return "#+="
-        case .symbols:
-            return "123"
-        }
-    }
-}
-
 enum KeyboardType {
     case lower
     case shifted
@@ -135,9 +103,11 @@ class KeyboardViewController: UIInputViewController {
     private static let buttonSpacing: UIOffset = UIOffset(horizontal: 3.5, vertical: 6.0)
     private static let buttonHeight: CGFloat = 45.0
     private static let keyboardHeight: CGFloat = 216.0
-    private var keyboardType: KeyboardType = .numeric
-//    private static let spaceString = "space"
-//    private let spaceString = "space"
+    private var keyboardType: KeyboardType = .lower {
+        didSet {
+            layoutButtons()
+        }
+    }
 
     static let MyInkPinkColor = UIColor(red: 0.93, green: 0, blue: 0.45, alpha: 1.0)
     static let MyInkDarkColor = UIColor(red: 208/255, green: 20/255, blue: 68/255, alpha: 1.0)
@@ -169,27 +139,26 @@ class KeyboardViewController: UIInputViewController {
         super.viewWillAppear(animated)
     }
 
-    private func layoutButtons() {
-        let buttonRowsContainer = UIView(frame: CGRect.zero)
-        buttonRowsContainer.translatesAutoresizingMaskIntoConstraints = false
-        buttonRowsContainer.backgroundColor = KeyboardViewController.MyInkPinkColor
-        view.addSubview(buttonRowsContainer)
-        let containerWidthConstraint = NSLayoutConstraint(item: buttonRowsContainer, attribute: .width, relatedBy: .equal, toItem: view, attribute: .width, multiplier: 1.0, constant: 0)
-        let containerCenterConstraint = NSLayoutConstraint(item: buttonRowsContainer, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1.0, constant: 0)
-        let containerHeightConstraint = NSLayoutConstraint(item: buttonRowsContainer, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: KeyboardViewController.keyboardHeight)
-        view.addConstraints([containerWidthConstraint, containerCenterConstraint, containerHeightConstraint])
+    lazy private var buttonRowsContainer: UIView = {
+        let result = UIView(frame: CGRect.zero)
+        result.translatesAutoresizingMaskIntoConstraints = false
+        result.backgroundColor = KeyboardViewController.MyInkPinkColor
+        self.view.addSubview(result)
+        let containerWidthConstraint = NSLayoutConstraint(item: result, attribute: .width, relatedBy: .equal, toItem: self.view, attribute: .width, multiplier: 1.0, constant: 0)
+        let containerCenterConstraint = NSLayoutConstraint(item: result, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: 1.0, constant: 0)
+        let containerHeightConstraint = NSLayoutConstraint(item: result, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: KeyboardViewController.keyboardHeight)
+        self.view.addConstraints([containerWidthConstraint, containerCenterConstraint, containerHeightConstraint])
 
+        return result
+    }()
+
+    private func layoutButtons() {
+        for subview in buttonRowsContainer.subviews {
+            subview.removeFromSuperview()
+        }
         let heightConstraint = NSLayoutConstraint(item: view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: KeyboardViewController.buttonHeight + KeyboardViewController.keyboardHeight)
         heightConstraint.priority = 999
         view.addConstraint(heightConstraint)
-
-//        let buttonTitles1 = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"]
-//        let buttonTitles2 = ["A", "S", "D", "F", "G", "H", "J", "K", "L"]
-//        let buttonTitles3 = ["⇧", "Z", "X", "C", "V", "B", "N", "M", "⌫"] // shifted: ⬆, caps lock ⇪
-//        let buttonTitles4 = ["🌐", spaceString, "⏎"]
-        for (i, buttonTitles) in keyboardType.characters.enumerated() {
-
-        }
 
         let rows: [UIView] = keyboardType.characters.map {
             let row = createRowOfButtons(titles: $0, inContainer: buttonRowsContainer)
@@ -244,18 +213,39 @@ class KeyboardViewController: UIInputViewController {
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         button.translatesAutoresizingMaskIntoConstraints = false
 
-        button.addTarget(self, action: #selector(didTapButton(button:)), for: .touchUpInside)
+        if title == "⬆" || title == "⇧" {
+            let doubleTap = UITapGestureRecognizer(target: self, action: #selector(didDoubleTapShiftButton(_:)))
+            doubleTap.numberOfTapsRequired = 2
+            button.addGestureRecognizer(doubleTap)
 
+            let singleTap = UITapGestureRecognizer(target: self, action: #selector(didSingleTapShiftButton(_:)))
+            singleTap.require(toFail: doubleTap)
+            button.addGestureRecognizer(singleTap)
+        } else {
+            button.addTarget(self, action: #selector(didTapButton(_:)), for: .touchUpInside)
+        }
         return button
     }
 
-    @objc func didTapButton(button: KeyboardButton) {
+    @objc func didDoubleTapShiftButton(_ recognizer: UITapGestureRecognizer) {
+        keyboardType = .capsLock
+    }
+
+    @objc func didSingleTapShiftButton(_ recognizer: UITapGestureRecognizer) {
+        let button = recognizer.view as! KeyboardButton
+        didTapButton(button)
+    }
+
+    @objc func didTapButton(_ button: KeyboardButton) {
         let proxy = textDocumentProxy as UITextDocumentProxy
 
         let title = button.title(for: .normal)!
 
         if button.isCharacter {
             proxy.insertText(title)
+            if keyboardType == .shifted {
+                keyboardType = .lower
+            }
         } else {
             switch title {
             case "⌫":
@@ -266,8 +256,16 @@ class KeyboardViewController: UIInputViewController {
                 proxy.insertText(" ")
             case "🌐":
                 self.advanceToNextInputMode()
-            case "⇧", "⬆", "⇪":
-                break
+            case "⇧":
+                keyboardType = .shifted
+            case "⬆", "⇪":
+                keyboardType = .lower
+            case "123":
+                keyboardType = .numeric
+            case "ABC":
+                keyboardType = .lower
+            case "#+=":
+                keyboardType = .symbols
             default:
                 break
             }
