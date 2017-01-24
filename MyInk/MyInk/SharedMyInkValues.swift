@@ -72,8 +72,8 @@ class SharedMyInkValues {
         return UIImage(named: "MyInk_Watermark")
     }()
     
-    static let AppGroup = "group.myinkapp" //"group.myInk" //
-    static let AppParent = "com.myinkapp.myink" //"com.elink.cursive" //
+    static let AppGroup = "group.scribbyapp" //"group.myInk" //
+    static let AppParent = "com.scribbyapp.scribby" //"com.elink.cursive" //
 
     static var appOpenTargetURLComponents: [String] {
         get {
