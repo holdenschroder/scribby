@@ -8,22 +8,72 @@
 
 import UIKit
 
+enum KeyboardButtonType {
+    case character(String)
+    case switchToKeyboardTypes([KeyboardType], String)
+    case space
+    case returnOrDone(String)
+    case backspace
+    case nextKeyboard
+}
+
 class KeyboardButton: UIButton {
     var sizeMultiplier: CGFloat = 1
     var horizontalSpacingMultiplier: CGFloat = 1
     var isCharacter: Bool = false
+    var renderer: FontMessageRenderer?
+    var type: KeyboardButtonType = .space {
+        didSet {
+            var title: String = ""
+            var width: CGFloat = 55
+            backgroundColor = UIColor(white: 0.8, alpha: 1)
 
-    func setTitle(_ title: String, withRenderer renderer: FontMessageRenderer?) {
-        setTitle(title, for: .normal)
+            switch type {
+            case .character(let c):
+                title = c
+                backgroundColor = UIColor.white
+            case .switchToKeyboardTypes(_, let str):
+                title = str
+                width = 80
+                sizeMultiplier = 1.4
+            case .space:
+                title = "space"
+                width = 300
+                sizeMultiplier = 5.5
+                backgroundColor = UIColor.white
+            case .returnOrDone(let str):
+                title = str
+                width = 110
+                sizeMultiplier = 2.2
+            case .backspace:
+                title = "⌫"
+                sizeMultiplier = 1.4
+            case .nextKeyboard:
+                title = "🌐"
+                sizeMultiplier = 1.4
+            }
 
-        let width: CGFloat = title == KeyboardType.spaceString ? 300 : (title.characters.count == 1 ? 55 : 80)
-        if let image = renderer?.render(message: title, width: width, lineHeight: 35, backgroundColor: UIColor.clear) {
-            setBackgroundImage(image, for: .normal)
-            setTitleColor(UIColor.clear, for: .normal)
-        } else {
-            setTitleColor(UIColor.darkGray, for: .normal)
+            if let image = renderer?.render(message: title, width: width, lineHeight: 35, backgroundColor: UIColor.clear) {
+                setBackgroundImage(image, for: .normal)
+                setTitleColor(UIColor.clear, for: .normal)
+            } else {
+                setTitle(title, for: .normal)
+                setTitleColor(UIColor.darkGray, for: .normal)
+            }
         }
     }
+
+//    func setTitle(_ title: String, withRenderer renderer: FontMessageRenderer?) {
+//        setTitle(title, for: .normal)
+//
+//        let width: CGFloat = title == KeyboardType.spaceString ? 300 : (title.characters.count == 1 ? 55 : 80)
+//        if let image = renderer?.render(message: title, width: width, lineHeight: 35, backgroundColor: UIColor.clear) {
+//            setBackgroundImage(image, for: .normal)
+//            setTitleColor(UIColor.clear, for: .normal)
+//        } else {
+//            setTitleColor(UIColor.darkGray, for: .normal)
+//        }
+//    }
 }
 
 enum KeyboardType {
@@ -190,17 +240,32 @@ class KeyboardViewController: UIInputViewController {
     private func createButtonWithTitle(_ title: String) -> KeyboardButton {
         let button = KeyboardButton(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = UIColor(white: 1.0, alpha: 1.0)
+        button.renderer = messageRenderer
 
         switch title {
-        case "⇧", "⬆", "⇪", "⌫", "🌐", "⏎", "123", "ABC", "#+=":
-            button.sizeMultiplier = 1.4
-            button.backgroundColor = UIColor(white: 0.8, alpha: 1)
-            button.horizontalSpacingMultiplier = 2.5
+        case "⇧":
+            button.type = .switchToKeyboardTypes([.shifted, .capsLock], title)
+        case "⬆":
+            button.type = .switchToKeyboardTypes([.lower, .capsLock], title)
+        case "⇪":
+            button.type = .switchToKeyboardTypes([.lower], title)
+        case "⌫":
+            button.type = .backspace
+        case "🌐":
+            button.type = .nextKeyboard
+        case "⏎":
+            button.type = .returnOrDone("return")
+        case "123":
+            button.type = .switchToKeyboardTypes([.numeric], title)
+        case "ABC":
+            button.type = .switchToKeyboardTypes([.lower], title)
+        case "#+=":
+            button.type = .switchToKeyboardTypes([.symbols], title)
         case KeyboardType.spaceString:
-            button.sizeMultiplier = 5.5
+            button.type = .space
         default:
             button.isCharacter = true
+            button.type = .character(title)
         }
         button.layer.borderColor = KeyboardViewController.MyInkDarkColor.cgColor
         button.layer.borderWidth = 1.0
@@ -208,67 +273,55 @@ class KeyboardViewController: UIInputViewController {
         button.layer.masksToBounds = true
         button.imageView?.contentMode = .scaleAspectFit
 
-        button.setTitle(title, withRenderer: messageRenderer)
-
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         button.translatesAutoresizingMaskIntoConstraints = false
 
-        if title == "⬆" || title == "⇧" {
-            let doubleTap = UITapGestureRecognizer(target: self, action: #selector(didDoubleTapShiftButton(_:)))
-            doubleTap.numberOfTapsRequired = 2
-            button.addGestureRecognizer(doubleTap)
+        var doubleTap: UITapGestureRecognizer?
 
-            let singleTap = UITapGestureRecognizer(target: self, action: #selector(didSingleTapShiftButton(_:)))
-            singleTap.require(toFail: doubleTap)
-            button.addGestureRecognizer(singleTap)
-        } else {
-            button.addTarget(self, action: #selector(didTapButton(_:)), for: .touchUpInside)
+        switch button.type {
+        case .switchToKeyboardTypes(let keyboardTypes, _):
+            if keyboardTypes.count == 2 {
+                doubleTap = UITapGestureRecognizer(target: self, action: #selector(didDoubleTapButton(_:)))
+                doubleTap!.numberOfTapsRequired = 2
+                button.addGestureRecognizer(doubleTap!)
+            }
+        default:
+            break
         }
+
+        let singleTap = UITapGestureRecognizer(target: self, action: #selector(didSingleTapShiftButton(_:)))
+        if let other = doubleTap {
+            singleTap.require(toFail: other)
+        }
+        button.addGestureRecognizer(singleTap)
+
         return button
     }
 
-    @objc func didDoubleTapShiftButton(_ recognizer: UITapGestureRecognizer) {
+    @objc func didDoubleTapButton(_ recognizer: UITapGestureRecognizer) {
         keyboardType = .capsLock
     }
 
     @objc func didSingleTapShiftButton(_ recognizer: UITapGestureRecognizer) {
         let button = recognizer.view as! KeyboardButton
-        didTapButton(button)
-    }
-
-    @objc func didTapButton(_ button: KeyboardButton) {
         let proxy = textDocumentProxy as UITextDocumentProxy
 
-        let title = button.title(for: .normal)!
-
-        if button.isCharacter {
-            proxy.insertText(title)
+        switch button.type {
+        case .character(let c):
+            proxy.insertText(c)
             if keyboardType == .shifted {
                 keyboardType = .lower
             }
-        } else {
-            switch title {
-            case "⌫":
-                proxy.deleteBackward()
-            case "⏎":
-                proxy.insertText("\n")
-            case KeyboardType.spaceString:
-                proxy.insertText(" ")
-            case "🌐":
-                self.advanceToNextInputMode()
-            case "⇧":
-                keyboardType = .shifted
-            case "⬆", "⇪":
-                keyboardType = .lower
-            case "123":
-                keyboardType = .numeric
-            case "ABC":
-                keyboardType = .lower
-            case "#+=":
-                keyboardType = .symbols
-            default:
-                break
-            }
+        case .backspace:
+            proxy.deleteBackward()
+        case .nextKeyboard:
+            advanceToNextInputMode()
+        case .returnOrDone(_):
+            proxy.insertText("\n")
+        case .space:
+            proxy.insertText(" ")
+        case .switchToKeyboardTypes(let keyboardTypes, _):
+            keyboardType = keyboardTypes.first!
         }
     }
 
