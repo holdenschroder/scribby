@@ -85,7 +85,6 @@
 		58DF90781B4F1C9600E36BB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58DF90761B4F1C9600E36BB1 /* Main.storyboard */; };
 		58DF907A1B4F1C9600E36BB1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58DF90791B4F1C9600E36BB1 /* Images.xcassets */; };
 		58DF907D1B4F1C9600E36BB1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58DF907B1B4F1C9600E36BB1 /* LaunchScreen.xib */; };
-		58DF90891B4F1C9700E36BB1 /* MyInkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DF90881B4F1C9700E36BB1 /* MyInkTests.swift */; };
 		58DF90A01B4F1D2C00E36BB1 /* FontAtlasGlyph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DF909E1B4F1D2C00E36BB1 /* FontAtlasGlyph.swift */; };
 		58DF90A11B4F1D2C00E36BB1 /* FontAtlasData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DF909F1B4F1D2C00E36BB1 /* FontAtlasData.swift */; };
 		58F02CDE1BFA671A00BA6334 /* UIDrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F02CDD1BFA671A00BA6334 /* UIDrawView.swift */; };
@@ -100,13 +99,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		58DF90831B4F1C9700E36BB1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 58DF90621B4F1C9600E36BB1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 58DF90691B4F1C9600E36BB1;
-			remoteInfo = MyInk;
-		};
 		66C0A1721E2D785500D6C058 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 58DF90621B4F1C9600E36BB1 /* Project object */;
@@ -215,7 +207,6 @@
 		58DF90771B4F1C9600E36BB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		58DF90791B4F1C9600E36BB1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		58DF907C1B4F1C9600E36BB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		58DF90821B4F1C9700E36BB1 /* ScribbyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScribbyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		58DF90871B4F1C9700E36BB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		58DF90881B4F1C9700E36BB1 /* MyInkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInkTests.swift; sourceTree = "<group>"; };
 		58DF909E1B4F1D2C00E36BB1 /* FontAtlasGlyph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAtlasGlyph.swift; sourceTree = "<group>"; };
@@ -250,13 +241,6 @@
 				585D1FB51BF54CFD0093CA8A /* Bolts.framework in Frameworks */,
 				585D1FB71BF54D3F0093CA8A /* AudioToolbox.framework in Frameworks */,
 				585D1FB91BF54D5A0093CA8A /* libsqlite3.tbd in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		58DF907F1B4F1C9700E36BB1 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -548,7 +532,6 @@
 			isa = PBXGroup;
 			children = (
 				58DF906A1B4F1C9600E36BB1 /* Scribby.app */,
-				58DF90821B4F1C9700E36BB1 /* ScribbyTests.xctest */,
 				66C0A16D1E2D785500D6C058 /* ScribbyKeyboard.appex */,
 			);
 			name = Products;
@@ -663,24 +646,6 @@
 			productReference = 58DF906A1B4F1C9600E36BB1 /* Scribby.app */;
 			productType = "com.apple.product-type.application";
 		};
-		58DF90811B4F1C9700E36BB1 /* ScribbyTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 58DF908F1B4F1C9700E36BB1 /* Build configuration list for PBXNativeTarget "ScribbyTests" */;
-			buildPhases = (
-				58DF907E1B4F1C9700E36BB1 /* Sources */,
-				58DF907F1B4F1C9700E36BB1 /* Frameworks */,
-				58DF90801B4F1C9700E36BB1 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				58DF90841B4F1C9700E36BB1 /* PBXTargetDependency */,
-			);
-			name = ScribbyTests;
-			productName = MyInkTests;
-			productReference = 58DF90821B4F1C9700E36BB1 /* ScribbyTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		66C0A16C1E2D785500D6C058 /* ScribbyKeyboard */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 66C0A1771E2D785500D6C058 /* Build configuration list for PBXNativeTarget "ScribbyKeyboard" */;
@@ -725,12 +690,6 @@
 							};
 						};
 					};
-					58DF90811B4F1C9700E36BB1 = {
-						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = 2GEFGM2S2P;
-						LastSwiftMigration = 0820;
-						TestTargetID = 58DF90691B4F1C9600E36BB1;
-					};
 					66C0A16C1E2D785500D6C058 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 8YDH8TXREA;
@@ -752,7 +711,6 @@
 			projectRoot = "";
 			targets = (
 				58DF90691B4F1C9600E36BB1 /* Scribby */,
-				58DF90811B4F1C9700E36BB1 /* ScribbyTests */,
 				66C0A16C1E2D785500D6C058 /* ScribbyKeyboard */,
 			);
 		};
@@ -786,13 +744,6 @@
 				582D3FB81B50433300D08255 /* isolationfilter.cikernel in Resources */,
 				53C8AD8C1C191425006A98E1 /* welcome.wav in Resources */,
 				53C8AD921C19192C006A98E1 /* EarOne_Handwriting.ttf in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		58DF90801B4F1C9700E36BB1 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -883,14 +834,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		58DF907E1B4F1C9700E36BB1 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				58DF90891B4F1C9700E36BB1 /* MyInkTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		66C0A1691E2D785500D6C058 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -902,11 +845,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		58DF90841B4F1C9700E36BB1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 58DF90691B4F1C9600E36BB1 /* Scribby */;
-			targetProxy = 58DF90831B4F1C9700E36BB1 /* PBXContainerItemProxy */;
-		};
 		66C0A1731E2D785500D6C058 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 66C0A16C1E2D785500D6C058 /* ScribbyKeyboard */;
@@ -975,7 +913,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "383621bc-9782-43b2-b985-f17d2dd5b4d7";
@@ -1019,7 +957,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PROVISIONING_PROFILE = "383621bc-9782-43b2-b985-f17d2dd5b4d7";
 				SDKROOT = iphoneos;
@@ -1089,38 +1027,6 @@
 			};
 			name = Release;
 		};
-		58DF90901B4F1C9700E36BB1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = "";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = MyInkTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.galenryder.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Scribby.app/Scribby";
-			};
-			name = Debug;
-		};
-		58DF90911B4F1C9700E36BB1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = "";
-				INFOPLIST_FILE = MyInkTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.galenryder.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Scribby.app/Scribby";
-			};
-			name = Release;
-		};
 		66C0A1751E2D785500D6C058 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1176,15 +1082,6 @@
 			buildConfigurations = (
 				58DF908D1B4F1C9700E36BB1 /* Debug */,
 				58DF908E1B4F1C9700E36BB1 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		58DF908F1B4F1C9700E36BB1 /* Build configuration list for PBXNativeTarget "ScribbyTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				58DF90901B4F1C9700E36BB1 /* Debug */,
-				58DF90911B4F1C9700E36BB1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
