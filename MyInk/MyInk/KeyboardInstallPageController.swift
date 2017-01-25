@@ -15,15 +15,13 @@ class KeyboardInstallPageController: UIViewController, UIPageViewControllerDataS
     
     fileprivate var pageViewController: UIPageViewController?
     fileprivate let contentImages = [
-        "keyboard_install_1.png",
-        "keyboard_install_2.png",
-        "keyboard_install_3.png",
-        "keyboard_install_4.png",
-        "keyboard_install_5.png",
-        "keyboard_install_6.png",
-        "keyboard_install_7.png",
-        "keyboard_install_8.png",
-        "keyboard_install_9.png"
+        "keyboard_install_1",
+        "keyboard_install_2",
+        "keyboard_install_3",
+        "keyboard_install_4",
+        "keyboard_install_5",
+        "keyboard_install_6",
+        "keyboard_install_7",
     ];
     
     // MARK: - Lifecycle
@@ -78,7 +76,7 @@ class KeyboardInstallPageController: UIViewController, UIPageViewControllerDataS
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         let itemController = viewController as! KeyboardPageItemController
-        if itemController.itemIndex+1 < contentImages.count {
+        if itemController.itemIndex + 1 < contentImages.count {
             return getItemController(itemController.itemIndex+1)
         }
         return nil

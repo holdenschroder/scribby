@@ -12,9 +12,7 @@ class KeyboardPageItemController: UIViewController {
     var itemIndex: Int = 0
     var imageName: String = "" {
         didSet {
-            if let imageView = contentImageView {
-                imageView.image = UIImage(named: imageName)
-            }
+            contentImageView?.image = UIImage(named: imageName)
         }
     }
     

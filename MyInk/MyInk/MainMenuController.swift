@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 E-Link. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class MainMenuController:UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var captureView: CaptureWordSelectController!
@@ -27,6 +27,8 @@ class MainMenuController:UIViewController, UIImagePickerControllerDelegate, UINa
         createBtn.setImage(UIImage(named: "icon_touch_tapped"), for: .selected)
         libraryBtn.setImage(UIImage(named: "icon_library_tapped"), for: .selected)
         tutorialBtn.setImage(UIImage(named: "icon_tutorial_tapped"), for: .selected)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidBecomeActive(_:)), name: Notification.Name.UIApplicationDidBecomeActive, object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -41,6 +43,19 @@ class MainMenuController:UIViewController, UIImagePickerControllerDelegate, UINa
 
         MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventScreenLoadedMainMenu)
 
+        handleLaunchToURL()
+    }
+
+    func applicationDidBecomeActive(_ notification: Notification) {
+        if let inHierarchy = navigationController?.viewControllers.contains(self) {
+            if inHierarchy {
+                handleLaunchToURL()
+            }
+        }
+    }
+
+    private func handleLaunchToURL() {
+        _ = navigationController?.popToViewController(self, animated: false)
         var pathComponents = SharedMyInkValues.appOpenTargetURLComponents
         if pathComponents.count > 1 && pathComponents[0] == "tutorials" {
             pathComponents = Array(pathComponents[1..<pathComponents.count])
