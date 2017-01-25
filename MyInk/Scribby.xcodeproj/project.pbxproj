@@ -101,6 +101,8 @@
 		664730BA1E372F8500C2C594 /* Embedded_data.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = 585277901B7A679200C1B90B /* Embedded_data.sqlite-wal */; };
 		664730BB1E372F8500C2C594 /* Embedded_data.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 585277891B797DD000C1B90B /* Embedded_data.sqlite */; };
 		664730BC1E372F8500C2C594 /* Embedded_atlas.png in Resources */ = {isa = PBXBuildFile; fileRef = 5852778A1B797DD000C1B90B /* Embedded_atlas.png */; };
+		66B4815E1E3830530036E3DE /* KeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B4815D1E3830530036E3DE /* KeyboardButton.swift */; };
+		66B481601E3830B00036E3DE /* KeyboardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B4815F1E3830B00036E3DE /* KeyboardType.swift */; };
 		66C0A1701E2D785500D6C058 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C0A16F1E2D785500D6C058 /* KeyboardViewController.swift */; };
 		66C0A1741E2D785500D6C058 /* ScribbyKeyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 66C0A16D1E2D785500D6C058 /* ScribbyKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		66D2F5621E371E1F00E4CA5B /* SharedMyInkValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FBA5281B853FC4009CF809 /* SharedMyInkValues.swift */; };
@@ -242,6 +244,8 @@
 		6644FEBF1E33CE5E0085A918 /* KeyboardStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = KeyboardStoryboard.storyboard; sourceTree = "<group>"; };
 		664730B41E37297800C2C594 /* ScribbyKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ScribbyKeyboard.entitlements; sourceTree = "<group>"; };
 		664730B51E372C8C00C2C594 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		66B4815D1E3830530036E3DE /* KeyboardButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardButton.swift; sourceTree = "<group>"; };
+		66B4815F1E3830B00036E3DE /* KeyboardType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardType.swift; sourceTree = "<group>"; };
 		66C0A16D1E2D785500D6C058 /* ScribbyKeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ScribbyKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		66C0A16F1E2D785500D6C058 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		66C0A1711E2D785500D6C058 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -644,6 +648,8 @@
 				66C0A16F1E2D785500D6C058 /* KeyboardViewController.swift */,
 				66C0A1711E2D785500D6C058 /* Info.plist */,
 				6644FEBF1E33CE5E0085A918 /* KeyboardStoryboard.storyboard */,
+				66B4815D1E3830530036E3DE /* KeyboardButton.swift */,
+				66B4815F1E3830B00036E3DE /* KeyboardType.swift */,
 			);
 			path = ScribbyKeyboard;
 			sourceTree = "<group>";
@@ -885,6 +891,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66B481601E3830B00036E3DE /* KeyboardType.swift in Sources */,
+				66B4815E1E3830530036E3DE /* KeyboardButton.swift in Sources */,
 				66D2F56A1E371ECE00E4CA5B /* CGSizeExtensions.swift in Sources */,
 				66D2F5641E371EB200E4CA5B /* FontAtlasData.swift in Sources */,
 				66D2F5631E371E2E00E4CA5B /* FontAtlas.swift in Sources */,
