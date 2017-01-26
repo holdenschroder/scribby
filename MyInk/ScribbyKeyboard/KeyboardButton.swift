@@ -70,7 +70,6 @@ class KeyboardButton: UIView {
         sizeMultiplier = info.widthMultiplier
 
         button.backgroundColor = info.backgroundColor
-        button.imageEdgeInsets = UIEdgeInsets(top: 2, left: 3, bottom: 2, right: 0)
 
         switch info.buttonType {
         case .character(let c):
@@ -88,7 +87,7 @@ class KeyboardButton: UIView {
         }
 
         let lineHeight: CGFloat = 32
-        let width: CGFloat = max(1.25, 0.8 * title.characters.count) * lineHeight
+        let width: CGFloat = max(1.5, 0.8 * title.characters.count) * lineHeight
 
         let margin = UIOffset(horizontal: 0, vertical: 2)
         if let image = renderer?.render(message: title, width: width, lineHeight: lineHeight, backgroundColor: UIColor.clear, maxAspectRatio: nil, alignment: .center, margin: margin) {

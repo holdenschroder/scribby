@@ -102,23 +102,24 @@ enum KeyboardType {
     }
 
     private func buttonInfosForThirdRow(characters: [String]) -> [KeyboardButtonInfo] {
-        var result = [KeyboardButtonInfo(buttonType: shiftKeyType, widthMultiplier: 1.5, backgroundColor: KeyboardType.grayBackground)]
-        let multiplier: CGFloat = 7.0 / characters.count
+        let functionButtonWidthMultiplier: CGFloat = 1.35
+        var result = [KeyboardButtonInfo(buttonType: shiftKeyType, widthMultiplier: functionButtonWidthMultiplier, backgroundColor: KeyboardType.grayBackground)]
+        let multiplier: CGFloat = (10 - functionButtonWidthMultiplier * 2) / characters.count
 
         for c in characters {
             result.append(KeyboardButtonInfo(buttonType: .character(c), widthMultiplier: multiplier))
         }
 
-        result.append(KeyboardButtonInfo(buttonType: .backspace, widthMultiplier: 1.5, backgroundColor: KeyboardType.grayBackground))
+        result.append(KeyboardButtonInfo(buttonType: .backspace, widthMultiplier: functionButtonWidthMultiplier, backgroundColor: KeyboardType.grayBackground))
         return result
     }
 
     private func buttonInfosForFourthRow() -> [KeyboardButtonInfo] {
         return [
-            KeyboardButtonInfo(buttonType: switchKeyType, widthMultiplier: 1.5, backgroundColor: KeyboardType.grayBackground),
-            KeyboardButtonInfo(buttonType: .nextKeyboard, widthMultiplier: 1.2, backgroundColor: KeyboardType.grayBackground),
-            KeyboardButtonInfo(buttonType: .space, widthMultiplier: 4.6),
-            KeyboardButtonInfo(buttonType: .returnOrDone("return"), widthMultiplier: 2.7, backgroundColor: KeyboardType.grayBackground)
+            KeyboardButtonInfo(buttonType: switchKeyType, widthMultiplier: 1.3, backgroundColor: KeyboardType.grayBackground),
+            KeyboardButtonInfo(buttonType: .nextKeyboard, widthMultiplier: 1.0),
+            KeyboardButtonInfo(buttonType: .space, widthMultiplier: 5.1),
+            KeyboardButtonInfo(buttonType: .returnOrDone("return"), widthMultiplier: 2.6, backgroundColor: KeyboardType.grayBackground)
         ]
     }
 

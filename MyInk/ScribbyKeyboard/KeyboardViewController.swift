@@ -94,11 +94,6 @@ class KeyboardViewController: UIInputViewController {
             let topConstraint = NSLayoutConstraint(item: button, attribute: .top, relatedBy: .equal, toItem: rowView, attribute: .top, multiplier: 1.0, constant: 0)
             let bottomConstraint = NSLayoutConstraint(item: button, attribute: .bottom, relatedBy: .equal, toItem: rowView, attribute: .bottom, multiplier: 1.0, constant: 0)
 
-            if index == buttons.count - 1 {
-                let rightConstraint = NSLayoutConstraint(item: button, attribute: .right, relatedBy: .equal, toItem: rowView, attribute: .right, multiplier: 1.0, constant: 0)
-                rowView.addConstraint(rightConstraint)
-            }
-
             var leftConstraint : NSLayoutConstraint!
             if index == 0 {
                 leftConstraint = NSLayoutConstraint(item: button, attribute: .left, relatedBy: .equal, toItem: rowView, attribute: .left, multiplier: 1.0, constant: 0)
@@ -106,13 +101,16 @@ class KeyboardViewController: UIInputViewController {
                 let prevButton = buttons[index - 1]
                 leftConstraint = NSLayoutConstraint(item: button, attribute: .left, relatedBy: .equal, toItem: prevButton, attribute: .right, multiplier: 1.0, constant: 0)
             }
-            let widthMultiplier = 0.1 * button.sizeMultiplier
-            let widthConstraint = NSLayoutConstraint(item: button, attribute: .width, relatedBy: .equal, toItem: rowView, attribute: .width, multiplier: widthMultiplier, constant: 0)
 
+            if index == buttons.count - 1 {
+                let rightConstraint = NSLayoutConstraint(item: button, attribute: .right, relatedBy: .equal, toItem: rowView, attribute: .right, multiplier: 1.0, constant: 0)
+                rowView.addConstraint(rightConstraint)
+            }
+
+            let widthConstraint = NSLayoutConstraint(item: button, attribute: .width, relatedBy: .equal, toItem: rowView, attribute: .width, multiplier: 0.1 * button.sizeMultiplier, constant: 0)
             widthConstraint.priority = 800.0
-            view.addConstraint(widthConstraint)
 
-            rowView.addConstraints([topConstraint, bottomConstraint, leftConstraint])
+            rowView.addConstraints([topConstraint, bottomConstraint, leftConstraint, widthConstraint])
         }
     }
 
