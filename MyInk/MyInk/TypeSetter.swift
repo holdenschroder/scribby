@@ -43,7 +43,7 @@ class TypeSetter {
 
     var height: CGFloat {
         let heightOfLines = CGFloat(glyphLines.count) * lineHeight * (1 + TypeSetter.lineSpacing)
-        return heightOfLines + margin.vertical * 2
+        return heightOfLines + lineHeight * 0.2 + margin.vertical * 2
     }
 
     var size: CGSize {

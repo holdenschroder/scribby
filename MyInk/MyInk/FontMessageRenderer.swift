@@ -11,14 +11,11 @@ class FontMessageRenderer
         _fallbackAtlas = fallbackAtlas
     }
 
-    var margin = UIOffset(horizontal: 25, vertical: 25)
-    var alignment: TypeSetterAlignment = .left
+    func render(message: String, width: CGFloat, lineHeight: CGFloat, backgroundColor: UIColor, maxAspectRatio: CGFloat? = nil, alignment: TypeSetterAlignment = .left, margin: UIOffset = UIOffset(horizontal: 25, vertical: 25)) -> UIImage? {
 
-    func render(message: String, width: CGFloat, lineHeight: CGFloat, backgroundColor: UIColor, maxAspectRatio: CGFloat = CGFloat.greatestFiniteMagnitude) -> UIImage? {
-
-        let typeSetter = TypeSetter(message: message, lineHeight: lineHeight, width: width, kerning: 0.1, atlases: [_atlas, _fallbackAtlas], maxAspectRatio: maxAspectRatio)
+        let typeSetter = TypeSetter(message: message, lineHeight: lineHeight, width: width, kerning: 0.1, atlases: [_atlas, _fallbackAtlas], maxAspectRatio: maxAspectRatio ?? CGFloat.greatestFiniteMagnitude)
         typeSetter.margin = margin
-        typeSetter.set(alignment: alignment, centerSmallMessages: true)
+        typeSetter.set(alignment: alignment)
 
         let size = typeSetter.size
 
