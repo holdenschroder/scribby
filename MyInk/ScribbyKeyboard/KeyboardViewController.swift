@@ -8,22 +8,24 @@
 
 import UIKit
 
-
 class KeyboardViewController: UIInputViewController {
     private static let buttonSpacing: UIOffset = UIOffset(horizontal: 3.5, vertical: 6.0)
-    private static let buttonHeight: CGFloat = 45.0
+    private static let buttonHeight: CGFloat = 55.0
     private static let keyboardHeight: CGFloat = 216.0
-    fileprivate var keyboardType: KeyboardType = .lower {
+
+    fileprivate var keyboardType: KeyboardType = .shifted {
         didSet {
             layoutButtons()
         }
     }
+    fileprivate var message: String = ""
 
     static let MyInkPinkColor = UIColor(red: 0.93, green: 0, blue: 0.45, alpha: 1.0)
     static let MyInkDarkColor = UIColor(red: 208/255, green: 20/255, blue: 68/255, alpha: 1.0)
     static let MyInkLightColor = UIColor(red: 205/255, green: 23/255, blue: 56/255, alpha: 1.0)
 
     var messageRenderer: FontMessageRenderer?
+    fileprivate var messagePreviewView: MessageDisplayView!
 
     private lazy var buttonWidthMultiplier: CGFloat = {
         let spacing = KeyboardViewController.buttonSpacing.horizontal * 11
@@ -34,19 +36,10 @@ class KeyboardViewController: UIInputViewController {
         super.viewDidLoad()
 
         if isAccessGranted {
-            let atlas = FontAtlas.main
-            let fallbackAtlas = FontAtlas.fallback
-            messageRenderer = FontMessageRenderer(atlas: atlas, fallbackAtlas: fallbackAtlas, watermark: SharedMyInkValues.MyInkWatermark)
-            messageRenderer!.margin = UIOffset(horizontal: 0, vertical: 2)
-            messageRenderer!.alignment = .center
+            messageRenderer = FontMessageRenderer(atlas: FontAtlas.main, fallbackAtlas: FontAtlas.fallback, watermark: SharedMyInkValues.MyInkWatermark)
         }
 
         layoutButtons()
-        view.backgroundColor = UIColor.clear
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
     }
 
     lazy private var buttonRowsContainer: UIView = {
@@ -171,52 +164,90 @@ class KeyboardViewController: UIInputViewController {
     private lazy var learnSetUpButton: UIButton = {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 320, height: 30))
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(self.isAccessGranted ? "" : "Scribby setup incomplete. Tap here.", for: .normal)
+        button.setTitle(self.isAccessGranted ? "Scribbify message!" : "Scribby setup incomplete. Tap here.", for: .normal)
         button.setTitleColor(KeyboardViewController.MyInkPinkColor, for: .normal)
-        button.backgroundColor = UIColor(white: 0.2, alpha: 1)
-        button.titleLabel!.font = UIFont.boldSystemFont(ofSize: 17)
-        if !self.isAccessGranted {
-            button.addTarget(self, action: #selector(setUpButtonTapped(_:)), for: .touchUpInside)
-        }
+        button.backgroundColor = UIColor(white: 0.1, alpha: 1)
+        button.titleLabel!.font = UIFont.boldSystemFont(ofSize: self.isAccessGranted ? 21 : 17)
+        button.addTarget(self, action: #selector(setUpButtonTapped(_:)), for: .touchUpInside)
         self.inputView?.addSubview(button)
         return button
     }()
 
+    private lazy var successLabel: UILabel = {
+        let label = UILabel(frame: self.learnSetUpButton.bounds)
+        label.backgroundColor = UIColor(white: 0.1, alpha: 1)
+        label.font = UIFont.boldSystemFont(ofSize: 17)
+        label.textColor = KeyboardViewController.MyInkPinkColor
+        label.textAlignment = .center
+        label.text = "Message copied to clipboard. Now paste!"
+        return label
+    }()
+
+    fileprivate func hoistSuccessLabel() {
+        successLabel.alpha = 1
+        learnSetUpButton.addSubview(successLabel)
+
+        UIView.animate(withDuration: 5.0, animations: {
+            self.successLabel.alpha = 0
+        }, completion: { _ in
+            self.successLabel.removeFromSuperview()
+        })
+    }
+
     func setUpButtonTapped(_ button: UIButton) {
-        let url = NSURL(string: "scribbyapp://tutorials/keyboard")
-        let context = NSExtensionContext()
-        context.open(url! as URL, completionHandler: nil)
+        if isAccessGranted {
+            let textProxyConsumer = TextProxyConsumer()
+            textProxyConsumer.consume(proxy: textDocumentProxy, onCompleteEvent: handleRenderingOfMessage)
+        } else {
+            let url = NSURL(string: "scribbyapp://tutorials/keyboard")
+            let context = NSExtensionContext()
+            context.open(url! as URL, completionHandler: nil)
 
-        var responder = self as UIResponder?
+            var responder = self as UIResponder?
 
-        while (responder != nil){
-            if responder?.responds(to: Selector("openURL:")) == true {
-                _ = responder?.perform(Selector("openURL:"), with: url)
+            while (responder != nil){
+                if responder?.responds(to: Selector("openURL:")) == true {
+                    _ = responder?.perform(Selector("openURL:"), with: url)
+                }
+                responder = responder!.next
             }
-            responder = responder!.next
         }
     }
 
-    var isAccessGranted: Bool {
+    func handleRenderingOfMessage(_ message: String) {
+        guard !message.isEmpty else {
+            return
+        }
+
+        self.message = message
+        let image = messageRenderer?.render(message: message, width: 750, lineHeight: 40, backgroundColor: FontMessageRenderer.beige, maxAspectRatio: 1.5)
+        messagePreviewView = MessageDisplayView(frame: view.bounds)
+        messagePreviewView.delegate = self
+        view.addSubview(messagePreviewView)
+        messagePreviewView.image = image
+    }
+
+    private lazy var isAccessGranted: Bool = {
         let originalString = UIPasteboard.general.string
         UIPasteboard.general.string = "TEST"
         if UIPasteboard.general.hasStrings {
             UIPasteboard.general.string = originalString
             return true
-        } else {
-            return false
         }
-    }
+        return false
+    }()
 }
 
 extension KeyboardViewController: KeyboardButtonDelegate {
     func didSingleTapButton(_ button: KeyboardButton) {
-        let proxy = textDocumentProxy as UITextDocumentProxy
+        let proxy = textDocumentProxy
 
         switch button.type {
         case .character(let c):
             proxy.insertText(c)
-            if keyboardType == .shifted {
+            if c == "." || c == "!" || c == "?" {
+                keyboardType = .shifted
+            } else if keyboardType == .shifted {
                 keyboardType = .lower
             }
         case .backspace:
@@ -225,6 +256,7 @@ extension KeyboardViewController: KeyboardButtonDelegate {
             advanceToNextInputMode()
         case .returnOrDone(_):
             proxy.insertText("\n")
+            keyboardType = .shifted
         case .space:
             proxy.insertText(" ")
         case .switchToKeyboardTypes(let keyboardTypes, _):
@@ -233,7 +265,32 @@ extension KeyboardViewController: KeyboardButtonDelegate {
     }
 
     func didDoubleTapButton(_ button: KeyboardButton) {
-        keyboardType = .capsLock
+        switch button.type {
+        case .switchToKeyboardTypes(let keyboardTypes, _):
+            keyboardType = keyboardTypes.last!
+        case .space:
+            textDocumentProxy.insertText(". ")
+            keyboardType = .shifted
+        default:
+            break
+        }
     }
 }
 
+extension KeyboardViewController: MessageDisplayViewDelegate {
+    func copyToClipboardButtonPressed() {
+        UIPasteboard.general.image = messagePreviewView.image
+        hoistSuccessLabel()
+        removeMessageView()
+    }
+
+    func continueEditingButtonPressed() {
+        textDocumentProxy.insertText(message)
+        removeMessageView()
+    }
+
+    private func removeMessageView() {
+        messagePreviewView.removeFromSuperview()
+        messagePreviewView = nil
+    }
+}

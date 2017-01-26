@@ -43,11 +43,12 @@ class KeyboardButton: UIButton {
             var title: String = ""
             var width: CGFloat = 55
             backgroundColor = UIColor(white: 0.8, alpha: 1)
+            let buttonBGColor = UIColor(hue: 0.1, saturation: 0.07, brightness: 1, alpha: 1)
 
             switch type {
             case .character(let c):
                 title = c
-                backgroundColor = UIColor.white
+                backgroundColor = buttonBGColor
             case .switchToKeyboardTypes(_, let str):
                 title = str
                 width = 80
@@ -56,7 +57,7 @@ class KeyboardButton: UIButton {
                 title = "space"
                 width = 300
                 sizeMultiplier = 5.5
-                backgroundColor = UIColor.white
+                backgroundColor = buttonBGColor
             case .returnOrDone(let str):
                 title = str
                 width = 110
@@ -69,7 +70,8 @@ class KeyboardButton: UIButton {
                 sizeMultiplier = 1.4
             }
 
-            if let image = renderer?.render(message: title, width: width, lineHeight: 35, backgroundColor: UIColor.clear) {
+            let margin = UIOffset(horizontal: 0, vertical: 2)
+            if let image = renderer?.render(message: title, width: width, lineHeight: 32, backgroundColor: UIColor.clear, maxAspectRatio: nil, alignment: .center, margin: margin) {
                 setBackgroundImage(image, for: .normal)
                 setTitleColor(UIColor.clear, for: .normal)
             } else {
@@ -86,6 +88,10 @@ class KeyboardButton: UIButton {
                     doubleTap!.numberOfTapsRequired = 2
                     addGestureRecognizer(doubleTap!)
                 }
+            case .space:
+                doubleTap = UITapGestureRecognizer(target: self, action: #selector(didDoubleTap(_:)))
+                doubleTap!.numberOfTapsRequired = 2
+                addGestureRecognizer(doubleTap!)
             default:
                 break
             }
