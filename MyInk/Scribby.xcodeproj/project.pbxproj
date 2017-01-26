@@ -93,7 +93,9 @@
 		58FD80F71B804E07003D58D1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FD80F61B804E07003D58D1 /* SystemConfiguration.framework */; };
 		58FD80F91B804E10003D58D1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FD80F81B804E10003D58D1 /* Security.framework */; };
 		6605AFB71E20E4CE0077C9A5 /* TypeSetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6605AFB61E20E4CE0077C9A5 /* TypeSetter.swift */; };
-		6644FEC01E33CE5E0085A918 /* KeyboardStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6644FEBF1E33CE5E0085A918 /* KeyboardStoryboard.storyboard */; };
+		663214171E399E2800459231 /* TextProxyConsumer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663214161E399E2800459231 /* TextProxyConsumer.swift */; };
+		663BA27E1E398AC6006EDA98 /* MessageDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663BA27D1E398AC6006EDA98 /* MessageDisplayView.swift */; };
+		663BA2801E398F34006EDA98 /* KeyboardActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663BA27F1E398F34006EDA98 /* KeyboardActionButton.swift */; };
 		664730B61E372C8C00C2C594 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 664730B51E372C8C00C2C594 /* CloudKit.framework */; };
 		664730B71E372C9A00C2C594 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 664730B51E372C8C00C2C594 /* CloudKit.framework */; };
 		664730B81E372E3200C2C594 /* MyInk.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 58CE61E71B7AB8A900730D32 /* MyInk.xcdatamodeld */; };
@@ -117,6 +119,7 @@
 		66D2F56B1E371EDD00E4CA5B /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583EB9E71B72DCC200357957 /* CoreDataHelper.swift */; };
 		66D2F56C1E371F3D00E4CA5B /* FontMessageRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580DFBB91B59A0A500A3A223 /* FontMessageRenderer.swift */; };
 		66D2F56D1E371F3D00E4CA5B /* TypeSetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6605AFB61E20E4CE0077C9A5 /* TypeSetter.swift */; };
+		66D398DE1E3959DA00A9E9F5 /* MessageDisplayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66D398DD1E3959DA00A9E9F5 /* MessageDisplayView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -241,7 +244,9 @@
 		58FD80F81B804E10003D58D1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		58FD80FC1B804F84003D58D1 /* bridging_header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bridging_header.h; sourceTree = "<group>"; };
 		6605AFB61E20E4CE0077C9A5 /* TypeSetter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeSetter.swift; sourceTree = "<group>"; };
-		6644FEBF1E33CE5E0085A918 /* KeyboardStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = KeyboardStoryboard.storyboard; sourceTree = "<group>"; };
+		663214161E399E2800459231 /* TextProxyConsumer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextProxyConsumer.swift; sourceTree = "<group>"; };
+		663BA27D1E398AC6006EDA98 /* MessageDisplayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageDisplayView.swift; sourceTree = "<group>"; };
+		663BA27F1E398F34006EDA98 /* KeyboardActionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardActionButton.swift; sourceTree = "<group>"; };
 		664730B41E37297800C2C594 /* ScribbyKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ScribbyKeyboard.entitlements; sourceTree = "<group>"; };
 		664730B51E372C8C00C2C594 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		66B4815D1E3830530036E3DE /* KeyboardButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardButton.swift; sourceTree = "<group>"; };
@@ -249,6 +254,7 @@
 		66C0A16D1E2D785500D6C058 /* ScribbyKeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ScribbyKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		66C0A16F1E2D785500D6C058 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		66C0A1711E2D785500D6C058 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		66D398DD1E3959DA00A9E9F5 /* MessageDisplayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageDisplayView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -646,10 +652,13 @@
 			children = (
 				664730B41E37297800C2C594 /* ScribbyKeyboard.entitlements */,
 				66C0A16F1E2D785500D6C058 /* KeyboardViewController.swift */,
+				663214161E399E2800459231 /* TextProxyConsumer.swift */,
+				663BA27F1E398F34006EDA98 /* KeyboardActionButton.swift */,
 				66C0A1711E2D785500D6C058 /* Info.plist */,
-				6644FEBF1E33CE5E0085A918 /* KeyboardStoryboard.storyboard */,
 				66B4815D1E3830530036E3DE /* KeyboardButton.swift */,
 				66B4815F1E3830B00036E3DE /* KeyboardType.swift */,
+				66D398DD1E3959DA00A9E9F5 /* MessageDisplayView.xib */,
+				663BA27D1E398AC6006EDA98 /* MessageDisplayView.swift */,
 			);
 			path = ScribbyKeyboard;
 			sourceTree = "<group>";
@@ -801,8 +810,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				664730B91E372F8500C2C594 /* Embedded_data.sqlite-shm in Resources */,
+				66D398DE1E3959DA00A9E9F5 /* MessageDisplayView.xib in Resources */,
 				664730BA1E372F8500C2C594 /* Embedded_data.sqlite-wal in Resources */,
-				6644FEC01E33CE5E0085A918 /* KeyboardStoryboard.storyboard in Resources */,
 				664730BB1E372F8500C2C594 /* Embedded_data.sqlite in Resources */,
 				664730BC1E372F8500C2C594 /* Embedded_atlas.png in Resources */,
 			);
@@ -893,8 +902,10 @@
 			files = (
 				66B481601E3830B00036E3DE /* KeyboardType.swift in Sources */,
 				66B4815E1E3830530036E3DE /* KeyboardButton.swift in Sources */,
+				663BA2801E398F34006EDA98 /* KeyboardActionButton.swift in Sources */,
 				66D2F56A1E371ECE00E4CA5B /* CGSizeExtensions.swift in Sources */,
 				66D2F5641E371EB200E4CA5B /* FontAtlasData.swift in Sources */,
+				663BA27E1E398AC6006EDA98 /* MessageDisplayView.swift in Sources */,
 				66D2F5631E371E2E00E4CA5B /* FontAtlas.swift in Sources */,
 				66D2F56C1E371F3D00E4CA5B /* FontMessageRenderer.swift in Sources */,
 				664730B81E372E3200C2C594 /* MyInk.xcdatamodeld in Sources */,
@@ -903,6 +914,7 @@
 				66D2F5691E371ECE00E4CA5B /* CGRectExtensions.swift in Sources */,
 				66D2F56D1E371F3D00E4CA5B /* TypeSetter.swift in Sources */,
 				66C0A1701E2D785500D6C058 /* KeyboardViewController.swift in Sources */,
+				663214171E399E2800459231 /* TextProxyConsumer.swift in Sources */,
 				66D2F5621E371E1F00E4CA5B /* SharedMyInkValues.swift in Sources */,
 				66D2F56B1E371EDD00E4CA5B /* CoreDataHelper.swift in Sources */,
 				66D2F5681E371ECE00E4CA5B /* CGPointExtensions.swift in Sources */,
@@ -1050,7 +1062,7 @@
 					"$(PROJECT_DIR)/MyInk",
 				);
 				INFOPLIST_FILE = MyInk/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1080,7 +1092,7 @@
 					"$(PROJECT_DIR)/MyInk",
 				);
 				INFOPLIST_FILE = MyInk/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1106,7 +1118,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 8YDH8TXREA;
 				INFOPLIST_FILE = ScribbyKeyboard/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.scribbyapp.scribby.ScribbyKeyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1126,7 +1138,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 8YDH8TXREA;
 				INFOPLIST_FILE = ScribbyKeyboard/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.scribbyapp.scribby.ScribbyKeyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
