@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -102,7 +103,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ydu-Jp-hW3">
-                                <rect key="frame" x="16" y="623" width="343" height="44"/>
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="jfS-Uq-7Q6"/>
                                 </constraints>
@@ -143,11 +144,11 @@
                             <constraint firstItem="R9R-uh-Vfc" firstAttribute="centerY" secondItem="nbS-CT-B7S" secondAttribute="centerY" id="7H9-Z7-EsD"/>
                             <constraint firstItem="Ydu-Jp-hW3" firstAttribute="leading" secondItem="ngT-GB-8Tf" secondAttribute="leadingMargin" id="8Yj-Ty-Zra"/>
                             <constraint firstItem="Ydu-Jp-hW3" firstAttribute="top" secondItem="nbS-CT-B7S" secondAttribute="bottom" id="HGH-gs-Y8j"/>
-                            <constraint firstItem="Ydu-Jp-hW3" firstAttribute="leading" secondItem="ngT-GB-8Tf" secondAttribute="leadingMargin" id="HTJ-ld-5zc"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Ydu-Jp-hW3" secondAttribute="trailing" id="Sx3-2U-LSe"/>
+                            <constraint firstItem="Ydu-Jp-hW3" firstAttribute="leading" secondItem="ngT-GB-8Tf" secondAttribute="leading" id="HTJ-ld-5zc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="nbS-CT-B7S" secondAttribute="trailing" id="Tmd-X2-Yyq"/>
                             <constraint firstAttribute="leadingMargin" secondItem="nbS-CT-B7S" secondAttribute="leading" id="YTw-rj-kPG"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Ydu-Jp-hW3" secondAttribute="trailing" id="aJL-Rn-cka"/>
+                            <constraint firstItem="Ydu-Jp-hW3" firstAttribute="centerX" secondItem="ngT-GB-8Tf" secondAttribute="centerX" id="cdQ-0P-Rbx"/>
                             <constraint firstItem="R9R-uh-Vfc" firstAttribute="height" secondItem="nbS-CT-B7S" secondAttribute="height" id="gkc-88-lo9"/>
                             <constraint firstItem="R9R-uh-Vfc" firstAttribute="centerX" secondItem="nbS-CT-B7S" secondAttribute="centerX" id="jTu-9J-Qer"/>
                             <constraint firstItem="Ydu-Jp-hW3" firstAttribute="top" secondItem="nbS-CT-B7S" secondAttribute="bottom" id="lpj-gC-gfV"/>
@@ -169,7 +170,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wvs-VA-Cf5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="897" y="58"/>
+            <point key="canvasLocation" x="1378" y="-114"/>
         </scene>
         <!--Library-->
         <scene sceneID="PQF-8w-vWD">
@@ -1318,7 +1319,7 @@ this be mapped to?</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hs5-nF-qwO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2300" y="58"/>
+            <point key="canvasLocation" x="3311" y="-230"/>
         </scene>
         <!--Navigation Controller Orientation-->
         <scene sceneID="9AF-4R-z7K">
@@ -1436,7 +1437,7 @@ this be mapped to?</string>
         <image name="socialmedia_icons" width="360" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7AQ-SJ-TqA"/>
+        <segue reference="H3w-qn-b1v"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.92549019607843142" green="0.0" blue="0.44705882352941179" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

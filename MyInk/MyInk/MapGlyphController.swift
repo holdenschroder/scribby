@@ -34,16 +34,13 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 }
 
 
-class MapGlyphController:UIViewController, UITextFieldDelegate {
-    typealias InputCallback = (_ value:String?) -> Void
+class MapGlyphController: UIViewController, UITextFieldDelegate {
+    typealias InputCallback = (_ value: String?) -> Void
     
-    @IBOutlet var textfield:UITextField?
+    @IBOutlet var textfield: UITextField!
     @IBOutlet weak var saveBtn: UIBarButtonItem!
-    fileprivate var _callback:InputCallback?
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
+    fileprivate var _callback: InputCallback?
+
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -51,12 +48,12 @@ class MapGlyphController:UIViewController, UITextFieldDelegate {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.navigationController?.navigationItem.leftBarButtonItem?.title = ""
 
-        textfield?.clearsOnInsertion = true
-        textfield?.text = ""
-        textfield!.layer.cornerRadius = 3.0
-        textfield!.layer.borderWidth = 1.0
-        textfield!.layer.borderColor = UIColor.darkGray.cgColor
-        textfield!.layer.masksToBounds = true
+        textfield.clearsOnInsertion = true
+        textfield.text = ""
+        textfield.layer.cornerRadius = 3.0
+        textfield.layer.borderWidth = 1.0
+        textfield.layer.borderColor = UIColor.darkGray.cgColor
+        textfield.layer.masksToBounds = true
         
         saveBtn.isEnabled = false
         MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventScreenLoadedCaptureMapGlyph)
@@ -64,11 +61,9 @@ class MapGlyphController:UIViewController, UITextFieldDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if textfield != nil {
-            UIView.animate(withDuration: 0.5, animations: {
-                self.textfield?.becomeFirstResponder()
-            })
-        }
+        UIView.animate(withDuration: 0.5, animations: {
+            self.textfield.becomeFirstResponder()
+        })
     }
     
     func setCallback(_ callback:@escaping InputCallback) {
@@ -92,18 +87,15 @@ class MapGlyphController:UIViewController, UITextFieldDelegate {
     
     @IBAction func Handle_SaveButton(_ sender: AnyObject) {
         if(_callback != nil) {
-            let string:String? = textfield!.text
+            let string: String? = textfield!.text
             _callback!(string)
-            //popVC()
         }
     }
     
     @IBAction func Handle_TextFieldChanged(_ sender: UITextField) {
         //Enforce a single character
-        if sender.text?.isEmpty == false && sender.text?.characters.count > 1 {
-            var text:String = sender.text!
-            text = text.substring(from: text.characters.index(text.endIndex, offsetBy: -1))
-            sender.text = text
+        if sender.text?.characters.count > 1 {
+            sender.text = String(sender.text!.characters.first!)
         }
     }
     

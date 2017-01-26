@@ -114,22 +114,23 @@ enum KeyboardType {
         return result
     }
 
-    private func buttonInfosForFourthRow() -> [KeyboardButtonInfo] {
+    private func buttonInfosForFourthRow(returnKeyType: UIReturnKeyType) -> [KeyboardButtonInfo] {
         return [
             KeyboardButtonInfo(buttonType: switchKeyType, widthMultiplier: 1.3, backgroundColor: KeyboardType.grayBackground),
             KeyboardButtonInfo(buttonType: .nextKeyboard, widthMultiplier: 1.0),
             KeyboardButtonInfo(buttonType: .space, widthMultiplier: 5.1),
-            KeyboardButtonInfo(buttonType: .returnOrDone("return"), widthMultiplier: 2.6, backgroundColor: KeyboardType.grayBackground)
+            KeyboardButtonInfo(buttonType: .returnOrDone(returnKeyType == .done ? "done" : "return"), widthMultiplier: 2.6, backgroundColor: KeyboardType.grayBackground)
         ]
     }
 
-    var buttonInfos: [[KeyboardButtonInfo]] {
+    func buttonInfos(returnKeyType: UIReturnKeyType?) -> [[KeyboardButtonInfo]] {
+        let returnKeyType: UIReturnKeyType = returnKeyType ?? .default
         let characters = _characters
         return [
             buttonInfosForTopOrSecondRow(characters: characters[0]),
             buttonInfosForTopOrSecondRow(characters: characters[1]),
             buttonInfosForThirdRow(characters: characters[2]),
-            buttonInfosForFourthRow()
+            buttonInfosForFourthRow(returnKeyType: returnKeyType)
         ]
     }
 }

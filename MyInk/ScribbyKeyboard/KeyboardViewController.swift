@@ -27,14 +27,13 @@ class KeyboardViewController: UIInputViewController {
     var messageRenderer: FontMessageRenderer?
     fileprivate var messagePreviewView: MessageDisplayView!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
 
         if isAccessGranted {
             messageRenderer = FontMessageRenderer(atlas: FontAtlas.main, fallbackAtlas: FontAtlas.fallback, watermark: SharedMyInkValues.MyInkWatermark)
         }
-
-        layoutButtons()
+        keyboardType = textDocumentProxy.autocapitalizationType == UITextAutocapitalizationType.none ? .lower : .shifted
     }
 
     lazy private var buttonRowsContainer: UIView = {
@@ -58,7 +57,7 @@ class KeyboardViewController: UIInputViewController {
         heightConstraint.priority = 999
         view.addConstraint(heightConstraint)
 
-        let rows: [UIView] = keyboardType.buttonInfos.map {
+        let rows: [UIView] = keyboardType.buttonInfos(returnKeyType: textDocumentProxy.returnKeyType).map {
             let row = createRowOfButtons(infos: $0, inContainer: buttonRowsContainer)
             row.translatesAutoresizingMaskIntoConstraints = false
             return row
