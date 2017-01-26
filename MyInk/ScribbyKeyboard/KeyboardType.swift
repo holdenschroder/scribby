@@ -1,3 +1,16 @@
+import UIKit
+struct KeyboardButtonInfo {
+    let widthMultiplier: CGFloat
+    let alignment: NSTextAlignment
+    let buttonType: KeyboardButtonType
+
+    init(buttonType: KeyboardButtonType, widthMultiplier: CGFloat = 1, alignment: NSTextAlignment = .center) {
+        self.buttonType = buttonType
+        self.widthMultiplier = widthMultiplier
+        self.alignment = alignment
+    }
+}
+
 enum KeyboardType {
     case lower
     case shifted
@@ -29,7 +42,7 @@ enum KeyboardType {
         }
     }
 
-    private var characters: [[String]] {
+    private var _characters: [[String]] {
         var result: [[String]]
         switch self {
         case .lower:
@@ -68,14 +81,51 @@ enum KeyboardType {
         }
     }
 
-    var buttonTypes: [[KeyboardButtonType]] {
-        var result: [[KeyboardButtonType]] = characters.map { row in
-            return row.map { c in
-                return .character(c)
+    private func buttonInfosForTopOrSecondRow(characters: [String]) -> [KeyboardButtonInfo] {
+        var result = [KeyboardButtonInfo]()
+        if characters.count < 10 {
+            let topIndex = characters.count - 1
+            result.append(KeyboardButtonInfo(buttonType: .character(characters[0]), widthMultiplier: 1.5, alignment: .right))
+            for i in 1..<topIndex {
+                result.append(KeyboardButtonInfo(buttonType: .character(characters[i])))
+            }
+            result.append(KeyboardButtonInfo(buttonType: .character(characters[topIndex]), widthMultiplier: 1.5, alignment: .left))
+        } else {
+            result = characters.map {
+                return KeyboardButtonInfo(buttonType: .character($0))
             }
         }
-        result[2] = [shiftKeyType] + result[2] + [.backspace]
-        result.append([switchKeyType, .nextKeyboard, .space, .returnOrDone("return")])
         return result
+    }
+
+    private func buttonInfosForThirdRow(characters: [String]) -> [KeyboardButtonInfo] {
+        var result = [KeyboardButtonInfo(buttonType: shiftKeyType, widthMultiplier: 1.5)]
+        let multiplier: CGFloat = 7.0 / characters.count
+
+        for c in characters {
+            result.append(KeyboardButtonInfo(buttonType: .character(c), widthMultiplier: multiplier))
+        }
+
+        result.append(KeyboardButtonInfo(buttonType: .backspace, widthMultiplier: 1.5))
+        return result
+    }
+
+    private func buttonInfosForFourthRow() -> [KeyboardButtonInfo] {
+        return [
+            KeyboardButtonInfo(buttonType: switchKeyType, widthMultiplier: 1.5),
+            KeyboardButtonInfo(buttonType: .nextKeyboard, widthMultiplier: 1.5),
+            KeyboardButtonInfo(buttonType: .space, widthMultiplier: 4.0),
+            KeyboardButtonInfo(buttonType: .returnOrDone("return"), widthMultiplier: 3.0)
+        ]
+    }
+
+    var buttonInfos: [[KeyboardButtonInfo]] {
+        let characters = _characters
+        return [
+            buttonInfosForTopOrSecondRow(characters: characters[0]),
+            buttonInfosForTopOrSecondRow(characters: characters[1]),
+            buttonInfosForThirdRow(characters: characters[2]),
+            buttonInfosForFourthRow()
+        ]
     }
 }

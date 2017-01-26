@@ -27,11 +27,6 @@ class KeyboardViewController: UIInputViewController {
     var messageRenderer: FontMessageRenderer?
     fileprivate var messagePreviewView: MessageDisplayView!
 
-    private lazy var buttonWidthMultiplier: CGFloat = {
-        let spacing = KeyboardViewController.buttonSpacing.horizontal * 11
-        return (1 - spacing / UIScreen.main.bounds.width) / 10 * 0.98
-    }()
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -63,8 +58,8 @@ class KeyboardViewController: UIInputViewController {
         heightConstraint.priority = 999
         view.addConstraint(heightConstraint)
 
-        let rows: [UIView] = keyboardType.buttonTypes.map {
-            let row = createRowOfButtons(types: $0, inContainer: buttonRowsContainer)
+        let rows: [UIView] = keyboardType.buttonInfos.map {
+            let row = createRowOfButtons(infos: $0, inContainer: buttonRowsContainer)
             row.translatesAutoresizingMaskIntoConstraints = false
             return row
         }
@@ -72,15 +67,15 @@ class KeyboardViewController: UIInputViewController {
         addRowViewConstraints(rows, toContainer: buttonRowsContainer)
     }
 
-    private func createRowOfButtons(types: [KeyboardButtonType], inContainer container: UIView) -> UIView {
+    private func createRowOfButtons(infos: [KeyboardButtonInfo], inContainer container: UIView) -> UIView {
         var buttons = [KeyboardButton]()
         let rect = CGRect(x: 0, y: 0, width: 375, height: 40)
         let keyboardRowView = UIView(frame: rect)
         keyboardRowView.translatesAutoresizingMaskIntoConstraints = false
         container.addSubview(keyboardRowView)
 
-        for buttonType in types {
-            let button = createButtonWithType(buttonType)
+        for buttonInfo in infos {
+            let button = createButtonWithInfo(buttonInfo)
             buttons.append(button)
             keyboardRowView.addSubview(button)
         }
@@ -90,32 +85,29 @@ class KeyboardViewController: UIInputViewController {
         return keyboardRowView
     }
 
-    private func createButtonWithType(_ type: KeyboardButtonType) -> KeyboardButton {
-        let button = KeyboardButton(delegate: self, renderer: messageRenderer)
-        button.type = type
-        return button
+    private func createButtonWithInfo(_ info: KeyboardButtonInfo) -> KeyboardButton {
+        return KeyboardButton(info: info, delegate: self, renderer: messageRenderer)
     }
 
     private func addIndividualButtonConstraints(buttons: [KeyboardButton], rowView: UIView){
         for (index, button) in buttons.enumerated() {
-            let topConstraint = NSLayoutConstraint(item: button, attribute: .top, relatedBy: .lessThanOrEqual, toItem: rowView, attribute: .top, multiplier: 1.0, constant: KeyboardViewController.buttonSpacing.vertical / 2.0)
-            let bottomConstraint = NSLayoutConstraint(item: button, attribute: .bottom, relatedBy: .greaterThanOrEqual, toItem: rowView, attribute: .bottom, multiplier: 1.0, constant: -KeyboardViewController.buttonSpacing.vertical / 2.0)
+            let topConstraint = NSLayoutConstraint(item: button, attribute: .top, relatedBy: .equal, toItem: rowView, attribute: .top, multiplier: 1.0, constant: 0)
+            let bottomConstraint = NSLayoutConstraint(item: button, attribute: .bottom, relatedBy: .equal, toItem: rowView, attribute: .bottom, multiplier: 1.0, constant: 0)
 
             if index == buttons.count - 1 {
-                let rightConstraint = NSLayoutConstraint(item: button, attribute: .right, relatedBy: .equal, toItem: rowView, attribute: .right, multiplier: 1.0, constant: -KeyboardViewController.buttonSpacing.horizontal)
+                let rightConstraint = NSLayoutConstraint(item: button, attribute: .right, relatedBy: .equal, toItem: rowView, attribute: .right, multiplier: 1.0, constant: 0)
                 rowView.addConstraint(rightConstraint)
             }
 
             var leftConstraint : NSLayoutConstraint!
             if index == 0 {
-                leftConstraint = NSLayoutConstraint(item: button, attribute: .left, relatedBy: .equal, toItem: rowView, attribute: .left, multiplier: 1.0, constant: KeyboardViewController.buttonSpacing.horizontal)
+                leftConstraint = NSLayoutConstraint(item: button, attribute: .left, relatedBy: .equal, toItem: rowView, attribute: .left, multiplier: 1.0, constant: 0)
             } else {
                 let prevButton = buttons[index - 1]
-                let widthSeparator = max(button.horizontalSpacingMultiplier, prevButton.horizontalSpacingMultiplier) * KeyboardViewController.buttonSpacing.horizontal
-                leftConstraint = NSLayoutConstraint(item: button, attribute: .left, relatedBy: .equal, toItem: prevButton, attribute: .right, multiplier: 1.0, constant: widthSeparator)
+                leftConstraint = NSLayoutConstraint(item: button, attribute: .left, relatedBy: .equal, toItem: prevButton, attribute: .right, multiplier: 1.0, constant: 0)
             }
-            let widthMultiplier = buttonWidthMultiplier * button.sizeMultiplier
-            let widthConstraint = NSLayoutConstraint(item: button, attribute: .width, relatedBy: .equal, toItem: view, attribute: .width, multiplier: widthMultiplier, constant: 0)
+            let widthMultiplier = 0.1 * button.sizeMultiplier
+            let widthConstraint = NSLayoutConstraint(item: button, attribute: .width, relatedBy: .equal, toItem: rowView, attribute: .width, multiplier: widthMultiplier, constant: 0)
 
             widthConstraint.priority = 800.0
             view.addConstraint(widthConstraint)
@@ -133,13 +125,13 @@ class KeyboardViewController: UIInputViewController {
         view.addConstraints([topButtonConstraint, bottomButtonConstraint, buttonHeightConstraint, buttonWidthConstraint, buttonCenterConstraint])
 
         for (index, rowView) in rowViews.enumerated() {
-            let widthConstraint = NSLayoutConstraint(item: rowView, attribute: .width, relatedBy: .lessThanOrEqual, toItem: container, attribute: .width, multiplier: 1.0, constant: 0)
+            let widthConstraint = NSLayoutConstraint(item: rowView, attribute: .width, relatedBy: .equal, toItem: container, attribute: .width, multiplier: 0.99, constant: 0)
             let centerConstraint = NSLayoutConstraint(item: rowView, attribute: .centerX, relatedBy: .equal, toItem: container, attribute: .centerX, multiplier: 1.0, constant: 0)
             var topConstraint: NSLayoutConstraint
 
 
             if index == 0 {
-                topConstraint = NSLayoutConstraint(item: rowView, attribute: .top, relatedBy: .equal, toItem: container, attribute: .top, multiplier: 1.0, constant: 0)
+                topConstraint = NSLayoutConstraint(item: rowView, attribute: .top, relatedBy: .equal, toItem: container, attribute: .top, multiplier: 1.0, constant: 2.0)
             } else {
                 let prevRow = rowViews[index - 1]
                 topConstraint = NSLayoutConstraint(item: rowView, attribute: .top, relatedBy: .equal, toItem: prevRow, attribute: .bottom, multiplier: 1.0, constant: 0.0)
@@ -154,7 +146,7 @@ class KeyboardViewController: UIInputViewController {
             container.addConstraints([widthConstraint, centerConstraint, topConstraint])
 
             if index == (rowViews.count - 1) {
-                let bottomConstraint = NSLayoutConstraint(item: rowView, attribute: .bottom, relatedBy: .equal, toItem: container, attribute: .bottom, multiplier: 1.0, constant: 0.0)
+                let bottomConstraint = NSLayoutConstraint(item: rowView, attribute: .bottom, relatedBy: .equal, toItem: container, attribute: .bottom, multiplier: 1.0, constant: -2.0)
                 container.addConstraint(bottomConstraint)
             }
         }
