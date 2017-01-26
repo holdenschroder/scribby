@@ -3,11 +3,13 @@ struct KeyboardButtonInfo {
     let widthMultiplier: CGFloat
     let alignment: NSTextAlignment
     let buttonType: KeyboardButtonType
+    let backgroundColor: UIColor
 
-    init(buttonType: KeyboardButtonType, widthMultiplier: CGFloat = 1, alignment: NSTextAlignment = .center) {
+    init(buttonType: KeyboardButtonType, widthMultiplier: CGFloat = 1, backgroundColor: UIColor? = nil, alignment: NSTextAlignment = .center) {
         self.buttonType = buttonType
         self.widthMultiplier = widthMultiplier
         self.alignment = alignment
+        self.backgroundColor = backgroundColor ?? UIColor(hue: 0.1, saturation: 0.07, brightness: 1, alpha: 1)
     }
 }
 
@@ -66,6 +68,7 @@ enum KeyboardType {
     }
 
     static let spaceString = "space"
+    static let grayBackground = UIColor(white: 0.8, alpha: 1)
 
     private static func alphaCharacters(shifted: Bool) -> [[String]] {
         let letters = [
@@ -99,23 +102,23 @@ enum KeyboardType {
     }
 
     private func buttonInfosForThirdRow(characters: [String]) -> [KeyboardButtonInfo] {
-        var result = [KeyboardButtonInfo(buttonType: shiftKeyType, widthMultiplier: 1.5)]
+        var result = [KeyboardButtonInfo(buttonType: shiftKeyType, widthMultiplier: 1.5, backgroundColor: KeyboardType.grayBackground)]
         let multiplier: CGFloat = 7.0 / characters.count
 
         for c in characters {
             result.append(KeyboardButtonInfo(buttonType: .character(c), widthMultiplier: multiplier))
         }
 
-        result.append(KeyboardButtonInfo(buttonType: .backspace, widthMultiplier: 1.5))
+        result.append(KeyboardButtonInfo(buttonType: .backspace, widthMultiplier: 1.5, backgroundColor: KeyboardType.grayBackground))
         return result
     }
 
     private func buttonInfosForFourthRow() -> [KeyboardButtonInfo] {
         return [
-            KeyboardButtonInfo(buttonType: switchKeyType, widthMultiplier: 1.5),
-            KeyboardButtonInfo(buttonType: .nextKeyboard, widthMultiplier: 1.5),
-            KeyboardButtonInfo(buttonType: .space, widthMultiplier: 4.0),
-            KeyboardButtonInfo(buttonType: .returnOrDone("return"), widthMultiplier: 3.0)
+            KeyboardButtonInfo(buttonType: switchKeyType, widthMultiplier: 1.5, backgroundColor: KeyboardType.grayBackground),
+            KeyboardButtonInfo(buttonType: .nextKeyboard, widthMultiplier: 1.2, backgroundColor: KeyboardType.grayBackground),
+            KeyboardButtonInfo(buttonType: .space, widthMultiplier: 4.6),
+            KeyboardButtonInfo(buttonType: .returnOrDone("return"), widthMultiplier: 2.7, backgroundColor: KeyboardType.grayBackground)
         ]
     }
 

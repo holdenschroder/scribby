@@ -66,22 +66,19 @@ class KeyboardButton: UIView {
 
     private func createButton() {
         var title: String = ""
-        let width: CGFloat = 50 * info.widthMultiplier
 
         sizeMultiplier = info.widthMultiplier
 
-        button.backgroundColor = UIColor(white: 0.8, alpha: 1)
-        let buttonBGColor = UIColor(hue: 0.1, saturation: 0.07, brightness: 1, alpha: 1)
+        button.backgroundColor = info.backgroundColor
+        button.imageEdgeInsets = UIEdgeInsets(top: 2, left: 3, bottom: 2, right: 0)
 
         switch info.buttonType {
         case .character(let c):
             title = c
-            button.backgroundColor = buttonBGColor
         case .switchToKeyboardTypes(_, let str):
             title = str
         case .space:
             title = "space"
-            button.backgroundColor = buttonBGColor
         case .returnOrDone(let str):
             title = str
         case .backspace:
@@ -90,9 +87,12 @@ class KeyboardButton: UIView {
             title = "🌐"
         }
 
+        let lineHeight: CGFloat = 32
+        let width: CGFloat = max(1.25, 0.8 * title.characters.count) * lineHeight
+
         let margin = UIOffset(horizontal: 0, vertical: 2)
-        if let image = renderer?.render(message: title, width: width, lineHeight: 32, backgroundColor: UIColor.clear, maxAspectRatio: nil, alignment: .center, margin: margin) {
-            button.setBackgroundImage(image, for: .normal)
+        if let image = renderer?.render(message: title, width: width, lineHeight: lineHeight, backgroundColor: UIColor.clear, maxAspectRatio: nil, alignment: .center, margin: margin) {
+            button.setImage(image, for: .normal)
             button.setTitleColor(UIColor.clear, for: .normal)
         } else {
             button.setTitle(title, for: .normal)
