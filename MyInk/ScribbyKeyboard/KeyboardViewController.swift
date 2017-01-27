@@ -19,6 +19,8 @@ class KeyboardViewController: UIInputViewController {
         }
     }
     fileprivate var message: String = ""
+    private var topButtonHeightConstraint: NSLayoutConstraint!
+    private var totalHeightConstraint: NSLayoutConstraint!
 
     static let MyInkPinkColor = UIColor(red: 0.93, green: 0, blue: 0.45, alpha: 1.0)
     static let MyInkDarkColor = UIColor(red: 208/255, green: 20/255, blue: 68/255, alpha: 1.0)
@@ -34,6 +36,8 @@ class KeyboardViewController: UIInputViewController {
             messageRenderer = FontMessageRenderer(atlas: FontAtlas.main, fallbackAtlas: FontAtlas.fallback, watermark: SharedMyInkValues.MyInkWatermark)
         }
         keyboardType = textDocumentProxy.autocapitalizationType == UITextAutocapitalizationType.none ? .lower : .shifted
+
+        learnSetUpButton.setTitle(calledFromScribbyApp ? "" : "Scribbify message!", for: .normal)
     }
 
     lazy private var buttonRowsContainer: UIView = {
@@ -53,9 +57,13 @@ class KeyboardViewController: UIInputViewController {
         for subview in buttonRowsContainer.subviews {
             subview.removeFromSuperview()
         }
-        let heightConstraint = NSLayoutConstraint(item: view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: KeyboardViewController.buttonHeight + KeyboardViewController.keyboardHeight)
-        heightConstraint.priority = 999
-        view.addConstraint(heightConstraint)
+        if totalHeightConstraint == nil {
+            totalHeightConstraint = NSLayoutConstraint(item: view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 9)
+            totalHeightConstraint.priority = 999
+            view.addConstraint(totalHeightConstraint)
+        }
+        totalHeightConstraint.constant = KeyboardViewController.keyboardHeight + (calledFromScribbyApp ? 0 : KeyboardViewController.buttonHeight)
+
 
         let rows: [UIView] = keyboardType.buttonInfos(returnKeyType: textDocumentProxy.returnKeyType).map {
             let row = createRowOfButtons(infos: $0, inContainer: buttonRowsContainer)
@@ -116,10 +124,10 @@ class KeyboardViewController: UIInputViewController {
     private func addRowViewConstraints(_ rowViews: [UIView], toContainer container: UIView) {
         let topButtonConstraint = NSLayoutConstraint(item: learnSetUpButton, attribute: .top, relatedBy: .equal, toItem: inputView, attribute: .top, multiplier: 1.0, constant: 0)
         let bottomButtonConstraint = NSLayoutConstraint(item: learnSetUpButton, attribute: .bottom, relatedBy: .equal, toItem: container, attribute: .top, multiplier: 1.0, constant: 0)
-        let buttonHeightConstraint = NSLayoutConstraint(item: learnSetUpButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1.0, constant: KeyboardViewController.buttonHeight)
+        topButtonHeightConstraint = NSLayoutConstraint(item: learnSetUpButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1.0, constant: calledFromScribbyApp ? 0 : KeyboardViewController.buttonHeight)
         let buttonWidthConstraint = NSLayoutConstraint(item: learnSetUpButton, attribute: .width, relatedBy: .equal, toItem: view, attribute: .width, multiplier: 1.0, constant: 0)
         let buttonCenterConstraint = NSLayoutConstraint(item: learnSetUpButton, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1.0, constant: 0)
-        view.addConstraints([topButtonConstraint, bottomButtonConstraint, buttonHeightConstraint, buttonWidthConstraint, buttonCenterConstraint])
+        view.addConstraints([topButtonConstraint, bottomButtonConstraint, topButtonHeightConstraint, buttonWidthConstraint, buttonCenterConstraint])
 
         for (index, rowView) in rowViews.enumerated() {
             let widthConstraint = NSLayoutConstraint(item: rowView, attribute: .width, relatedBy: .equal, toItem: container, attribute: .width, multiplier: 0.99, constant: 0)
@@ -148,6 +156,14 @@ class KeyboardViewController: UIInputViewController {
             }
         }
         
+    }
+
+    var calledFromScribbyApp: Bool {
+        guard isAccessGranted else { return false }
+        if let contentType = textDocumentProxy.textContentType {
+            return contentType == UITextContentType.scribbyInput
+        }
+        return false
     }
 
     private lazy var learnSetUpButton: UIButton = {

@@ -84,3 +84,9 @@ class SharedMyInkValues {
         }
     }
 }
+
+extension UITextContentType {
+    static let scribbyInput = UITextContentType(rawValue: "scribbyInput")
+}
+
+

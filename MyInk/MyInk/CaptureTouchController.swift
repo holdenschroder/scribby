@@ -31,9 +31,24 @@ fileprivate func >= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   }
 }
 
-
 class CaptureTouchController: UIViewController {
     @IBOutlet var drawCaptureView: UIDrawCaptureView?
+    @IBOutlet weak var characterTextField: UITextField!
+
+    @IBAction func textFieldChanged(_ sender: UITextField) {
+        var text = sender.text ?? ""
+        if text.characters.count > 1 {
+            text = String(text.characters.first!)
+        } else if text == " " {
+            text = ""
+        }
+        sender.text = text
+        if text.characters.count == 1 {
+            sender.resignFirstResponder()
+            drawCaptureView?.isUserInteractionEnabled = true
+        }
+    }
+
     fileprivate var lastImage: UIImage?
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,56 +60,46 @@ class CaptureTouchController: UIViewController {
             drawCaptureView?.clear()
         }
         MyInkAnalytics.TrackEvent(SharedMyInkValues.kEventScreenLoadedCaptureTouch)
+
+        setUpTextFieldAppearance()
+        characterTextField.textContentType = UITextContentType.scribbyInput
+        characterTextField.becomeFirstResponder()
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
-        
-        if segue.destination is MapGlyphController {
-            let mapGlyphController = segue.destination as! MapGlyphController
-            mapGlyphController.setCallback(HandleMapGlyphCallback)
-        }
+
+    private func setUpTextFieldAppearance() {
+        characterTextField.layer.cornerRadius = 10
+        characterTextField.layer.borderColor = SharedMyInkValues.MyInkDarkColor.cgColor
+        characterTextField.layer.borderWidth = 2.0
     }
-    
-    fileprivate func HandleMapGlyphCallback(_ value:String?) {
-        if value == nil {
-            return
-        }
-        
+
+
+    @IBAction func assignButtonPressed(_ sender: Any) {
         let currentAtlas = (UIApplication.shared.delegate as! AppDelegate).currentAtlas
-        if(currentAtlas!.hasGlyphMapping(value!)) {
-            let alert = UIAlertController(title: "Already Exists", message: "There is a glyph already mapped to that character, would you like to replace it with this one?", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Replace", style: .default, handler: { action in
-                _ = self.drawCaptureView?.save(value!, captureType:"Touch")
-                self.drawCaptureView?.clear()
-                let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64(0.25 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-                DispatchQueue.main.asyncAfter(deadline: dispatchTime + Double(Int64(NSEC_PER_SEC)) / Double(NSEC_PER_SEC), execute: { () -> Void in
-                    _ = self.navigationController?.popViewController(animated: true)
-                })
-            }))
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(NSEC_PER_SEC)) / Double(NSEC_PER_SEC), execute: { () -> Void in
-                self.present(alert, animated: true, completion: nil)
-            })
-        }
-        else if currentAtlas?.glyphs.count >= currentAtlas?.glyphLimit {
+
+        if currentAtlas?.glyphs.count >= currentAtlas?.glyphLimit {
             let alert = UIAlertController(title: "Atlas Full", message: "Sorry the font atlas can only hold \(currentAtlas!.glyphLimit) characters.", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(NSEC_PER_SEC)) / Double(NSEC_PER_SEC), execute: { () -> Void in
                 self.present(alert, animated: true, completion: nil)
             })
-        }
-        else {
-            _ = drawCaptureView?.save(value!, captureType:"Touch")
+        } else {
+            _ = drawCaptureView?.save(characterTextField.text!, captureType: "Touch")
             drawCaptureView?.clear()
-            let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64(0.25 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-            DispatchQueue.main.asyncAfter(deadline: dispatchTime + Double(Int64(NSEC_PER_SEC)) / Double(NSEC_PER_SEC), execute: { () -> Void in
-                _ = self.navigationController?.popViewController(animated: true)
+            drawCaptureView?.isUserInteractionEnabled = false
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(NSEC_PER_SEC)) / Double(NSEC_PER_SEC) * 0.2, execute: { () -> Void in
+                self.characterTextField.text = ""
+                self.characterTextField.becomeFirstResponder()
             })
         }
     }
     
     override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
         return UIInterfaceOrientationMask.portrait
+    }
+}
+
+extension CaptureTouchController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return false
     }
 }

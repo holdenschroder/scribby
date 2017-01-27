@@ -116,7 +116,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="uvk-hb-qjO"/>
                                     <barButtonItem title="Assign" id="wus-8L-42z">
                                         <connections>
-                                            <segue destination="myQ-Qx-1Nc" kind="show" id="H3w-qn-b1v"/>
+                                            <action selector="assignButtonPressed:" destination="nW4-cg-VOY" id="AXd-jc-6Bt"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -138,6 +138,19 @@
                                     <outlet property="referenceImage" destination="R9R-uh-Vfc" id="7sj-5K-Rwu"/>
                                 </connections>
                             </view>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MRm-xA-2B3">
+                                <rect key="frame" x="162" y="37" width="51" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="MAW-Hk-qhA"/>
+                                    <constraint firstAttribute="width" constant="51" id="dPM-CT-ila"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <connections>
+                                    <action selector="textFieldChanged:" destination="nW4-cg-VOY" eventType="editingChanged" id="Gko-KQ-A8E"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -150,6 +163,8 @@
                             <constraint firstAttribute="trailingMargin" secondItem="Ydu-Jp-hW3" secondAttribute="trailing" id="aJL-Rn-cka"/>
                             <constraint firstItem="Ydu-Jp-hW3" firstAttribute="centerX" secondItem="ngT-GB-8Tf" secondAttribute="centerX" id="cdQ-0P-Rbx"/>
                             <constraint firstItem="R9R-uh-Vfc" firstAttribute="height" secondItem="nbS-CT-B7S" secondAttribute="height" id="gkc-88-lo9"/>
+                            <constraint firstItem="MRm-xA-2B3" firstAttribute="top" secondItem="nbS-CT-B7S" secondAttribute="top" constant="5" id="hRP-Tk-NMk"/>
+                            <constraint firstItem="MRm-xA-2B3" firstAttribute="centerX" secondItem="ngT-GB-8Tf" secondAttribute="centerX" id="iUA-u5-DWe"/>
                             <constraint firstItem="R9R-uh-Vfc" firstAttribute="centerX" secondItem="nbS-CT-B7S" secondAttribute="centerX" id="jTu-9J-Qer"/>
                             <constraint firstItem="Ydu-Jp-hW3" firstAttribute="top" secondItem="nbS-CT-B7S" secondAttribute="bottom" id="lpj-gC-gfV"/>
                             <constraint firstItem="nbS-CT-B7S" firstAttribute="top" secondItem="Rrs-1X-qkn" secondAttribute="bottom" constant="8" id="m3Y-a9-kmJ"/>
@@ -165,12 +180,13 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="characterTextField" destination="MRm-xA-2B3" id="tDx-4c-Dnm"/>
                         <outlet property="drawCaptureView" destination="nbS-CT-B7S" id="ZeX-s3-Ase"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wvs-VA-Cf5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1378" y="-114"/>
+            <point key="canvasLocation" x="1376.8" y="-114.69265367316342"/>
         </scene>
         <!--Library-->
         <scene sceneID="PQF-8w-vWD">
@@ -1436,8 +1452,5 @@ this be mapped to?</string>
         <image name="my_ink_logo" width="250" height="118"/>
         <image name="socialmedia_icons" width="360" height="50"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="H3w-qn-b1v"/>
-    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.92549019607843142" green="0.0" blue="0.44705882352941179" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
