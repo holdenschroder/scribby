@@ -34,6 +34,7 @@ fileprivate func >= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 class CaptureTouchController: UIViewController {
     @IBOutlet var drawCaptureView: UIDrawCaptureView?
     @IBOutlet weak var characterTextField: UITextField!
+    @IBOutlet weak var overlayImageView: UIImageView!
 
     @IBAction func textFieldChanged(_ sender: UITextField) {
         var text = sender.text ?? ""
@@ -44,8 +45,7 @@ class CaptureTouchController: UIViewController {
         }
         sender.text = text
         if text.characters.count == 1 {
-            sender.resignFirstResponder()
-            drawCaptureView?.isUserInteractionEnabled = true
+            changeTextWindowFocus(on: false)
         }
     }
 
@@ -63,7 +63,55 @@ class CaptureTouchController: UIViewController {
 
         setUpTextFieldAppearance()
         characterTextField.textContentType = UITextContentType.scribbyInput
-        characterTextField.becomeFirstResponder()
+
+        if SharedMyInkValues.doNotShowCreateTutorialScreen {
+            dismissOverlay(animated: false)
+            changeTextWindowFocus(on: true)
+        } else {
+            setUpOverlayImage()
+        }
+    }
+
+    private func changeTextWindowFocus(on: Bool) {
+        if on {
+            characterTextField.becomeFirstResponder()
+            drawCaptureView?.isUserInteractionEnabled = false
+        } else {
+            characterTextField.resignFirstResponder()
+            drawCaptureView?.isUserInteractionEnabled = true
+        }
+    }
+
+    func overlayImageViewTapped(_ sender: UITapGestureRecognizer) {
+        dismissOverlay(animated: true)
+    }
+
+    private func setUpOverlayImage() {
+        overlayImageView.isUserInteractionEnabled = true
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(overlayImageViewTapped(_:)))
+        overlayImageView.addGestureRecognizer(tapRecognizer)
+    }
+
+    private func dismissOverlay(animated: Bool) {
+        UIView.animate(withDuration: animated ? 0.5 : 0, animations: {
+            self.overlayImageView.alpha = 0
+        }, completion: { _ in
+            self.overlayImageView.removeFromSuperview()
+
+            if animated {
+                let controller = UIAlertController(title: "Every time you come to this screen, we can show you those instructions.", message: "", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: { _ in
+                    self.changeTextWindowFocus(on: true)
+                })
+                let notAgainAction = UIAlertAction(title: "I got it! Don't show them again.", style: .destructive, handler: { _ in
+                    self.changeTextWindowFocus(on: true)
+                    SharedMyInkValues.doNotShowCreateTutorialScreen = true
+                })
+                controller.addAction(okAction)
+                controller.addAction(notAgainAction)
+                self.present(controller, animated: true, completion: nil)
+            }
+        })
     }
 
     private func setUpTextFieldAppearance() {
@@ -88,7 +136,7 @@ class CaptureTouchController: UIViewController {
             drawCaptureView?.isUserInteractionEnabled = false
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(NSEC_PER_SEC)) / Double(NSEC_PER_SEC) * 0.2, execute: { () -> Void in
                 self.characterTextField.text = ""
-                self.characterTextField.becomeFirstResponder()
+                self.changeTextWindowFocus(on: true)
             })
         }
     }

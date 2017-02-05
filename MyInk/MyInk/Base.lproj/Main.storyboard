@@ -152,7 +152,7 @@
                                 </connections>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="create-instructions" translatesAutoresizingMaskIntoConstraints="NO" id="nHJ-OG-ug4">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -164,7 +164,7 @@
                             <constraint firstItem="rMq-e8-Gl5" firstAttribute="top" secondItem="nHJ-OG-ug4" secondAttribute="bottom" id="Ko2-qr-jdF"/>
                             <constraint firstItem="nHJ-OG-ug4" firstAttribute="leading" secondItem="ngT-GB-8Tf" secondAttribute="leading" id="QnF-IJ-KPC"/>
                             <constraint firstAttribute="trailingMargin" secondItem="nbS-CT-B7S" secondAttribute="trailing" id="Tmd-X2-Yyq"/>
-                            <constraint firstItem="nHJ-OG-ug4" firstAttribute="top" secondItem="Rrs-1X-qkn" secondAttribute="bottom" constant="-20" id="U2r-Md-bBG"/>
+                            <constraint firstItem="nHJ-OG-ug4" firstAttribute="top" secondItem="Rrs-1X-qkn" secondAttribute="bottom" id="U2r-Md-bBG"/>
                             <constraint firstAttribute="leadingMargin" secondItem="nbS-CT-B7S" secondAttribute="leading" id="YTw-rj-kPG"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Ydu-Jp-hW3" secondAttribute="trailing" id="aJL-Rn-cka"/>
                             <constraint firstAttribute="trailing" secondItem="nHJ-OG-ug4" secondAttribute="trailing" id="bpv-zj-8dh"/>
@@ -200,7 +200,7 @@
         <scene sceneID="PQF-8w-vWD">
             <objects>
                 <collectionViewController storyboardIdentifier="Library" title="Library" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2js-4w-9Tp" customClass="LibraryCollectionController" customModule="Scribby" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" dataMode="prototypes" id="1lZ-7o-rTX">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" keyboardDismissMode="onDrag" dataMode="prototypes" id="1lZ-7o-rTX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -880,7 +880,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oVy-iq-Qqq" userLabel="Keyboard View">
-                                <rect key="frame" x="-93" y="52" width="561" height="128"/>
+                                <rect key="frame" x="-92.5" y="52" width="560" height="128"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Install MyInk keyboard to enable MyInk to access any messaging system on your iPhone." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VQ4-Cd-K9c" userLabel="Keyboard label">
                                         <rect key="frame" x="130" y="8" width="300" height="75"/>
@@ -1350,7 +1350,7 @@ this be mapped to?</string>
             <objects>
                 <navigationController storyboardIdentifier="NavigationRoot" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Yh6-1F-Gdw" customClass="UINavigationControllerOrientation" customModule="Scribby" customModuleProvider="target" sceneMemberID="viewController">
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="53p-Wb-Zba">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="53p-Wb-Zba">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.81568627449999997" green="0.078431372550000003" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -132,9 +132,11 @@ class KeyboardViewController: UIInputViewController {
     }
 
     private func addRowViewConstraints(_ rowViews: [UIView], toContainer container: UIView) {
+        let buttonHeight = calledFromScribbyApp && isAccessGranted ? 0 : KeyboardViewController.buttonHeight
+
         let topButtonConstraint = NSLayoutConstraint(item: topBannerButton, attribute: .top, relatedBy: .equal, toItem: inputView, attribute: .top, multiplier: 1.0, constant: 0)
         let bottomButtonConstraint = NSLayoutConstraint(item: topBannerButton, attribute: .bottom, relatedBy: .equal, toItem: container, attribute: .top, multiplier: 1.0, constant: 0)
-        topButtonHeightConstraint = NSLayoutConstraint(item: topBannerButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1.0, constant: calledFromScribbyApp ? 0 : KeyboardViewController.buttonHeight)
+        topButtonHeightConstraint = NSLayoutConstraint(item: topBannerButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1.0, constant: buttonHeight)
         let buttonWidthConstraint = NSLayoutConstraint(item: topBannerButton, attribute: .width, relatedBy: .equal, toItem: view, attribute: .width, multiplier: 1.0, constant: 0)
         let buttonCenterConstraint = NSLayoutConstraint(item: topBannerButton, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1.0, constant: 0)
         view.addConstraints([topButtonConstraint, bottomButtonConstraint, topButtonHeightConstraint, buttonWidthConstraint, buttonCenterConstraint])

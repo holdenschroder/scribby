@@ -93,6 +93,7 @@
 		58FD80F71B804E07003D58D1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FD80F61B804E07003D58D1 /* SystemConfiguration.framework */; };
 		58FD80F91B804E10003D58D1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FD80F81B804E10003D58D1 /* Security.framework */; };
 		6605AFB71E20E4CE0077C9A5 /* TypeSetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6605AFB61E20E4CE0077C9A5 /* TypeSetter.swift */; };
+		6615E1281E46CA58001422BD /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6615E1271E46CA58001422BD /* RoundedButton.swift */; };
 		663214171E399E2800459231 /* TextProxyConsumer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663214161E399E2800459231 /* TextProxyConsumer.swift */; };
 		663BA27E1E398AC6006EDA98 /* MessageDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663BA27D1E398AC6006EDA98 /* MessageDisplayView.swift */; };
 		663BA2801E398F34006EDA98 /* KeyboardActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663BA27F1E398F34006EDA98 /* KeyboardActionButton.swift */; };
@@ -244,6 +245,7 @@
 		58FD80F81B804E10003D58D1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		58FD80FC1B804F84003D58D1 /* bridging_header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bridging_header.h; sourceTree = "<group>"; };
 		6605AFB61E20E4CE0077C9A5 /* TypeSetter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeSetter.swift; sourceTree = "<group>"; };
+		6615E1271E46CA58001422BD /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		663214161E399E2800459231 /* TextProxyConsumer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextProxyConsumer.swift; sourceTree = "<group>"; };
 		663BA27D1E398AC6006EDA98 /* MessageDisplayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageDisplayView.swift; sourceTree = "<group>"; };
 		663BA27F1E398F34006EDA98 /* KeyboardActionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardActionButton.swift; sourceTree = "<group>"; };
@@ -402,6 +404,7 @@
 				53DBD3091C079B2C00E8EAB5 /* Tutorial.storyboard */,
 				58DF90791B4F1C9600E36BB1 /* Images.xcassets */,
 				582D3FC41B5043D000D08255 /* Testing.xcassets */,
+				6615E1271E46CA58001422BD /* RoundedButton.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -853,6 +856,7 @@
 				533CB3DE1C066EB300EA7438 /* WelcomeController.swift in Sources */,
 				53213E6D1C1B2EE70063342C /* KeyboardPageItemController.swift in Sources */,
 				582D3FC11B50433300D08255 /* UIImageView+GeometryConversion.m in Sources */,
+				6615E1281E46CA58001422BD /* RoundedButton.swift in Sources */,
 				58A696471BB0DEFE00B068AA /* UINavigationControllerOrientation.swift in Sources */,
 				583EB9E81B72DCC200357957 /* CoreDataHelper.swift in Sources */,
 				584E31BD1B56F95D002E6703 /* LibraryTableController.swift in Sources */,
