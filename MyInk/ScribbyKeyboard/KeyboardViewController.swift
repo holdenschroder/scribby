@@ -13,11 +13,17 @@ class KeyboardViewController: UIInputViewController {
     private static let buttonHeight: CGFloat = 55.0
     private static let keyboardHeight: CGFloat = 216.0
 
-    fileprivate var keyboardType: KeyboardType = .shifted {
-        didSet {
+    fileprivate var _keyboardType: KeyboardType = .shifted
+
+    func setKeyboardType(_ type: KeyboardType, forceRedraw: Bool = false) {
+        let oldType = _keyboardType
+        _keyboardType = type
+        if type != oldType || forceRedraw {
             layoutButtons()
         }
     }
+    var keyboardType: KeyboardType { return _keyboardType }
+
     fileprivate var message: String = ""
     private var topButtonHeightConstraint: NSLayoutConstraint!
     private var totalHeightConstraint: NSLayoutConstraint!
@@ -35,9 +41,13 @@ class KeyboardViewController: UIInputViewController {
         if isAccessGranted {
             messageRenderer = FontMessageRenderer(atlas: FontAtlas.main, fallbackAtlas: FontAtlas.fallback, watermark: SharedMyInkValues.MyInkWatermark)
         }
-        keyboardType = textDocumentProxy.autocapitalizationType == UITextAutocapitalizationType.none ? .lower : .shifted
+        setKeyboardType(textDocumentProxy.autocapitalizationType == UITextAutocapitalizationType.none ? .lower : .shifted, forceRedraw: true)
 
-        learnSetUpButton.setTitle(calledFromScribbyApp ? "" : "Scribbify message!", for: .normal)
+        if isAccessGranted {
+            topBannerButton.setTitle(calledFromScribbyApp ? "" : "Scribbify message!", for: .normal)
+        } else {
+            topBannerButton.setTitle("Scribby setup incomplete. Tap here.", for: .normal)
+        }
     }
 
     lazy private var buttonRowsContainer: UIView = {
@@ -122,11 +132,11 @@ class KeyboardViewController: UIInputViewController {
     }
 
     private func addRowViewConstraints(_ rowViews: [UIView], toContainer container: UIView) {
-        let topButtonConstraint = NSLayoutConstraint(item: learnSetUpButton, attribute: .top, relatedBy: .equal, toItem: inputView, attribute: .top, multiplier: 1.0, constant: 0)
-        let bottomButtonConstraint = NSLayoutConstraint(item: learnSetUpButton, attribute: .bottom, relatedBy: .equal, toItem: container, attribute: .top, multiplier: 1.0, constant: 0)
-        topButtonHeightConstraint = NSLayoutConstraint(item: learnSetUpButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1.0, constant: calledFromScribbyApp ? 0 : KeyboardViewController.buttonHeight)
-        let buttonWidthConstraint = NSLayoutConstraint(item: learnSetUpButton, attribute: .width, relatedBy: .equal, toItem: view, attribute: .width, multiplier: 1.0, constant: 0)
-        let buttonCenterConstraint = NSLayoutConstraint(item: learnSetUpButton, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1.0, constant: 0)
+        let topButtonConstraint = NSLayoutConstraint(item: topBannerButton, attribute: .top, relatedBy: .equal, toItem: inputView, attribute: .top, multiplier: 1.0, constant: 0)
+        let bottomButtonConstraint = NSLayoutConstraint(item: topBannerButton, attribute: .bottom, relatedBy: .equal, toItem: container, attribute: .top, multiplier: 1.0, constant: 0)
+        topButtonHeightConstraint = NSLayoutConstraint(item: topBannerButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1.0, constant: calledFromScribbyApp ? 0 : KeyboardViewController.buttonHeight)
+        let buttonWidthConstraint = NSLayoutConstraint(item: topBannerButton, attribute: .width, relatedBy: .equal, toItem: view, attribute: .width, multiplier: 1.0, constant: 0)
+        let buttonCenterConstraint = NSLayoutConstraint(item: topBannerButton, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1.0, constant: 0)
         view.addConstraints([topButtonConstraint, bottomButtonConstraint, topButtonHeightConstraint, buttonWidthConstraint, buttonCenterConstraint])
 
         for (index, rowView) in rowViews.enumerated() {
@@ -166,10 +176,9 @@ class KeyboardViewController: UIInputViewController {
         return false
     }
 
-    private lazy var learnSetUpButton: UIButton = {
+    private lazy var topBannerButton: UIButton = {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 320, height: 30))
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(self.isAccessGranted ? "Scribbify message!" : "Scribby setup incomplete. Tap here.", for: .normal)
         button.setTitleColor(KeyboardViewController.MyInkPinkColor, for: .normal)
         button.backgroundColor = UIColor(white: 0.1, alpha: 1)
         button.titleLabel!.font = UIFont.boldSystemFont(ofSize: self.isAccessGranted ? 21 : 17)
@@ -179,7 +188,7 @@ class KeyboardViewController: UIInputViewController {
     }()
 
     private lazy var successLabel: UILabel = {
-        let label = UILabel(frame: self.learnSetUpButton.bounds)
+        let label = UILabel(frame: self.topBannerButton.bounds)
         label.backgroundColor = UIColor(white: 0.1, alpha: 1)
         label.font = UIFont.boldSystemFont(ofSize: 17)
         label.textColor = KeyboardViewController.MyInkPinkColor
@@ -190,7 +199,7 @@ class KeyboardViewController: UIInputViewController {
 
     fileprivate func hoistSuccessLabel() {
         successLabel.alpha = 1
-        learnSetUpButton.addSubview(successLabel)
+        topBannerButton.addSubview(successLabel)
 
         UIView.animate(withDuration: 5.0, animations: {
             self.successLabel.alpha = 0
@@ -251,9 +260,9 @@ extension KeyboardViewController: KeyboardButtonDelegate {
         case .character(let c):
             proxy.insertText(c)
             if c == "." || c == "!" || c == "?" {
-                keyboardType = .shifted
+                setKeyboardType(.shifted)
             } else if keyboardType == .shifted {
-                keyboardType = .lower
+                setKeyboardType(.lower)
             }
         case .backspace:
             proxy.deleteBackward()
@@ -261,21 +270,22 @@ extension KeyboardViewController: KeyboardButtonDelegate {
             advanceToNextInputMode()
         case .returnOrDone(_):
             proxy.insertText("\n")
-            keyboardType = .shifted
+            setKeyboardType(.shifted)
         case .space:
             proxy.insertText(" ")
+            setKeyboardType(.lower)
         case .switchToKeyboardTypes(let keyboardTypes, _):
-            keyboardType = keyboardTypes.first!
+            setKeyboardType(keyboardTypes.first!)
         }
     }
 
     func didDoubleTapButton(_ button: KeyboardButton) {
         switch button.type {
         case .switchToKeyboardTypes(let keyboardTypes, _):
-            keyboardType = keyboardTypes.last!
+            setKeyboardType(keyboardTypes.last!)
         case .space:
             textDocumentProxy.insertText(". ")
-            keyboardType = .shifted
+            setKeyboardType(.shifted)
         default:
             break
         }

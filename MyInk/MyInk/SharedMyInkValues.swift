@@ -83,6 +83,20 @@ class SharedMyInkValues {
             UserDefaults.standard.set(newValue, forKey: keyTargetURL)
         }
     }
+
+    static var doNotShowCreateTutorialScreen: Bool {
+        get {
+            if let doNotShow = UserDefaults.standard.value(forKey: keyDoNotShowCreateTutorial) {
+                return doNotShow as! Bool
+            }
+            return false
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: keyDoNotShowCreateTutorial)
+        }
+    }
+
+    private static let keyDoNotShowCreateTutorial = "doNotShowCreateTutorial"
 }
 
 extension UITextContentType {
